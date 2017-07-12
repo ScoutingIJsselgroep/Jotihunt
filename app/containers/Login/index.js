@@ -5,9 +5,9 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { createAndShow, LOCK_CONTAINER_ID } from './lib';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { createAndShow } from './lib';
 
 const Container = styled.div`
   margin: 2em 0;

@@ -6,16 +6,28 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
 import makeSelectMapContainer from './selectors';
-import messages from './messages';
 
 export class MapContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const GettingStartedGoogleMap = withGoogleMap(() => (
+      <GoogleMap
+        defaultZoom={9}
+        defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
+      />));
+
     return (
       <div>
-        <FormattedMessage {...messages.header} />
+        <GettingStartedGoogleMap
+          containerElement={
+            <div style={{ height: '400px' }} />
+          }
+          mapElement={
+            <div style={{ height: '400px' }} />
+          }
+        />
       </div>
     );
   }

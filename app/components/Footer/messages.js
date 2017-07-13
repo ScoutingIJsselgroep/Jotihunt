@@ -6,6 +6,10 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
+  backToTop: {
+    id: 'boilerplate.components.Footer.back.to.top',
+    defaultMessage: 'Naar boven',
+  },
   licenseMessage: {
     id: 'boilerplate.components.Footer.license.message',
     defaultMessage: 'This project is licensed under the MIT license.',

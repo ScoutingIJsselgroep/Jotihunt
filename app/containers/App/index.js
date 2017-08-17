@@ -8,10 +8,10 @@
 
 import React from 'react';
 
-// import Header from 'components/Header';
+import Header from 'components/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
-import 'bootstrap/dist/css/bootstrap.css';
+import '../../stylesheets/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import 'font-awesome/css/font-awesome.min.css';
 
 export function App(props) {

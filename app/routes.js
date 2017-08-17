@@ -77,19 +77,19 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/map',
-      name: 'mapContainer',
+      path: '/hint/add',
+      name: 'addHintContainer',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/MapContainer/reducer'),
-          import('containers/MapContainer/sagas'),
-          import('containers/MapContainer'),
+          import('containers/AddHintContainer/reducer'),
+          import('containers/AddHintContainer/sagas'),
+          import('containers/AddHintContainer'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('mapContainer', reducer.default);
+          injectReducer('addHintContainer', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });

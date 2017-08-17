@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import Header from 'components/Header';
+// import Header from 'components/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.css';

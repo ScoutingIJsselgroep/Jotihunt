@@ -20,9 +20,8 @@ export function App(props) {
       <Header location={props.location.pathname} />
       <div className="container">
         {React.Children.toArray(props.children)}
-        <hr />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

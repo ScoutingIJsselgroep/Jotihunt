@@ -55,6 +55,37 @@ body {
   -webkit-font-smoothing: antialiased;
   padding-top: 50px;
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 10px;
+  width: 100%;
+  color: #fff;
+  background-color: #3b3f51;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+footer .thumb-md {
+  border: 1px solid rgba(255,255,255,.15);
+  transition: border .1s linear;
+
+  &:hover {
+    border-color: rgba(255,255,255,.3);
+  }
+}
+
+
 // Core variables and mixins
 @import "bootstrap/variables";
 @import "bootstrap/mixins";

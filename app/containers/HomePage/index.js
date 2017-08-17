@@ -44,7 +44,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return (
       <article>
         <Helmet
-          title="Home Page"
+          title="Home"
+          titleTemplate="%s | Jotihunt.js"
           meta={[
             { name: 'description', content: 'A React.js Boilerplate application homepage' },
           ]}

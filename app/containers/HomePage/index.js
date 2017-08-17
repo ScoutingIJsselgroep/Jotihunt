@@ -13,11 +13,6 @@ import { createStructuredSelector } from 'reselect';
 import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
-import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
-import Section from './Section';
 import messages from './messages';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
@@ -50,8 +45,11 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'A React.js Boilerplate application homepage' },
           ]}
         />
-        <div>
-          <h1></h1>
+        <div className='container'>
+          <h1 className='text-center'>It's time to up your game.</h1>
+          <div className='text-center'>
+            Vorig jaar introduceerden we het nieuwe platform. Dit jaar hebben we ons jachtsysteem geperfectioneerd en gaan we nóg harder jagen op vossen. Wees voorbereid!
+          </div>
         </div>
       </article>
     );

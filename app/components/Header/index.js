@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import ViewerWidget from 'containers/ViewerWidget';
+import NavbarLogin from 'components/NavbarLogin';
+import NavBarMenu from 'components/NavBarMenu';
 
 import A from './A';
 import Img from './Img';
@@ -8,6 +9,7 @@ import NavBar from './NavBar';
 import HeaderLink from './HeaderLink';
 import Banner from './banner.jpg';
 import messages from './messages';
+import logo from './logo_64.png';
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
@@ -24,17 +26,18 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">Jotihunt.js</a>
+            <NavBar className="navbar-brand" href="#">
+              <span><Img alt=" " src={logo} /></span>&nbsp;Jotihunt.js
+            </NavBar>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li className="active"><a href="#">Kaart <i className="fa fa-map"/></a></li>
               <li><a href="#">Hint toevoegen <span className="sr-only">(current)</span></a></li>
+              <NavBarMenu />
             </ul>
-            <ul className="nav navbar-nav navbar-right">
-              <ViewerWidget />
-            </ul>
+            <NavbarLogin />
           </div>
         </div>
       </nav>

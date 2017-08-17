@@ -24,8 +24,8 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
         }}
         validate={({ rdx, rdy }) =>
           ({
-            rdx: (!rdx || rdx.length !== 5) ? 'Dit getal moet 5 tekens lang zijn' : null,
-            rdy: (!rdy || rdx.length !== 5) ? 'Dit getal moet 5 tekens lang zijn' : null,
+            rdx: (!rdx || rdx.length !== 5 || isNaN(parseInt(rdx))) ? 'Dit getal moet 5 tekens lang zijn' : null,
+            rdy: (!rdy || rdy.length !== 5 || isNaN(parseInt(rdy))) ? 'Dit getal moet 5 tekens lang zijn' : null,
           })
         }
       >
@@ -33,12 +33,12 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
           (
             <form onSubmit={submitForm}>
               <div className="form-group">
-                <label htmlFor="rdx">Rijksdriehoek X</label>
-                <Text className="form-control" field="rdx" placeholder="43000" />
+                <span htmlFor="rdx">Rijksdriehoek X</span>
+                <Text className="form-control" field="rdx" placeholder="46828" />
               </div>
               <div className="form-group">
-                <label htmlFor="rdy">Rijksdriehoek Y</label>
-                <Text className="form-control" field="rdy" placeholder="20000" />
+                <span htmlFor="rdy">Rijksdriehoek Y</span>
+                <Text className="form-control" field="rdy" placeholder="21146" />
               </div>
               <button type="submit" className="btn btn-default">Versturen</button>
             </form>

@@ -79,6 +79,7 @@ export default function createRoutes(store) {
     }, {
       path: '/hint/add',
       name: 'addHintContainer',
+      onEnter: requireAuth,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/AddHintContainer/reducer'),

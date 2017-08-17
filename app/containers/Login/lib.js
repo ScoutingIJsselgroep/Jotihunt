@@ -6,15 +6,16 @@ export const LOCK_CONTAINER_ID = 'lock-container';
 
 let lock;
 
-export function createAndShow(nextPathname) {
-  lock = createLock(nextPathname);
+export function createAndShow(nextPathname, closable=true) {
+  lock = createLock(nextPathname, closable);
   lock.show();
 }
 
-function createLock(nextPathname) {
+function createLock(nextPathname, closable) {
   const secret = createNonce();
   storeSecret(secret);
   return new Auth0Lock(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN, {
+    closable: closable,
     auth: {
       redirectUrl: `${ORIGIN}/login/callback`,
       responseType: 'token',

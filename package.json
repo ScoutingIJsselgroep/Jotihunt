@@ -211,6 +211,7 @@
   "dependencies": {
     "auth0-lock": "^10.18.0",
     "babel-polyfill": "6.20.0",
+    "better-react-spinkit": "^2.0.0",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "chalk": "1.1.3",

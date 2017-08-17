@@ -77,6 +77,26 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/hint/add',
+      name: 'addHintContainer',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/AddHintContainer/reducer'),
+          import('containers/AddHintContainer/sagas'),
+          import('containers/AddHintContainer'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('addHintContainer', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

@@ -1,7 +1,9 @@
 /* eslint-disable */
 module.exports = function (sequelize, DataTypes) {
   var HintType = sequelize.define("HintType", {
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    icon: DataTypes.STRING,
+    color: DataTypes.STRING,
   },{
     timestamps: false
   });

@@ -23,6 +23,16 @@ router.get('/:type', (req, res) => {
   });
 });
 
+router.get('/delete/:hintId', (req, res) => {
+  models.Hint.destroy({
+    where: {
+      id: req.params.hintId
+    }
+  }).then(() => {
+    res.send({message: 'success'});
+  })
+});
+
 router.post('/', (req, res) =>
   res.send(200)
 );

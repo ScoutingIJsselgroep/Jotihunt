@@ -105,6 +105,26 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/hint/list',
+      name: 'hintList',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/HintList/reducer'),
+          import('containers/HintList/sagas'),
+          import('containers/HintList'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('hintList', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

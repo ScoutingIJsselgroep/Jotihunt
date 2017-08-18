@@ -18,6 +18,7 @@ class NavBarMenu extends React.Component { // eslint-disable-line react/prefer-s
       return (
         <ul className="nav navbar-nav">
           <li><Link to="/">Home</Link></li>
+          <li><Link to="/hint/list">Lijst</Link></li>
           <li><Link to="/about">Over</Link></li>
         </ul>
       );

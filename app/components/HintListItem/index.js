@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { Link } from 'react-router';
 import styled from 'styled-components';
 import moment from 'moment';
 var Color = require('color');
@@ -31,7 +32,10 @@ function HintListItem({hint, deleteHint}) {
       <td>{hint.rdx || hint.latitude} / {hint.rdy || hint.longitude}</td>
       <td>{hint.User.name}</td>
       <td>{moment(hint.createdAt).calendar()}</td>
-      <td><button onClick={() => deleteHint(hint.id)} className="btn btn-default"><i className="fa fa-trash"/></button></td>
+      <td>
+        <button onClick={() => deleteHint(hint.id)} className="btn btn-default" alt="Verwijderen"><i className="fa fa-trash"/></button>
+        <Link to={'/hint/'+hint.id} className="btn btn-default" alt="Bewerken"><i className="fa fa-edit"/></Link>
+      </td>
     </tr>
   );
 }

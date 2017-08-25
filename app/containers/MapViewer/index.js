@@ -4,41 +4,46 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router'
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {browserHistory, Link} from 'react-router'
+import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 
 
 export class MapViewer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+
     const GettingStartedGoogleMap = withGoogleMap(() => (
       <GoogleMap
         defaultZoom={9}
-        defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
-      />));
-    console.log(this.props.params.latitude);
-    console.log(this.props.params.longitude);
+        defaultCenter={new google.maps.LatLng(this.props.params.latitude, this.props.params.longitude)}
+      >
+        <Marker
+          position={new google.maps.LatLng(this.props.params.latitude, this.props.params.longitude)}
+        />
+      </GoogleMap>));
+
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-        <button className="btn btn-default" onClick={browserHistory.goBack}>Back</button> Locatie op kaart
+          <div className="btn-group">
+            <button className="btn btn-default" onClick={browserHistory.goBack}>
+              <i className="fa fa-arrow-left" aria-hidden="true"></i> Terug
+            </button>
+            <Link to={'geo:' + this.props.params.latitude + ',' + this.props.params.longitude + ';u=35'} className="btn btn-default"><i
+              className="fa fa-location-arrow" aria-hidden="true"></i> Verstuur naar GPS</Link>
+          </div>
         </div>
         <div className="panel-body">
           <GettingStartedGoogleMap
             containerElement={
-              <div style={{ height: '400px' }} />
+              <div style={{height: '400px'}}/>
             }
             mapElement={
-              <div style={{ height: '400px' }} />
+              <div style={{height: '400px'}}/>
             }
           >
-            <Marker
-              position={{
-                lat: this.props.params.latitude,
-                lng: this.props.params.longitude
-              }}
-            />
+
           </GettingStartedGoogleMap>
         </div>
       </div>

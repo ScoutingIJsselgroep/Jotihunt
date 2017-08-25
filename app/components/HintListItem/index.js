@@ -33,6 +33,8 @@ function HintListItem({hint, deleteHint}) {
       <td>{hint.User.name}</td>
       <td>{moment(hint.createdAt).calendar()}</td>
       <td>
+        <Link to={'/map/' + hint.latitude + '/' + hint.longitude} className="btn btn-default"><i
+          className="fa fa-map-o" aria-hidden="true"></i> Kaart</Link>
         <button onClick={() => deleteHint(hint.id)} className="btn btn-default" alt="Verwijderen"><i className="fa fa-trash"/></button>
         <Link to={'/hint/'+hint.id} className="btn btn-default" alt="Bewerken"><i className="fa fa-edit"/></Link>
       </td>

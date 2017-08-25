@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import makeSelectMapContainer from './selectors';
 
 export class MapContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -17,17 +17,17 @@ export class MapContainer extends React.Component { // eslint-disable-line react
         defaultZoom={9}
         defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
       />));
-
     return (
       <div>
         <GettingStartedGoogleMap
           containerElement={
-            <div style={{ height: '400px' }} />
+            <div style={{ height: '600px' }} />
           }
           mapElement={
-            <div style={{ height: '400px' }} />
+            <div style={{ height: '600px' }} />
           }
-        />
+        >
+        </GettingStartedGoogleMap>
       </div>
     );
   }

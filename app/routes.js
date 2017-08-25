@@ -145,6 +145,14 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/map/:latitude/:longitude',
+      name: 'mapViewer',
+      getComponent(location, cb) {
+        import('containers/MapViewer')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

@@ -8,7 +8,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {browserHistory, Link} from 'react-router'
 import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
-
+import Gpsbutton from 'components/Gpsbutton';
 
 export class MapViewer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -30,8 +30,7 @@ export class MapViewer extends React.Component { // eslint-disable-line react/pr
             <button className="btn btn-default" onClick={browserHistory.goBack}>
               <i className="fa fa-arrow-left" aria-hidden="true"></i> Terug
             </button>
-            <Link to={'geo:' + this.props.params.latitude + ',' + this.props.params.longitude + ';u=35'} className="btn btn-default"><i
-              className="fa fa-location-arrow" aria-hidden="true"></i> Verstuur naar GPS</Link>
+            <Gpsbutton latitude={this.props.params.latitude} longitude={this.props.params.longitude} />
           </div>
         </div>
         <div className="panel-body">

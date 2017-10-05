@@ -154,6 +154,26 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/map',
+      name: 'massiveMap',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/MassiveMap/reducer'),
+          import('containers/MassiveMap/sagas'),
+          import('containers/MassiveMap'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('massiveMap', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

@@ -17,7 +17,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
   componentDidMount() {
     const nextPathname = this.props.location.state && this.props.location.state.nextPathname;
-    createAndShow(nextPathname || '/');
+    createAndShow(nextPathname || '/', false);
   }
   render() {
     return (

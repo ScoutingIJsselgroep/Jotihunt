@@ -4,12 +4,13 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-import { createStructuredSelector } from 'reselect';
+import React, {PropTypes} from 'react';
+import Helmet from 'react-helmet';
+import {connect} from 'react-redux';
+import {FormattedMessage} from 'react-intl';
+import {createStructuredSelector} from 'reselect';
 import NewHintForm from 'components/NewHintForm';
-import { getCoordinates } from './actions';
+import {getCoordinates} from './actions';
 import makeSelectAddHintContainer from './selectors';
 import messages from './messages';
 
@@ -18,16 +19,34 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
     super(props);
     this.onCoordinateChange.bind(this);
   }
-  onCoordinateChange({ rdx, rdy }) {
+
+  onCoordinateChange({rdx, rdy}) {
     // dispatch(getCoordinates(rdx, rdy));
   }
+
   render() {
     return (
+
       <div className="row">
-        <div className="col-md-4 col-sm-12 panel panel-default">
-          <NewHintForm onCoordinateChange={this.onCoordinateChange} />
-        </div>
-        <div className="col-md-8 col-sm-12 panel panel-default">
+        <Helmet
+          title="Hint toevoegen"
+          titleTemplate="%s | Jotihunt.js"
+          meta={[
+            {name: 'description', content: 'Hint toevoegen aan het systeem'},
+          ]}
+        />
+        <div className="col-md-8 col-md-offset-2 col-sm-12">
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              Hint toevoegen
+            </div>
+            <div className="panel-body">
+              <NewHintForm onCoordinateChange={this.onCoordinateChange}/>
+            </div>
+
+            <hr/>
+
+          </div>
         </div>
       </div>
     );

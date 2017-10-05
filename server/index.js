@@ -2,6 +2,7 @@
 
 const express = require('express');
 const logger = require('./logger');
+const telegram = require('./telegram');
 
 const models = require('./models');
 
@@ -34,6 +35,9 @@ models.sequelize.sync().then(() => {
     if (err) {
       return logger.error(err.message);
     }
+
+    // Telegram start web server
+    telegram.sendMessage('Nieuws', '🖥️ De server is gestart!');
 
     // Connect to ngrok in dev mode
     if (ngrok) {

@@ -3,6 +3,7 @@
 module.exports = function (sequelize, DataTypes) {
   const Status = sequelize.define("Status", {
     status: DataTypes.STRING,
+    statuscolor: DataTypes.STRING,
     description: DataTypes.STRING
   },{
     timestamps: false

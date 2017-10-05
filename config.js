@@ -22,7 +22,7 @@ module.exports = {
     },
   },
   poller: {
-    timeout: 15 * 1000,
+    timeout: 61 * 1000,
   },
   dbMappings: {
     area: {

@@ -2,6 +2,7 @@
 
 const express = require('express');
 const logger = require('./logger');
+const telegram = require('./telegram');
 
 const models = require('./models');
 
@@ -14,6 +15,9 @@ const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 require('./api')(app);
+
+// Import poller
+require('./poller')();
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
@@ -34,6 +38,9 @@ models.sequelize.sync().then(() => {
     if (err) {
       return logger.error(err.message);
     }
+
+    // Telegram start web server
+    telegram.sendMessage('Debug', '🖥️ De server is gestart!');
 
     // Connect to ngrok in dev mode
     if (ngrok) {

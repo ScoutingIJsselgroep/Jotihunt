@@ -106,6 +106,54 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/hint/list',
+      name: 'hintList',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/HintList/reducer'),
+          import('containers/HintList/sagas'),
+          import('containers/HintList'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('hintList', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/group/list',
+      name: 'groupList',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/GroupList/reducer'),
+          import('containers/GroupList/sagas'),
+          import('containers/GroupList'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('groupList', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/map/:latitude/:longitude',
+      name: 'mapViewer',
+      getComponent(location, cb) {
+        import('containers/MapViewer')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

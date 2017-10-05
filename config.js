@@ -13,6 +13,30 @@ module.exports = {
       Foxtrot: -154182675,
       Opdracht: -172862895,
       Nieuws: -171983874,
+      Debug: -271734194,
+    },
+    status: {
+      rood: '\ud83c\ude34',
+      oranje: '\ud83c\ude36',
+      groen: '\ud83c\ude2f',
+    },
+  },
+  poller: {
+    timeout: 15 * 1000,
+  },
+  dbMappings: {
+    area: {
+      Alpha: 1,
+      Bravo: 2,
+      Charlie: 3,
+      Delta: 4,
+      Echo: 5,
+      Foxtrot: 6,
+    },
+    status: {
+      groen: 1,
+      oranje: 2,
+      rood: 3,
     },
   },
 };

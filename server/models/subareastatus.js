@@ -10,7 +10,7 @@ module.exports =  function (sequelize, DataTypes) {
     "FROM SubareaStatuses s1 LEFT JOIN SubareaStatuses s2 "+
     "ON (s1.SubareaId = s2.SubareaId AND s1.id < s2.id) "+
     "WHERE s2.id IS NULL;").then(results => callback(results[0]));
-  }
+  };
 
   SubareaStatus.associate = function (models) {
     SubareaStatus.belongsTo(models.Status, {

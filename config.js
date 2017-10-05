@@ -38,5 +38,10 @@ module.exports = {
       oranje: 2,
       rood: 3,
     },
+    type: {
+      Opdracht: 1,
+      Hint: 2,
+      Nieuws: 3,
+    },
   },
 };

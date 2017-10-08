@@ -27,7 +27,7 @@ class StatusBar extends React.Component { // eslint-disable-line react/prefer-st
               <button key={i} className={`btn btn-lg btn-${status.statuscolor}`}>
                 {status.name}
                 <br />
-                <small>{moment(status.createdAt).calendar()}</small>
+                <small><small>{moment(status.createdAt).calendar()}</small></small>
               </button>
             )}
           </div>

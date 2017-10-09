@@ -2,27 +2,35 @@
  * Gets the repositories of the user from Github
  */
 
-import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
+import { call, cancel, put, take, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import request from 'utils/request';
 
+import { getCoordinatesError, getCoordinatesLoaded } from './actions';
 import { GET_COORDINATES } from './constants';
 
 /**
  * Coordinates request/response handler
  */
 export function* getCoordinates({ rdx, rdy }) {
-  // Select username from store
-  const username = "tristandb";
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
-  console.log(rdx);
-  // try {
-  //   // Call our request helper (see 'utils/request')
-  //   const repos = yield call(request, requestURL);
-  //   yield put(reposLoaded(repos, username));
-  // } catch (err) {
-  //   yield put(repoLoadingError(err));
-  // }
+  const requestURL = '/api/hint/information';
+  try {
+    // Call our request helper (see 'utils/request')
+    const response = yield call(request, requestURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        latitude: rdx,
+        longitude: rdy,
+      }),
+    });
+
+    yield put(getCoordinatesLoaded(response));
+  } catch (err) {
+    yield put(getCoordinatesError(err));
+  }
 }
 
 /**

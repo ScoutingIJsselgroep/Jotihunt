@@ -21,6 +21,9 @@ module.exports = {
       groen: '\ud83c\ude2f',
     },
   },
+  google: {
+    googleAppId: 'AIzaSyB1hJmzl84MRQ41D4LshCO4PAWB16J9hIw',
+  },
   poller: {
     timeout: 61 * 1000,
   },

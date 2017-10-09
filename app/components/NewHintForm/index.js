@@ -20,7 +20,9 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
 
         }}
         onChange={(values) => {
-          this.props.onCoordinateChange(values.values);
+          if (values.values.rdx && values.values.rdx.length === 5 && values.values.rdy && values.values.rdy.length === 5) {
+            this.props.onCoordinateChange(values.values);
+          }
         }}
         validate={({ rdx, rdy }) =>
           ({

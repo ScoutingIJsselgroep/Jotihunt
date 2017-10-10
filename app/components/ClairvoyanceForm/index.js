@@ -49,7 +49,7 @@ class ClairvoyanceForm extends React.Component { // eslint-disable-line react/pr
                 <Text className="form-control" field="Foxtrot" placeholder="FFFFF FFFFF" />
               </div>
               <button type="submit" className="btn btn-default">Versturen</button>
-
+              {/*
               <h3>Vorige invoer</h3>
               <div className="form-group col-xs-6">
                 <span htmlFor="pAlpha">Alpha</span>
@@ -74,7 +74,7 @@ class ClairvoyanceForm extends React.Component { // eslint-disable-line react/pr
               <div className="form-group col-xs-6">
                 <span htmlFor="pFoxtrot">Foxtrot</span>
                 <Text className="form-control" field="pFoxtrot" placeholder="FFFFF FFFFF" />
-              </div>
+              </div>*/}
             </form>
           )
         }

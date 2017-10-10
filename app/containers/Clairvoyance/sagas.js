@@ -7,6 +7,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { SUBMIT_VALUES } from './constants';
 
 import request from 'utils/request';
+import {retrieveResult} from "./actions";
 
 const config = require('../../../config');
 
@@ -33,8 +34,7 @@ export function* getCFData({ values }) {
       }),
     });
 
-    // TODO: Catch response
-    // yield put(submitCoordinateSuccess());
+    yield put(retrieveResult(response));
   } catch (err) {
 
     // TODO: Catch response

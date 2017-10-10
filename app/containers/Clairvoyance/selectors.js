@@ -12,6 +12,12 @@ const makeSelectLoading = () => createSelector(
   selectClairvoyanceDomain(),
   (state) => state.get('loading')
 );
+
+const makeSelectResult = () => createSelector(
+  selectClairvoyanceDomain(),
+  (state) => state.get('result')
+);
+
 /**
  * Default selector used by Clairvoyance
  */
@@ -24,5 +30,6 @@ const makeSelectClairvoyance = () => createSelector(
 export default makeSelectClairvoyance;
 export {
   selectClairvoyanceDomain,
+  makeSelectResult,
   makeSelectLoading,
 };

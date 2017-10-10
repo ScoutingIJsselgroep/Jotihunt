@@ -8,6 +8,7 @@ import { fromJS } from 'immutable';
 import {
   DEFAULT_ACTION,
   SUBMIT_VALUES,
+  RESULT,
 } from './constants';
 
 const initialState = fromJS({
@@ -24,6 +25,10 @@ function clairvoyanceReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('values', action.values);
+    case RESULT:
+      return state
+        .set('loading', false)
+        .set('result', action.result);
     default:
       return state;
   }

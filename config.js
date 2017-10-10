@@ -30,6 +30,10 @@ module.exports = {
   poller: {
     timeout: 61 * 1000,
   },
+  clairvoyance: {
+    ip: '178.32.217.139',
+    port: 3002,
+  },
   dbMappings: {
     nArea: ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot'],
     area: {

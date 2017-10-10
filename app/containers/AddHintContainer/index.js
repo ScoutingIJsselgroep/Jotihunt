@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import NewHintForm from 'components/NewHintForm';
-import { getCoordinates } from './actions';
+import { getCoordinates, submitCoordinates } from './actions';
 import makeSelectAddHintContainer, { makeSelectWgs, makeSelectSubarea, makeSelectAddress, makeSelectLoading } from './selectors';
 import AddHintMap from '../../components/AddHintMap/index';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
@@ -18,6 +18,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
   constructor(props) {
     super(props);
     this.onCoordinateChange = this.onCoordinateChange.bind(this);
+    this.onCoordinateSubmit = this.onCoordinateSubmit.bind(this);
   }
 
   onCoordinateChange({ rdx, rdy }) {
@@ -25,9 +26,13 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
     dispatch(getCoordinates(rdx, rdy));
   }
 
+  onCoordinateSubmit() {
+    const { dispatch } = this.props;
+    dispatch(submitCoordinates());
+  }
+
   render() {
     return (
-
       <div className="row">
         <Helmet
           title="Hint toevoegen"
@@ -42,7 +47,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
               Hint toevoegen
             </div>
             <div className="panel-body">
-              <NewHintForm onCoordinateChange={this.onCoordinateChange} />
+              <NewHintForm onCoordinateChange={this.onCoordinateChange} onSubmitCoordinates={this.onCoordinateSubmit} />
               <hr />
               {this.props.loading ?
                 <LoadingIndicator />
@@ -73,7 +78,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
 AddHintContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   address: PropTypes.oneOfType([
-    PropTypes.array,
+    PropTypes.object,
     PropTypes.bool,
   ]),
   subarea: PropTypes.oneOfType([

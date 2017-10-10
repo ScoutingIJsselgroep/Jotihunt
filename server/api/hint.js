@@ -1,3 +1,7 @@
+
+const { inSubarea } = require('../../helpers/geometry');
+const { sendHint } = require('../telegram/index');
+
 const express = require('express');
 const models = require('../models');
 const geocoder = require('geocoder');
@@ -21,7 +25,7 @@ router.get('/', (req, res) => {
 router.post('/information', (req, res) => {
   // Convert RD-coordinate to WSG-84
   const wgs = rdToWgs(req.body.longitude, req.body.latitude);
-  const subarea = getSubarea(wgs);
+  const subarea = inSubarea(wgs);
   geocoder.reverseGeocode(wgs[0], wgs[1], (err, data) => {
     res.send({
       wgs,
@@ -31,9 +35,30 @@ router.post('/information', (req, res) => {
   });
 });
 
-function getSubarea(wgs) {
-  return 'Alpha';
-}
+/**
+ * Save hint to the database and send a Telegram-chat.
+ */
+router.post('/', (req, res) => {
+  models.Subarea.findAll({
+    where: {
+      name: req.body.subarea,
+    },
+  }).then((subareas) => {
+    subareas.map((subarea) => {
+      models.Hint.create({
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        rdx: req.body.rdx,
+        rdy: req.body.rdy,
+        address: req.body.address,
+        SubareaId: subarea.id,
+        HintTypeId: 1,
+        UserId: 1,
+      });
+      sendHint(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
+    });
+  });
+});
 
 router.get('/:type', (req, res) => {
   models.Hint.findAll({

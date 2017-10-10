@@ -21,6 +21,9 @@ module.exports = {
       groen: '\ud83c\ude2f',
     },
   },
+  map: {
+    filename: 'jotihunt-2016.kml',
+  },
   google: {
     googleAppId: 'AIzaSyB1hJmzl84MRQ41D4LshCO4PAWB16J9hIw',
   },
@@ -28,6 +31,7 @@ module.exports = {
     timeout: 61 * 1000,
   },
   dbMappings: {
+    nArea: ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot'],
     area: {
       Alpha: 1,
       Bravo: 2,

@@ -6,7 +6,8 @@
 
 import React, { PropTypes } from 'react';
 // import styled from 'styled-components';
-import { GoogleMap, Marker, withGoogleMap, InfoWindow } from 'react-google-maps';
+import { GoogleMap, Marker, withGoogleMap, InfoWindow, KmlLayer } from 'react-google-maps';
+const url = require('../../../maps/jotihunt-2016.kml');
 
 function AddHintMap({ wgs, address }) {
   const MyMapComponent = withGoogleMap(() =>
@@ -14,11 +15,12 @@ function AddHintMap({ wgs, address }) {
       defaultZoom={9}
       defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
     >
+
       { wgs ?
         <Marker position={{ lat: wgs[0], lng: wgs[1] }} >
           <InfoWindow>
             <div>
-              {address.results[0].formatted_address}
+              {address.results[0] && address.results[0].formatted_address}
             </div>
           </InfoWindow>
         </Marker>
@@ -48,7 +50,7 @@ AddHintMap.propTypes = {
     PropTypes.bool,
     PropTypes.arrayOf(PropTypes.number)]),
   address: PropTypes.oneOfType([
-    PropTypes.array,
+    PropTypes.object,
     PropTypes.bool,
   ]),
 };

@@ -6,12 +6,42 @@ import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { SUBMIT_VALUES } from './constants';
 
+import request from 'utils/request';
+
+const config = require('../../../config');
+
 /*
  * Clairvoyance request/response handler
  */
-export function* getCFData() {
-  // Call server
+export function* getCFData({ values }) {
+  // Call server using ordinary methods.
+  const requestURL = '/api/clairvoyance';
 
+  const puzzleData = config.dbMappings.nArea.map((area) => values[area]);
+  // const previousData = config.dbMappings.nArea.map((area) => values[`p${area}`]);
+
+  const data = [['Puzzle', puzzleData]];
+  try {
+    // Call our request helper (see 'utils/request')
+    const response = yield call(request, requestURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data,
+      }),
+    });
+
+    // TODO: Catch response
+    // yield put(submitCoordinateSuccess());
+  } catch (err) {
+
+    // TODO: Catch response
+    // yield put(submitCoordinateError(err));
+  }
+
+  // Retrieve possible answers.
 }
 
 /**

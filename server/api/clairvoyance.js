@@ -5,10 +5,10 @@ const router = express.Router();
 const net = require('net');
 
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
   const client = new net.Socket();
   client.connect(config.clairvoyance.port, config.clairvoyance.ip, () => {
-    client.write(JSON.stringify([['Tokyo Hotel', ['ABCDB EBFCG', 'AGHHD EEBAD', 'IIAFH EDJIB', 'AJFEH EDHFG', 'AJIIH EIFFJ', 'ABHJA EEAII']]]));
+    client.write(JSON.stringify(req.body.data));
   });
 
 

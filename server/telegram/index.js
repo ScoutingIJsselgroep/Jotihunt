@@ -13,7 +13,8 @@ module.exports = {
   sendMessage(subarea, message) {
     bot.sendMessage(config.telegram.chats[subarea], message);
   },
-  sendLocation(subarea, lat, lng) {
+  sendHint(subarea, lat, lng, address) {
+    bot.sendMessage(config.telegram.chats[subarea], `Puzzel opgelost! Deze wijst naar ${address}.`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
 };

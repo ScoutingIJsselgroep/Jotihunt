@@ -9,13 +9,33 @@ const selectAddHintContainerDomain = () => (state) => state.get('addHintContaine
  * Other specific selectors
  */
 const makeSelectRdx = () => createSelector(
-   selectAddHintContainerDomain,
+   selectAddHintContainerDomain(),
    (state) => state.get('rdx')
 );
 
 const makeSelectRdy = () => createSelector(
-   selectAddHintContainerDomain,
+   selectAddHintContainerDomain(),
    (state) => state.get('rdy')
+);
+
+const makeSelectLoading = () => createSelector(
+  selectAddHintContainerDomain(),
+  (state) => state.get('loading')
+);
+
+const makeSelectAddress = () => createSelector(
+  selectAddHintContainerDomain(),
+  (state) => state.get('address')
+);
+
+const makeSelectSubarea = () => createSelector(
+  selectAddHintContainerDomain(),
+  (state) => state.get('subarea')
+);
+
+const makeSelectWgs = () => createSelector(
+  selectAddHintContainerDomain(),
+  (state) => state.get('wgs')
 );
 
 /**
@@ -31,5 +51,9 @@ export default makeSelectAddHintContainer;
 export {
   makeSelectRdx,
   selectAddHintContainerDomain,
+  makeSelectAddress,
+  makeSelectSubarea,
+  makeSelectLoading,
   makeSelectRdy,
+  makeSelectWgs,
 };

@@ -11,10 +11,10 @@
     "storage": ":memory:"
   },
   "production": {
-    "username": "jotihunt",
+    "username": "root",
     "password": "iFmZ4TEe8qut3p9E",
     "database": "jotihunt",
-    "host": "127.0.0.1",
+    "host": "db",
     "dialect": "mysql"
   }
 }

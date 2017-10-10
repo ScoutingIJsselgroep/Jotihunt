@@ -6,14 +6,18 @@
 
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
-  GET_COORDINATES,
+  DEFAULT_ACTION, GET_COORDINATES, GET_COORDINATES_SUCCESS, SUBMIT_COORDINATES,
+  SUBMIT_COORDINATES_SUCCESS,
 } from './constants';
 
 const initialState = fromJS({
   loading: false,
   rdx: 0,
   rdy: 0,
+  wgs: false,
+  subarea: false,
+  address: false,
+  submitting: false,
 });
 
 function addHintContainerReducer(state = initialState, action) {
@@ -23,6 +27,24 @@ function addHintContainerReducer(state = initialState, action) {
         .set('loading', true)
         .set('rdx', action.rdx)
         .set('rdy', action.rdy);
+    case GET_COORDINATES_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('subarea', action.response.subarea)
+        .set('address', action.response.address)
+        .set('wgs', action.response.wgs);
+    case SUBMIT_COORDINATES:
+      return state
+        .set('submitting', true);
+    case SUBMIT_COORDINATES_SUCCESS:
+      console.log('success');
+      return state
+        .set('submitting', false)
+        .set('subarea', false)
+        .set('address', false)
+        .set('wgs', false)
+        .set('rdx', false)
+        .set('rdy', false);
     case DEFAULT_ACTION:
       return state;
     default:

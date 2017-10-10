@@ -174,6 +174,26 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/clairvoyance',
+      name: 'clairvoyance',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Clairvoyance/reducer'),
+          import('containers/Clairvoyance/sagas'),
+          import('containers/Clairvoyance'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('clairvoyance', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

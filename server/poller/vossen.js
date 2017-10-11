@@ -11,33 +11,35 @@ module.exports = {
       if (error) {
         telegram.sendMessage('Debug', error);
       }
+      try {
+        const callback = (result) => {
+          const data = JSON.parse(body).data;
+          // Loop body.data
+          data.map((subareaStatus) => {
+            result.map((oldSubareaStatus) => {
+              if (config.dbMappings.area[subareaStatus.team] === oldSubareaStatus.SubareaId) {
+                // Determine if status is different
+                if (config.dbMappings.status[subareaStatus.status] !== oldSubareaStatus.StatusId) {
+                  // Send message
+                  const message = `${config.telegram.status[subareaStatus.status]} ${subareaStatus.team} is op ${subareaStatus.status} gesprongen!`;
+                  telegram.sendMessage(subareaStatus.team, message);
 
-      const callback = (result) => {
-        const data = JSON.parse(body).data;
-        // Loop body.data
-        data.map((subareaStatus) => {
-          result.map((oldSubareaStatus) => {
-            if (config.dbMappings.area[subareaStatus.team] === oldSubareaStatus.SubareaId) {
-              // Determine if status is different
-              if (config.dbMappings.status[subareaStatus.status] !== oldSubareaStatus.StatusId) {
-                // Send message
-                const message = `${config.telegram.status[subareaStatus.status]} ${subareaStatus.team} is op ${subareaStatus.status} gesprongen!`;
-                telegram.sendMessage(subareaStatus.team, message);
-
-                // Save entry to database.
-                models.SubareaStatus.build({
-                  StatusId: config.dbMappings.status[subareaStatus.status],
-                  SubareaId: config.dbMappings.area[subareaStatus.team],
-                }).save();
+                  // Save entry to database.
+                  models.SubareaStatus.build({
+                    StatusId: config.dbMappings.status[subareaStatus.status],
+                    SubareaId: config.dbMappings.area[subareaStatus.team],
+                  }).save();
+                }
               }
-            }
+              return 0;
+            });
             return 0;
           });
-          return 0;
-        });
-      };
-
-      models.SubareaStatus.getLatest(callback);
+        };
+        models.SubareaStatus.getLatest(callback);
+      } catch (e) {
+        console.log(e);
+      }
     });
   },
 };

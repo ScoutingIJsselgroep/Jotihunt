@@ -6,11 +6,18 @@
 
 import React, { PropTypes } from 'react';
 import { Form, Text } from 'react-form';
+const config = require('../../../config');
 // import styled from 'styled-components';
 
 
 class ClairvoyanceForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const defaultValues = {};
+    ['ABCDB EBFCG', 'AGHHD EEBAD', 'IIAFH EDJIB', 'AJFEH EDHFG', 'AJIIH EIFFJ', 'ABHJA EEAII'].map((e, i) => {
+      const subareas = config.dbMappings.nArea;
+      defaultValues[subareas[i]] = e;
+      return [subareas[i], e];
+    });
     const myForm = (
       <Form
         onSubmit={(values) => {
@@ -18,7 +25,9 @@ class ClairvoyanceForm extends React.Component { // eslint-disable-line react/pr
         }}
         onChange={(values) => {
 
+
         }}
+        defaultValues={defaultValues}
       >
         {({ submitForm }) =>
           (

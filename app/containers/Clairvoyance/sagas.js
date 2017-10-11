@@ -4,10 +4,10 @@
 
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { SUBMIT_VALUES } from './constants';
+import {SUBMIT_VALUES, SUBMIT_VALUES_AS_HINT} from './constants';
 
 import request from 'utils/request';
-import {retrieveResult} from "./actions";
+import {retrieveResult, submitValuesAsHintError, submitValuesAsHintSuccess} from "./actions";
 
 const config = require('../../../config');
 
@@ -58,7 +58,43 @@ export function* cfData() {
   yield cancel(watcher);
 }
 
+/*
+ * Clairvoyance request/response handler
+ */
+export function* submitAsHint({ values }) {
+  // Call server using ordinary methods.
+  const requestURL = '/api/hint/clairvoyance';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const response = yield call(request, requestURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: values,
+      }),
+    });
+    yield put(submitValuesAsHintSuccess());
+  } catch (err) {
+    yield put(submitValuesAsHintError(err));
+  }
+}
+
+export function* submitClairvoyanceValues() {
+  // Watches for SUBMIT_VALUES_AS_HINT actions and calls submitAsHint when one comes in.
+  // By using `takeLatest` only the result of the latest API call is applied.
+  // It returns task descriptor (just like fork) so we can continue execution
+  const watcher = yield takeLatest(SUBMIT_VALUES_AS_HINT, submitAsHint);
+
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
 // Bootstrap sagas
 export default [
   cfData,
+  submitClairvoyanceValues,
 ];

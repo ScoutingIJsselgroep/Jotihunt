@@ -18,6 +18,20 @@ const makeSelectResult = () => createSelector(
   (state) => state.get('result')
 );
 
+const makeSelectSuccess = () => createSelector(
+  selectClairvoyanceDomain(),
+  (state) => state.get('success')
+);
+
+const makeSelectError = () => createSelector(
+  selectClairvoyanceDomain(),
+  (state) => state.get('error')
+);
+
+const makeSelectHintValues = () => createSelector(
+  selectClairvoyanceDomain(),
+  (state) => state.get('sendValues')
+);
 /**
  * Default selector used by Clairvoyance
  */
@@ -30,6 +44,9 @@ const makeSelectClairvoyance = () => createSelector(
 export default makeSelectClairvoyance;
 export {
   selectClairvoyanceDomain,
+  makeSelectHintValues,
   makeSelectResult,
   makeSelectLoading,
+  makeSelectSuccess,
+  makeSelectError,
 };

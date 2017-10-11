@@ -9,7 +9,6 @@ import React, { PropTypes } from 'react';
 import { GoogleMap, Marker, withGoogleMap, InfoWindow } from 'react-google-maps';
 import SubareaPolygons from '../SubareaPolygons/index';
 function AddHintMap({ wgs, address }) {
-  console.log(SubareaPolygons());
   const MyMapComponent = withGoogleMap(() =>
     <GoogleMap
       defaultZoom={9}

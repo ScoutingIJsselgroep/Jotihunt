@@ -24,7 +24,6 @@ function SubareaPolygons() {
 
   const result = [];
   for (const i in geoJson.features) {
-    console.log(geoJson.features[i]);
     if (geoJson.features[i].geometry.type === 'Polygon') {
       const properties = geoJson.features[i].properties;
       const options = {
@@ -37,7 +36,6 @@ function SubareaPolygons() {
       result.push(<Polygon key={i} path={getCoordinates(geoJson.features[i].geometry.coordinates[0])} options={options} />);
     }
   }
-  console.log(result);
   return result;
 }
 

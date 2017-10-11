@@ -10,7 +10,10 @@ import {
   LOAD_HINTS_SUCCESS,
   LOAD_STATUS,
   LOAD_STATUS_SUCCESS,
-  LOAD_STATUS_ERROR
+  LOAD_STATUS_ERROR,
+  LOAD_CARS_SUCCESS,
+  LOAD_CARS,
+  LOAD_CARS_ERROR,
 } from './constants';
 
 export function loadHints() {
@@ -55,3 +58,26 @@ export function loadStatusSuccess(status) {
     status,
   };
 }
+
+
+export function loadCars() {
+  return {
+    type: LOAD_CARS,
+  };
+}
+
+
+export function loadCarsError(error) {
+  return {
+    type: LOAD_CARS_ERROR,
+    error,
+  };
+}
+
+export function loadCarsSucess(cars) {
+  return {
+    type: LOAD_CARS_SUCCESS,
+    cars,
+  };
+}
+

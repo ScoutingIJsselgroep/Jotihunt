@@ -12,11 +12,11 @@ import NewHintForm from 'components/NewHintForm';
 import { getCoordinates, submitCoordinates } from './actions';
 import makeSelectAddHintContainer, {
   makeSelectWgs, makeSelectSubarea, makeSelectAddress, makeSelectLoading,
-  makeSelectHintSubmitted
+  makeSelectHintSubmitted,
 } from './selectors';
 import AddHintMap from '../../components/AddHintMap/index';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
-import SuccessComponent from "../../components/SuccessComponent/index";
+import SuccessComponent from '../../components/SuccessComponent/index';
 
 export class AddHintContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {

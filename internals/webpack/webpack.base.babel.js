@@ -30,10 +30,10 @@ module.exports = (options) => ({
     {
       test: /\.scss$/,
       exclude: /node_modules/,
-      loaders: ['style-loader', 'css-loader', 'sass-loader']
+      loaders: ['style-loader', 'css-loader', 'sass-loader'],
     },
     {
-      test: /\.(eot|svg|ttf|woff|woff2|kml)$/,
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
       loader: 'file-loader',
     }, {
       test: /\.(jpg|png|gif)$/,
@@ -53,6 +53,10 @@ module.exports = (options) => ({
         },
       ],
     }, {
+      test: /\.kml$/,
+      loader: 'raw-loader',
+    },
+    {
       test: /\.html$/,
       loader: 'html-loader',
     }, {
@@ -72,9 +76,11 @@ module.exports = (options) => ({
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
     }),
 
-    new webpack.ContextReplacementPlugin(/^\.\/locale$/, context => {
+    new webpack.ContextReplacementPlugin(/^\.\/locale$/, (context) => {
       // check if the context was created inside the moment package
-      if (!/\/moment\//.test(context.context)) { return }
+      if (!/\/moment\//.test(context.context)) {
+        return;
+      }
       // context needs to be modified in place
       Object.assign(context, {
         // include only japanese, korean and chinese variants
@@ -82,8 +88,8 @@ module.exports = (options) => ({
         // the default regExp includes everything; /^$/ could be used to include nothing
         regExp: /^\.\/(nl)/,
         // point to the locale data folder relative to moment/src/lib/locale
-        request: '../../locale'
-      })
+        request: '../../locale',
+      });
     }),
 
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`

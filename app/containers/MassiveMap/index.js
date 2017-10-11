@@ -16,6 +16,7 @@ import makeSelectMassiveMap, {
 import { loadHints, loadStatus, loadCars } from './actions';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapCars from "../../components/MapCars/index";
+import HintPath from "../../components/HintPath/index";
 
 export class MassiveMap extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -33,9 +34,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
       >
         {SubareaPolygons().map((subarea) => subarea)}
-        {this.props.hints && this.props.hints.map((hint, i) =>
-          <Marker key={i} position={{ lat: hint.latitude, lng: hint.longitude }} />
-        )}
+        {this.props.hints && HintPath(this.props.hints)}
         {this.props.cars && MapCars(this.props.cars, props).map((car) => car)}
       </GoogleMap>
     );

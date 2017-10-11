@@ -5,7 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
-import { Marker, Polyline } from 'react-google-maps';
+import {Circle, Marker, Polyline} from 'react-google-maps';
 import _ from 'lodash';
 import moment from 'moment';
 
@@ -17,6 +17,13 @@ const historyTime = require('../../../config').map.historyTime;
  */
 function generateMarker(hint) {
   return <Marker position={{ lat: hint.latitude, lng: hint.longitude }} />;
+}
+
+function generateMarkerCircumference(hint) {
+  const duration = moment.duration(moment(new Date()).diff(moment(hint.createdAt)));
+
+  console.log(duration.asMinutes());
+  return <Circle defaultCenter={{ lat: hint.latitude, lng: hint.longitude }} defaultRadius={Math.min(duration.asMinutes() * 60.0, 10000)} />;
 }
 
 function generatePath(path) {
@@ -33,6 +40,9 @@ function HintPath(hints, history) {
 
   // Generate Marker for last entry of every subarea
   result.push(_.map(sortedHints, (sortedHint) => generateMarker(_.last(sortedHint))));
+
+  // Generate Marker Circumference
+  result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint))));
 
   // Generate paths
   result.push(_.map(sortedHints, (sortedHint) => generatePath(sortedHint.map((hint) => {

@@ -23,6 +23,7 @@ module.exports = {
   },
   map: {
     filename: 'jotihunt-2016.kml',
+    historyTime: 10,
   },
   google: {
     googleAppId: 'AIzaSyB1hJmzl84MRQ41D4LshCO4PAWB16J9hIw',

@@ -14,6 +14,7 @@ import {
   LOAD_STATUS_ERROR,
   LOAD_CARS_SUCCESS,
   LOAD_CARS_ERROR,
+  TOGGLE_HISTORY,
   LOAD_CARS,
 } from './constants';
 
@@ -27,6 +28,7 @@ const initialState = fromJS({
   carsLoading: false,
   carsError: false,
   cars: false,
+  history: false,
 });
 
 function massiveMapReducer(state = initialState, action) {
@@ -74,6 +76,9 @@ function massiveMapReducer(state = initialState, action) {
         .set('carsLoading', false)
         .set('carsError', false)
         .set('cars', action.cars);
+    case TOGGLE_HISTORY:
+      return state
+        .set('history', action.history);
     default:
       return state;
   }

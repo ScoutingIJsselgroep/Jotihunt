@@ -55,6 +55,12 @@ const carsSelector = () => createSelector(
   (state) => state.get('cars')
 );
 
+const historySelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('history')
+);
+
+
 
 /**
  * Default selector used by MassiveMap
@@ -71,6 +77,7 @@ export {
   loadingSelector,
   hintsSelector,
   errorSelector,
+  historySelector,
   loadingStatusSelector,
   errorStatusSelector,
   statusSelector,

@@ -7,8 +7,9 @@
 import React, { PropTypes } from 'react';
 import { Marker, Polyline } from 'react-google-maps';
 import _ from 'lodash';
+import moment from 'moment';
 
-// import styled from 'styled-components';
+const historyTime = require('../../../config').map.historyTime;
 
 /**
  * Generate a marker for the Hint.
@@ -19,10 +20,10 @@ function generateMarker(hint) {
 }
 
 function generatePath(path) {
-  return <Polyline path={path} />;
+  return <Polyline path={_.compact(path)} />;
 }
 
-function HintPath(hints) {
+function HintPath(hints, history) {
   const result = [];
   // Group Hints by Subarea
   const groupedHints = _.groupBy(hints, 'Subarea.name');
@@ -34,7 +35,12 @@ function HintPath(hints) {
   result.push(_.map(sortedHints, (sortedHint) => generateMarker(_.last(sortedHint))));
 
   // Generate paths
-  result.push(_.map(sortedHints, (sortedHint) => generatePath(sortedHint.map((hint) => ({ lat: hint.latitude, lng: hint.longitude })))));
+  result.push(_.map(sortedHints, (sortedHint) => generatePath(sortedHint.map((hint) => {
+    const duration = moment.duration(moment(new Date()).diff(moment(hint.createdAt)));
+    if (history || duration.asHours() < historyTime) {
+      return ({ lat: hint.latitude, lng: hint.longitude });
+    }
+  }))));
 
   return result;
 }

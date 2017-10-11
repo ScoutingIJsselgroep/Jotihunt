@@ -9,6 +9,7 @@ import {
   LOAD_HINTS_ERROR,
   LOAD_HINTS_SUCCESS,
   LOAD_STATUS,
+  TOGGLE_HISTORY,
   LOAD_STATUS_SUCCESS,
   LOAD_STATUS_ERROR,
   LOAD_CARS_SUCCESS,
@@ -81,3 +82,9 @@ export function loadCarsSucess(cars) {
   };
 }
 
+export function historyToggle(history) {
+  return {
+    type: TOGGLE_HISTORY,
+    history,
+  };
+}

@@ -26,7 +26,7 @@ function addHintContainerReducer(state = initialState, action) {
     case GET_COORDINATES:
       return state
         .set('loading', true)
-        .set('successSuccess', false)
+        .set('submittingSuccess', false)
         .set('rdx', action.rdx)
         .set('rdy', action.rdy);
     case GET_COORDINATES_SUCCESS:

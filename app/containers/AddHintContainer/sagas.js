@@ -9,7 +9,7 @@ import request from 'utils/request';
 import { getCoordinatesError, getCoordinatesLoaded, submitCoordinateSuccess, submitCoordinateError } from './actions';
 import { GET_COORDINATES, SUBMIT_COORDINATES } from './constants';
 
-import { makeSelectAddress, makeSelectRdx, makeSelectRdy, makeSelectWgs, makeSelectSubarea} from "./selectors";
+import { makeSelectAddress, makeSelectRdx, makeSelectRdy, makeSelectWgs, makeSelectSubarea } from './selectors';
 
 /**
  * Coordinates request/response handler
@@ -58,12 +58,13 @@ export function* doSubmitCoordinate() {
   const rdx = yield select(makeSelectRdx());
   const rdy = yield select(makeSelectRdy());
   const address = yield select(makeSelectAddress());
-  const fa_address = address.results[0].formatted_address;
+  const faAddress = address.results[0].formatted_address;
   const subarea = yield select(makeSelectSubarea());
 
   const requestURL = '/api/hint';
   try {
     // Call our request helper (see 'utils/request')
+    // eslint-disable-next-line no-unused-vars
     const response = yield call(request, requestURL, {
       method: 'POST',
       headers: {
@@ -74,11 +75,10 @@ export function* doSubmitCoordinate() {
         longitude: wgs[1],
         rdx,
         rdy,
-        address: fa_address,
+        address: faAddress,
         subarea,
       }),
     });
-
     yield put(submitCoordinateSuccess());
   } catch (err) {
     yield put(submitCoordinateError(err));

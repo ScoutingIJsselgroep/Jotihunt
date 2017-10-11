@@ -38,6 +38,11 @@ const makeSelectWgs = () => createSelector(
   (state) => state.get('wgs')
 );
 
+const makeSelectHintSubmitted = () => createSelector(
+  selectAddHintContainerDomain(),
+  (state) => state.get('submittingSuccess')
+);
+
 /**
  * Default selector used by AddHintContainer
  */
@@ -54,6 +59,7 @@ export {
   makeSelectAddress,
   makeSelectSubarea,
   makeSelectLoading,
+  makeSelectHintSubmitted,
   makeSelectRdy,
   makeSelectWgs,
 };

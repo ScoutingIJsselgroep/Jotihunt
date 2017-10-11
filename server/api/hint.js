@@ -93,7 +93,7 @@ router.post('/', (req, res) => {
         UserId: 1,
       });
       sendHint(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
-      res.send({});
+      res.send({ message: 'success' });
     });
   });
 });

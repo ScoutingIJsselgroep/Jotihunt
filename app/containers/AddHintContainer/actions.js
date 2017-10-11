@@ -49,13 +49,13 @@ export function submitCoordinates() {
 
 export function submitCoordinateSuccess() {
   return {
-    SUBMIT_COORDINATES_SUCCESS,
+    type: SUBMIT_COORDINATES_SUCCESS,
   };
 }
 
 export function submitCoordinateError(error) {
   return {
-    SUBMIT_COORDINATES_ERROR,
+    type: SUBMIT_COORDINATES_ERROR,
     error,
   };
 }

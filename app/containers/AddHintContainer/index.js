@@ -10,9 +10,13 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import NewHintForm from 'components/NewHintForm';
 import { getCoordinates, submitCoordinates } from './actions';
-import makeSelectAddHintContainer, { makeSelectWgs, makeSelectSubarea, makeSelectAddress, makeSelectLoading } from './selectors';
+import makeSelectAddHintContainer, {
+  makeSelectWgs, makeSelectSubarea, makeSelectAddress, makeSelectLoading,
+  makeSelectHintSubmitted
+} from './selectors';
 import AddHintMap from '../../components/AddHintMap/index';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
+import SuccessComponent from "../../components/SuccessComponent/index";
 
 export class AddHintContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -42,6 +46,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
           ]}
         />
         <div className="col-md-8 col-md-offset-2 col-sm-12">
+          {this.props.hintSubmitted && <SuccessComponent message={'De hint is ingestuurd.'} />}
           <div className="panel panel-default">
             <div className="panel-heading">
               Hint toevoegen
@@ -90,6 +95,7 @@ AddHintContainer.propTypes = {
     PropTypes.bool,
   ]),
   loading: PropTypes.bool,
+  hintSubmitted: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -98,6 +104,7 @@ const mapStateToProps = createStructuredSelector({
   address: makeSelectAddress(),
   wgs: makeSelectWgs(),
   loading: makeSelectLoading(),
+  hintSubmitted: makeSelectHintSubmitted(),
 });
 
 function mapDispatchToProps(dispatch) {

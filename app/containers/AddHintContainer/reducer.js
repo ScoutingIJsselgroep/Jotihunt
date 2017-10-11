@@ -17,6 +17,7 @@ const initialState = fromJS({
   wgs: false,
   subarea: false,
   address: false,
+  submittingSuccess: false,
   submitting: false,
 });
 
@@ -25,6 +26,7 @@ function addHintContainerReducer(state = initialState, action) {
     case GET_COORDINATES:
       return state
         .set('loading', true)
+        .set('successSuccess', false)
         .set('rdx', action.rdx)
         .set('rdy', action.rdy);
     case GET_COORDINATES_SUCCESS:
@@ -37,13 +39,13 @@ function addHintContainerReducer(state = initialState, action) {
       return state
         .set('submitting', true);
     case SUBMIT_COORDINATES_SUCCESS:
-      console.log('success');
       return state
         .set('submitting', false)
         .set('subarea', false)
         .set('address', false)
         .set('wgs', false)
         .set('rdx', false)
+        .set('submittingSuccess', true)
         .set('rdy', false);
     case DEFAULT_ACTION:
       return state;

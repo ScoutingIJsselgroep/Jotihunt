@@ -36,6 +36,43 @@ router.post('/information', (req, res) => {
 });
 
 /**
+ * Save Clairvoyance Hints to database and send a Telegram-chat.
+ */
+router.post('/clairvoyance', (req, res) => {
+  if (req.body.data) {
+    req.body.data.map((entry) => {
+      const hint = entry.split(' ');
+      const wgs = rdToWgs(hint[0], hint[1]);
+      const hintSubarea = inSubarea(wgs);
+      geocoder.reverseGeocode(wgs[0], wgs[1], (err, data) => {
+        models.Subarea.findAll({
+          where: {
+            name: hintSubarea,
+          },
+        }).then((subareas) => {
+          subareas.map((subarea) => {
+            models.Hint.create({
+              latitude: wgs[0],
+              longitude: wgs[1],
+              rdx: hint[1],
+              rdy: hint[0],
+              address: data.results[0] ? data.results[0].formatted_address : null,
+              SubareaId: subarea.id,
+              HintTypeId: 1,
+              UserId: 1,
+            });
+            sendHint(hintSubarea, wgs[0], wgs[1], data.results[0] ? data.results[0].formatted_address : null);
+            return null;
+          });
+        });
+      });
+      return null;
+    });
+  }
+  res.send({});
+});
+
+/**
  * Save hint to the database and send a Telegram-chat.
  */
 router.post('/', (req, res) => {

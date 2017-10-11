@@ -7,15 +7,21 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { GoogleMap, Marker, withGoogleMap } from 'react-google-maps';
+import Toggle from 'react-bootstrap-toggle';
 import StatusBar from 'components/StatusBar';
 import { createStructuredSelector } from 'reselect';
 import makeSelectMassiveMap, {
   loadingStatusSelector, errorStatusSelector, statusSelector, loadingSelector,
-  errorSelector, hintsSelector, carsSelector, carsLoadingSelector, carsErrorSelector,
+  errorSelector, hintsSelector, carsSelector, carsLoadingSelector, carsErrorSelector, historySelector,
 } from './selectors';
-import { loadHints, loadStatus, loadCars } from './actions';
+import { loadHints, loadStatus, loadCars, historyToggle } from './actions';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
-import MapCars from "../../components/MapCars/index";
+import MapCars from '../../components/MapCars/index';
+import HintPath from '../../components/HintPath/index';
+const historyTime = require('../../../config').map.historyTime;
+
+
+import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
 
 export class MassiveMap extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -26,6 +32,10 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     dispatch(loadCars());
   }
 
+  onHistoryToggle(history) {
+    const { dispatch } = this.props;
+    dispatch(historyToggle(!history));
+  }
   render() {
     const MyMapComponent = withGoogleMap((props) =>
       <GoogleMap
@@ -33,9 +43,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
       >
         {SubareaPolygons().map((subarea) => subarea)}
-        {this.props.hints && this.props.hints.map((hint, i) =>
-          <Marker key={i} position={{ lat: hint.latitude, lng: hint.longitude }} />
-        )}
+        {this.props.hints && HintPath(this.props.hints, this.props.history)}
         {this.props.cars && MapCars(this.props.cars, props).map((car) => car)}
       </GoogleMap>
     );
@@ -50,6 +58,14 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           containerElement={<div style={{ height: '600px' }} />}
           mapElement={<div style={{ height: '100%' }} />}
         />
+        <Toggle
+          on={<span>Oneindig</span>}
+          off={<span>Maximaal {historyTime} uur</span>}
+          active={this.props.history}
+          onstyle="default"
+          offstyle="primary"
+          onClick={() => this.onHistoryToggle(this.props.history)}
+        />
       </div>
     );
   }
@@ -57,6 +73,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 
 MassiveMap.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  history: PropTypes.bool,
   loading: PropTypes.bool,
   carsLoading: PropTypes.bool,
   error: PropTypes.oneOfType([
@@ -90,6 +107,7 @@ const mapStateToProps = createStructuredSelector({
   MassiveMap: makeSelectMassiveMap(),
   loading: loadingSelector(),
   hints: hintsSelector(),
+  history: historySelector(),
   error: errorSelector(),
   errorStatus: errorStatusSelector(),
   loadingStatus: loadingStatusSelector(),

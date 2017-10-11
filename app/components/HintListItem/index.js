@@ -22,7 +22,6 @@ const Label = styled.span`
 
 
 function HintListItem({ hint, deleteHint }) {
-  console.log(hint);
   moment.locale('nl');
   // Label
   return (

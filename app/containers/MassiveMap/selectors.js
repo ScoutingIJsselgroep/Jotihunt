@@ -38,6 +38,23 @@ const errorStatusSelector = () => createSelector(
   (state) => state.get('errorStatus')
 );
 
+const carsErrorSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('carsError')
+);
+
+
+const carsLoadingSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('carsLoading')
+);
+
+
+const carsSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('cars')
+);
+
 
 /**
  * Default selector used by MassiveMap
@@ -57,4 +74,7 @@ export {
   loadingStatusSelector,
   errorStatusSelector,
   statusSelector,
+  carsErrorSelector,
+  carsLoadingSelector,
+  carsSelector,
 };

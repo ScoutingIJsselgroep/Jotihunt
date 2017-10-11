@@ -9,8 +9,13 @@ import { connect } from 'react-redux';
 import { GoogleMap, Marker, withGoogleMap } from 'react-google-maps';
 import StatusBar from 'components/StatusBar';
 import { createStructuredSelector } from 'reselect';
-import makeSelectMassiveMap, { loadingStatusSelector, errorStatusSelector, statusSelector, loadingSelector, errorSelector, hintsSelector } from './selectors';
-import { loadHints, loadStatus } from './actions';
+import makeSelectMassiveMap, {
+  loadingStatusSelector, errorStatusSelector, statusSelector, loadingSelector,
+  errorSelector, hintsSelector, carsSelector, carsLoadingSelector, carsErrorSelector,
+} from './selectors';
+import { loadHints, loadStatus, loadCars } from './actions';
+import SubareaPolygons from '../../components/SubareaPolygons/index';
+import MapCars from "../../components/MapCars/index";
 
 export class MassiveMap extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -18,6 +23,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     const { dispatch } = this.props;
     dispatch(loadHints());
     dispatch(loadStatus());
+    dispatch(loadCars());
   }
 
   render() {
@@ -26,9 +32,11 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         defaultZoom={9}
         defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
       >
+        {SubareaPolygons().map((subarea) => subarea)}
         {this.props.hints && this.props.hints.map((hint, i) =>
           <Marker key={i} position={{ lat: hint.latitude, lng: hint.longitude }} />
         )}
+        {this.props.cars && MapCars(this.props.cars, props).map((car) => car)}
       </GoogleMap>
     );
 
@@ -50,9 +58,14 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 MassiveMap.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool,
+  carsLoading: PropTypes.bool,
   error: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.object,
+  ]),
+  cars: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
   ]),
   hints: PropTypes.oneOfType([
     PropTypes.bool,
@@ -60,6 +73,10 @@ MassiveMap.propTypes = {
   ]),
   loadingStatus: PropTypes.bool,
   errorStatus: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object,
+  ]),
+  carsError: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.object,
   ]),
@@ -77,6 +94,9 @@ const mapStateToProps = createStructuredSelector({
   errorStatus: errorStatusSelector(),
   loadingStatus: loadingStatusSelector(),
   status: statusSelector(),
+  cars: carsSelector(),
+  carsLoading: carsLoadingSelector(),
+  carsError: carsErrorSelector(),
 });
 
 function mapDispatchToProps(dispatch) {

@@ -46,7 +46,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         {SubareaPolygons().map((subarea) => subarea)}
         {MapGroups().map((group) => group)}
         {this.props.hints && HintPath(this.props.hints, this.props.history)}
-        {this.props.cars && MapCars(this.props.cars, props).map((car) => car)}
+        {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
       </GoogleMap>
     );
 

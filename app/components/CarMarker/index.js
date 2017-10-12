@@ -8,8 +8,10 @@ import React, { PropTypes } from 'react';
 import { InfoWindow, Marker } from 'react-google-maps';
 import moment from 'moment';
 
-const carIcon = require('./car.png');
-let isOpen = false;
+const historyTime = require('../../../config').map.historyTime;
+
+const carIcon = require('./car.svg');
+const carOnlineIcon = require('./carOnline.svg');
 
 class CarMarker extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -18,28 +20,35 @@ class CarMarker extends React.Component { // eslint-disable-line react/prefer-st
   }
 
   onToggleOpen() {
-    isOpen = !isOpen;
+    this.props.car.isOpen = !this.props.car.isOpen;
     this.forceUpdate();
   }
 
   render() {
     moment.locale('nl');
-    return (
-      <Marker
-        icon={carIcon} position={{ lat: this.props.car.latitude, lng: this.props.car.longitude }} onClick={this.onToggleOpen}
-      >
-        {isOpen && <InfoWindow onCloseClick={this.onToggleOpen}>
-          <div>
-            {this.props.car.name} {moment(this.props.car.updatedAt).calendar()}
-          </div>
-        </InfoWindow>}
-      </Marker>
-    );
+    const duration = moment.duration(moment(new Date()).diff(moment(this.props.car.updatedAt)));
+
+    if (this.props.history || duration.asHours() < historyTime) {
+      return (
+        <Marker
+          icon={duration.asMinutes() > 20 ? carIcon : carOnlineIcon}
+          position={{ lat: this.props.car.latitude, lng: this.props.car.longitude }} onClick={this.onToggleOpen}
+        >
+          {this.props.car.isOpen && <InfoWindow onCloseClick={this.onToggleOpen}>
+            <div>
+              {this.props.car.name} {moment(this.props.car.updatedAt).calendar()}
+            </div>
+          </InfoWindow>}
+        </Marker>
+      );
+    }
+    return null;
   }
 }
 
 CarMarker.propTypes = {
   car: PropTypes.object,
+  history: PropTypes.bool,
 };
 
 export default CarMarker;

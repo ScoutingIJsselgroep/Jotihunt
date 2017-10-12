@@ -32,8 +32,7 @@ function generateMarkerCircumference(hint) {
 }
 
 function generatePath(path, color) {
-  console.log(color);
-  return <Polyline path={_.compact(path)} options={{ strokeColor: `$${color}` }} />;
+  return <Polyline path={_.compact(path)} options={{ strokeColor: `#${color}` }} />;
 }
 
 function HintPath(hints, history) {

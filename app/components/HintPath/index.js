@@ -8,18 +8,11 @@ import React, { PropTypes } from 'react';
 import { Circle, Marker, Polyline } from 'react-google-maps';
 import _ from 'lodash';
 import moment from 'moment';
+import TailHintMarker from "../TailHintMarker/index";
 
 const walkingSpeed = require('../../../config').map.walkingSpeed;
 
 const historyTime = require('../../../config').map.historyTime;
-
-/**
- * Generate a marker for the Hint.
- * @param hint The hint to generate a marker for
- */
-function generateMarker(hint) {
-  return <Marker position={{ lat: hint.latitude, lng: hint.longitude }} />;
-}
 
 function generateMarkerCircumference(hint) {
   const duration = moment.duration(moment(new Date()).diff(moment(hint.createdAt)));
@@ -50,7 +43,7 @@ function HintPath(hints, history) {
   const sortedHints = _.map(groupedHints, (groupedHint) => _.sortBy(groupedHint, ['createdAt']));
 
   // Generate Marker for last entry of every subarea
-  result.push(_.map(sortedHints, (sortedHint) => generateMarker(_.last(sortedHint))));
+  result.push(_.map(sortedHints, (sortedHint) => <TailHintMarker hint={_.last(sortedHint)} />));
 
   // Generate Marker Circumference
   result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint))));

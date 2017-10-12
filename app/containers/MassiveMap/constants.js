@@ -21,3 +21,4 @@ export const TOGGLE_HISTORY = 'app/MassiveMap/TOGGLE_HISTORY';
 
 export const RIGHT_CLICK_EVENT = 'app/MassiveMap/RIGHT_CLICK_EVENT';
 export const RIGHT_CLICK_EVENT_SUCCESS = 'app/MassiveMap/RIGHT_CLICK_EVENT_SUCCESS';
+export const CLEAR_LOCATION = 'app/MassiveMap/CLEAR_LOCATION';

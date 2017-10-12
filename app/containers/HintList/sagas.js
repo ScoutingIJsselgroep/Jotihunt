@@ -14,7 +14,6 @@ export function* deleteHintHandler({hintId}) {
     const result = yield call(request, requestUrl);
     yield put(loadHints());
   } catch (error) {
-    console.log(error);
     // TODO: Catch error
   }
 }

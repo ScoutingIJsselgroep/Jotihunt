@@ -32,6 +32,7 @@ class StatusBar extends React.Component { // eslint-disable-line react/prefer-st
               <br />
               Aantal hunts
             </button>
+            {this.props.children}
           </div>
         </div>
       );

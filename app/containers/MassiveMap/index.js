@@ -6,24 +6,41 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { GoogleMap, Marker, withGoogleMap } from 'react-google-maps';
+import { GoogleMap, withGoogleMap } from 'react-google-maps';
 import Toggle from 'react-bootstrap-toggle';
 import StatusBar from 'components/StatusBar';
 import { createStructuredSelector } from 'reselect';
 import makeSelectMassiveMap, {
-  loadingStatusSelector, errorStatusSelector, statusSelector, loadingSelector,
-  errorSelector, hintsSelector, carsSelector, carsLoadingSelector, carsErrorSelector, historySelector,
+  carsErrorSelector,
+  carsLoadingSelector,
+  carsSelector,
+  errorSelector,
+  errorStatusSelector,
+  hintsSelector,
+  historySelector,
+  loadingSelector,
+  loadingStatusSelector,
+  statusSelector,
 } from './selectors';
-import { loadHints, loadStatus, loadCars, historyToggle } from './actions';
+import { historyToggle, loadCars, loadHints, loadStatus } from './actions';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
+import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
 import HintPath from '../../components/HintPath/index';
+import MapCircle from '../../components/MapCircle';
+import _ from 'lodash';
+import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
+
 const historyTime = require('../../../config').map.historyTime;
 
 
-import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
-
 export class MassiveMap extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.reloadAll = this.reloadAll.bind(this);
+    this.onHistoryToggle = this.onHistoryToggle.bind(this);
+  }
+
   componentDidMount() {
     // Go load hints
     const { dispatch } = this.props;
@@ -36,21 +53,40 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     const { dispatch } = this.props;
     dispatch(historyToggle(!history));
   }
+
+  reloadAll() {
+    const { dispatch } = this.props;
+    dispatch(loadHints());
+    dispatch(loadStatus());
+    dispatch(loadCars());
+  }
+
   render() {
+    let huntCount = 0;
+    if (this.props.hints) {
+      huntCount = _.filter(this.props.hints, (hint) => hint.HintType.name === 'Hunt').length;
+    }
+
     const MyMapComponent = withGoogleMap((props) =>
       <GoogleMap
         defaultZoom={9}
         defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
       >
         {SubareaPolygons().map((subarea) => subarea)}
+        {MapGroups().map((group) => group)}
+        <MapCircle />
         {this.props.hints && HintPath(this.props.hints, this.props.history)}
-        {this.props.cars && MapCars(this.props.cars, props).map((car) => car)}
+        {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
+
       </GoogleMap>
     );
 
     return (
       <div>
-        <StatusBar loading={this.props.loadingStatus} error={this.props.errorStatus} status={this.props.status} />
+        <StatusBar
+          loading={this.props.loadingStatus} error={this.props.errorStatus} status={this.props.status}
+          huntCount={huntCount}
+        />
         <MyMapComponent
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
@@ -58,14 +94,23 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           containerElement={<div style={{ height: '600px' }} />}
           mapElement={<div style={{ height: '100%' }} />}
         />
-        <Toggle
-          on={<span>Oneindig</span>}
-          off={<span>Maximaal {historyTime} uur</span>}
-          active={this.props.history}
-          onstyle="default"
-          offstyle="primary"
-          onClick={() => this.onHistoryToggle(this.props.history)}
-        />
+        <div className="well">
+          <div className="btn-group" role="group" aria-label="...">
+            <Toggle
+              on={<span>Oneindig</span>}
+              off={<span>Maximaal {historyTime} uur</span>}
+              active={this.props.history}
+              onstyle="default"
+              offstyle="primary"
+              onClick={() => this.onHistoryToggle(this.props.history)}
+            />
+            &nbsp;
+
+            <button onClick={this.reloadAll} className={'btn btn-primary'}>
+              <i className="fa fa-refresh" aria-hidden="true"></i> Herlaad gegevens
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

@@ -22,8 +22,17 @@ module.exports = {
     },
   },
   map: {
+    // Circle around homebase
+    homebaseCircle: {
+      latitude: 52.199165,
+      longitude: 6.214124,
+      radius: 500,
+    },
     filename: 'jotihunt-2016.kml',
+    // The amount of hours to keep in history on the MassiveMap
     historyTime: 10,
+    // The walking speed (sky wide) in km/h by a average human
+    walkingSpeed: 3.6,
   },
   google: {
     googleAppId: 'AIzaSyB1hJmzl84MRQ41D4LshCO4PAWB16J9hIw',

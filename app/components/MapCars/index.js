@@ -4,29 +4,18 @@
 *
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import CarMarker from '../CarMarker';
-import { Marker, InfoWindow } from 'react-google-maps';
+import _ from 'lodash';
 
-// import styled from 'styled-components';
-
-const carIcon = require('./car.png');
-
-
-function MapCars(cars, props) {
-  const result = [];
-
-  console.log(props);
-
-  for (const i in cars) {
-    const car = cars[i];
-    result.push(<CarMarker car={car} />);
-  }
-  return result;
+function MapCars(cars, history) {
+  return _.map(cars, (car) =>
+    <CarMarker car={car} history={history} />);
 }
 
 MapCars.propTypes = {
-
+  history: PropTypes.bool,
+  cars: PropTypes.object,
 };
 
 export default MapCars;

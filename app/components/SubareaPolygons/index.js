@@ -8,7 +8,6 @@ import React from 'react';
 import { Polygon } from 'react-google-maps';
 
 const tj = require('@mapbox/togeojson');
-const DOMParser = require('xmldom').DOMParser;
 
 // import styled from 'styled-components';
 const kmlMapName = require('../../../config').map.filename;
@@ -32,7 +31,7 @@ function SubareaPolygons() {
         strokeColor: properties.stroke,
         strokeOpacity: properties['stroke-opacity'],
         strokeWeight: 2,
-      }
+      };
       result.push(<Polygon key={i} path={getCoordinates(geoJson.features[i].geometry.coordinates[0])} options={options} />);
     }
   }

@@ -4,32 +4,34 @@
  *
  */
 
-import React from 'react';
-import * as PropTypes from 'react/lib/ReactPropTypes';
+import React, { PropTypes } from 'react';
 import moment from 'moment';
 import LoadingIndicator from '../LoadingIndicator/index';
-import config from '../../../config';
 
 // import styled from 'styled-components';
 
 class StatusBar extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     if (this.props.loading) {
-      return <LoadingIndicator/>;
+      return <LoadingIndicator />;
     } else if (this.props.status) {
       const sortedStatus = this.props.status.sort((a, b) => parseFloat(a.SubareaId) - parseFloat(b.SubareaId));
-      const reverseStatus = Object.assign([], config.dbMappings.status);
-      console.log(reverseStatus);
+
       return (
         <div className={'text-center'}>
           <div className="btn-group" role="group" aria-label="...">
             {sortedStatus.map((status, i) =>
-              <button key={i} className={`btn btn-lg btn-${status.statuscolor}`}>
+              <button key={i} className={`btn btn-${status.statuscolor}`}>
                 {status.name}
                 <br />
                 <small><small>{moment(status.createdAt).calendar()}</small></small>
               </button>
             )}
+            <button className={'btn btn-default'}>
+              {this.props.huntCount}
+              <br />
+              Aantal hunts
+            </button>
           </div>
         </div>
       );
@@ -48,6 +50,7 @@ StatusBar.propTypes = {
     PropTypes.bool,
     PropTypes.array,
   ]),
+  huntCount: PropTypes.number,
 };
 
 export default StatusBar;

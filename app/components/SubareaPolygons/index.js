@@ -8,7 +8,6 @@ import React from 'react';
 import { Polygon } from 'react-google-maps';
 
 const tj = require('@mapbox/togeojson');
-const DOMParser = require('xmldom').DOMParser;
 
 // import styled from 'styled-components';
 const kmlMapName = require('../../../config').map.filename;

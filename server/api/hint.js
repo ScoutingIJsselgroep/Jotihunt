@@ -1,6 +1,6 @@
 
 const { inSubarea } = require('../../helpers/geometry');
-const { sendHint } = require('../telegram/index');
+const { sendHint, sendHunt, sendSimpleLocation } = require('../telegram/index');
 
 const express = require('express');
 const models = require('../models');
@@ -17,6 +17,27 @@ router.get('/', (req, res) => {
   }).then((hints) => {
     res.send(hints);
   });
+});
+
+/**
+ * Given an WGS-coordinate, calculate RD, subarea and retrieve the street address.
+ */
+router.post('/location', (req, res) => {
+  if (req.body.latlng) {
+    const rd = null;
+    const subarea = inSubarea(req.body.latlng);
+    console.log(req.body.latlng);
+    geocoder.reverseGeocode(req.body.latlng[0], req.body.latlng[1], (err, data) => {
+      console.log(err);
+      res.send({
+        rd,
+        subarea,
+        address: data,
+      });
+    });
+  } else {
+    res.sendStatus(400);
+  }
 });
 
 /**
@@ -89,10 +110,18 @@ router.post('/', (req, res) => {
         rdy: req.body.rdy,
         address: req.body.address,
         SubareaId: subarea.id,
-        HintTypeId: 1,
+        HintTypeId: req.body.hintTypeId ? req.body.hintTypeId : 1,
         UserId: 1,
       });
-      sendHint(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
+      if (req.body.hintTypeId) {
+        if (req.body.hintTypeId === 2) {
+          sendHunt(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
+        } else {
+          sendSimpleLocation(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
+        }
+      } else {
+        sendHint(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
+      }
       res.send({ message: 'success' });
     });
   });

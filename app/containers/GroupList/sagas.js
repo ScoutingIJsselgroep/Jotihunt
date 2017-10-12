@@ -13,7 +13,7 @@ import request from 'utils/request';
  * Group request/response handler
  */
 export function* getGroupData() {
-  const requestURL = `/api/group`;
+  const requestURL = '/api/group';
 
   try {
     // Call our request helper (see 'utils/request')

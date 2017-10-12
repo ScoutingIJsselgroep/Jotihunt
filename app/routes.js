@@ -194,6 +194,48 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/hint/addhint/:lat/:lng',
+      name: 'addHunt',
+      type: 'message',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/AddHunt/reducer'),
+          import('containers/AddHunt/sagas'),
+          import('containers/AddHunt'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('addHunt', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/hint/addhunt/:lat/:lng',
+      name: 'addHunt',
+      type: 'hunt',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/AddHunt/reducer'),
+          import('containers/AddHunt/sagas'),
+          import('containers/AddHunt'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('addHunt', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

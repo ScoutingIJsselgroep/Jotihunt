@@ -17,4 +17,12 @@ module.exports = {
     bot.sendMessage(config.telegram.chats[subarea], `Puzzel opgelost! Deze wijst naar ${address}.`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
+  sendHunt(subarea, lat, lng, address) {
+    bot.sendMessage(config.telegram.chats[subarea], `Hatsikidee! Een hunt op ${address}. De vossen mogen pas over een uur weer gehunt worden.`);
+    bot.sendLocation(config.telegram.chats[subarea], lat, lng);
+  },
+  sendSimpleLocation(subarea, lat, lng, address) {
+    bot.sendMessage(config.telegram.chats[subarea], `Een tussenstop op ${address}.`);
+    bot.sendLocation(config.telegram.chats[subarea], lat, lng);
+  },
 };

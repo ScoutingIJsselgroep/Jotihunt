@@ -18,3 +18,6 @@ export const LOAD_CARS_ERROR = 'app/MassiveMap/LOAD_CARS_ERROR';
 export const LOAD_CARS_SUCCESS = 'app/MassiveMap/LOAD_CARS_SUCCESS';
 
 export const TOGGLE_HISTORY = 'app/MassiveMap/TOGGLE_HISTORY';
+
+export const RIGHT_CLICK_EVENT = 'app/MassiveMap/RIGHT_CLICK_EVENT';
+export const RIGHT_CLICK_EVENT_SUCCESS = 'app/MassiveMap/RIGHT_CLICK_EVENT_SUCCESS';

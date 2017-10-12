@@ -1,39 +1,46 @@
-import React from 'react';
-import {FormattedMessage} from 'react-intl';
+/**
+*
+* CarMarker
+*
+*/
+
+import React, { PropTypes } from 'react';
 import NavbarLogin from 'components/NavbarLogin';
 import NavBarMenu from 'components/NavBarMenu';
 
-import A from './A';
 import Img from './Img';
 import NavBar from './NavBar';
-import HeaderLink from './HeaderLink';
-import Banner from './banner.jpg';
-import messages from './messages';
 import logo from './logo_64.png';
+let toggle = false;
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  static propTypes = {
-    location: React.PropTypes.string.isRequired,
-  };
+  constructor(props) {
+    super(props);
+    this.onHeaderToggle = this.onHeaderToggle.bind(this);
+  }
+
+  onHeaderToggle() {
+    toggle = !toggle;
+    this.forceUpdate();
+  }
 
   render() {
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" className="navbar-toggle" onClick={this.onHeaderToggle}>
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
             <NavBar className="navbar-brand" href="#">
-              <span><Img alt=" " src={logo}/></span>&nbsp;Jotihunt.js
+              <span><Img alt=" " src={logo} /></span>&nbsp;Jotihunt.js
             </NavBar>
           </div>
 
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div className={toggle ? 'navbar-collapse' : 'navbar-collapse collapse'} id="navbar">
             <NavBarMenu />
             <NavbarLogin />
           </div>
@@ -42,5 +49,10 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
     );
   }
 }
+
+Header.propTypes = {
+  location: PropTypes.string.isRequired,
+  toggle: PropTypes.bool,
+};
 
 export default Header;

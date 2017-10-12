@@ -19,7 +19,7 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
 
   render() {
     return (
-      <div className="panel panel-default">
+      <div className="panel panel-default" style={{ overflow: 'auto' }}>
         <div className="panel-heading">
           Groepen
         </div>
@@ -30,7 +30,7 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
           </thead>
           <tbody>
             {this.props.groups && this.props.groups.map((group, index) =>
-              <GroupListItem key={index} group={group}/>
+              <GroupListItem key={index} group={group} />
             )}
           </tbody>
         </table>
@@ -65,7 +65,7 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     loadGroups: () => {
       dispatch(loadGroups());
-    }
+    },
   };
 }
 

@@ -74,7 +74,6 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     onDeleteHint: (id) => {
-      console.log(id);
       dispatch(deleteHint(id));
     },
   };

@@ -51,7 +51,6 @@ function HintPath(hints, history) {
   // Generate Marker Circumference
   result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint))));
 
-  console.log(sortedHints);
   // Generate paths
   result.push(_.map(sortedHints, (sortedHint) => generatePath(sortedHint.map((hint) => {
     const duration = moment.duration(moment(new Date()).diff(moment(hint.createdAt)));

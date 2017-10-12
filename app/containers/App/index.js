@@ -21,7 +21,6 @@ export function App(props) {
       <div className="container">
         {React.Children.toArray(props.children)}
       </div>
-      <Footer />
     </div>
   );
 }

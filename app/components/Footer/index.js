@@ -2,13 +2,14 @@ import React from 'react';
 import logo from './logo_256.png';
 
 import FooterLogo from './FooterLogo';
+import Wrapper from './Wrapper';
 
 function Footer() {
   const scrollTop = () => {
     window.pageYOffset = 0;
   };
   return (
-    <footer>
+    <Wrapper>
       <div className="container">
         <div className="row">
           <div className="col-sm-5">
@@ -21,7 +22,7 @@ function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </Wrapper>
   );
 }
 

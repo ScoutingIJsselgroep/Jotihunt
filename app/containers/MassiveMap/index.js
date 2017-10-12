@@ -19,6 +19,7 @@ import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
 import HintPath from '../../components/HintPath/index';
+import MapCircle from '../../components/MapCircle';
 const historyTime = require('../../../config').map.historyTime;
 
 
@@ -45,6 +46,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
       >
         {SubareaPolygons().map((subarea) => subarea)}
         {MapGroups().map((group) => group)}
+        <MapCircle />
         {this.props.hints && HintPath(this.props.hints, this.props.history)}
         {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
       </GoogleMap>

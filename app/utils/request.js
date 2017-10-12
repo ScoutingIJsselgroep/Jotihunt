@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import _ from 'lodash';
 
 /**
  * Parses the JSON returned by a network request
@@ -37,7 +38,15 @@ function checkStatus(response) {
  * @return {object}           The response data
  */
 export default function request(url, options) {
-  return fetch(url, options)
+// eslint-disable-next-line no-param-reassign
+
+  const headerOptions = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('auth-token')}`,
+    },
+  };
+  const editOptions = _.merge({}, options, headerOptions);
+  return fetch(url, editOptions)
     .then(checkStatus)
     .then(parseJSON);
 }

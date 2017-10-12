@@ -10,8 +10,10 @@ const router = express.Router();
 const rdToWgs = require('rdtowgs');
 
 geocoder.selectProvider('google', { appid: config.google.googleAppId });
+const checkJwt = require('./../checkJwt');
 
-router.get('/', (req, res) => {
+
+router.get('/', checkJwt, (req, res) => {
   models.Hint.findAll({
     include: [models.HintType, models.User, models.Subarea],
   }).then((hints) => {
@@ -22,7 +24,7 @@ router.get('/', (req, res) => {
 /**
  * Given an WGS-coordinate, calculate RD, subarea and retrieve the street address.
  */
-router.post('/location', (req, res) => {
+router.post('/location', checkJwt, (req, res) => {
   if (req.body.latlng) {
     const rd = null;
     const subarea = inSubarea(req.body.latlng);
@@ -43,7 +45,7 @@ router.post('/location', (req, res) => {
 /**
  * Given an RD-coordinate, calculate WSG-84, subarea and retrieve the street address.
  */
-router.post('/information', (req, res) => {
+router.post('/information', checkJwt, (req, res) => {
   // Convert RD-coordinate to WSG-84
   const wgs = rdToWgs(req.body.longitude, req.body.latitude);
   const subarea = inSubarea(wgs);
@@ -59,7 +61,7 @@ router.post('/information', (req, res) => {
 /**
  * Save Clairvoyance Hints to database and send a Telegram-chat.
  */
-router.post('/clairvoyance', (req, res) => {
+router.post('/clairvoyance', checkJwt, (req, res) => {
   if (req.body.data) {
     req.body.data.map((entry) => {
       const hint = entry.split(' ');
@@ -96,7 +98,7 @@ router.post('/clairvoyance', (req, res) => {
 /**
  * Save hint to the database and send a Telegram-chat.
  */
-router.post('/', (req, res) => {
+router.post('/', checkJwt, (req, res) => {
   models.Subarea.findAll({
     where: {
       name: req.body.subarea,
@@ -127,7 +129,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/:type', (req, res) => {
+router.get('/:type', checkJwt, (req, res) => {
   models.Hint.findAll({
     include: [{
       model: models.HintType,
@@ -140,7 +142,7 @@ router.get('/:type', (req, res) => {
   });
 });
 
-router.get('/delete/:hintId', (req, res) => {
+router.get('/delete/:hintId', checkJwt, (req, res) => {
   models.Hint.destroy({
     where: {
       id: req.params.hintId,

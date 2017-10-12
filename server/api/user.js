@@ -2,7 +2,9 @@ const express = require('express');
 const models = require('../models');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+const checkJwt = require('./../checkJwt');
+
+router.get('/', checkJwt, (req, res) => {
   models.User.findAll({
     include: [],
   }).then((users) => {

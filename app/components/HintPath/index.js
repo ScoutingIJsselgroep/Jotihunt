@@ -5,14 +5,15 @@
  */
 
 import React, { PropTypes } from 'react';
-import { Circle, Marker, Polyline } from 'react-google-maps';
+import { Circle, Polyline } from 'react-google-maps';
 import _ from 'lodash';
 import moment from 'moment';
-import TailHintMarker from "../TailHintMarker/index";
-
-const walkingSpeed = require('../../../config').map.walkingSpeed;
+import TailHintMarker from '../TailHintMarker';
+import HintMarker from '../HintMarker';
 
 const historyTime = require('../../../config').map.historyTime;
+
+const walkingSpeed = require('../../../config').map.walkingSpeed;
 
 function generateMarkerCircumference(hint) {
   const duration = moment.duration(moment(new Date()).diff(moment(hint.createdAt)));
@@ -30,8 +31,9 @@ function generateMarkerCircumference(hint) {
   />);
 }
 
-function generatePath(path) {
-  return <Polyline path={_.compact(path)} />;
+function generatePath(path, color) {
+  console.log(color);
+  return <Polyline path={_.compact(path)} options={{ strokeColor: `$${color}` }} />;
 }
 
 function HintPath(hints, history) {
@@ -42,19 +44,22 @@ function HintPath(hints, history) {
   // Sort Hints by date
   const sortedHints = _.map(groupedHints, (groupedHint) => _.sortBy(groupedHint, ['createdAt']));
 
+  // Generate Markers for the init of every subarea
+  result.push(_.map(sortedHints, (sortedHint) => _.map(_.initial(sortedHint), (hint) => <HintMarker hint={hint} history={history} />)));
   // Generate Marker for last entry of every subarea
   result.push(_.map(sortedHints, (sortedHint) => <TailHintMarker hint={_.last(sortedHint)} />));
 
   // Generate Marker Circumference
   result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint))));
 
+  console.log(sortedHints);
   // Generate paths
   result.push(_.map(sortedHints, (sortedHint) => generatePath(sortedHint.map((hint) => {
     const duration = moment.duration(moment(new Date()).diff(moment(hint.createdAt)));
     if (history || duration.asHours() < historyTime) {
       return ({ lat: hint.latitude, lng: hint.longitude });
     }
-  }))));
+  }), _.head(sortedHint).Subarea.color)));
 
   return result;
 }

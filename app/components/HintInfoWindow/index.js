@@ -17,11 +17,12 @@ function HintInfoWindow({ hint, onToggleOpen }) {
   return (
     <InfoWindow onCloseClick={onToggleOpen}>
       <div>
-        <span className="pull-right label label-default" style={{ backgroundColor: hint.HintType.color }}>{hint.HintType.name}</span>
-        <span className="pull-right label label-default" style={{ backgroundColor: hint.Subarea.color }}>{hint.Subarea.name}</span>
+        <span className="pull-right label label-default" style={{ backgroundColor: `#${hint.HintType.color}` }}>{hint.HintType.name}</span>
+        <span className="pull-right label label-default" style={{ backgroundColor: `#${hint.Subarea.color}` }}>{hint.Subarea.name}</span>
         <b>{hint.address}</b> <br />
         {moment(hint.updatedAt).calendar()} <br />
-        <code>{hint.rdy} {hint.rdx}</code> <br />
+        {hint.rdy && hint.rdx &&
+        <code>{hint.rdy} {hint.rdx}</code>} <br />
         <Gpsbutton latitude={hint.latitude} longitude={hint.longitude} />
       </div>
     </InfoWindow>

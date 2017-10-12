@@ -32,7 +32,7 @@ function SubareaPolygons() {
         strokeColor: properties.stroke,
         strokeOpacity: properties['stroke-opacity'],
         strokeWeight: 2,
-      }
+      };
       result.push(<Polygon key={i} path={getCoordinates(geoJson.features[i].geometry.coordinates[0])} options={options} />);
     }
   }

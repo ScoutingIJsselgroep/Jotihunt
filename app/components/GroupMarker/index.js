@@ -6,6 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { InfoWindow, Marker } from 'react-google-maps';
+import Gpsbutton from "../Gpsbutton/index";
 // import styled from 'styled-components';
 
 const groupIcon = require('./group.png');
@@ -33,6 +34,7 @@ class GroupMarker extends React.Component { // eslint-disable-line react/prefer-
           <div>
             <b>{this.props.point.properties.name}</b>
             <span dangerouslySetInnerHTML={{ __html: this.props.point.properties.description }} />
+            <Gpsbutton latitude={this.props.point.geometry.coordinates[1]} longitude={this.props.point.geometry.coordinates[0]} />
           </div>
         </InfoWindow>}
       </Marker>

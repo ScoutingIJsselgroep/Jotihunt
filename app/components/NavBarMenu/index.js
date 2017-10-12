@@ -15,6 +15,7 @@ import { Link } from 'react-router';
 class NavBarMenu extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     if (loggedIn()) {
+      // When logged in
       return (
         <ul className="nav navbar-nav">
           <li><Link to="/">Home</Link></li>
@@ -26,14 +27,14 @@ class NavBarMenu extends React.Component { // eslint-disable-line react/prefer-s
           <li><Link to="/about">Over</Link></li>
         </ul>
       );
-    } else {
-      return (
-        <ul className="nav navbar-nav">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">Over</Link></li>
-        </ul>
-      );
     }
+    // When not logged in
+    return (
+      <ul className="nav navbar-nav">
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">Over</Link></li>
+      </ul>
+    );
   }
 }
 

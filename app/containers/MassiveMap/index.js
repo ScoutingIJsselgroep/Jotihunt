@@ -16,6 +16,7 @@ import makeSelectMassiveMap, {
 } from './selectors';
 import { loadHints, loadStatus, loadCars, historyToggle } from './actions';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
+import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
 import HintPath from '../../components/HintPath/index';
 const historyTime = require('../../../config').map.historyTime;
@@ -43,6 +44,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
       >
         {SubareaPolygons().map((subarea) => subarea)}
+        {MapGroups().map((group) => group)}
         {this.props.hints && HintPath(this.props.hints, this.props.history)}
         {this.props.cars && MapCars(this.props.cars, props).map((car) => car)}
       </GoogleMap>

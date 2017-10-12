@@ -60,7 +60,22 @@ const historySelector = () => createSelector(
   (state) => state.get('history')
 );
 
+const rightClickLatLngSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('rightClickLatLng')
+);
 
+
+const loadRightClickSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('loadRightClick')
+);
+
+
+const loadRightClickLocationSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('rightClickLocation')
+);
 
 /**
  * Default selector used by MassiveMap
@@ -84,4 +99,7 @@ export {
   carsErrorSelector,
   carsLoadingSelector,
   carsSelector,
+  loadRightClickSelector,
+  rightClickLatLngSelector,
+  loadRightClickLocationSelector,
 };

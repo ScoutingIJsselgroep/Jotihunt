@@ -15,7 +15,7 @@ import {
   LOAD_CARS_SUCCESS,
   LOAD_CARS_ERROR,
   TOGGLE_HISTORY,
-  LOAD_CARS,
+  LOAD_CARS, RIGHT_CLICK_EVENT, RIGHT_CLICK_EVENT_SUCCESS,
 } from './constants';
 
 const initialState = fromJS({
@@ -29,6 +29,9 @@ const initialState = fromJS({
   carsError: false,
   cars: false,
   history: false,
+  loadRightClick: false,
+  rightClickLatLng: false,
+  rightClickLocation: false,
 });
 
 function massiveMapReducer(state = initialState, action) {
@@ -52,6 +55,14 @@ function massiveMapReducer(state = initialState, action) {
         .set('errorStatus', action.error)
         .set('status', false)
         .set('loadingStatus', false);
+    case RIGHT_CLICK_EVENT:
+      return state
+        .set('loadRightClick', true)
+        .set('rightClickLatLng', action.latlng);
+    case RIGHT_CLICK_EVENT_SUCCESS:
+      return state
+        .set('loadRightClick', false)
+        .set('rightClickLocation', action.location);
     case LOAD_STATUS_SUCCESS:
       return state
         .set('errorStatus', false)

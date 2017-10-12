@@ -3,10 +3,10 @@ import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects'
 import request from 'utils/request';
 
 import { LOCATION_CHANGE } from 'react-router-redux';
-import {LOAD_CARS, LOAD_HINTS, LOAD_STATUS} from './constants';
+import { LOAD_CARS, LOAD_HINTS, LOAD_STATUS, RIGHT_CLICK_EVENT } from './constants';
 import {
   loadCarsError, loadCarsSucess, loadHintsError, loadHintsSuccess, loadStatusError,
-  loadStatusSuccess
+  loadStatusSuccess, rightClickLocationSuccess,
 } from './actions';
 
 
@@ -94,9 +94,44 @@ export function* status() {
   yield cancel(watcher);
 }
 
+export function* getLocation({ latlng }) {
+  const requestURL = '/api/hint/location';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const location = yield call(request, requestURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        latlng,
+      }),
+    });
+    yield put(rightClickLocationSuccess(location));
+  } catch (error) {
+    // yield put(loadStatusError(error));
+  }
+}
+
+/**
+ * Root saga manages watcher lifecycle
+ */
+export function* rightClick() {
+  // Watches for RIGHT_CLICK_EVENT actions and calls getLocation when one comes in.
+  // By using `takeLatest` only the result of the latest API call is applied.
+  // It returns task descriptor (just like fork) so we can continue execution
+  const watcher = yield takeLatest(RIGHT_CLICK_EVENT, getLocation);
+
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
 // All sagas to be loaded
 export default [
   hints,
   status,
   cars,
+  rightClick,
 ];

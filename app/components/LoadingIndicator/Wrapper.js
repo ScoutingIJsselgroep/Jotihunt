@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  margin: 2em auto;
+  margin: 1em auto;
   width: 100px;
-  height: 40px;
+  height: 30px;
   position: relative;
 `;
 

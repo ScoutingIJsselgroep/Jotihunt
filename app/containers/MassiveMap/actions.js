@@ -15,6 +15,8 @@ import {
   LOAD_CARS_SUCCESS,
   LOAD_CARS,
   LOAD_CARS_ERROR,
+  RIGHT_CLICK_EVENT,
+  RIGHT_CLICK_EVENT_SUCCESS,
 } from './constants';
 
 export function loadHints() {
@@ -87,4 +89,18 @@ export function historyToggle(history) {
     type: TOGGLE_HISTORY,
     history,
   };
+}
+
+export function rightClickEvent(latlng) {
+  return {
+    type: RIGHT_CLICK_EVENT,
+    latlng,
+  };
+}
+
+export function rightClickLocationSuccess(location) {
+  return {
+    type: RIGHT_CLICK_EVENT_SUCCESS,
+    location,
+  }
 }

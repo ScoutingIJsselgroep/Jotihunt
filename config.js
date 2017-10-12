@@ -54,6 +54,11 @@ module.exports = {
       Echo: 5,
       Foxtrot: 6,
     },
+    hintType: {
+      hint: 1,
+      hunt: 2,
+      message: 3,
+    },
     status: {
       groen: 1,
       oranje: 2,

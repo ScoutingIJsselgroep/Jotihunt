@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Polygon } from 'react-google-maps';
 
 const tj = require('@mapbox/togeojson');
@@ -17,7 +17,7 @@ function getCoordinates(coordinates) {
   return coordinates.map((coordinate) => new google.maps.LatLng(coordinate[1], coordinate[0]));
 }
 
-function SubareaPolygons() {
+function SubareaPolygons(onRightClick) {
   const parsedKml = $.parseXML(kml);
   const geoJson = tj.kml(parsedKml, { styles: true });
 
@@ -32,12 +32,14 @@ function SubareaPolygons() {
         strokeOpacity: properties['stroke-opacity'],
         strokeWeight: 2,
       };
-      result.push(<Polygon key={i} path={getCoordinates(geoJson.features[i].geometry.coordinates[0])} options={options} />);
+      result.push(<Polygon onRightClick={onRightClick} onClick={onRightClick} key={i} path={getCoordinates(geoJson.features[i].geometry.coordinates[0])} options={options} />);
     }
   }
   return result;
 }
 
-SubareaPolygons.propTypes = {};
+SubareaPolygons.propTypes = {
+  onRightClick: PropTypes.func,
+};
 
 export default SubareaPolygons;

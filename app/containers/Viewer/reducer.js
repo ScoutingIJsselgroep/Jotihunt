@@ -17,6 +17,7 @@ function viewerReducer(state = initialState, action) {
         .set(NAME, action.viewer.name)
         .set(PICTURE, action.viewer.picture);
     case LOGOUT:
+      window.href = '/';
       return state.clear();
     default:
       return state;

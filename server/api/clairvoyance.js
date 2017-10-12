@@ -3,9 +3,9 @@ const config = require('../../config');
 const models = require('../models');
 const router = express.Router();
 const net = require('net');
+const checkJwt = require('./../checkJwt');
 
-
-router.post('/', (req, res) => {
+router.post('/', checkJwt, (req, res) => {
   const client = new net.Socket();
   client.connect(config.clairvoyance.port, config.clairvoyance.ip, () => {
     client.write(JSON.stringify(req.body.data));

@@ -26,7 +26,7 @@ import makeSelectMassiveMap, {
   rightClickLatLngSelector,
   statusSelector,
 } from './selectors';
-import { historyToggle, loadCars, loadHints, loadStatus, rightClickEvent } from './actions';
+import {clearLocation, historyToggle, loadCars, loadHints, loadStatus, rightClickEvent} from './actions';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
@@ -43,6 +43,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     super(props);
     this.reloadAll = this.reloadAll.bind(this);
     this.onHistoryToggle = this.onHistoryToggle.bind(this);
+    this.onClearLocation = this.onClearLocation.bind(this);
     this.onRightClick = this.onRightClick.bind(this);
   }
 
@@ -62,6 +63,11 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
   onRightClick(event) {
     const { dispatch } = this.props;
     dispatch(rightClickEvent([event.latLng.lat(), event.latLng.lng()]));
+  }
+
+  onClearLocation() {
+    const { dispatch } = this.props;
+    dispatch(clearLocation());
   }
 
   reloadAll() {
@@ -106,11 +112,12 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           <div className="panel-heading"><i className="fa fa-map-marker" aria-hidden="true"></i> Geselecteerde locatie</div>
           <div className="panel-body">
             {this.props.loadRightClick && <LoadingIndicator />}
-            {this.props.clickLocationInfo && <div>
+            {this.props.clickLocationInfo && !this.props.loadRightClick && <div>
               <span className="label label-default">{this.props.clickLocationInfo.subarea}</span> {this.props.clickLocationInfo.address.results[0] ? this.props.clickLocationInfo.address.results[0].formatted_address : 'Onbekende weg'}
               <div className="btn-group pull-right" role="group" aria-label="...">
                 <Link to={`/hint/addhint/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-map-marker" aria-hidden="true"></i> Verstuur locatie</Link>
                 <Link to={`/hint/addhunt/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-star" aria-hidden="true"></i> Meld hunt</Link>
+                <button onClick={this.onClearLocation} className={'btn btn-default'}><i className="fa fa-times" aria-hidden="true"></i></button>
               </div>
             </div>}
           </div>
@@ -119,25 +126,22 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         <StatusBar
           loading={this.props.loadingStatus} error={this.props.errorStatus} status={this.props.status}
           huntCount={huntCount}
-        />
-        <div className="well">
+        >
+          <Toggle
+            on={<div>∞ <br />Oneindig</div>}
+            off={<div><i className="fa fa-clock-o" aria-hidden="true"></i> <br /> {historyTime} uur</div>}
+            active={this.props.history}
+            onstyle="default"
+            offstyle="primary"
+            onClick={() => this.onHistoryToggle(this.props.history)}
+          />
 
-          <div className="btn-group" role="group" aria-label="...">
-            <Toggle
-              on={<span>Oneindig</span>}
-              off={<span>Maximaal {historyTime} uur</span>}
-              active={this.props.history}
-              onstyle="default"
-              offstyle="primary"
-              onClick={() => this.onHistoryToggle(this.props.history)}
-            />
-            &nbsp;
-
-            <button onClick={this.reloadAll} className={'btn btn-primary'}>
-              <i className="fa fa-refresh" aria-hidden="true"></i> Herlaad gegevens
+          <button onClick={this.reloadAll} className={'btn btn-primary'}>
+            <i className="fa fa-refresh" aria-hidden="true"></i>
+            <br />
+            Herlaad gegevens
             </button>
-          </div>
-        </div>
+        </StatusBar>
       </div>
     );
   }

@@ -16,7 +16,7 @@ import {
   LOAD_CARS,
   LOAD_CARS_ERROR,
   RIGHT_CLICK_EVENT,
-  RIGHT_CLICK_EVENT_SUCCESS,
+  RIGHT_CLICK_EVENT_SUCCESS, CLEAR_LOCATION,
 } from './constants';
 
 export function loadHints() {
@@ -102,5 +102,11 @@ export function rightClickLocationSuccess(location) {
   return {
     type: RIGHT_CLICK_EVENT_SUCCESS,
     location,
-  }
+  };
+}
+
+export function clearLocation() {
+  return {
+    type: CLEAR_LOCATION,
+  };
 }

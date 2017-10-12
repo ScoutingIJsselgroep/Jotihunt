@@ -23,7 +23,10 @@ module.exports = {
   },
   map: {
     filename: 'jotihunt-2016.kml',
+    // The amount of hours to keep in history on the MassiveMap
     historyTime: 10,
+    // The walking speed (sky wide) in km/h by a average human
+    walkingSpeed: 3.6,
   },
   google: {
     googleAppId: 'AIzaSyB1hJmzl84MRQ41D4LshCO4PAWB16J9hIw',

@@ -35,12 +35,12 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
           (
             <form onSubmit={submitForm}>
               <div className="form-group">
-                <span htmlFor="rdx">Rijksdriehoek X</span>
-                <Text className="form-control" field="rdx" placeholder="46828" />
+                <span htmlFor="rdy">Rijksdriehoek X</span>
+                <Text className="form-control" field="rdy" placeholder="21146" />
               </div>
               <div className="form-group">
-                <span htmlFor="rdy">Rijksdriehoek Y</span>
-                <Text className="form-control" field="rdy" placeholder="21146" />
+                <span htmlFor="rdx">Rijksdriehoek Y</span>
+                <Text className="form-control" field="rdx" placeholder="46828" />
               </div>
               <button type="submit" className="btn btn-default">Versturen</button>
             </form>

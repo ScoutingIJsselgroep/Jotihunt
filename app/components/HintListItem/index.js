@@ -43,7 +43,6 @@ function HintListItem({ hint, deleteHint }) {
           <button onClick={() => deleteHint(hint.id)} className="btn btn-default" alt="Verwijderen"><i
             className="fa fa-trash"
           /></button>
-          <Link to={`/hint/${hint.id}`} className="btn btn-default" alt="Bewerken"><i className="fa fa-edit" /></Link>
         </div>
       </td>
     </tr>

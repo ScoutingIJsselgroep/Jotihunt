@@ -38,7 +38,7 @@ function HintListItem({ hint, deleteHint }) {
         <div className="btn-group">
           <Link to={`/map/${hint.latitude}/${hint.longitude}`} className="btn btn-default"><i
             className="fa fa-map-o" aria-hidden="true"
-          ></i> Kaart</Link>
+          /> Kaart</Link>
           <Gpsbutton latitude={hint.latitude} longitude={hint.longitude} />
           <button onClick={() => deleteHint(hint.id)} className="btn btn-default" alt="Verwijderen"><i
             className="fa fa-trash"

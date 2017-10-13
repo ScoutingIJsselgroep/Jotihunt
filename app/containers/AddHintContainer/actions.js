@@ -48,6 +48,7 @@ export function submitCoordinates() {
 }
 
 export function submitCoordinateSuccess() {
+  window.location = '/hint/add';
   return {
     type: SUBMIT_COORDINATES_SUCCESS,
   };

@@ -34,6 +34,7 @@ import HintPath from '../../components/HintPath/index';
 import MapCircle from '../../components/MapCircle';
 import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
+import {Helmet} from "react-helmet";
 
 const historyTime = require('../../../config').map.historyTime;
 
@@ -100,6 +101,13 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 
     return (
       <div>
+        <Helmet
+          title="Kaart"
+          titleTemplate="%s | Jotihunt.js"
+          meta={[
+            { name: 'description', content: 'Een kaart met alles erop en eraan!' },
+          ]}
+        />
         <MyMapComponent
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"

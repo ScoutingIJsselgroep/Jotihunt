@@ -8,6 +8,7 @@ const geocoder = require('geocoder');
 const config = require('./../../config');
 const router = express.Router();
 const rdToWgs = require('rdtowgs');
+const wgstoord = require('./../wgstord');
 
 geocoder.selectProvider('google', { appid: config.google.googleAppId });
 const checkJwt = require('./../checkJwt');
@@ -103,11 +104,13 @@ router.post('/', checkJwt, (req, res) => {
     },
   }).then((subareas) => {
     subareas.map((subarea) => {
+      const rd = wgstoord(req.body.latitude, req.body.longitude);
+
       models.Hint.create({
         latitude: req.body.latitude,
         longitude: req.body.longitude,
-        rdx: req.body.rdx,
-        rdy: req.body.rdy,
+        rdx: req.body.rdx || rd[1],
+        rdy: req.body.rdy || rd[0],
         address: req.body.address,
         SubareaId: subarea.id,
         HintTypeId: req.body.hintTypeId ? req.body.hintTypeId : 1,

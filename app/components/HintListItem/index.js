@@ -31,7 +31,7 @@ function HintListItem({ hint, deleteHint }) {
       /> {hint.HintType.name}</MixLabel></td>
       <td><Label className="label label-default" color={`#${hint.Subarea.color}`}> {hint.Subarea.name}</Label></td>
       <td>{hint.address}</td>
-      <td>{hint.rdx || hint.latitude} / {hint.rdy || hint.longitude}</td>
+      <td>{hint.rdy || hint.longitude} / {hint.rdx || hint.latitude}</td>
       <td>{hint.User.name}</td>
       <td>{moment(hint.createdAt).calendar()}</td>
       <td>

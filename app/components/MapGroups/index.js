@@ -20,7 +20,7 @@ function MapGroups() {
   const geoJson = tj.kml(parsedKml, { styles: true });
   const result = _.map(geoJson.features, (feature, i) => {
     if (feature.geometry.type === 'Point') {
-      return <GroupMarker point={feature} />;
+      return <GroupMarker key={i} point={feature} />;
     }
     return null;
   });

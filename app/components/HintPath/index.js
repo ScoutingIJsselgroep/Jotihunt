@@ -44,7 +44,7 @@ function HintPath(hints, history) {
   const sortedHints = _.map(groupedHints, (groupedHint) => _.sortBy(groupedHint, ['createdAt']));
 
   // Generate Markers for the init of every subarea
-  result.push(_.map(sortedHints, (sortedHint) => _.map(_.initial(sortedHint), (hint) => <HintMarker hint={hint} history={history} />)));
+  result.push(_.map(sortedHints, (sortedHint) => _.map(_.initial(sortedHint), (hint, i) => <HintMarker hint={hint} key={i} history={history} />)));
   // Generate Marker for last entry of every subarea
   result.push(_.map(sortedHints, (sortedHint) => <TailHintMarker hint={_.last(sortedHint)} />));
 

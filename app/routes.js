@@ -6,6 +6,7 @@ import { requireAuth } from 'containers/Viewer/lib';
 
 import { getAsyncInjectors } from './utils/asyncInjectors';
 
+
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
 };
@@ -40,16 +41,6 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    }, {
-      path: '/features',
-      name: 'features',
-      getComponent(nextState, cb) {
-        System.import('containers/FeaturePage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-      // for example's sake, require authentication to see /features
-      onEnter: requireAuth,
     }, {
       path: '/login',
       name: 'login',
@@ -108,6 +99,7 @@ export default function createRoutes(store) {
     }, {
       path: '/hint/list',
       name: 'hintList',
+      onEnter: requireAuth,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/HintList/reducer'),
@@ -128,6 +120,7 @@ export default function createRoutes(store) {
     }, {
       path: '/group/list',
       name: 'groupList',
+      onEnter: requireAuth,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/GroupList/reducer'),
@@ -148,6 +141,7 @@ export default function createRoutes(store) {
     }, {
       path: '/map/:latitude/:longitude',
       name: 'mapViewer',
+      onEnter: requireAuth,
       getComponent(location, cb) {
         import('containers/MapViewer')
           .then(loadModule(cb))
@@ -156,6 +150,7 @@ export default function createRoutes(store) {
     }, {
       path: '/map',
       name: 'massiveMap',
+      onEnter: requireAuth,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/MassiveMap/reducer'),
@@ -176,6 +171,7 @@ export default function createRoutes(store) {
     }, {
       path: '/clairvoyance',
       name: 'clairvoyance',
+      onEnter: requireAuth,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/Clairvoyance/reducer'),
@@ -197,6 +193,7 @@ export default function createRoutes(store) {
       path: '/hint/addhint/:lat/:lng',
       name: 'addHunt',
       type: 'message',
+      onEnter: requireAuth,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/AddHunt/reducer'),
@@ -218,6 +215,7 @@ export default function createRoutes(store) {
       path: '/hint/addhunt/:lat/:lng',
       name: 'addHunt',
       type: 'hunt',
+      onEnter: requireAuth,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/AddHunt/reducer'),

@@ -7,11 +7,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import GroupListItem from 'components/GroupListItem';
+import Helmet from 'react-helmet';
 
 import { createStructuredSelector } from 'reselect';
 import { loadGroups } from './actions';
 import makeSelectGroupList, { errorLoadingGroupsSelector, groupsSelector, loadingGroupsSelector } from './selectors';
-import {Helmet} from "react-helmet";
 
 export class GroupList extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

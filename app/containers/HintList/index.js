@@ -7,12 +7,13 @@
 import React, { PropTypes } from 'react';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
+
 import { createStructuredSelector } from 'reselect';
 import HintListItem from 'components/HintListItem';
 import makeSelectHintList, { loadingHintsSelector, hintsSelector } from './selectors';
 
 import { loadHints, deleteHint } from './actions';
-import {Helmet} from "react-helmet";
 
 export class HintList extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

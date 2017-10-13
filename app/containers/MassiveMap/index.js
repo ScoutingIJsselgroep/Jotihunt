@@ -12,6 +12,7 @@ import Toggle from 'react-bootstrap-toggle';
 import StatusBar from 'components/StatusBar';
 import _ from 'lodash';
 import { createStructuredSelector } from 'reselect';
+import Helmet from 'react-helmet';
 import makeSelectMassiveMap, {
   carsErrorSelector,
   carsLoadingSelector,
@@ -26,7 +27,7 @@ import makeSelectMassiveMap, {
   rightClickLatLngSelector,
   statusSelector,
 } from './selectors';
-import {clearLocation, historyToggle, loadCars, loadHints, loadStatus, rightClickEvent} from './actions';
+import { clearLocation, historyToggle, loadCars, loadHints, loadStatus, rightClickEvent } from './actions';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
@@ -34,7 +35,6 @@ import HintPath from '../../components/HintPath/index';
 import MapCircle from '../../components/MapCircle';
 import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
-import {Helmet} from "react-helmet";
 
 const historyTime = require('../../../config').map.historyTime;
 
@@ -105,7 +105,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           title="Kaart"
           titleTemplate="%s | Jotihunt.js"
           meta={[
-            { name: 'description', content: 'Een kaart met alles erop en eraan!' },
+            { name: 'description', content: 'Een kaart met alles erop en eraan.' },
           ]}
         />
         <MyMapComponent

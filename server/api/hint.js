@@ -28,9 +28,7 @@ router.post('/location', checkJwt, (req, res) => {
   if (req.body.latlng) {
     const rd = null;
     const subarea = inSubarea(req.body.latlng);
-    console.log(req.body.latlng);
     geocoder.reverseGeocode(req.body.latlng[0], req.body.latlng[1], (err, data) => {
-      console.log(err);
       res.send({
         rd,
         subarea,

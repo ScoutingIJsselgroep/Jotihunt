@@ -4,8 +4,8 @@
  *
  */
 
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 export class About extends React.Component { // eslint-disable-line react/prefer-stateless-function

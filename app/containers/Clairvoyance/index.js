@@ -6,10 +6,11 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectClairvoyance, {
   makeSelectLoading, makeSelectResult, makeSelectSuccess, makeSelectError,
-  makeSelectHintValues
+  makeSelectHintValues,
 } from './selectors';
 import ClairvoyanceForm from '../../components/ClairvoyanceForm/index';
 import { submitValues, submitValuesAsHint } from './actions';
@@ -17,8 +18,6 @@ import LoadingIndicator from '../../components/LoadingIndicator/index';
 import ClairvoyanceResult from '../../components/ClairvoyanceResult/index';
 import SuccessComponent from '../../components/SuccessComponent/index';
 import ErrorComponent from '../../components/ErrorComponent/index';
-import {Helmet} from "react-helmet";
-
 
 export class Clairvoyance extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {

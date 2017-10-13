@@ -11,6 +11,7 @@ import GroupListItem from 'components/GroupListItem';
 import { createStructuredSelector } from 'reselect';
 import { loadGroups } from './actions';
 import makeSelectGroupList, { errorLoadingGroupsSelector, groupsSelector, loadingGroupsSelector } from './selectors';
+import {Helmet} from "react-helmet";
 
 export class GroupList extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -20,6 +21,13 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
   render() {
     return (
       <div className="panel panel-default" style={{ overflow: 'auto' }}>
+        <Helmet
+          title="Groepen"
+          titleTemplate="%s | Jotihunt.js"
+          meta={[
+            { name: 'description', content: 'Een lijst van alle groepen.' },
+          ]}
+        />
         <div className="panel-heading">
           Groepen
         </div>

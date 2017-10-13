@@ -42,12 +42,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           title="Home"
           titleTemplate="%s | Jotihunt.js"
           meta={[
-            { name: 'description', content: 'A React.js Boilerplate application homepage' },
+            { name: 'description', content: 'Jotihunt is altijd in het derde weekend van oktober, tegelijk met JOTA-JOTI. Dit jaar vindt het plaats op 20, 21 en 22 oktober.' },
           ]}
         />
-        <div className='container'>
-          <h1 className='text-center'>It's time to up your game.</h1>
-          <div className='text-center'>
+        <div className="container">
+          <h1 className="text-center">It's time to up your game.</h1>
+          <div className="text-center">
             Vorig jaar introduceerden we het nieuwe platform. Dit jaar hebben we ons jachtsysteem geperfectioneerd en gaan we nóg harder jagen op vossen. Wees voorbereid!
           </div>
         </div>

@@ -12,6 +12,7 @@ import HintListItem from 'components/HintListItem';
 import makeSelectHintList, { loadingHintsSelector, hintsSelector } from './selectors';
 
 import { loadHints, deleteHint } from './actions';
+import {Helmet} from "react-helmet";
 
 export class HintList extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -22,6 +23,13 @@ export class HintList extends React.Component { // eslint-disable-line react/pre
   render() {
     return (
       <div className="row">
+        <Helmet
+          title="Hints"
+          titleTemplate="%s | Jotihunt.js"
+          meta={[
+            { name: 'description', content: 'Een lijst van alle hints.' },
+          ]}
+        />
         <div className="panel panel-default" style={{ overflow: 'auto' }}>
           <div className="panel-heading">
             Lijst van hints

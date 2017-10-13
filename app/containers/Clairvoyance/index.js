@@ -17,6 +17,7 @@ import LoadingIndicator from '../../components/LoadingIndicator/index';
 import ClairvoyanceResult from '../../components/ClairvoyanceResult/index';
 import SuccessComponent from '../../components/SuccessComponent/index';
 import ErrorComponent from '../../components/ErrorComponent/index';
+import {Helmet} from "react-helmet";
 
 
 export class Clairvoyance extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -39,6 +40,13 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
   render() {
     return (
       <div>
+        <Helmet
+          title="Clairvoyance"
+          titleTemplate="%s | Jotihunt.js"
+          meta={[
+            { name: 'description', content: 'Clairvoyance stelt je in staat om zonder de puzzel te weten de oplossing te bruteforcen!' },
+          ]}
+        />
         {this.props.success && <SuccessComponent message={'De volgende hints zijn verstuurd:'} values={this.props.sendValues} />}
         {this.props.error && <ErrorComponent message={'Er is iets fout gegaan'} />}
         <h1>Clairvoyance</h1>

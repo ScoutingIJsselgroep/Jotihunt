@@ -2,6 +2,7 @@
  * Created by tristan on 17-8-17.
  */
 module.exports = {
+  wiki: 'https://raw.githubusercontent.com/ScoutingIJsselgroep/JotihuntWiki/master/wiki.md',
   telegram: {
     authToken: '122155087:AAGEGn5RJgzUEq3IMNS8TLQLUjr1lZwxUEc',
     chats: {
@@ -28,7 +29,7 @@ module.exports = {
       longitude: 6.214124,
       radius: 500,
     },
-    filename: 'jotihunt-2016.kml',
+    filename: 'jotihunt_2017.kml',
     // The amount of hours to keep in history on the MassiveMap
     historyTime: 10,
     // The walking speed (sky wide) in km/h by a average human

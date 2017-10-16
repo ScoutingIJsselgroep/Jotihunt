@@ -234,6 +234,26 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/wiki',
+      name: 'jotihuntWiki',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/JotihuntWiki/reducer'),
+          import('containers/JotihuntWiki/sagas'),
+          import('containers/JotihuntWiki'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('jotihuntWiki', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

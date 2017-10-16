@@ -19,8 +19,6 @@ export class JotihuntWiki extends React.Component { // eslint-disable-line react
   }
 
   render() {
-    console.log(this.props.result);
-
     return (
       <div className={'panel panel-default'}>
         <div className={'panel-body'}>
@@ -39,7 +37,7 @@ JotihuntWiki.propTypes = {
   loading: PropTypes.bool,
   result: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.object,
+    PropTypes.any,
   ]),
 };
 

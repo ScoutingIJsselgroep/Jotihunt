@@ -31,6 +31,7 @@ import { clearLocation, historyToggle, loadCars, loadHints, loadStatus, rightCli
 import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
+import ClickMarker from '../../components/ClickMarker/index';
 import HintPath from '../../components/HintPath/index';
 import MapCircle from '../../components/MapCircle';
 import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
@@ -90,10 +91,13 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
         onRightClick={this.onRightClick}
       >
+        {this.props.rightClickLatLng &&
+        <ClickMarker latlng={this.props.rightClickLatLng} />
+        }
         {SubareaPolygons(this.onRightClick).map((subarea) => subarea)}
         {MapGroups().map((group) => group)}
         <MapCircle />
-        {this.props.hints && HintPath(this.props.hints, this.props.history)}
+        {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
         {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
 
       </GoogleMap>

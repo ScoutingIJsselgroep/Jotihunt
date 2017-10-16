@@ -21,7 +21,9 @@ class NavBarMenu extends React.Component { // eslint-disable-line react/prefer-s
           <li><Link to="/">Home</Link></li>
           <li><Link to="/hint/add">Hint toevoegen</Link></li>
           <li><Link to="/hint/list">Hints <i className="fa fa-list" aria-hidden="true"></i> </Link></li>
+{/*
           <li><Link to="/group/list">Groepen <i className="fa fa-list" aria-hidden="true"></i> </Link></li>
+*/}
           <li><Link to="/map">Kaart <i className="fa fa-map" aria-hidden="true"></i> </Link></li>
           <li><Link to="/clairvoyance">Clairvoyance <i className="fa fa-eye" aria-hidden="true"></i> </Link></li>
           <li className="dropdown">

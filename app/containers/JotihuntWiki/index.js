@@ -8,9 +8,10 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
 import { createStructuredSelector } from 'reselect';
-import makeSelectJotihuntWiki, {makeSelectLoading, makeSelectResult} from './selectors';
+import Helmet from 'react-helmet';
+import makeSelectJotihuntWiki, { makeSelectLoading, makeSelectResult } from './selectors';
 import { loadWiki } from './actions';
-import LoadingIndicator from "../../components/LoadingIndicator/index";
+import LoadingIndicator from '../../components/LoadingIndicator/index';
 
 export class JotihuntWiki extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -19,10 +20,15 @@ export class JotihuntWiki extends React.Component { // eslint-disable-line react
   }
 
   render() {
-    console.log(this.props.result);
-
     return (
       <div className={'panel panel-default'}>
+        <Helmet
+          title="Wiki de Viking"
+          titleTemplate="%s | Jotihunt.js"
+          meta={[
+            { name: 'description', content: 'Een Wiki met alles over Wickie!' },
+          ]}
+        />
         <div className={'panel-body'}>
           {this.props.loading && <LoadingIndicator />}
           {this.props.result && <ReactMarkdown source={this.props.result}>
@@ -39,7 +45,7 @@ JotihuntWiki.propTypes = {
   loading: PropTypes.bool,
   result: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.object,
+    PropTypes.any,
   ]),
 };
 

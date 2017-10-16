@@ -15,7 +15,7 @@ const historyTime = require('../../../config').map.historyTime;
 
 const walkingSpeed = require('../../../config').map.walkingSpeed;
 
-function generateMarkerCircumference(hint) {
+function generateMarkerCircumference(hint, onClick) {
   const duration = moment.duration(moment(new Date()).diff(moment(hint.createdAt)));
 
   return (<Circle
@@ -26,6 +26,8 @@ function generateMarkerCircumference(hint) {
       strokeOpacity: 1,
       strokeWeight: 2,
     }}
+    onClick={onClick}
+    onRightClick={onClick}
     defaultCenter={{ lat: hint.latitude, lng: hint.longitude }}
     defaultRadius={Math.min(duration.asMinutes() * ((walkingSpeed / 60) * 1000), 10000)}
   />);
@@ -35,7 +37,7 @@ function generatePath(path, color) {
   return <Polyline path={_.compact(path)} options={{ strokeColor: `#${color}` }} />;
 }
 
-function HintPath(hints, history) {
+function HintPath(hints, history, onClick) {
   const result = [];
   // Group Hints by Subarea
   const groupedHints = _.groupBy(hints, 'Subarea.name');
@@ -49,7 +51,7 @@ function HintPath(hints, history) {
   result.push(_.map(sortedHints, (sortedHint) => <TailHintMarker hint={_.last(sortedHint)} />));
 
   // Generate Marker Circumference
-  result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint))));
+  result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint), onClick)));
 
   // Generate paths
   result.push(_.map(sortedHints, (sortedHint) => generatePath(sortedHint.map((hint) => {
@@ -64,6 +66,7 @@ function HintPath(hints, history) {
 
 HintPath.propTypes = {
   hints: PropTypes.array,
+  onClick: PropTypes.func,
 };
 
 export default HintPath;

@@ -10,7 +10,7 @@ const router = express.Router();
 const rdToWgs = require('rdtowgs');
 const wgstoord = require('./../wgstord');
 
-geocoder.selectProvider('google', { appid: config.google.googleAppId });
+geocoder.selectProvider('google', { key: config.google.googleAppId });
 const checkJwt = require('./../checkJwt');
 
 
@@ -56,6 +56,8 @@ router.post('/information', checkJwt, (req, res) => {
     });
   });
 });
+
+// {"wgs":[52.19973591706119,6.213069797742666],"subarea":"Bravo","address":{"error_message":"You have exceeded your daily request quota for this API. We recommend registering for a key at the Google Developers Console: https://console.developers.google.com/apis/credentials?project=_","results":[],"status":"OVER_QUERY_LIMIT"}}
 
 /**
  * Save Clairvoyance Hints to database and send a Telegram-chat.

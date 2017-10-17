@@ -10,7 +10,6 @@ import { Marker } from 'react-google-maps';
 
 
 function ClickMarker({ latlng }) {
-  console.log(latlng);
   return (<Marker
     position={{ lat: latlng[0], lng: latlng[1] }}
   >

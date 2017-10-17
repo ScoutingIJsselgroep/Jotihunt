@@ -87,8 +87,9 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 
     const MyMapComponent = withGoogleMap((props) =>
       <GoogleMap
-        defaultZoom={9}
-        defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
+        options={{scaleControl: true}}
+        defaultZoom={10}
+        defaultCenter={{ lat: 52.1023337615325, lng: 6.009883117643787 }}
         onRightClick={this.onRightClick}
       >
         {this.props.rightClickLatLng &&
@@ -114,9 +115,9 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         />
         <MyMapComponent
           isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwcf9GYLw_Q3Rm92D6KQ2k1pilgqTAjC0v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: '100%' }} />}
-          containerElement={<div style={{ height: '600px' }} />}
+          containerElement={<div style={{ height: '80vh' }} />}
           mapElement={<div style={{ height: '100%' }} />}
         />
         {(this.props.loadRightClick || this.props.rightClickLatLng) &&

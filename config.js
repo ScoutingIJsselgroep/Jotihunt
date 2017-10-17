@@ -2,7 +2,7 @@
  * Created by tristan on 17-8-17.
  */
 module.exports = {
-  wiki: 'https://raw.githubusercontent.com/ScoutingIJsselgroep/JotihuntWiki/master/wiki.md',
+  wiki: 'https://raw.githubusercontent.com/ScoutingIJsselgroep/JotihuntWiki/master/README.md',
   telegram: {
     authToken: process.env.TELEGRAM_AUTH_TOKEN,
     chats: {

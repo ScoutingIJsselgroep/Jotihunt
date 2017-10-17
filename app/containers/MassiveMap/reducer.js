@@ -62,7 +62,8 @@ function massiveMapReducer(state = initialState, action) {
     case CLEAR_LOCATION:
       return state
         .set('loadRightClick', false)
-        .set('rightClickLocation', false);
+        .set('rightClickLocation', false)
+        .set('rightClickLatLng', false);
     case RIGHT_CLICK_EVENT_SUCCESS:
       return state
         .set('loadRightClick', false)

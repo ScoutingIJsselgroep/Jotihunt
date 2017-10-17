@@ -33,7 +33,6 @@ class NavBarMenu extends React.Component { // eslint-disable-line react/prefer-s
               <li><Link to="/wiki"><i className="fa fa-wikipedia-w" aria-hidden="true"></i> Wiki de Viking</Link></li>
             </ul>
           </li>
-          <li><Link to="/about">Over</Link></li>
         </ul>
       );
     }

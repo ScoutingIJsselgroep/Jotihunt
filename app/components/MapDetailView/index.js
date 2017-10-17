@@ -7,15 +7,18 @@
 import React from 'react';
 // import styled from 'styled-components';
 import { GoogleMap, Marker, withGoogleMap } from 'react-google-maps';
+import SubareaPolygons from '../../components/SubareaPolygons/index';
+
 
 function MapDetailView({ lat, lng }) {
+  const onRightClick = () => {};
   const MyMapComponent = withGoogleMap(() =>
     <GoogleMap
       defaultZoom={12}
       defaultCenter={{ lat, lng }}
     >
-
-      <Marker position={{ lat, lng }} />
+      {SubareaPolygons(onRightClick).map((subarea) => subarea)}
+      <Marker position={{ lat: parseFloat(lat), lng: parseFloat(lng) }} />
     </GoogleMap>
   );
 

@@ -16,6 +16,11 @@ router.post('/', (req, res) => {
       name: req.body.name,
     },
   }).then((result) => {
+    models.CarHistory.create({
+      name: req.body.name,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+    });
     if (result) { // update
       return result.update({
         latitude: req.body.latitude,

@@ -4,7 +4,7 @@
 module.exports = {
   wiki: 'https://raw.githubusercontent.com/ScoutingIJsselgroep/JotihuntWiki/master/wiki.md',
   telegram: {
-    authToken: '122155087:AAGEGn5RJgzUEq3IMNS8TLQLUjr1lZwxUEc',
+    authToken: process.env.TELEGRAM_AUTH_TOKEN,
     chats: {
       Alpha: -153752986,
       Bravo: -157632620,
@@ -36,7 +36,7 @@ module.exports = {
     walkingSpeed: 3.6,
   },
   google: {
-    googleAppId: 'AIzaSyB1hJmzl84MRQ41D4LshCO4PAWB16J9hIw',
+    googleAppId: process.env.GOOGLE_APP_ID,
   },
   poller: {
     timeout: 61 * 1000,

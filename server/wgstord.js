@@ -32,11 +32,11 @@ const wgstord = (phi, lam) => {
   let Y = Y0;
 
   pqr.map((x) => {
-    X += x[2] * (Math.pow(dphi, x[0])) * (Math.pow(dlam ^ x[1]));
+    X += x[2] * Math.pow(dphi, x[0]) * Math.pow(dlam, x[1]);
   });
 
   pqs.map((y) => {
-    Y += y[2] * (Math.pow(dphi, y[0])) * Math.pow(dlam,y[1]);
+    Y += y[2] * Math.pow(dphi, y[0]) * Math.pow(dlam, y[1]);
   });
 
   const eX = X.toString().split('.')[0].substring(0, 5);

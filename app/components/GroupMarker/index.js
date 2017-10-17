@@ -45,7 +45,7 @@ class GroupMarker extends React.Component { // eslint-disable-line react/prefer-
         {this.props.point.isOpen && <InfoWindow onCloseClick={this.onToggleOpen}>
           <div>
             <b>{this.props.point.properties.name}</b>
-            <span dangerouslySetInnerHTML={{ __html: this.props.point.properties.description }} />
+            <span dangerouslySetInnerHTML={{ __html: this.props.point.properties.description }} /><br />
             <Gpsbutton latitude={this.props.point.geometry.coordinates[1]} longitude={this.props.point.geometry.coordinates[0]} />
           </div>
         </InfoWindow>}

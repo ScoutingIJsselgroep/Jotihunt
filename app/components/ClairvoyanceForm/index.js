@@ -27,7 +27,7 @@ class ClairvoyanceForm extends React.Component { // eslint-disable-line react/pr
 
 
         }}
-
+        defaultValues={defaultValues}
       >
         {({ submitForm }) =>
           (

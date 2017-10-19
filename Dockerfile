@@ -13,6 +13,5 @@ VOLUME /reactapp
 
 EXPOSE 3000
 
-CMD ["npm", "run", "build"]
-
+RUN npm run build
 CMD ["npm", "run", "start:prod"]

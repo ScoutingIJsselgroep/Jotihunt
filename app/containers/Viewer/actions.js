@@ -11,6 +11,7 @@ export function setViewer(viewer) {
 }
 
 export function logout() {
+  window.location = '/login';
   return {
     type: LOGOUT,
   };

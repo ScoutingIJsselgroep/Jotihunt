@@ -42,6 +42,7 @@ router.post('/', checkJwt, (req, res) => {
     client.on('data', (data) => {
       try {
         if (JSON.parse(data)) {
+          // console.log(data.toString('utf8'));
           res.send(data.toString('utf8'));
         }
       } catch (err) {

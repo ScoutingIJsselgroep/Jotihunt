@@ -60,6 +60,7 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
             <li>Doe dit voor elk coordinaat en vul ze in als <code>ABCCD DABDA</code></li>
             <li>Klik op verstuur. Er komen enkele mogelijkheden.</li>
             <li>Zoek de meest waarschijnlijke uit!</li>
+            <li>NB: als een deelgebied offline is, kan ook <code>XXXXX XXXXX</code> gebruikt worden! De nauwkeurigheid neemt af met het aantal deelgebieden dat offline is.</li>
           </ol>
         </span>
         {this.props.result &&

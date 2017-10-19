@@ -34,6 +34,9 @@ export function* getCFData({ values }) {
       }),
     });
 
+    console.log('saga');
+    console.log(yield response);
+
     yield put(retrieveResult(response));
   } catch (err) {
 

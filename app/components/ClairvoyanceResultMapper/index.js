@@ -5,7 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
-
+import _ from 'lodash';
 const config = require('../../../config');
 
 // import styled from 'styled-components';
@@ -13,11 +13,12 @@ const config = require('../../../config');
 
 class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    console.log(this.props.result);
     return (
       <div className="panel panel-default">
         <table className="table">
           <tbody>
-            {this.props.result.map((result, i) => <tr key={i}>
+            {_.map(this.props.result, (result, i) => <tr key={i}>
               <td>{config.dbMappings.nArea[i]}</td>
               <td>{result.split(' ')[0]}</td>
               <td>{result.split(' ')[1]}</td>

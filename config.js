@@ -39,7 +39,7 @@ module.exports = {
     googleAppId: process.env.GOOGLE_APP_ID,
   },
   poller: {
-    timeout: 61 * 1000,
+    timeout: 2 * 60 * 1000,
   },
   clairvoyance: {
     ip: '178.32.217.139',

@@ -37,6 +37,8 @@ import MapCircle from '../../components/MapCircle';
 import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
 
+const config = require('./../../../config');
+
 const historyTime = require('../../../config').map.historyTime;
 
 
@@ -115,7 +117,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         />
         <MyMapComponent
           isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwcf9GYLw_Q3Rm92D6KQ2k1pilgqTAjC0v=3.exp&libraries=geometry,drawing,places"
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places`}
           loadingElement={<div style={{ height: '100%' }} />}
           containerElement={<div style={{ height: '80vh' }} />}
           mapElement={<div style={{ height: '100%' }} />}

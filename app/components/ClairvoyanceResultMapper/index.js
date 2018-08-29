@@ -13,6 +13,7 @@ const config = require('../../../config');
 
 class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    console.log("a");
     console.log(this.props.result);
     return (
       <div className="panel panel-default">
@@ -20,8 +21,8 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
           <tbody>
             {_.map(this.props.result, (result, i) => <tr key={i}>
               <td>{config.dbMappings.nArea[i]}</td>
-              <td>{result.split(' ')[0]}</td>
-              <td>{result.split(' ')[1]}</td>
+              <td>{result.split(" ")[0]}</td>
+              <td>{result.split(" ")[1]}</td>
             </tr>)}
           </tbody>
         </table>

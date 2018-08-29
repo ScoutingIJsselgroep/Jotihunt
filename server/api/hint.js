@@ -68,7 +68,7 @@ router.post('/clairvoyance', checkJwt, (req, res) => {
   if (req.body.data) {
     req.body.data.map((entry) => {
       if (!_.includes(entry, 'X')) {
-        const hint = entry.split(' ');
+        const hint = entry;
         const wgs = rdToWgs(hint[0], hint[1]);
         const hintSubarea = inSubarea(wgs);
         geocoder.reverseGeocode(wgs[0], wgs[1], (err, data) => {

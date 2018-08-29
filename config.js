@@ -4,7 +4,7 @@
 module.exports = {
   wiki: 'https://raw.githubusercontent.com/ScoutingIJsselgroep/JotihuntWiki/master/README.md',
   telegram: {
-    authToken: process.env.TELEGRAM_AUTH_TOKEN,
+    authToken: '122155087:AAGEGn5RJgzUEq3IMNS8TLQLUjr1lZwxUEc',
     chats: {
       Alpha: -153752986,
       Bravo: -157632620,
@@ -36,14 +36,14 @@ module.exports = {
     walkingSpeed: 3.6,
   },
   google: {
-    googleAppId: process.env.GOOGLE_APP_ID,
+    googleAppId: 'AIzaSyCcE5XwpudspSGxyQCKYYw_qNFyxf77BKA',
   },
   poller: {
     timeout: 2 * 60 * 1000,
   },
   clairvoyance: {
-    ip: '178.32.217.139',
-    port: 3002,
+    ip: 'localhost',
+    port: 1337,
   },
   dbMappings: {
     nArea: ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot'],

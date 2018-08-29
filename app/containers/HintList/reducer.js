@@ -34,9 +34,7 @@ function hintListReducer(state = initialState, action) {
         .set('loadingHints', false)
         .set('hints', action.hintList);
     case DELETE_HINT:
-      return state
-        .set('loadingHints', true)
-        .set('hints', false);
+      return state;
     default:
       return state;
   }

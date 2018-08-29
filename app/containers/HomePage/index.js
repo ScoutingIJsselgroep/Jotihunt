@@ -46,9 +46,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           ]}
         />
         <div className="container">
-          <h1 className="text-center">It's time to up your game.</h1>
+          <h1 className="text-center">It's time to act now!</h1>
           <div className="text-center">
-            Vorig jaar introduceerden we het nieuwe platform. Dit jaar hebben we ons jachtsysteem geperfectioneerd en gaan we nóg harder jagen op vossen. Wees voorbereid!
+
           </div>
         </div>
       </article>

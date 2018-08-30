@@ -31,7 +31,7 @@ class ClairvoyanceResult extends React.Component { // eslint-disable-line react/
 }
 
 ClairvoyanceResult.propTypes = {
-  result: PropTypes.array,
+  result: PropTypes.object,
   onSubmitValuesAsHint: PropTypes.func,
 };
 

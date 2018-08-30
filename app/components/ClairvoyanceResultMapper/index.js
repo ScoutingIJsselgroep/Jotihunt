@@ -5,8 +5,13 @@
  */
 
 import React, { PropTypes } from 'react';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import _ from 'lodash';
+import MapGroups from '../../components/MapGroups';
 import newId from '../../utils/newid';
+import deviation from '../../utils/deviation';
+
+import SubareaPolygons from '../../components/SubareaPolygons/index';
 
 const config = require('../../../config');
 
@@ -18,7 +23,24 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
     this.id = newId();
   }
 
+  onRightClick(event) {
+  }
+
   render() {
+    const GettingStartedGoogleMap = withGoogleMap(() => (
+      <GoogleMap
+        defaultZoom={8}
+        defaultCenter={{ lat: 52.1023337615325, lng: 6.009883117643787 }}
+        onRightClick={this.onRightClick}
+      >
+        {MapGroups().map((group) => group)}
+        {SubareaPolygons(this.onRightClick).map((subarea) => subarea)}
+        {_.map(this.props.result.wgs, (result, i) => <Marker
+          key={i}
+          position={new google.maps.LatLng(result[0], result[1])}
+        />)}
+      </GoogleMap>));
+
     return (
       <div className="panel panel-default">
         <table className="table">
@@ -36,7 +58,16 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
         </a>
 
         <div className="collapse" id={this.id}>
-          ....
+          <GettingStartedGoogleMap
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places`}
+            containerElement={
+              <div style={{ height: '400px' }} />
+            }
+            mapElement={
+              <div style={{ height: '400px' }} />
+            }
+          >
+          </GettingStartedGoogleMap>
         </div>
         {// TODO: Add map dropdown
         }
@@ -50,7 +81,7 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
 }
 
 ClairvoyanceResultMapper.propTypes = {
-  result: PropTypes.array,
+  result: PropTypes.object,
   onSubmitValuesAsHint: PropTypes.func,
 };
 

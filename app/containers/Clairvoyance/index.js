@@ -88,7 +88,7 @@ Clairvoyance.propTypes = {
   ]),
   result: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.array,
+    PropTypes.object,
   ]),
   sendValues: PropTypes.oneOfType([
     PropTypes.bool,

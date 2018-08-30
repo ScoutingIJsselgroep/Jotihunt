@@ -6,12 +6,18 @@
 
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
+import newId from '../../utils/newid';
+
 const config = require('../../../config');
 
 // import styled from 'styled-components';
 
 
 class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillMount() {
+    this.id = newId();
+  }
+
   render() {
     return (
       <div className="panel panel-default">
@@ -25,6 +31,15 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
             </tr>)}
           </tbody>
         </table>
+        <a className="btn btn-primary" role="button" data-toggle="collapse" href={`#${this.id}`} aria-expanded="false" aria-controls="collapseExample">
+          Toon details
+        </a>
+
+        <div className="collapse" id={this.id}>
+          ....
+        </div>
+        {// TODO: Add map dropdown
+        }
         <div className="panel-body">
           Klopt het resultaat? Verstuur het dan in één keer!
           <button onClick={() => this.props.onSubmitValuesAsHint(this.props.result.rd)} className="btn btn-default pull-right">Versturen</button>

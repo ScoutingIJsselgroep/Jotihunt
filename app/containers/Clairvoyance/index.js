@@ -48,21 +48,24 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
         />
         {this.props.success && <SuccessComponent message={'De volgende hints zijn verstuurd:'} values={this.props.sendValues} />}
         {this.props.error && <ErrorComponent message={'Er is iets fout gegaan'} />}
-        <h1>Clairvoyance</h1>
-        <p className="lead">Clairvoyance (letterlijk <i>clear vision</i>) stelt je in staat om zonder de puzzel te
-          weten,
-          de oplossing te bruteforcen!</p>
-        <span>
-          Puzzels bij de Jotihunt zitten vaak op dezelfde manier in elkaar. Ze bestaan (per deelgebied) uit tien plaatjes.
-          Je kunt vaak herleiden welk plaatje een 1, 2 of 4 is. Met deze tool kun je de rest ook herleiden!. Zo doe je dat:
-          <ol>
-            <li>Vertaal ieder plaatje naar een letter. Het plaatje met Thor wordt A, die met Wodan B, enzovoort! </li>
-            <li>Doe dit voor elk coordinaat en vul ze in als <code>ABCCD DABDA</code></li>
-            <li>Klik op verstuur. Er komen enkele mogelijkheden.</li>
-            <li>Zoek de meest waarschijnlijke uit!</li>
-            <li>NB: als een deelgebied offline is, kan ook <code>XXXXX XXXXX</code> gebruikt worden! De nauwkeurigheid neemt af met het aantal deelgebieden dat offline is.</li>
-          </ol>
-        </span>
+        <div className="well">
+          <h1>Clairvoyance</h1>
+          <p className="lead">Clairvoyance (letterlijk <i>clear vision</i>) stelt je in staat om zonder de puzzel te
+            weten,
+            de oplossing te bruteforcen!</p>
+          <span>
+            Puzzels bij de Jotihunt zitten vaak op dezelfde manier in elkaar. Ze bestaan (per deelgebied) uit tien plaatjes.
+            Je kunt vaak herleiden welk plaatje een 1, 2 of 4 is. Met deze tool kun je de rest ook herleiden, door middel van grove hacks! Zo doe je dat:
+            <ol>
+              <li>Vertaal ieder plaatje naar een letter. Het plaatje met Tom Hanks wordt A, die met Tom Cruise B, Nicolas Cage C, enzovoort! </li>
+              <li>Doe dit voor elk coordinaat en vul ze in als <code>ABCCD DABDA</code></li>
+              <li>Klik op verstuur. Er komen enkele mogelijkheden.</li>
+              <li>Zoek de meest waarschijnlijke uit!</li>
+              <li>NB: als een deelgebied offline is, kan ook <code>XXXXX XXXXX</code> gebruikt worden! De nauwkeurigheid neemt af met het aantal deelgebieden dat offline is.</li>
+            </ol>
+          </span>
+        </div>
+
         {this.props.result &&
         <ClairvoyanceResult result={this.props.result} onSubmitValuesAsHint={this.onSubmitValuesAsHint} />}
         {this.props.loading ?

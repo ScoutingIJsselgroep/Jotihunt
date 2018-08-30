@@ -18,6 +18,21 @@ import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 
+import styled from 'styled-components';
+
+const participants = require('./participants.jpg');
+
+const Header = styled.header`
+      height: 50vh;
+    min-height: 300px;
+    background: url(${participants}) center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+`;
+
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
@@ -42,13 +57,46 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           title="Home"
           titleTemplate="%s | Jotihunt.js"
           meta={[
-            { name: 'description', content: 'Jotihunt is altijd in het derde weekend van oktober, tegelijk met JOTA-JOTI. Dit jaar vindt het plaats op 20, 21 en 22 oktober.' },
+            {
+              name: 'description',
+              content: 'Jotihunt is altijd in het derde weekend van oktober, tegelijk met JOTA-JOTI. Dit jaar vindt het plaats op 20, 21 en 22 oktober.',
+            },
           ]}
         />
         <div className="container">
-          <h1 className="text-center">It's time to act now!</h1>
-          <div className="text-center">
+          <Header className="business-header">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12">
+                  <h1 className="display-3 text-center text-white mt-4">Business Name or Tagline</h1>
+                </div>
+              </div>
+            </div>
+          </Header>
+          <div className="container">
 
+            <div className="row">
+              <div className="col-sm-8">
+                <h2 className="mt-4">Voorbereidingen gaan beginnen!</h2>
+                <p>De voorbereidingen voor de Jotihunt gaan weer beginnen! Geef je daarom alvast op voor het kamp. Je wordt dan ook toegevoegd aan de Telegram-groep.</p>
+                <p>
+                  <a className="btn btn-primary btn-lg" href="#">Geef je nu op <span className="fa fa-arrow-right"></span></a>
+                </p>
+              </div>
+              <div className="col-sm-4">
+                <h2 className="mt-4">Contact</h2>
+                <address>
+                  <strong>Jotihunt Team Scouting Gorssel</strong>
+                  <br />Kwekerijweg 3
+                    <br />7213AX Gorssel
+                      <br />
+                </address>
+                <address>
+                  <abbr title="Email"><span className="fa fa-at"></span></abbr>&nbsp;
+                  <a href="mailto:jotihunt@scouting-ijsselgroep.nl">jotihunt@scouting-ijsselgroep.nl</a>
+                </address>
+              </div>
+            </div>
           </div>
         </div>
       </article>

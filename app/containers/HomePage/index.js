@@ -68,7 +68,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <h1 className="display-3 text-center text-white mt-4">Business Name or Tagline</h1>
                 </div>
               </div>
             </div>

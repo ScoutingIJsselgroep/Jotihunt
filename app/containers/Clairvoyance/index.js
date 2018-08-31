@@ -10,10 +10,10 @@ import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectClairvoyance, {
   makeSelectLoading, makeSelectResult, makeSelectSuccess, makeSelectError,
-  makeSelectHintValues,
+  makeSelectHintValues, hintsSelector,
 } from './selectors';
 import ClairvoyanceForm from '../../components/ClairvoyanceForm/index';
-import { submitValues, submitValuesAsHint } from './actions';
+import { submitValues, submitValuesAsHint, loadHints } from './actions';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
 import ClairvoyanceResult from '../../components/ClairvoyanceResult/index';
 import SuccessComponent from '../../components/SuccessComponent/index';
@@ -24,6 +24,11 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
     super(props);
     this.onSubmitValues = this.onSubmitValues.bind(this);
     this.onSubmitValuesAsHint = this.onSubmitValuesAsHint.bind(this);
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(loadHints());
   }
 
   onSubmitValues(values) {
@@ -48,12 +53,13 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
         />
         {this.props.success && <SuccessComponent message={'De volgende hints zijn verstuurd:'} values={this.props.sendValues} />}
         {this.props.error && <ErrorComponent message={'Er is iets fout gegaan'} />}
-        <div className="well">
-          <h1>Clairvoyance</h1>
-          <p className="lead">Clairvoyance (letterlijk <i>clear vision</i>) stelt je in staat om zonder de puzzel te
+        <div className="panel panel-default">
+          <div className="panel-body">
+            <h1>Clairvoyance</h1>
+            <p className="lead">Clairvoyance (letterlijk <i>clear vision</i>) stelt je in staat om zonder de puzzel te
             weten,
             de oplossing te bruteforcen!</p>
-          <span>
+            <span>
             Puzzels bij de Jotihunt zitten vaak op dezelfde manier in elkaar. Ze bestaan (per deelgebied) uit tien plaatjes.
             Je kunt vaak herleiden welk plaatje een 1, 2 of 4 is. Met deze tool kun je de rest ook herleiden, door middel van grove hacks! Zo doe je dat:
             <ol>
@@ -63,11 +69,12 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
               <li>Zoek de meest waarschijnlijke uit!</li>
               <li>NB: als een deelgebied offline is, kan ook <code>XXXXX XXXXX</code> gebruikt worden! De nauwkeurigheid neemt af met het aantal deelgebieden dat offline is.</li>
             </ol>
-          </span>
+            </span>
+          </div>
         </div>
 
         {this.props.result &&
-        <ClairvoyanceResult result={this.props.result} onSubmitValuesAsHint={this.onSubmitValuesAsHint} />}
+        <ClairvoyanceResult result={this.props.result} onSubmitValuesAsHint={this.onSubmitValuesAsHint} hints={this.props.hints} />}
         {this.props.loading ?
           <LoadingIndicator />
           :
@@ -94,6 +101,10 @@ Clairvoyance.propTypes = {
     PropTypes.bool,
     PropTypes.array,
   ]),
+  hints: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
+  ]),
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -103,6 +114,7 @@ const mapStateToProps = createStructuredSelector({
   success: makeSelectSuccess(),
   error: makeSelectError(),
   sendValues: makeSelectHintValues(),
+  hints: hintsSelector(),
 });
 
 function mapDispatchToProps(dispatch) {

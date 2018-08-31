@@ -11,6 +11,8 @@ import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import Gpsbutton from 'components/Gpsbutton';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
 
+const config = require('./../../../config');
+
 export class MapViewer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const GettingStartedGoogleMap = withGoogleMap(() => (
@@ -37,6 +39,7 @@ export class MapViewer extends React.Component { // eslint-disable-line react/pr
         </div>
         <div className="panel-body">
           <GettingStartedGoogleMap
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places`}
             containerElement={
               <div style={{ height: '400px' }} />
             }

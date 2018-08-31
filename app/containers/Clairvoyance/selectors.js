@@ -13,6 +13,11 @@ const makeSelectLoading = () => createSelector(
   (state) => state.get('loading')
 );
 
+const hintsSelector = () => createSelector(
+  selectClairvoyanceDomain(),
+  (state) => state.get('hints')
+);
+
 const makeSelectResult = () => createSelector(
   selectClairvoyanceDomain(),
   (state) => state.get('result')
@@ -49,4 +54,5 @@ export {
   makeSelectLoading,
   makeSelectSuccess,
   makeSelectError,
+  hintsSelector,
 };

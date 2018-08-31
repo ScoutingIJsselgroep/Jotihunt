@@ -16,13 +16,14 @@ class ClairvoyanceResult extends React.Component { // eslint-disable-line react/
       <div className={'row'}>
         <div className={'col-sm-6'}>
           <h4>Beste resultaat</h4>
-          <ClairvoyanceResultMapper onSubmitValuesAsHint={this.props.onSubmitValuesAsHint} result={this.props.result[0]} />
+          <ClairvoyanceResultMapper onSubmitValuesAsHint={this.props.onSubmitValuesAsHint} result={this.props.result.best} hints={this.props.hints}/>
         </div>
         <div className={'col-sm-6'}>
-          <h4>Overige resultaten</h4>
-          {this.props.result[1].map((result, i) => <ClairvoyanceResultMapper
+          <h4>Overige resultaten <span className="label label-default">{this.props.result.other.length}</span></h4>
+          {this.props.result.other.map((result, i) => <ClairvoyanceResultMapper
             key={i} onSubmitValuesAsHint={this.props.onSubmitValuesAsHint}
             result={result}
+            hints={this.props.hints}
           />)}
         </div>
       </div>
@@ -31,8 +32,12 @@ class ClairvoyanceResult extends React.Component { // eslint-disable-line react/
 }
 
 ClairvoyanceResult.propTypes = {
-  result: PropTypes.array,
+  result: PropTypes.object,
   onSubmitValuesAsHint: PropTypes.func,
+  hints: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
+  ]),
 };
 
 export default ClairvoyanceResult;

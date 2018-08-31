@@ -12,3 +12,6 @@ export const SUBMIT_VALUES_AS_HINT = 'app/Clairvoyance/SUBMIT_VALUES_AS_HINT';
 export const SUBMIT_VALUES_AS_HINT_SUCCESS = 'app/Clairvoyance/SUBMIT_VALUES_AS_HINT_SUCCESS';
 export const SUBMIT_VALUES_AS_HINT_ERROR = 'app/Clairvoyance/SUBMIT_VALUES_AS_HINT_ERROR';
 
+export const LOAD_HINTS = 'app/Clairvoyance/LOAD_HINTS';
+export const LOAD_HINTS_ERROR = 'app/Clairvoyance/LOAD_HINTS_ERROR';
+export const LOAD_HINTS_SUCCESS = 'app/Clairvoyance/LOAD_HINTS_SUCCESS';

@@ -44,6 +44,9 @@ models.sequelize.sync().then(() => {
 
     // Telegram start web server
     telegram.sendMessage('Debug', '🖥️ De server is gestart!');
+    if (false) {
+      telegram.sendMessage('Nieuws', 'We zijn weer bezig met het verbeteren van de website. Je kunt daarom via verschillende Telegram-kanalen af en toe een bericht krijgen. Geen berichten meer krijgen? Mute dan de deelgebieden of verlaat de kanalen met deelgebieden. Je kunt later weer toegevoegd worden.');
+    }
 
     // Connect to ngrok in dev mode
     if (ngrok) {

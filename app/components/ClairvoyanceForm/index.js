@@ -32,7 +32,6 @@ class ClairvoyanceForm extends React.Component { // eslint-disable-line react/pr
         {({ submitForm }) =>
           (
             <form onSubmit={submitForm}>
-              <h3>Invoer</h3>
               <div className="form-group col-xs-6">
                 <span htmlFor="Alpha">Alpha</span>
                 <Text className="form-control" field="Alpha" placeholder="AAAAA AAAAA" />
@@ -90,8 +89,13 @@ class ClairvoyanceForm extends React.Component { // eslint-disable-line react/pr
       </Form>
     );
     return (
-      <div>
-        {myForm}
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title">Invoer</h3>
+        </div>
+        <div className="panel-body">
+          {myForm}
+        </div>
       </div>
     );
   }

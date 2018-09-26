@@ -42,7 +42,7 @@ module.exports = {
     timeout: 2 * 60 * 1000,
   },
   clairvoyance: {
-    ip: 'localhost',
+    ip: 'clairvoyance',
     port: 1337,
   },
   dbMappings: {

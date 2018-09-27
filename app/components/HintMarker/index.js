@@ -8,9 +8,9 @@ import React, { PropTypes } from 'react';
 import { Marker } from 'react-google-maps';
 import moment from 'moment';
 import HintInfoWindow from '../HintInfoWindow';
-const hint = require('./Hint.svg');
-const hunt = require('./Hunt.svg');
-const message = require('./Message.svg');
+const hint = require('./Hint.png');
+const hunt = require('./Hunt.png');
+const message = require('./Message.png');
 // import styled from 'styled-components';
 const historyTime = require('../../../config').map.historyTime;
 

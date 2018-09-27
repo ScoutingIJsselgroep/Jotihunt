@@ -9,7 +9,7 @@ import { InfoWindow, Marker } from 'react-google-maps';
 import Gpsbutton from '../Gpsbutton/index';
 // import styled from 'styled-components';
 
-const groupIcon = require('./group.png');
+const groupIcon = require('./group-pm.png');
 const organisationIcon = require('./organisation.png');
 
 function getCoordinates(coordinates) {

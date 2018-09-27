@@ -32,6 +32,7 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
           Groepen
         </div>
         <div className="panel-body">
+          Hieronder vind je een lijst van alle deelnemende groepen, gegroepeerd per plaats.
         </div>
         <table className="table">
           <thead>

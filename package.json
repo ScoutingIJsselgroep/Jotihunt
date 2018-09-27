@@ -200,6 +200,7 @@
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "dependencies": {
+    "@google/maps": "^0.5.5",
     "@mapbox/togeojson": "^0.16.0",
     "auth0-lock": "^10.18.0",
     "babel-polyfill": "6.20.0",

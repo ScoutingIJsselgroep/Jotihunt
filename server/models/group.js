@@ -5,7 +5,8 @@ module.exports = function (sequelize, DataTypes) {
     town: DataTypes.STRING,
     location: DataTypes.STRING,
     latitude: DataTypes.FLOAT,
-    longitude: DataTypes.FLOAT
+    longitude: DataTypes.FLOAT,
+    visits: DataTypes.INTEGER,
   },{
     timestamps: false
   });

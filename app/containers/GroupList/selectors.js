@@ -8,17 +8,17 @@ const selectGroupListDomain = () => (state) => state.get('groupList');
 /**
  * Other specific selectors
  */
-const loadingGroupsSelector = () =>  createSelector(
+const loadingGroupsSelector = () => createSelector(
   selectGroupListDomain(),
   (state) => state.get('loadingGroups')
 );
 
-const groupsSelector = () =>  createSelector(
+const groupsSelector = () => createSelector(
   selectGroupListDomain(),
   (state) => state.get('groups')
 );
 
-const errorLoadingGroupsSelector = () =>  createSelector(
+const errorLoadingGroupsSelector = () => createSelector(
   selectGroupListDomain(),
   (state) => state.get('errorLoadingGroups')
 );

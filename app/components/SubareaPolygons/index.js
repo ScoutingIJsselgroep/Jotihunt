@@ -32,7 +32,7 @@ function SubareaPolygons(onRightClick) {
         strokeOpacity: properties['stroke-opacity'],
         strokeWeight: 2,
       };
-      result.push(<Polygon onRightClick={onRightClick} onClick={onRightClick} key={i} path={getCoordinates(geoJson.features[i].geometry.coordinates[0])} options={options} />);
+      result.push(<Polygon onRightClick={onRightClick} key={i} path={getCoordinates(geoJson.features[i].geometry.coordinates[0])} options={options} />);
     }
   }
   return result;

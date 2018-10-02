@@ -113,23 +113,40 @@ router.post('/', checkJwt, (req, res) => {
     subareas.map((subarea) => {
       const rd = wgstoord(req.body.latitude, req.body.longitude);
 
-      models.Hint.create({
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
-        rdx: req.body.rdx || rd[1],
-        rdy: req.body.rdy || rd[0],
-        address: req.body.address,
-        SubareaId: subarea.id,
-        HintTypeId: req.body.hintTypeId ? req.body.hintTypeId : 1,
-        UserId: 1,
-      });
+
       if (req.body.hintTypeId) {
+        models.Hint.create({
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
+          rdx: req.body.rdx || rd[1],
+          rdy: req.body.rdy || rd[0],
+          address: req.body.address,
+          SubareaId: subarea.id,
+          HintTypeId: req.body.hintTypeId ? req.body.hintTypeId : 1,
+          UserId: 1,
+        });
         if (req.body.hintTypeId === 2) {
           sendHunt(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
         } else {
           sendSimpleLocation(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
         }
       } else {
+        var date = new Date();
+        date.setMinutes(0);
+        date.setSeconds(0);
+
+        models.Hint.create({
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
+          rdx: req.body.rdx || rd[1],
+          rdy: req.body.rdy || rd[0],
+          createdAt: date,
+          updatedAt: date,
+          address: req.body.address,
+          SubareaId: subarea.id,
+          HintTypeId: req.body.hintTypeId ? req.body.hintTypeId : 1,
+          UserId: 1,
+        });
         sendHint(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
       }
       res.send({ message: 'success' });

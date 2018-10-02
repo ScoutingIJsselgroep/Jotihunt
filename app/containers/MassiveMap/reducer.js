@@ -38,9 +38,7 @@ function massiveMapReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_HINTS:
       return state
-        .set('hints', false)
-        .set('loading', true)
-        .set('error', false);
+        .set('hints', false);
     case LOAD_HINTS_SUCCESS:
       return state
         .set('hints', action.hints)

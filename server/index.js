@@ -14,10 +14,11 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 app.use(bodyParser.json());
+const server = require('http').Server(app);
 
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
-require('./api')(app);
+require('./api')(app, server);
 
 // Import poller
 require('./poller')();
@@ -37,7 +38,7 @@ const port = argv.port || process.env.PORT || 3000;
 
 // Start your app.
 models.sequelize.sync().then(() => {
-  app.listen(port, host, (err) => {
+  server.listen(port, host, (err) => {
     if (err) {
       return logger.error(err.message);
     }

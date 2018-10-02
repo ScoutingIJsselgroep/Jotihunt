@@ -16,6 +16,7 @@ import {
 
 import openSocket from 'socket.io-client';
 
+
 export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
@@ -44,6 +45,11 @@ export function getCoordinatesError() {
 }
 
 export function submitCoordinates() {
+  const socket = openSocket();
+  socket.emit('please_refresh_hints');
+
+  console.log("Refresh");
+
   return {
     type: SUBMIT_COORDINATES,
   };

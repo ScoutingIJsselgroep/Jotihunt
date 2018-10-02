@@ -5,7 +5,18 @@ var fs = require('fs'),
 
 
 //load all routes in dir
-module.exports = function (server) {
+module.exports = function (app, server) {
+  const io = require('socket.io')(server);
+
+  io.on('connection', function(socket){
+    console.log("Listening connection");
+    socket.on('please_refresh_hints', function(){
+      console.log("Refresh!");
+
+      io.emit('please_refresh_hints');
+    });
+  });
+
   fs
       .readdirSync(__dirname)
       .filter(function (file) {
@@ -13,6 +24,7 @@ module.exports = function (server) {
       })
       .forEach(function (file) {
         file = file.split('.')[0];
-        server.use('/api/' + file, require(path.join(__dirname, file)))
+        app.use('/api/' + file, require(path.join(__dirname, file)))
       })
+
 };

@@ -13,7 +13,7 @@ export function* doSubmitHunt({ latlng, huntType }) {
   const requestURL = '/api/hint';
 
   const result = yield select(locationResultSelector());
-  const address = result.address.results[0] ? result.address.results[0].formatted_address : 'Onbekende weg';
+  const address = result.address[0] ? result.address[0].formatted_address : 'Onbekende weg';
 
   const subarea = result.subarea;
 

@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import openSocket from 'socket.io-client';
 import { GoogleMap, withGoogleMap, TrafficLayer} from 'react-google-maps';
 import Toggle from 'react-bootstrap-toggle';
 import StatusBar from 'components/StatusBar';
@@ -52,6 +53,12 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
   }
 
   componentDidMount() {
+
+    const socket = openSocket();
+    socket.on('please_refresh_hints', function(msg){
+      dispatch(loadHints());
+    });
+
     // Go load hints
     const { dispatch } = this.props;
     dispatch(loadHints());
@@ -128,7 +135,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           <div className="panel-body">
             {this.props.loadRightClick && <LoadingIndicator />}
             {this.props.clickLocationInfo && !this.props.loadRightClick && <div>
-              <span className="label label-default">{this.props.clickLocationInfo.subarea}</span> {this.props.clickLocationInfo.address.results[0] ? this.props.clickLocationInfo.address.results[0].formatted_address : 'Onbekende weg'}
+              <span className="label label-default">{this.props.clickLocationInfo.subarea}</span> {this.props.clickLocationInfo.address[0] ? this.props.clickLocationInfo.address[0].formatted_address : 'Onbekende weg'}
               <div className="btn-group pull-right" role="group" aria-label="...">
                 <Link to={`/hint/addhint/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-map-marker" aria-hidden="true"></i> Verstuur locatie</Link>
                 <Link to={`/hint/addhunt/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-star" aria-hidden="true"></i> Meld hunt</Link>
@@ -150,12 +157,6 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
             offstyle="primary"
             onClick={() => this.onHistoryToggle(this.props.history)}
           />
-
-          <button onClick={this.reloadAll} className={'btn btn-primary'}>
-            <i className="fa fa-refresh" aria-hidden="true"></i>
-            <br />
-            Herlaad gegevens
-            </button>
         </StatusBar>
       </div>
     );

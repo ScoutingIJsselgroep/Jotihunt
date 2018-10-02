@@ -67,7 +67,7 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
 
                 <div className="form-group">
                   <span>Adres</span>
-                  <input type="email" className="form-control" disabled value={!this.props.locationResult.address.results[0] ? 'Onbekende weg' : this.props.locationResult.address.results[0].formatted_address} />
+                  <input type="email" className="form-control" disabled value={!this.props.locationResult.address[0] ? 'Onbekende weg' : this.props.locationResult.address[0].formatted_address} />
                 </div>
 
                 <div className="form-group">

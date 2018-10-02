@@ -67,7 +67,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
                   </div>
                   < div className="form-group">
                     <span htmlFor="rdx">Adres</span>
-                    <input className="form-control" placeholder="Vul eerst coördinaten in" disabled value={this.props.address.results && this.props.address.results[0] ? this.props.address.results[0].formatted_address : ''} />
+                    <input className="form-control" placeholder="Vul eerst coördinaten in" disabled value={this.props.address && this.props.address[0] ? this.props.address[0].formatted_address : ''} />
                   </div>
                   <AddHintMap wgs={this.props.wgs} address={this.props.address} />
                 </div>
@@ -83,7 +83,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
 AddHintContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   address: PropTypes.oneOfType([
-    PropTypes.object,
+    PropTypes.array,
     PropTypes.bool,
   ]),
   subarea: PropTypes.oneOfType([

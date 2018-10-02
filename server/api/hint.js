@@ -6,14 +6,14 @@ const { sendHint, sendHunt, sendSimpleLocation } = require('../telegram/index');
 
 const express = require('express');
 const models = require('../models');
-const geocoder = require('geocoder');
 const config = require('./../../config');
 const router = express.Router();
 const rdToWgs = require('rdtowgs');
 const wgstoord = require('./../wgstord');
 
-geocoder.selectProvider('google', { key: config.google.googleAppId });
 const checkJwt = require('./../checkJwt');
+const geocoder = require('google-geocoder')({ key: config.google.googleAppId });
+
 
 
 router.get('/', checkJwt, (req, res) => {
@@ -31,11 +31,12 @@ router.post('/location', checkJwt, (req, res) => {
   if (req.body.latlng) {
     const rd = null;
     const subarea = inSubarea(req.body.latlng);
-    geocoder.reverseGeocode(req.body.latlng[0], req.body.latlng[1], (err, data) => {
+    geocoder.reverseFind(req.body.latlng[0], req.body.latlng[1], (err, data) => {
       res.send({
         rd,
         subarea,
         address: data,
+        key: config.google.googleAppId,
       });
     });
   } else {
@@ -50,7 +51,7 @@ router.post('/information', checkJwt, (req, res) => {
   // Convert RD-coordinate to WSG-84
   const wgs = rdToWgs(req.body.longitude, req.body.latitude);
   const subarea = inSubarea(wgs);
-  geocoder.reverseGeocode(wgs[0], wgs[1], (err, data) => {
+  geocoder.reverseFind(wgs[0], wgs[1], (err, data) => {
     res.send({
       wgs,
       subarea,
@@ -71,7 +72,7 @@ router.post('/clairvoyance', checkJwt, (req, res) => {
         const hint = entry;
         const wgs = rdToWgs(hint[0], hint[1]);
         const hintSubarea = inSubarea(wgs);
-        geocoder.reverseGeocode(wgs[0], wgs[1], (err, data) => {
+        geocoder.reverseFind(wgs[0], wgs[1], (err, data) => {
           models.Subarea.findAll({
             where: {
               name: hintSubarea,

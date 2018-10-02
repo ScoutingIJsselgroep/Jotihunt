@@ -36,7 +36,7 @@ module.exports = {
     walkingSpeed: 3.6,
   },
   google: {
-    googleAppId: 'AIzaSyCcE5XwpudspSGxyQCKYYw_qNFyxf77BKA',
+    googleAppId: 'AIzaSyATLQHsOrwWkL_CNba3OsdTtKlk8Z19Pms',
   },
   poller: {
     timeout: 2 * 60 * 1000,

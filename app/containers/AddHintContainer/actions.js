@@ -14,6 +14,8 @@ import {
   SUBMIT_COORDINATES_ERROR,
 } from './constants';
 
+import openSocket from 'socket.io-client';
+
 export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
@@ -49,6 +51,8 @@ export function submitCoordinates() {
 
 export function submitCoordinateSuccess() {
   window.location = '/hint/add';
+
+  // Send Socket Update
   return {
     type: SUBMIT_COORDINATES_SUCCESS,
   };

@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "jotihunt",
-    "password": "iFmZ4TEe8qut3p9E",
+    "username": "root",
+    "password": "i202bourbon",
     "database": "jotihunt_development",
     "host": "127.0.0.1",
     "dialect": "mysql"

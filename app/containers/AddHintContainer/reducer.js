@@ -30,6 +30,7 @@ function addHintContainerReducer(state = initialState, action) {
         .set('rdx', action.rdx)
         .set('rdy', action.rdy);
     case GET_COORDINATES_SUCCESS:
+      console.log(action.response);
       return state
         .set('loading', false)
         .set('subarea', action.response.subarea)

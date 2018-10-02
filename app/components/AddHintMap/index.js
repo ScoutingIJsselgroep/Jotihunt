@@ -22,7 +22,7 @@ function AddHintMap({ wgs, address }) {
         <Marker position={{ lat: wgs[0], lng: wgs[1] }} >
           <InfoWindow>
             <div>
-              {address.results[0] && address.results[0].formatted_address}
+              {address[0] && address[0].formatted_address}
             </div>
           </InfoWindow>
         </Marker>
@@ -52,7 +52,7 @@ AddHintMap.propTypes = {
     PropTypes.bool,
     PropTypes.arrayOf(PropTypes.number)]),
   address: PropTypes.oneOfType([
-    PropTypes.object,
+    PropTypes.array,
     PropTypes.bool,
   ]),
 };

@@ -11,9 +11,10 @@ module.exports = function (app, server) {
   io.on('connection', function(socket){
     console.log("Listening connection");
     socket.on('please_refresh_hints', function(){
-      console.log("Refresh!");
-
       io.emit('please_refresh_hints');
+    });
+    socket.on('status', function(){
+      io.emit('status');
     });
   });
 

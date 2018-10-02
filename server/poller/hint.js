@@ -3,6 +3,7 @@ const request = require('request');
 const config = require('../../config');
 const telegram = require('../telegram');
 const models = require('../models');
+const openSocket = require('socket.io-client');
 
 
 module.exports = {
@@ -37,6 +38,10 @@ module.exports = {
                   ApiTypeId: config.dbMappings.type.Hint,
                   start: entry.datum,
                 }).save();
+
+                // Make update to Socket to do a live website update
+                const socket = openSocket('http://localhost:3000');
+                socket.emit('status');
               }
               return 0;
             });

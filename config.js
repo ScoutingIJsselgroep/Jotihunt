@@ -39,7 +39,7 @@ module.exports = {
     googleAppId: 'AIzaSyATLQHsOrwWkL_CNba3OsdTtKlk8Z19Pms',
   },
   poller: {
-    timeout: 2 * 60 * 1000,
+    timeout: 1 * 61 * 1000,
   },
   clairvoyance: {
     ip: 'clairvoyance',

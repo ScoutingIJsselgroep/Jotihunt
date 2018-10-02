@@ -16,6 +16,9 @@ module.exports = function (app, server) {
     socket.on('status', function(){
       io.emit('status');
     });
+    socket.on('car', function(){
+      io.emit('car');
+    });
   });
 
   fs

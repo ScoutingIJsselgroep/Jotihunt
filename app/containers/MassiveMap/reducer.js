@@ -82,9 +82,7 @@ function massiveMapReducer(state = initialState, action) {
         .set('carsLoading', false);
     case LOAD_CARS:
       return state
-        .set('carsLoading', true)
-        .set('carsError', false)
-        .set('cars', false);
+        .set('carsError', false);
     case LOAD_CARS_SUCCESS:
       return state
         .set('carsLoading', false)

@@ -76,6 +76,10 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
       dispatch(loadStatus());
     });
 
+    socket.on('car', function(msg){
+      dispatch(loadCars());
+    });
+
     // Go load hints
     const { dispatch } = this.props;
     dispatch(loadHints());

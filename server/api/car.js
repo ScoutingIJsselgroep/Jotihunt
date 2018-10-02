@@ -2,6 +2,7 @@ const express = require('express');
 const models = require('../models');
 const router = express.Router();
 const checkJwt = require('./../checkJwt');
+const openSocket = require('socket.io-client');
 
 router.get('/', checkJwt, (req, res) => {
   models.Car.findAll({}).then((cars) => {
@@ -21,6 +22,10 @@ router.post('/', (req, res) => {
       latitude: req.body.latitude,
       longitude: req.body.longitude,
     });
+    // Make update to Socket to do a live website update
+    const socket = openSocket('http://localhost:3000');
+    socket.emit('status');
+
     if (result) { // update
       return result.update({
         latitude: req.body.latitude,

@@ -11,6 +11,9 @@ import {
   LOAD_LOCATION_SUCCESS, SUBMIT_HUNT, SUBMIT_HUNT_ERROR, SUBMIT_HUNT_SUCCESS,
 } from './constants';
 
+import openSocket from 'socket.io-client';
+
+
 export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
@@ -39,6 +42,9 @@ export function loadLocationError(error) {
 }
 
 export function submitHunt(latlng, type) {
+  const socket = openSocket();
+  socket.emit('please_refresh_hints');
+
   return {
     type: SUBMIT_HUNT,
     latlng,

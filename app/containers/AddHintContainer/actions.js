@@ -48,8 +48,6 @@ export function submitCoordinates() {
   const socket = openSocket();
   socket.emit('please_refresh_hints');
 
-  console.log("Refresh");
-
   return {
     type: SUBMIT_COORDINATES,
   };

@@ -43,6 +43,20 @@ const config = require('./../../../config');
 const historyTime = require('../../../config').map.historyTime;
 
 
+const MyMapComponent = withGoogleMap((props) =>
+  <GoogleMap
+    options={{scaleControl: true}}
+    defaultZoom={10}
+    defaultCenter={{ lat: 52.1023337615325, lng: 6.009883117643787 }}
+    onRightClick={props.onRightClick}
+  >
+  {SubareaPolygons(props.onRightClick).map((subarea) => subarea)}
+  {MapGroups().map((group) => group)}
+  <MapCircle />
+  {props.children}
+  </GoogleMap>
+);
+
 export class MassiveMap extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
@@ -88,30 +102,12 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     dispatch(loadCars());
   }
 
+
   render() {
     let huntCount = 0;
     if (this.props.hints) {
       huntCount = _.filter(this.props.hints, (hint) => hint.HintType.name === 'Hunt').length;
     }
-
-    const MyMapComponent = withGoogleMap((props) =>
-      <GoogleMap
-        options={{scaleControl: true}}
-        defaultZoom={10}
-        defaultCenter={{ lat: 52.1023337615325, lng: 6.009883117643787 }}
-        onRightClick={this.onRightClick}
-      >
-        {this.props.rightClickLatLng &&
-        <ClickMarker latlng={this.props.rightClickLatLng} />
-        }
-        {SubareaPolygons(this.onRightClick).map((subarea) => subarea)}
-        {MapGroups().map((group) => group)}
-        <MapCircle />
-        {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
-        {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
-
-      </GoogleMap>
-    );
 
     return (
       <div>
@@ -125,10 +121,16 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         <MyMapComponent
           isMarkerShown
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places,traffic`}
-          loadingElement={<div style={{ height: '100%' }} />}
           containerElement={<div style={{ height: '80vh' }} />}
           mapElement={<div style={{ height: '100%' }} />}
-        />
+          onRightClick={this.onRightClick}
+        >
+          {this.props.rightClickLatLng &&
+          <ClickMarker latlng={this.props.rightClickLatLng} />
+          }
+          {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
+          {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
+        </MyMapComponent>
         {(this.props.loadRightClick || this.props.rightClickLatLng) &&
         <div className="panel panel-default">
           <div className="panel-heading"><i className="fa fa-map-marker" aria-hidden="true"></i> Geselecteerde locatie</div>

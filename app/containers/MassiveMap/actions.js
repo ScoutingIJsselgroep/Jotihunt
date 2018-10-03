@@ -19,12 +19,20 @@ import {
   LOAD_CARS,
   LOAD_CARS_ERROR,
   RIGHT_CLICK_EVENT,
+  SET_LATLNG,
   RIGHT_CLICK_EVENT_SUCCESS, CLEAR_LOCATION,
 } from './constants';
 
 export function loadPredictions() {
   return {
     type: LOAD_PREDICTIONS,
+  }
+}
+
+export function setLatLng(latlng) {
+  return {
+    type: SET_LATLNG,
+    latlng,
   }
 }
 

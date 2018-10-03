@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
-
+const request = require("request");
 const checkJwt = require('./../checkJwt');
 const config = require('./../../config');
 const models = require('../models');
@@ -85,13 +85,9 @@ function getNextLocation(callback) {
 }
 
 router.get('/', (req, res) => {
-  // Get a list of latest hints
-  getLastHints((lastHints) => {
-    getNextLocation((nextLocations) => {
-
-    });
-  });
-
+  res.send({});
 });
+
+
 
 module.exports = router;

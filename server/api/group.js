@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
 function fillDatabaseWithGroups(res) {
   // If database is empty, then continue rest.
 
+
   fs.readFile(path.join(__dirname, `../../maps/${kmlMapName}`), {encoding: 'utf-8'}, function(err,data){
     if (!err) {
       const kml = new DOMParser().parseFromString(data);

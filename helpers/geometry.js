@@ -1,7 +1,7 @@
 const tj = require('@mapbox/togeojson');
 const fs = require('fs');
 const DOMParser = require('xmldom').DOMParser;
-
+const polygonCenter = require('geojson-polygon-center')
 const config = require('./../config');
 
 function insidePolygon(x, y, coordinates) {
@@ -49,4 +49,19 @@ module.exports = {
     }
     return null;
   },
+  getPolygons: () => {
+    const kml = new DOMParser().parseFromString(fs.readFileSync(`maps/${config.map.filename}`, 'utf8'));
+
+    const geoJson = tj.kml(kml);
+
+    // eslint-disable-next-line no-restricted-syntax,guard-for-in
+    return geoJson.features.map((feature) => {
+      if (feature.geometry.type === 'Polygon') {
+        return {
+          name: feature.properties.name,
+          center: polygonCenter(feature.geometry).coordinates
+        };
+      }
+    }).filter(n => n);
+  }
 };

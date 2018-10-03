@@ -13,6 +13,11 @@ const loadingSelector = () => createSelector(
   (state) => state.get('loading')
 );
 
+const latlngSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('latlng')
+);
+
 const hintsSelector = () => createSelector(
   selectMassiveMapDomain(),
   (state) => state.get('hints')
@@ -101,6 +106,7 @@ export {
   selectMassiveMapDomain,
   loadingSelector,
   hintsSelector,
+  latlngSelector,
   errorSelector,
   historySelector,
   loadingStatusSelector,

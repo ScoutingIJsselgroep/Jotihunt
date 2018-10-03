@@ -21,7 +21,7 @@ class StatusBar extends React.Component { // eslint-disable-line react/prefer-st
         <div className={'text-center'}>
           <div className="btn-group" role="group" aria-label="...">
             {sortedStatus.map((status, i) =>
-              <button key={i} className={`btn btn-${status.statuscolor}`}>
+              <button key={i} onClick={() => this.props.changeMapCenter([status.latCenter, status.lonCenter])} className={`btn btn-${status.statuscolor}`}>
                 {status.name}
                 <br />
                 <small><small>{moment(status.createdAt).calendar()}</small></small>

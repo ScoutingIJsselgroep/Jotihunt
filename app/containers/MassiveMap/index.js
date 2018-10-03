@@ -20,6 +20,7 @@ import makeSelectMassiveMap, {
   carsSelector,
   errorSelector,
   errorStatusSelector,
+  latlngSelector,
   hintsSelector,
   historySelector,
   loadingSelector,
@@ -29,7 +30,7 @@ import makeSelectMassiveMap, {
   statusSelector,
   predictionsSelector,
 } from './selectors';
-import { clearLocation, historyToggle, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions } from './actions';
+import { clearLocation, historyToggle, setLatLng, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions } from './actions';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
@@ -48,8 +49,10 @@ const MyMapComponent = withGoogleMap((props) =>
   <GoogleMap
     options={{scaleControl: true}}
     defaultZoom={10}
-    defaultCenter={{ lat: 52.1023337615325, lng: 6.009883117643787 }}
+    defaultCenter={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
+    // center={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
     onRightClick={props.onRightClick}
+    onCenterChanged={(evt) => props.onChangeMapCenter(evt)}
   >
   {SubareaPolygons(props.onRightClick).map((subarea) => subarea)}
   {MapGroups().map((group) => group)}
@@ -65,6 +68,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     this.onHistoryToggle = this.onHistoryToggle.bind(this);
     this.onClearLocation = this.onClearLocation.bind(this);
     this.onRightClick = this.onRightClick.bind(this);
+    this.onChangeMapCenter = this.onChangeMapCenter.bind(this);
   }
 
   componentDidMount() {
@@ -99,6 +103,12 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     dispatch(rightClickEvent([event.latLng.lat(), event.latLng.lng()]));
   }
 
+  onChangeMapCenter(event) {
+    console.log(event);
+    const { dispatch } = this.props;
+    //  dispatch(setLatLng({lat: event[0], lng: event[1]}));
+  }
+
   onClearLocation() {
     const { dispatch } = this.props;
     dispatch(clearLocation());
@@ -113,7 +123,6 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 
 
   render() {
-    console.log(this.props.predictions);
     let huntCount = 0;
     if (this.props.hints) {
       huntCount = _.filter(this.props.hints, (hint) => hint.HintType.name === 'Hunt').length;
@@ -134,6 +143,8 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           containerElement={<div style={{ height: '80vh', marginLeft: '-10px', marginRight: '-10px' }} />}
           mapElement={<div style={{ height: '100%' }} />}
           onRightClick={this.onRightClick}
+          onChangeMapCenter={this.onChangeMapCenter}
+          latlng={this.props.latlng}
         >
           {this.props.rightClickLatLng &&
           <ClickMarker latlng={this.props.rightClickLatLng} />
@@ -159,6 +170,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         </div>
         }
         <StatusBar
+          changeMapCenter={this.onChangeMapCenter}
           loading={this.props.loadingStatus} error={this.props.errorStatus} status={this.props.status}
           huntCount={huntCount}
         >
@@ -225,6 +237,7 @@ const mapStateToProps = createStructuredSelector({
   MassiveMap: makeSelectMassiveMap(),
   loading: loadingSelector(),
   hints: hintsSelector(),
+  latlng: latlngSelector(),
   history: historySelector(),
   error: errorSelector(),
   errorStatus: errorStatusSelector(),

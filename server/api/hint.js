@@ -1,7 +1,7 @@
 
 const _ = require('lodash');
 
-const { inSubarea } = require('../../helpers/geometry');
+const { inSubarea, getPolygons } = require('../../helpers/geometry');
 const { sendHint, sendHunt, sendSimpleLocation } = require('../telegram/index');
 
 const express = require('express');
@@ -58,6 +58,25 @@ router.post('/information', checkJwt, (req, res) => {
       address: data,
     });
   });
+});
+
+router.get('/centers', (req, res) => {
+  const polygons = getPolygons();
+
+  polygons.map((polygon) => {
+    models.Subarea.findAll({
+      where: {
+        name: polygon.name
+      }
+    }).then((subareas) => {
+      subareas.map((subarea) => {
+        subarea.lonCenter = polygon.center[0]
+        subarea.latCenter = polygon.center[1]
+        subarea.save();
+      });
+    });
+  });
+  res.send("Polygons updated");
 });
 
 // {"wgs":[52.19973591706119,6.213069797742666],"subarea":"Bravo","address":{"error_message":"You have exceeded your daily request quota for this API. We recommend registering for a key at the Google Developers Console: https://console.developers.google.com/apis/credentials?project=_","results":[],"status":"OVER_QUERY_LIMIT"}}

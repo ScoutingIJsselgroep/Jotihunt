@@ -3,7 +3,9 @@
 module.exports =  function (sequelize, DataTypes) {
   var Subarea = sequelize.define("Subarea", {
     name: DataTypes.STRING,
-    color: DataTypes.STRING
+    color: DataTypes.STRING,
+    latCenter: DataTypes.FLOAT,
+    lonCenter: DataTypes.FLOAT,
   },{
     timestamps: false
   });

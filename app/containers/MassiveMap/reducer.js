@@ -11,6 +11,7 @@ import {
   LOAD_HINTS_SUCCESS,
   LOAD_STATUS,
   LOAD_STATUS_SUCCESS,
+  SET_LATLNG,
   LOAD_STATUS_ERROR,
   LOAD_PREDICTIONS,
   LOAD_PREDICTIONS_ERROR,
@@ -36,11 +37,15 @@ const initialState = fromJS({
   predictionsError: false,
   loadRightClick: false,
   rightClickLatLng: false,
+  latlng: {lat: 52.1023337615325, lng: 6.009883117643787},
   rightClickLocation: false,
 });
 
 function massiveMapReducer(state = initialState, action) {
   switch (action.type) {
+    case SET_LATLNG:
+      return state
+        .set('latlng', fromJS(action.latlng));
     case LOAD_PREDICTIONS:
       return state
         .set('predictionsError', false);

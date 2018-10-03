@@ -10,6 +10,8 @@ import {
   LOAD_HINTS_SUCCESS,
   DELETE_HINT,
 } from './constants';
+import openSocket from 'socket.io-client';
+
 
 export function loadHints() {
   return {
@@ -32,6 +34,9 @@ export function loadHintsSuccess (hintList) {
 }
 
 export function deleteHint (hintId) {
+  const socket = openSocket();
+  socket.emit('please_refresh_hints');
+
   return {
     type: DELETE_HINT,
     hintId,

@@ -9,12 +9,14 @@ import {
   LOAD_GROUPS,
   LOAD_GROUPS_ERROR,
   LOAD_GROUPS_SUCCESS,
+  SEARCH,
 } from './constants';
 
 const initialState = fromJS({
   loadingGroups: false,
   groups: false,
   errorLoadingGroups: false,
+  search: false
 });
 
 function groupListReducer(state = initialState, action) {
@@ -29,6 +31,9 @@ function groupListReducer(state = initialState, action) {
         .set('loadingGroups', false)
         .set('groups', false)
         .set('errorLoadingGroups', action.error);
+    case SEARCH:
+      return state
+        .set('search', action.query);
     case LOAD_GROUPS_SUCCESS:
       return state
         .set('loadingGroups', false)

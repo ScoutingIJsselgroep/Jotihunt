@@ -23,6 +23,11 @@ const errorLoadingGroupsSelector = () => createSelector(
   (state) => state.get('errorLoadingGroups')
 );
 
+const searchSelector = () => createSelector(
+  selectGroupListDomain(),
+  (state) => state.get('search')
+);
+
 /**
  * Default selector used by GroupList
  */
@@ -37,5 +42,6 @@ export {
   selectGroupListDomain,
   loadingGroupsSelector,
   groupsSelector,
+  searchSelector,
   errorLoadingGroupsSelector,
 };

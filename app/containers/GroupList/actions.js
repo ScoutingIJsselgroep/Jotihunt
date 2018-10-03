@@ -8,11 +8,19 @@ import {
   LOAD_GROUPS,
   LOAD_GROUPS_ERROR,
   LOAD_GROUPS_SUCCESS,
+  SEARCH,
 } from './constants';
 
 export function loadGroups() {
   return {
     type: LOAD_GROUPS,
+  };
+}
+
+export function performSearch(query) {
+  return {
+    type: SEARCH,
+    query
   };
 }
 

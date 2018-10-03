@@ -32,14 +32,15 @@ function fillDatabaseWithGroups(res) {
       const result = _.map(geoJson.features, (feature, i) => {
         if (feature.geometry.type === 'Point') {
           if (feature.properties.name !== "Jotihunt Organisatie") {
-            subarea = inSubarea([feature.geometry.coordinates[1], feature.geometry.coordinates[0]]);
+            const subareaName = inSubarea([feature.geometry.coordinates[1], feature.geometry.coordinates[0]]);
+            console.log(subareaName);
             geocoder.reverseFind(feature.geometry.coordinates[1], feature.geometry.coordinates[0], (err, data) => {
-              console.log(data);
               models.Subarea.findAll({
                 where: {
-                  name: subarea,
+                  name: subareaName,
                 },
               }).then((subareas) => {
+                console.log(subareas);
                 subareas.map((subarea) => {
                   // Insert into the database
                   models.Group.create({

@@ -3,10 +3,10 @@ import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects'
 import request from 'utils/request';
 
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { LOAD_CARS, LOAD_HINTS, LOAD_STATUS, RIGHT_CLICK_EVENT } from './constants';
+import { LOAD_CARS, LOAD_HINTS, LOAD_STATUS, RIGHT_CLICK_EVENT, LOAD_PREDICTIONS } from './constants';
 import {
   loadCarsError, loadCarsSucess, loadHintsError, loadHintsSuccess, loadStatusError,
-  loadStatusSuccess, rightClickLocationSuccess,
+  loadStatusSuccess, rightClickLocationSuccess, loadPredictions, loadPredictionsError, loadPredictionsSucces
 } from './actions';
 
 
@@ -62,6 +62,35 @@ export function* cars() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   const watcher = yield takeLatest(LOAD_CARS, getCars);
+
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
+/**
+ * Cars request/response handler
+ */
+export function* getPredictions() {
+  const requestURL = '/api/prediction';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const predictions = yield call(request, requestURL);
+    yield put(loadPredictionsSucces(predictions));
+  } catch (error) {
+    yield put(loadPredictionsError(error));
+  }
+}
+
+/**
+ * Root saga manages watcher lifecycle
+ */
+export function* predictions() {
+  // Watches for LOAD_PREDICTIONS actions and calls getPredictions when one comes in.
+  // By using `takeLatest` only the result of the latest API call is applied.
+  // It returns task descriptor (just like fork) so we can continue execution
+  const watcher = yield takeLatest(LOAD_PREDICTIONS, getPredictions);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);
@@ -134,4 +163,5 @@ export default [
   status,
   cars,
   rightClick,
+  predictions,
 ];

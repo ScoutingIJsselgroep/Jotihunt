@@ -12,6 +12,9 @@ import {
   LOAD_STATUS,
   LOAD_STATUS_SUCCESS,
   LOAD_STATUS_ERROR,
+  LOAD_PREDICTIONS,
+  LOAD_PREDICTIONS_ERROR,
+  LOAD_PREDICTIONS_SUCCES,
   LOAD_CARS_SUCCESS,
   LOAD_CARS_ERROR,
   TOGGLE_HISTORY,
@@ -29,6 +32,8 @@ const initialState = fromJS({
   carsError: false,
   cars: false,
   history: false,
+  predictions: false,
+  predictionsError: false,
   loadRightClick: false,
   rightClickLatLng: false,
   rightClickLocation: false,
@@ -36,6 +41,16 @@ const initialState = fromJS({
 
 function massiveMapReducer(state = initialState, action) {
   switch (action.type) {
+    case LOAD_PREDICTIONS:
+      return state
+        .set('predictionsError', false);
+    case LOAD_PREDICTIONS_ERROR:
+      return state
+        .set('predictionsError', action.error);
+    case LOAD_PREDICTIONS_SUCCES:
+      return state
+        .set('predictionsError', false)
+        .set('predictions', action.predictions);
     case LOAD_HINTS:
       return state
         .set('hints', false);

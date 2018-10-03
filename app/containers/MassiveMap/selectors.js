@@ -18,6 +18,16 @@ const hintsSelector = () => createSelector(
   (state) => state.get('hints')
 );
 
+const predictionsSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('predictions')
+);
+
+const predictionsErrorSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('predictionsError')
+);
+
 const errorSelector = () => createSelector(
   selectMassiveMapDomain(),
   (state) => state.get('error')
@@ -98,6 +108,7 @@ export {
   statusSelector,
   carsErrorSelector,
   carsLoadingSelector,
+  predictionsSelector,
   carsSelector,
   loadRightClickSelector,
   rightClickLatLngSelector,

@@ -29,7 +29,7 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
           ]}
         />
         <div className="panel-heading">
-          Groepen
+          Groepen {this.props.groups.length == 0 && <a href='/api/group/fill' className='btn btn-default pull-right'>Importeer groepen</a>}
         </div>
         <div className="panel-body">
           Hieronder vind je een lijst van alle deelnemende groepen, gegroepeerd per plaats.

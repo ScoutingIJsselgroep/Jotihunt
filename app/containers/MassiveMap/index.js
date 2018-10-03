@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import openSocket from 'socket.io-client';
-import { GoogleMap, withGoogleMap, TrafficLayer} from 'react-google-maps';
+import { GoogleMap, withGoogleMap, TrafficLayer, DirectionsRenderer } from 'react-google-maps';
 import Toggle from 'react-bootstrap-toggle';
 import StatusBar from 'components/StatusBar';
 import _ from 'lodash';
@@ -27,8 +27,9 @@ import makeSelectMassiveMap, {
   loadRightClickSelector,
   rightClickLatLngSelector,
   statusSelector,
+  predictionsSelector,
 } from './selectors';
-import { clearLocation, historyToggle, loadCars, loadHints, loadStatus, rightClickEvent } from './actions';
+import { clearLocation, historyToggle, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions } from './actions';
 import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
@@ -85,6 +86,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     dispatch(loadHints());
     dispatch(loadStatus());
     dispatch(loadCars());
+    dispatch(loadPredictions());
   }
 
   onHistoryToggle(history) {
@@ -111,6 +113,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 
 
   render() {
+    console.log(this.props.predictions);
     let huntCount = 0;
     if (this.props.hints) {
       huntCount = _.filter(this.props.hints, (hint) => hint.HintType.name === 'Hunt').length;
@@ -137,6 +140,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           }
           {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
           {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
+          {this.props.predictions && <DirectionsRenderer directions={this.props.predictions} />}
         </MyMapComponent>
         {(this.props.loadRightClick || this.props.rightClickLatLng) &&
         <div className="panel panel-default">
@@ -211,6 +215,10 @@ MassiveMap.propTypes = {
     PropTypes.object,
     PropTypes.bool,
   ]),
+  predictions: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool,
+  ]),
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -223,6 +231,7 @@ const mapStateToProps = createStructuredSelector({
   loadingStatus: loadingStatusSelector(),
   status: statusSelector(),
   cars: carsSelector(),
+  predictions: predictionsSelector(),
   carsLoading: carsLoadingSelector(),
   carsError: carsErrorSelector(),
   rightClickLatLng: rightClickLatLngSelector(),

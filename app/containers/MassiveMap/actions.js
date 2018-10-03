@@ -13,11 +13,34 @@ import {
   LOAD_STATUS_SUCCESS,
   LOAD_STATUS_ERROR,
   LOAD_CARS_SUCCESS,
+  LOAD_PREDICTIONS,
+  LOAD_PREDICTIONS_ERROR,
+  LOAD_PREDICTIONS_SUCCES,
   LOAD_CARS,
   LOAD_CARS_ERROR,
   RIGHT_CLICK_EVENT,
   RIGHT_CLICK_EVENT_SUCCESS, CLEAR_LOCATION,
 } from './constants';
+
+export function loadPredictions() {
+  return {
+    type: LOAD_PREDICTIONS,
+  }
+}
+
+export function loadPredictionsError(error) {
+  return {
+    type: LOAD_PREDICTIONS_ERROR,
+    error
+  }
+}
+
+export function loadPredictionsSucces(predictions) {
+  return {
+    type: LOAD_PREDICTIONS_SUCCES,
+    predictions
+  }
+}
 
 export function loadHints() {
   return {

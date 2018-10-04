@@ -17,7 +17,12 @@ export default function NotFound() {
   return (
     <article className="container text-center">
       <h1> 404: Pagina niet gevonden </h1>
-      <img src={image} width="30%" />
+      <img src={image} />
     </article>
   );
+  /*
+  light: EA9327
+  medium: E97D1F D09451
+  dark: F84B26
+  */
 }

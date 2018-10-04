@@ -16,6 +16,12 @@ function createLock(nextPathname, closable) {
   storeSecret(secret);
   return new Auth0Lock(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN, {
     closable: closable,
+    theme: {
+      logo: 'https://s3.eu-central-1.amazonaws.com/tristandb/headonly.svg',
+    },
+    languageDictionary: {
+      title: "Jotihunt inloggen"
+    },
     auth: {
       redirectUrl: `${ORIGIN}/login/callback`,
       responseType: 'token',

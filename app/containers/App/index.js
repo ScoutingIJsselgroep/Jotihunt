@@ -13,6 +13,7 @@ import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 import '../../stylesheets/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import 'font-awesome/css/font-awesome.min.css';
+import logo from './headonly.svg';
 
 export function App(props) {
   return (

@@ -14,7 +14,9 @@ export class LoginCallback extends React.Component { // eslint-disable-line reac
   }
   render() {
     return (
-      <span>Logging you in...</span>
+      <div className="container text-center">
+        <img src={require('../App/headonly.svg')}/>
+      </div>
     );
   }
 }

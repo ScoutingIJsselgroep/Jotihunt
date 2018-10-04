@@ -10,7 +10,7 @@ import NavBarMenu from 'components/NavBarMenu';
 
 import Img from './Img';
 import NavBar from './NavBar';
-import logo from './logo_64.png';
+import logo from './headonly.svg';
 let toggle = false;
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function

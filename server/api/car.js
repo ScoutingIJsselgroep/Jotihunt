@@ -27,13 +27,49 @@ router.post('/', (req, res) => {
     socket.emit('status');
 
     if (result) { // update
-      return result.update({
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
-      });
+      if (!(result.latitude == req.body.latitude || result.longitude == req.body.longitude)){
+        return result.update({
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
+        });
+      }
     }
     return models.Car.create({
       name: req.body.name,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+    });
+  });
+  res.send(200);
+});
+
+
+router.post('/weblocation', checkJwt, (req, res) => {
+  models.Car.findOne({
+    where: {
+      name: req.user.sub,
+    },
+  }).then((result) => {
+    models.CarHistory.create({
+      name: req.user.sub,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+    });
+    // Make update to Socket to do a live website update
+    const socket = openSocket('http://localhost:3000');
+    socket.emit('status');
+
+    if (result) { // update
+      if (!(result.latitude == req.body.latitude || result.longitude == req.body.longitude)){
+        return result.update({
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
+        });
+      }
+      return;
+    }
+    return models.Car.create({
+      name: req.user.sub,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
     });

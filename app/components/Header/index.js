@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import NavbarLogin from 'components/NavbarLogin';
 import NavBarMenu from 'components/NavBarMenu';
+import {geolocated} from 'react-geolocated';
 
 import Img from './Img';
 import NavBar from './NavBar';
@@ -22,6 +23,19 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
   onHeaderToggle() {
     toggle = !toggle;
     this.forceUpdate();
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled) {
+        // Send coordinates to server
+        this.props.sendCoordinates(this.props.coords);
+      }
+    }, 60000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
@@ -42,6 +56,13 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <NavBarMenu />
+            <form className="navbar-form navbar-left">
+              {!this.props.isGeolocationAvailable || !this.props.isGeolocationEnabled ?
+               <button type="submit" className="btn btn-block btn-danger"><i className="fa fa-location-arrow"></i> GPS</button>
+               :
+               <button type="submit" className="btn btn-block btn-success"><i className="fa fa-location-arrow"></i> GPS</button>
+              }
+            </form>
             <NavbarLogin />
           </div>
         </div>
@@ -55,4 +76,9 @@ Header.propTypes = {
   toggle: PropTypes.bool,
 };
 
-export default Header;
+export default geolocated({
+  positionOptions: {
+    enableHighAccuracy: false,
+  },
+  userDecisionTimeout: 5000,
+})(Header);

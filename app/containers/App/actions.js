@@ -19,7 +19,13 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
+  SEND_COORDINATES,
 } from './constants';
+
+import request from 'utils/request';
+const config = require('../../../config');
+import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
+import { LOCATION_CHANGE } from 'react-router-redux';
 
 /**
  * Load the repositories, this action starts the request saga
@@ -59,5 +65,39 @@ export function repoLoadingError(error) {
   return {
     type: LOAD_REPOS_ERROR,
     error,
+  };
+}
+
+function submitCar(coordinates) {
+  // Call server using ordinary methods.
+  const requestURL = '/api/car/weblocation';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const response = request(requestURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: "Tristan",
+        latitude: coordinates.latitude,
+        longitude: coordinates.longitude,
+      }),
+    })
+  } catch (err) {
+
+  }
+}
+
+/**
+ * Send coordinates to the server.
+ * Call is hacked in here, because it otherwise will give errors.
+ */
+export function doSendCoordinates(coordinates) {
+  submitCar(coordinates);
+  return {
+    type: SEND_COORDINATES,
+    coordinates,
   };
 }

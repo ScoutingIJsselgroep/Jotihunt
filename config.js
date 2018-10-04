@@ -29,7 +29,7 @@ module.exports = {
       longitude: 6.214124,
       radius: 500,
     },
-    filename: process.env.KML_FILENAME,
+    filename: "jotihunt_2017.kml",
     // The amount of hours to keep in history on the MassiveMap
     historyTime: 10,
     // The walking speed (sky wide) in km/h by a average human

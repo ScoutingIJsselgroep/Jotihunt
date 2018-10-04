@@ -7,7 +7,7 @@ import {
 
 const LoadingIndicator = () => (
   <Wrapper>
-    <ThreeBounce color='#3b3f51' size={15} />
+    <ThreeBounce color='#e59451' size={15} />
   </Wrapper>
 );
 

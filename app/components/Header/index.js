@@ -35,7 +35,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <NavBar className="navbar-brand" href="#">
+            <NavBar className="navbar-brand" href="/">
               <span><Img alt="" src={logo} /></span>&nbsp;Jotihunt.js
             </NavBar>
           </div>

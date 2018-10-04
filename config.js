@@ -4,7 +4,7 @@
 module.exports = {
   wiki: 'https://raw.githubusercontent.com/ScoutingIJsselgroep/JotihuntWiki/master/README.md',
   telegram: {
-    authToken: '122155087:AAGEGn5RJgzUEq3IMNS8TLQLUjr1lZwxUEc',
+    authToken: process.env.TELEGRAM_TOKEN,
     chats: {
       Alpha: -153752986,
       Bravo: -157632620,
@@ -29,17 +29,17 @@ module.exports = {
       longitude: 6.214124,
       radius: 500,
     },
-    filename: 'jotihunt_2017.kml',
+    filename: process.env.KML_FILENAME,
     // The amount of hours to keep in history on the MassiveMap
     historyTime: 10,
     // The walking speed (sky wide) in km/h by a average human
     walkingSpeed: 3.6,
   },
   google: {
-    googleAppId: 'AIzaSyATLQHsOrwWkL_CNba3OsdTtKlk8Z19Pms',
+    googleAppId: process.env.GOOGLE_AUTH_TOKEN,
   },
   poller: {
-    timeout: 1 * 61 * 1000,
+    timeout: process.env.POLLER_INTERVAL_SECONDS * 1000,
   },
   clairvoyance: {
     ip: 'clairvoyance',

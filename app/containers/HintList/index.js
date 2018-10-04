@@ -23,40 +23,42 @@ export class HintList extends React.Component { // eslint-disable-line react/pre
 
   render() {
     return (
-      <div className="row">
-        <Helmet
-          title="Hints"
-          titleTemplate="%s | Jotihunt.js"
-          meta={[
-            { name: 'description', content: 'Een lijst van alle hints.' },
-          ]}
-        />
-        <div className="panel panel-default" style={{ overflow: 'auto' }}>
-          <div className="panel-heading">
-            Lijst van hints
+      <div className="container">
+        <div className="row">
+          <Helmet
+            title="Hints"
+            titleTemplate="%s | Jotihunt.js"
+            meta={[
+              { name: 'description', content: 'Een lijst van alle hints.' },
+            ]}
+          />
+          <div className="panel panel-default" style={{ overflow: 'auto' }}>
+            <div className="panel-heading">
+              Lijst van hints
+            </div>
+            <div className="panel-body">
+              Hieronder vind je een lijst van alle hints, hunts en infopunten die in het systeem staan.
+              {this.props.loadingHints && <LoadingIndicator />}
+            </div>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Deelgebied</th>
+                  <th>Adres</th>
+                  <th>Lat/Lng</th>
+                  <th>Gebruiker</th>
+                  <th>Tijdstip</th>
+                  <th>Acties</th>
+                </tr>
+              </thead>
+              <tbody>
+                {!this.props.loadingHints && this.props.hints && this.props.hints.map((hint, i) => (
+                  <HintListItem key={i} hint={hint} deleteHint={this.props.onDeleteHint} />
+              ))}
+              </tbody>
+            </table>
           </div>
-          <div className="panel-body">
-            Hieronder vind je een lijst van alle hints, hunts en infopunten die in het systeem staan.
-            {this.props.loadingHints && <LoadingIndicator />}
-          </div>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Type</th>
-                <th>Deelgebied</th>
-                <th>Adres</th>
-                <th>Lat/Lng</th>
-                <th>Gebruiker</th>
-                <th>Tijdstip</th>
-                <th>Acties</th>
-              </tr>
-            </thead>
-            <tbody>
-              {!this.props.loadingHints && this.props.hints && this.props.hints.map((hint, i) => (
-                <HintListItem key={i} hint={hint} deleteHint={this.props.onDeleteHint} />
-            ))}
-            </tbody>
-          </table>
         </div>
       </div>
     );

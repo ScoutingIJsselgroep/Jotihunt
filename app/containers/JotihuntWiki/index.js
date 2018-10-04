@@ -21,19 +21,21 @@ export class JotihuntWiki extends React.Component { // eslint-disable-line react
 
   render() {
     return (
-      <div className={'panel panel-default'}>
-        <Helmet
-          title="Wiki de Viking"
-          titleTemplate="%s | Jotihunt.js"
-          meta={[
-            { name: 'description', content: 'Een Wiki met alles over Wickie!' },
-          ]}
-        />
-        <div className={'panel-body'}>
-          {this.props.loading && <LoadingIndicator />}
-          {this.props.result && <ReactMarkdown source={this.props.result}>
+      <div className="container">
+        <div className={'panel panel-default'}>
+          <Helmet
+            title="Wiki de Viking"
+            titleTemplate="%s | Jotihunt.js"
+            meta={[
+              { name: 'description', content: 'Een Wiki met alles over Wickie!' },
+            ]}
+          />
+          <div className={'panel-body'}>
+            {this.props.loading && <LoadingIndicator />}
+            {this.props.result && <ReactMarkdown source={this.props.result}>
 
-          </ReactMarkdown>}
+            </ReactMarkdown>}
+          </div>
         </div>
       </div>
     );

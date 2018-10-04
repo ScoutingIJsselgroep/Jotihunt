@@ -11,9 +11,13 @@ import H1 from 'components/H1';
 import messages from './messages';
 import {Helmet} from "react-helmet";
 
+const image = require('./index.svg');
+
 export default function NotFound() {
   return (
-    <article>
+    <article className="container text-center">
+      <h1> 404: Pagina niet gevonden </h1>
+      <img src={image} width="30%" />
     </article>
   );
 }

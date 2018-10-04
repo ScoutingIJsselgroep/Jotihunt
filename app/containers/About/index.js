@@ -11,7 +11,7 @@ import Helmet from 'react-helmet';
 export class About extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="row">
+      <div className="row container">
         <Helmet
           title="Over Jotihunt"
           titleTemplate="%s | Jotihunt.js"

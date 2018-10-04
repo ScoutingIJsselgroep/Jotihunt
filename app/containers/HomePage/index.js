@@ -52,7 +52,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     };
 
     return (
-      <article>
+      <article className="container">
         <Helmet
           title="Home"
           titleTemplate="%s | Jotihunt.js"

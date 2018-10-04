@@ -28,26 +28,28 @@ export class MapViewer extends React.Component { // eslint-disable-line react/pr
     const onRightClick = () => {};
 
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <div className="btn-group">
-            <button className="btn btn-default" onClick={browserHistory.goBack}>
-              <i className="fa fa-arrow-left" aria-hidden="true"></i> Terug
-            </button>
-            <Gpsbutton latitude={parseFloat(this.props.params.latitude)} longitude={parseFloat(this.props.params.longitude)} />
+      <div className="container">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <div className="btn-group">
+              <button className="btn btn-default" onClick={browserHistory.goBack}>
+                <i className="fa fa-arrow-left" aria-hidden="true"></i> Terug
+              </button>
+              <Gpsbutton latitude={parseFloat(this.props.params.latitude)} longitude={parseFloat(this.props.params.longitude)} />
+            </div>
           </div>
-        </div>
-        <div className="panel-body">
-          <GettingStartedGoogleMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places`}
-            containerElement={
-              <div style={{ height: '400px' }} />
-            }
-            mapElement={
-              <div style={{ height: '400px' }} />
-            }
-          >
-          </GettingStartedGoogleMap>
+          <div className="panel-body">
+            <GettingStartedGoogleMap
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places`}
+              containerElement={
+                <div style={{ height: '400px' }} />
+              }
+              mapElement={
+                <div style={{ height: '400px' }} />
+              }
+            >
+            </GettingStartedGoogleMap>
+          </div>
         </div>
       </div>
     );

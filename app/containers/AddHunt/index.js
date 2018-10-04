@@ -46,43 +46,45 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
     }
     if (this.props.locationResult) {
       return (
-        <div className="row">
-          <Helmet
-            title="Markering toevoegen"
-            titleTemplate="%s | Jotihunt.js"
-            meta={[
-            { name: 'description', content: 'Markering toevoegen aan het systeem' },
-            ]}
-          />
-          <div className="col-md-8 col-md-offset-2 col-sm-12">
-            {
-              this.props.huntResult && <SuccessComponent message={'Succesvol opgeslagen'} />
-            }
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                {capitalize(this.props.route.type)} toevoegen
-              </div>
-              <div className="panel-body">
-                {!this.props.huntResult && <span>Controleer onderstaande informatie. Deze informatie wordt opgeslagen als {this.props.route.type} en in de Telegram-chat verstuurd.</span>}
-
-                <div className="form-group">
-                  <span>Adres</span>
-                  <input type="email" className="form-control" disabled value={!this.props.locationResult.address[0] ? 'Onbekende weg' : this.props.locationResult.address[0].formatted_address} />
+        <div className="container">
+          <div className="row">
+            <Helmet
+              title="Markering toevoegen"
+              titleTemplate="%s | Jotihunt.js"
+              meta={[
+              { name: 'description', content: 'Markering toevoegen aan het systeem' },
+              ]}
+            />
+            <div className="col-md-8 col-md-offset-2 col-sm-12">
+              {
+                this.props.huntResult && <SuccessComponent message={'Succesvol opgeslagen'} />
+              }
+              <div className="panel panel-default">
+                <div className="panel-heading">
+                  {capitalize(this.props.route.type)} toevoegen
                 </div>
+                <div className="panel-body">
+                  {!this.props.huntResult && <span>Controleer onderstaande informatie. Deze informatie wordt opgeslagen als {this.props.route.type} en in de Telegram-chat verstuurd.</span>}
 
-                <div className="form-group">
-                  <span>Deelgebied</span>
-                  <input type="email" className="form-control" disabled value={this.props.locationResult.subarea} />
+                  <div className="form-group">
+                    <span>Adres</span>
+                    <input type="email" className="form-control" disabled value={!this.props.locationResult.address[0] ? 'Onbekende weg' : this.props.locationResult.address[0].formatted_address} />
+                  </div>
+
+                  <div className="form-group">
+                    <span>Deelgebied</span>
+                    <input type="email" className="form-control" disabled value={this.props.locationResult.subarea} />
+                  </div>
+
+                  <MapDetailView lat={parseFloat(this.props.params.lat)} lng={parseFloat(this.props.params.lng)} />
+
+                  {this.props.huntResult ?
+                    <Link to="/map" className={'btn btn-default'}><i className={'fa fa-map'} /> Ga naar de kaart</Link>
+                    :
+                    <button className={'btn btn-primary'} onClick={this.onSubmit}>
+                      Verstuur {this.props.route.type}</button>
+                  }
                 </div>
-
-                <MapDetailView lat={parseFloat(this.props.params.lat)} lng={parseFloat(this.props.params.lng)} />
-
-                {this.props.huntResult ?
-                  <Link to="/map" className={'btn btn-default'}><i className={'fa fa-map'} /> Ga naar de kaart</Link>
-                  :
-                  <button className={'btn btn-primary'} onClick={this.onSubmit}>
-                    Verstuur {this.props.route.type}</button>
-                }
               </div>
             </div>
           </div>

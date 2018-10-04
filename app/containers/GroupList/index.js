@@ -33,33 +33,35 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
 
   render() {
     return (
-      <div className="panel panel-default" style={{ overflow: 'auto' }}>
-        <Helmet
-          title="Groepen"
-          titleTemplate="%s | Jotihunt.js"
-          meta={[
-            { name: 'description', content: 'Een lijst van alle groepen.' },
-          ]}
-        />
-        <div className="panel-heading">
-          Groepen {this.props.groups.length == 0 && <a href='/api/group/fill' className='btn btn-default pull-right'>Importeer groepen</a>}
+      <div className="container">
+        <div className="panel panel-default" style={{ overflow: 'auto' }}>
+          <Helmet
+            title="Groepen"
+            titleTemplate="%s | Jotihunt.js"
+            meta={[
+              { name: 'description', content: 'Een lijst van alle groepen.' },
+            ]}
+          />
+          <div className="panel-heading">
+            Groepen {this.props.groups.length == 0 && <a href='/api/group/fill' className='btn btn-default pull-right'>Importeer groepen</a>}
+          </div>
+          <div className="panel-body">
+            <SearchGroupList onSearchChange={this.onSearchChange} />
+          </div>
+          <table className="table">
+            <thead>
+            </thead>
+            <tbody>
+              {this.props.groups && this.props.groups.map((group, index) => {
+                if (!this.props.search || this.props.search == "" ||
+                  JSON.stringify(group).toUpperCase().includes(this.props.search.toUpperCase())) {
+                  return <GroupListItem key={index} group={group} />;
+                }
+                return null;
+              })}
+            </tbody>
+          </table>
         </div>
-        <div className="panel-body">
-          <SearchGroupList onSearchChange={this.onSearchChange} />
-        </div>
-        <table className="table">
-          <thead>
-          </thead>
-          <tbody>
-            {this.props.groups && this.props.groups.map((group, index) => {
-              if (!this.props.search || this.props.search == "" ||
-                JSON.stringify(group).toUpperCase().includes(this.props.search.toUpperCase())) {
-                return <GroupListItem key={index} group={group} />;
-              }
-              return null;
-            })}
-          </tbody>
-        </table>
       </div>
     );
   }

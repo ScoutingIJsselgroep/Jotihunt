@@ -43,7 +43,7 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Helmet
           title="Clairvoyance"
           titleTemplate="%s | Jotihunt.js"

@@ -74,7 +74,7 @@ function submitCar(coordinates) {
 
   try {
     // Call our request helper (see 'utils/request')
-    const response = request(requestURL, {
+    request(requestURL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -27,12 +27,10 @@ router.post('/', (req, res) => {
     socket.emit('status');
 
     if (result) { // update
-      if (!(result.latitude == req.body.latitude || result.longitude == req.body.longitude)){
-        return result.update({
-          latitude: req.body.latitude,
-          longitude: req.body.longitude,
-        });
-      }
+      return result.update({
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+      });
     }
     return models.Car.create({
       name: req.body.name,
@@ -60,13 +58,10 @@ router.post('/weblocation', checkJwt, (req, res) => {
     socket.emit('status');
 
     if (result) { // update
-      if (!(result.latitude == req.body.latitude || result.longitude == req.body.longitude)){
-        return result.update({
-          latitude: req.body.latitude,
-          longitude: req.body.longitude,
-        });
-      }
-      return;
+      return result.update({
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+      });
     }
     return models.Car.create({
       name: req.user.sub,
@@ -74,7 +69,7 @@ router.post('/weblocation', checkJwt, (req, res) => {
       longitude: req.body.longitude,
     });
   });
-  res.send(200);
+  res.send({});
 });
 
 module.exports = router;

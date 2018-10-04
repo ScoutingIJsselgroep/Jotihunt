@@ -6,6 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import createRef from 'create-react-ref/lib/createRef';
 import { connect } from 'react-redux';
 import openSocket from 'socket.io-client';
 import { GoogleMap, withGoogleMap, TrafficLayer, DirectionsRenderer } from 'react-google-maps';
@@ -50,9 +51,10 @@ const MyMapComponent = withGoogleMap((props) =>
     options={{scaleControl: true}}
     defaultZoom={10}
     defaultCenter={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
-    // center={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
+    center={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
     onRightClick={props.onRightClick}
-    onCenterChanged={(evt) => props.onChangeMapCenter(evt)}
+    onDragEnd={props.onChangeMapCenter}
+    ref={props.ref}
   >
   {SubareaPolygons(props.onRightClick).map((subarea) => subarea)}
   {MapGroups().map((group) => group)}
@@ -64,11 +66,14 @@ const MyMapComponent = withGoogleMap((props) =>
 export class MassiveMap extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
+    this.mapRef = createRef();
+
     this.reloadAll = this.reloadAll.bind(this);
     this.onHistoryToggle = this.onHistoryToggle.bind(this);
     this.onClearLocation = this.onClearLocation.bind(this);
     this.onRightClick = this.onRightClick.bind(this);
     this.onChangeMapCenter = this.onChangeMapCenter.bind(this);
+
   }
 
   componentDidMount() {
@@ -104,9 +109,12 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
   }
 
   onChangeMapCenter(event) {
-    console.log(event);
     const { dispatch } = this.props;
-    //  dispatch(setLatLng({lat: event[0], lng: event[1]}));
+    if (event) {
+      dispatch(setLatLng({lat: event[0], lng: event[1]}));
+    } else {
+      dispatch(setLatLng({lat: this.mapRef.current.state.map.center.lat(), lng: this.mapRef.current.state.map.center.lng()}));
+    }
   }
 
   onClearLocation() {
@@ -145,13 +153,14 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           onRightClick={this.onRightClick}
           onChangeMapCenter={this.onChangeMapCenter}
           latlng={this.props.latlng}
+          ref={this.mapRef}
         >
           {this.props.rightClickLatLng &&
           <ClickMarker latlng={this.props.rightClickLatLng} />
           }
           {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
           {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
-          {this.props.predictions && <DirectionsRenderer directions={this.props.predictions} />}
+          //{this.props.predictions && <DirectionsRenderer directions={this.props.predictions} />}
         </MyMapComponent>
         {(this.props.loadRightClick || this.props.rightClickLatLng) &&
         <div className="panel panel-default">

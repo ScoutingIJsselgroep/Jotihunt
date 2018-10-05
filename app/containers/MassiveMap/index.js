@@ -54,6 +54,7 @@ const MyMapComponent = withGoogleMap((props) =>
     center={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
     onRightClick={props.onRightClick}
     onDragEnd={props.onChangeMapCenter}
+    onZoomChanged={props.onChangeMapCenter}
     ref={props.ref}
   >
   {SubareaPolygons(props.onRightClick).map((subarea) => subarea)}

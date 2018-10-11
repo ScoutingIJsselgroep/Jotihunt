@@ -323,7 +323,11 @@
     "react-addons-test-utils": "15.4.1",
     "rimraf": "2.5.4",
     "sass-loader": "^6.0.7",
+<<<<<<< HEAD
     "shelljs": "^0.7.8",
+=======
+    "shelljs": "^0.7.5",
+>>>>>>> 2c1e422e87cc2d806b43ce10bd04e0705ee2228d
     "sinon": "2.0.0-pre",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",

@@ -1,5 +1,6 @@
 
 const _ = require('lodash');
+const apicache = require('apicache')
 
 const { inSubarea, getPolygons } = require('../../helpers/geometry');
 const { sendHint, sendHunt, sendSimpleLocation } = require('../telegram/index');
@@ -23,6 +24,11 @@ router.get('/', checkJwt, (req, res) => {
     res.send(hints);
   });
 });
+
+/**
+ * Caches the Jotihunt.net API.
+ */
+// router.get('/api', )
 
 /**
  * Given an WGS-coordinate, calculate RD, subarea and retrieve the street address.

@@ -123,7 +123,7 @@ router.get('/md5', cache('10 minutes'), (req, res) => {
  */
 router.get('/init', cache('20 seconds'), (req, res) => {
   // Make a request to the cached api.
-  request('http://localhost:3000/api/hint/api', async (error, response, body) => {
+  request('http://localhost:3000/api/hint/api', async function (error, response, body) {
     // Parse response to JSON
     const data = JSON.parse(body).data;
 
@@ -132,16 +132,16 @@ router.get('/init', cache('20 seconds'), (req, res) => {
 
     // Loop subareas check the hint. A subarea may not be present in the object, so we check for existence.
     // The loop eventually turns back the MD5 sum of every image retrieved
-    const result = await Promise.all(_.map(config.dbMappings.nArea, async (subarea) => {
+    const result = await Promise.all(_.map(config.dbMappings.nArea, async function (subarea) {
       // Check if hint has key `subarea`
       if (subarea in hint) {
         const pictures = hint[subarea];
 
         // Loop every image in the picture list.
-        const md5s = await Promise.all(_.map(pictures, async (picture) => {
+        const md5s = await Promise.all(_.map(pictures, async function (picture) {
           return new Promise(resolve =>
             // Make a request to retrieve MD5 sum
-              request('http://localhost:3000/api/clairvoyance/md5?url=http:'+picture, async (error, response, body) => {
+              request('http://localhost:3000/api/clairvoyance/md5?url=http:'+picture, async function (error, response, body) {
                 if (!error)
                   resolve(body);
               }));

@@ -1,0 +1,1926 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>Jotihunt</name>
+		<description><![CDATA[]]></description>
+		<Folder>
+			<name>Organisatie</name>
+            <Placemark>
+                <styleUrl>#hq</styleUrl>
+				<name><![CDATA[Jotihunt Organisatie]]></name>
+				<Point>
+					<coordinates>5.868185,51.952676,0.0</coordinates>
+				</Point>
+			</Placemark>
+        </Folder>
+        <Folder>
+    	    <name>Groepen</name>
+                        <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[SBV/Kastanjegroep]]></name>
+                <description><![CDATA[
+                <p>
+                	Arnhem<br/>
+                	<a href="https://www.sbv-kastanjegroep.nl" target="_blank">
+                			https://www.sbv-kastanjegroep.nl                	</a><br>
+                	Frans Halslaan 101<br />
+                	6814 JP Arnhem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.890477001667023,51.99231881081593,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Rhedense Pioniers]]></name>
+                <description><![CDATA[
+                <p>
+                	Rheden<br/>
+                	<a href="http://www.rhedensepioniers.nl/" target="_blank">
+                			http://www.rhedensepioniers.nl/                	</a><br>
+                	Arnhemseweg 30<br />
+                	6991DP Rheden<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.027968376874924,52.00604576498145,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Groessen + Zeddam]]></name>
+                <description><![CDATA[
+                <p>
+                	Groessen<br/>
+                	<a href="http://www.scoutsgroessen.nl" target="_blank">
+                			http://www.scoutsgroessen.nl                	</a><br>
+                	St. Isidorusplein 8<br />
+                	6923BD Groessen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.032347083091736,51.93188921625557,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Jan Wandelaar Zeewolde]]></name>
+                <description><![CDATA[
+                <p>
+                	Zeewolde<br/>
+                	<a href="http://janwandelaar.nl/ en https://www.facebook.com/scoutingjanwandelaar/?fref=ts" target="_blank">
+                			http://janwandelaar.nl/ en https://www.facebook.com/scoutingjanwandelaar/?fref=ts                	</a><br>
+                	Dasselaarweg 49<br />
+                	3896 LT Zeewolde<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.528676509857178,52.306812424165024,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Nunspeet]]></name>
+                <description><![CDATA[
+                <p>
+                	Nunspeet<br/>
+                	<a href="http://www.scoutingnunspeet.nl" target="_blank">
+                			http://www.scoutingnunspeet.nl                	</a><br>
+                	Zandenboslaan 80<br />
+                	8072PP Nunspeet<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.806744350456938,52.376206483221,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Dieren]]></name>
+                <description><![CDATA[
+                <p>
+                	Dieren<br/>
+                	<a href="http://www.scoutingdieren.nl/" target="_blank">
+                			http://www.scoutingdieren.nl/                	</a><br>
+                	Kolonieweg 9<br />
+                	6952GZ Dieren<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.076759770512581,52.05416870462895,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Beuningen `76]]></name>
+                <description><![CDATA[
+                <p>
+                	Weurt<br/>
+                	<a href="http://www.scoutingbeuningen.nl" target="_blank">
+                			http://www.scoutingbeuningen.nl                	</a><br>
+                	Reekstraat 13a<br />
+                	6551 DR Weurt<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.782083570957184,51.853670296145225,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Lido '76/Voermangroep]]></name>
+                <description><![CDATA[
+                <p>
+                	Arnhem<br/>
+                	<a href="https://scoutinglido76.nl/" target="_blank">
+                			https://scoutinglido76.nl/                	</a><br>
+                	Veerpolderstraat 128A<br />
+                	6833 BS Arnhem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.9174660593271255,51.968301177605376,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Graaf van Gelre ]]></name>
+                <description><![CDATA[
+                <p>
+                	Geldermalsen<br/>
+                	<a href="http://www.scoutinggeldermalsen.nl/" target="_blank">
+                			http://www.scoutinggeldermalsen.nl/                	</a><br>
+                	Burgemeester Roozeveld v/d Venlaan 13a<br />
+                	4191PL Geldermalsen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.271087884902954,51.87764786758819,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[St. Stanislaus]]></name>
+                <description><![CDATA[
+                <p>
+                	Culemborg<br/>
+                	<a href="http://www.scoutnet.nl/~sint.stanislaus/" target="_blank">
+                			http://www.scoutnet.nl/~sint.stanislaus/                	</a><br>
+                	Steenovenlaan 18<br />
+                	4101 AM Culemborg<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.216681957244873,51.95989659144436,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[De Rietkampers - Don Bosco]]></name>
+                <description><![CDATA[
+                <p>
+                	Afferden (Gld.)<br/>
+                	<a href="http://www.derietkampers.nl" target="_blank">
+                			http://www.derietkampers.nl                	</a><br>
+                	Koningstraat 114<br />
+                	6654 AH Afferden (Gld.)<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.6160494685173035,51.88204645307691,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting IJsselgroep & Scoutinggroep de Witte Wieven]]></name>
+                <description><![CDATA[
+                <p>
+                	Gorssel<br/>
+                	<a href="http://scouting-ijsselgroep.nl" target="_blank">
+                			http://scouting-ijsselgroep.nl                	</a><br>
+                	Kwekerijweg 3<br />
+                	7213AX Gorssel<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.214176714420319,52.19920873157857,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Jan Hilgers Ede]]></name>
+                <description><![CDATA[
+                <p>
+                	Ede<br/>
+                	<a href="http://www.scoutingjanhilgers.nl" target="_blank">
+                			http://www.scoutingjanhilgers.nl                	</a><br>
+                	Dwarsweg 1-3<br />
+                	6715 AT Ede<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.620375871658325,52.04209147545946,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Dannenburcht Huissen Stad]]></name>
+                <description><![CDATA[
+                <p>
+                	Huissen<br/>
+                	<a href="http://www.scoutingdannenburcht.nl" target="_blank">
+                			http://www.scoutingdannenburcht.nl                	</a><br>
+                	 Kloosterlaan 1a<br />
+                	6851CA Huissen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.94172328710556,51.93535223229611,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting ]]></name>
+                <description><![CDATA[
+                <p>
+                	Deest<br/>
+                	<a href="http://www.dewoutergroep.nl" target="_blank">
+                			http://www.dewoutergroep.nl                	</a><br>
+                	Kweldam 1A<br />
+                	6653CB Deest<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.660061836242676,51.88901930732916,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Karel de Stoute]]></name>
+                <description><![CDATA[
+                <p>
+                	Nijmegen <br/>
+                	<a href="http://www.kareldestoute.nl" target="_blank">
+                			http://www.kareldestoute.nl                	</a><br>
+                	Weezenhof  9311<br />
+                	6536AE Nijmegen <br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.8178722858428955,51.801834769849584,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Karmijngroep Winssen]]></name>
+                <description><![CDATA[
+                <p>
+                	Winssen<br/>
+                	<a href="http://www.scoutingwinssen.nl" target="_blank">
+                			http://www.scoutingwinssen.nl                	</a><br>
+                	Kennedysingel 8a<br />
+                	6645 AW Winssen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.700485855334136,51.881403437342044,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[St Willibrordgroep Didam]]></name>
+                <description><![CDATA[
+                <p>
+                	Didam<br/>
+                	<a href="http://test.scouting-didam.nl" target="_blank">
+                			http://test.scouting-didam.nl                	</a><br>
+                	Julianastraat 41<br />
+                	6942BB Didam<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.13211452960968,51.93853717728195,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Nijkerk]]></name>
+                <description><![CDATA[
+                <p>
+                	Nijkerkerveen<br/>
+                	<a href="http://www.scoutingnijkerk.nl" target="_blank">
+                			http://www.scoutingnijkerk.nl                	</a><br>
+                	Van Rootselaarstraat 7<br />
+                	3864EW Nijkerkerveen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.466324537992477,52.19526762213649,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Langenberggroep Ede ]]></name>
+                <description><![CDATA[
+                <p>
+                	Ede<br/>
+                	<a href="http://www.joti.odiecustoms.nl" target="_blank">
+                			http://www.joti.odiecustoms.nl                	</a><br>
+                	Buurtmeesterweg 27-29<br />
+                	6711HL Ede<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.6908804178237915,52.04035587364239,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[HHW - Scouting Voorst]]></name>
+                <description><![CDATA[
+                <p>
+                	Voorst<br/>
+                	<a href="http://www.scoutingvoorst.nl" target="_blank">
+                			http://www.scoutingvoorst.nl                	</a><br>
+                	De Halmen 1a<br />
+                	7383 BG Voorst<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.139010488986969,52.182250863853945,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Graaf Ottogroep Doetinchem]]></name>
+                <description><![CDATA[
+                <p>
+                	Doetinchem<br/>
+                	<a href="https://www.graaf-ottogroep.nl/" target="_blank">
+                			https://www.graaf-ottogroep.nl/                	</a><br>
+                	Varsseveldseweg 182 <br />
+                	7003 AD Doetinchem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.309054493904114,51.96666269206156,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Gaanderen (Scoga)]]></name>
+                <description><![CDATA[
+                <p>
+                	Gaanderen<br/>
+                	<a href="http://www.scoga.nl" target="_blank">
+                			http://www.scoga.nl                	</a><br>
+                	Hamminkstraat 21<br />
+                	7011 HC Gaanderen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.347317546606064,51.93797495005212,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[André de Thaye]]></name>
+                <description><![CDATA[
+                <p>
+                	Arnhem<br/>
+                	<a href="http://www.andredethaye.com/" target="_blank">
+                			http://www.andredethaye.com/                	</a><br>
+                	Voetsiuslaan 41<br />
+                	6828TD Arnhem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.934945344924927,51.98116653620794,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Bennekom]]></name>
+                <description><![CDATA[
+                <p>
+                	Bennekom<br/>
+                	<a href="https://www.scoutingbennekom.nl/" target="_blank">
+                			https://www.scoutingbennekom.nl/                	</a><br>
+                	Selterskampweg 68<br />
+                	6721 AV Bennekom<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.686953663825989,52.0099157988393,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Hamaland]]></name>
+                <description><![CDATA[
+                <p>
+                	Doetinchem<br/>
+                	<a href="http://www.scoutinghamaland.nl/" target="_blank">
+                			http://www.scoutinghamaland.nl/                	</a><br>
+                	Keppelseweg 249<br />
+                	7008BB Doetinchem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.267319321632385,51.97644148858788,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scoutinggroep De Zwervers]]></name>
+                <description><![CDATA[
+                <p>
+                	Veenendaal<br/>
+                	<a href="http://zwervers.com" target="_blank">
+                			http://zwervers.com                	</a><br>
+                	Zandheuvelweg 2a<br />
+                	3904MD Veenendaal<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.536184500415402,52.01525833255574,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Schutgraaf]]></name>
+                <description><![CDATA[
+                <p>
+                	Arnhem<br/>
+                	<a href="http://schutgraaf.nl/" target="_blank">
+                			http://schutgraaf.nl/                	</a><br>
+                	Hannesstraatje 4<br />
+                	6843 NV Arnhem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.8696214854717255,51.966161962895235,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Velpsche Woudloopers & de Olmen]]></name>
+                <description><![CDATA[
+                <p>
+                	Velp<br/>
+                	<a href="http://scoutingvelp.nl" target="_blank">
+                			http://scoutingvelp.nl                	</a><br>
+                	Beekhuizenseweg 73a<br />
+                	6881 AE Velp<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.97905158996582,52.00830706708547,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Dreumel]]></name>
+                <description><![CDATA[
+                <p>
+                	Dreumel<br/>
+                	<a href="https://www.facebook.com/ScoutingDreumel/?fref=ts" target="_blank">
+                			https://www.facebook.com/ScoutingDreumel/?fref=ts                	</a><br>
+                	De Paulus  1<br />
+                	6621 CB Dreumel<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.43233223259449,51.848627870970724,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Isala Groep Scouting Doesburg]]></name>
+                <description><![CDATA[
+                <p>
+                	Doesburg<br/>
+                	<a href="http://www.scoutingdoesburg.nl" target="_blank">
+                			http://www.scoutingdoesburg.nl                	</a><br>
+                	Meipoortwal 1<br />
+                	6981 DD Doesburg<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.138114929126459,52.016104456471815,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Phoenix Tiel]]></name>
+                <description><![CDATA[
+                <p>
+                	Tiel<br/>
+                	<a href="http://jotihunt.scoutingphoenix.nl" target="_blank">
+                			http://jotihunt.scoutingphoenix.nl                	</a><br>
+                	De Hennepe 199<br />
+                	4003AD Tiel<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.426328778266907,51.89994543060916,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Olivier van Noort]]></name>
+                <description><![CDATA[
+                <p>
+                	Wageningen <br/>
+                	<a href="http://www.oliviervannoort.nl/" target="_blank">
+                			http://www.oliviervannoort.nl/                	</a><br>
+                	Aan de Rijn 5A <br />
+                	 6701 PB Wageningen <br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.674875,51.958137,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Titus Brandsma Deventer]]></name>
+                <description><![CDATA[
+                <p>
+                	Deventer-Colmscate<br/>
+                	<a href="http://www.connectitus.nl/" target="_blank">
+                			http://www.connectitus.nl/                	</a><br>
+                	Doornenburg 530<br />
+                	7423BT Deventer-Colmscate<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.2122642993927,52.25057096871767,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Duiven]]></name>
+                <description><![CDATA[
+                <p>
+                	Duiven<br/>
+                	<a href="http://www.scoutingduiven.nl" target="_blank">
+                			http://www.scoutingduiven.nl                	</a><br>
+                	De Nieuweling 3<br />
+                	6921JL Duiven<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.0322317481040955,51.94403175071277,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[De Markesteen]]></name>
+                <description><![CDATA[
+                <p>
+                	Velp<br/>
+                	<a href="http://www.markesteen.com" target="_blank">
+                			http://www.markesteen.com                	</a><br>
+                	Bovenallee 3<br />
+                	6881 AJ Velp<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.984410643577576,52.016017356641655,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Roothaangroep]]></name>
+                <description><![CDATA[
+                <p>
+                	Doetinchem<br/>
+                	<a href="http://roothaangroep.nl/" target="_blank">
+                			http://roothaangroep.nl/                	</a><br>
+                	Koekendaalseweg 11<br />
+                	7004 GH Doetinchem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.320988647639751,51.94940166142632,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Jotihunt Organisatie]]></name>
+                <description><![CDATA[
+                <p>
+                	Arnhem<br/>
+                	<a href="http://www.jotihunt.net" target="_blank">
+                			http://www.jotihunt.net                	</a><br>
+                	Zeelandsingel 40<br />
+                	6845 BH Arnhem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.868185,51.952676,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Zetten]]></name>
+                <description><![CDATA[
+                <p>
+                	Zetten<br/>
+                	<a href="http://jotihunt.scoutingzetten.nl" target="_blank">
+                			http://jotihunt.scoutingzetten.nl                	</a><br>
+                	Piersonstraat 21<br />
+                	6671 CK Zetten<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.709352791309357,51.93259540215558,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Weurt]]></name>
+                <description><![CDATA[
+                <p>
+                	Weurt<br/>
+                	<a href="http://www.scoutingweurt.nl" target="_blank">
+                			http://www.scoutingweurt.nl                	</a><br>
+                	Kerkstraat 50<br />
+                	6551 ZZ Weurt<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.817287564277649,51.859157468453326,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scoutinggroep JJB]]></name>
+                <description><![CDATA[
+                <p>
+                	Apeldoorn<br/>
+                	<a href="http://www.scoutinggroep-jjb.net" target="_blank">
+                			http://www.scoutinggroep-jjb.net                	</a><br>
+                	Berghuizerweg 155<br />
+                	7312SN Apeldoorn<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.923180840909481,52.1970259735572,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Sweder van voorst hummelo]]></name>
+                <description><![CDATA[
+                <p>
+                	Hummelo<br/>
+                	<a href="http://www.scoutingsweder.nl" target="_blank">
+                			http://www.scoutingsweder.nl                	</a><br>
+                	Torenallee  2 A<br />
+                	6999 DD Hummelo<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.2244415283203125,52.02087357549802,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Saksenheerd]]></name>
+                <description><![CDATA[
+                <p>
+                	Breedenbroek<br/>
+                	<a href="http://scoutingsaksenheerd.nl/" target="_blank">
+                			http://scoutingsaksenheerd.nl/                	</a><br>
+                	Terborgseweg 16B<br />
+                	7084 AJ Breedenbroek<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.463743187487125,51.87437014575964,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Verbraak Margriet Groep Harderwijk]]></name>
+                <description><![CDATA[
+                <p>
+                	Harderwijk<br/>
+                	<a href="http://www.verbraakmargrietgroep.nl/" target="_blank">
+                			http://www.verbraakmargrietgroep.nl/                	</a><br>
+                	Strokelweg  6<br />
+                	3847 LR Harderwijk<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.636080,52.324881,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[St. Christoforus-Lichtdraagsters]]></name>
+                <description><![CDATA[
+                <p>
+                	Arnhem<br/>
+                	<a href="http://www.christoforus.nl" target="_blank">
+                			http://www.christoforus.nl                	</a><br>
+                	Monikkensteeg 4<br />
+                	6823 AB Arnhem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.931675732135773,51.99614131310567,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Paul Kruger]]></name>
+                <description><![CDATA[
+                <p>
+                	Nijmegen<br/>
+                	<a href="http://www.scoutingpaulkruger.nl/" target="_blank">
+                			http://www.scoutingpaulkruger.nl/                	</a><br>
+                	Sophiaweg 448<br />
+                	6523NJ Nijmegen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.891060382127762,51.825681262596476,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Jonko]]></name>
+                <description><![CDATA[
+                <p>
+                	Silvolde<br/>
+                	<a href="http://www.scoutingsilvolde.nl/" target="_blank">
+                			http://www.scoutingsilvolde.nl/                	</a><br>
+                	Kerkenstraat 5<br />
+                	7064BH Silvolde<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.3811831176280975,51.91025337486049,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Kon-Tiki]]></name>
+                <description><![CDATA[
+                <p>
+                	Putten<br/>
+                	<a href="http://www.scoutingkontiki.nl" target="_blank">
+                			http://www.scoutingkontiki.nl                	</a><br>
+                	Garderenseweg 144b<br />
+                	3881 NC Putten<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.639687776565552,52.2449612907539,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Irmin-Taweb]]></name>
+                <description><![CDATA[
+                <p>
+                	Ermelo<br/>
+                	<a href="http://www.irmin-taweb.nl" target="_blank">
+                			http://www.irmin-taweb.nl                	</a><br>
+                	Kalkoenweg 23<br />
+                	3851SB Ermelo<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.620078146457672,52.31540711050691,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Triton Scouting Culemborg]]></name>
+                <description><![CDATA[
+                <p>
+                	Culemborg<br/>
+                	<a href="http://www.tritonscouting.nl/" target="_blank">
+                			http://www.tritonscouting.nl/                	</a><br>
+                	Steenovenslaan 4<br />
+                	4101 AM Culemborg<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.217658281326294,51.96094776739098,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scoutinggroep de Bevers, Nijmegen en Scouting Malden, Malden]]></name>
+                <description><![CDATA[
+                <p>
+                	Nijmegen<br/>
+                	<a href="http://www.scoutinggroepdebevers.nl" target="_blank">
+                			http://www.scoutinggroepdebevers.nl                	</a><br>
+                	Staddijk 105<br />
+                	6537 TW Nijmegen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.78978,51.80907,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Lunteren]]></name>
+                <description><![CDATA[
+                <p>
+                	Lunteren<br/>
+                	<a href="http://www.scoutinglunteren.nl" target="_blank">
+                			http://www.scoutinglunteren.nl                	</a><br>
+                	Hessenweg 77<br />
+                	6741JP Lunteren<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.650860518217087,52.0915360410397,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Gendringen]]></name>
+                <description><![CDATA[
+                <p>
+                	Gendringen<br/>
+                	<a href="http://www.scoutinggendringen.nl" target="_blank">
+                			http://www.scoutinggendringen.nl                	</a><br>
+                	Tulpstraat  6<br />
+                	7081 EB  Gendringen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.37095183134079,51.870264411568975,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting valeouwe ]]></name>
+                <description><![CDATA[
+                <p>
+                	Loenen <br/>
+                	<a href="" target="_blank">
+                			                	</a><br>
+                	Lonapark 10<br />
+                	7371 EH Loenen <br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.027696132659912,52.12271267025277,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[St. Werenfridusgroep Scouting Elst]]></name>
+                <description><![CDATA[
+                <p>
+                	Elst<br/>
+                	<a href="http://www.scoutingelst.nl" target="_blank">
+                			http://www.scoutingelst.nl                	</a><br>
+                	De Pas 4<br />
+                	6662BK Elst<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.8434538543224335,51.90663883066961,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Valburg (Christophorus)]]></name>
+                <description><![CDATA[
+                <p>
+                	Valburg<br/>
+                	<a href="http://www.scoutingvalburg.nl" target="_blank">
+                			http://www.scoutingvalburg.nl                	</a><br>
+                	Burgemeester van Lyndenpark 71<br />
+                	6675AZ Valburg<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.789498806000779,51.91260058781788,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[De Geuzen Arnhem]]></name>
+                <description><![CDATA[
+                <p>
+                	Arnhem<br/>
+                	<a href="http://www.degeuzenarnhem.nl" target="_blank">
+                			http://www.degeuzenarnhem.nl                	</a><br>
+                	Diependalseweg 3<br />
+                	6813 GE Arnhem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.876215696334839,51.98762219414704,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Ragay Redoz]]></name>
+                <description><![CDATA[
+                <p>
+                	Harderwijk<br/>
+                	<a href="http://www.padvindertje.nl/" target="_blank">
+                			http://www.padvindertje.nl/                	</a><br>
+                	Strokelweg 4<br />
+                	3847 LR  Harderwijk<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.633835196495056,52.32633057291369,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Stadhouder Willem III / Lady Baden-Powell]]></name>
+                <description><![CDATA[
+                <p>
+                	Apeldoorn<br/>
+                	<a href="http://sw3lbp.nl" target="_blank">
+                			http://sw3lbp.nl                	</a><br>
+                	Jachtlaan 4-6<br />
+                	7313CP Apeldoorn<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.942942351102829,52.22582623250683,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Woezik]]></name>
+                <description><![CDATA[
+                <p>
+                	Wijchen<br/>
+                	<a href="http://www.scoutingwoezik.nl" target="_blank">
+                			http://www.scoutingwoezik.nl                	</a><br>
+                	Oud-Woeziksestraat 3<br />
+                	6604 KD Wijchen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.71738064289093,51.82517564429223,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Amalgama]]></name>
+                <description><![CDATA[
+                <p>
+                	Nijmegen<br/>
+                	<a href="http://www.scoutingamalgama.nl" target="_blank">
+                			http://www.scoutingamalgama.nl                	</a><br>
+                	Weteringweg 50<br />
+                	6546 JZ  Nijmegen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.785602629184723,51.839155971079656,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[ZV de Batavieren]]></name>
+                <description><![CDATA[
+                <p>
+                	Nijmegen<br/>
+                	<a href="http://www.batavieren.com/" target="_blank">
+                			http://www.batavieren.com/                	</a><br>
+                	Grootstalselaan 13<br />
+                	6533KH Nijmegen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.849066376686096,51.808017729924735,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Alexandergroep Ermelo]]></name>
+                <description><![CDATA[
+                <p>
+                	Ermelo<br/>
+                	<a href="http://alexandergroep.nl" target="_blank">
+                			http://alexandergroep.nl                	</a><br>
+                	Watervalweg 175<br />
+                	3853 PS Ermelo<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.5945515632629395,52.28673438332683,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Subanhara Liemersgroep Zevenaar]]></name>
+                <description><![CDATA[
+                <p>
+                	Zevenaar<br/>
+                	<a href="http://www.subanharaliemersgroep.nl" target="_blank">
+                			http://www.subanharaliemersgroep.nl                	</a><br>
+                	Slenterweg 29<br />
+                	6905DP Zevenaar<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.0661535,51.9157894,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Bemmel]]></name>
+                <description><![CDATA[
+                <p>
+                	Bemmel<br/>
+                	<a href="http://www.scouting-bemmel.nl/" target="_blank">
+                			http://www.scouting-bemmel.nl/                	</a><br>
+                	Sportlaan  1f<br />
+                	6681 CD Bemmel<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.905559062957764,51.88717479650244,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[St.franciscus]]></name>
+                <description><![CDATA[
+                <p>
+                	Niftrik<br/>
+                	<a href="www.scoutingwijchen.nl" target="_blank">
+                			www.scoutingwijchen.nl                	</a><br>
+                	Loonsewaard 40<br />
+                	6606 KG Niftrik<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.702086687088013,51.79302325002608,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Opv-Schoonoord]]></name>
+                <description><![CDATA[
+                <p>
+                	Oosterbeek<br/>
+                	<a href="http://www.opv-schoonoord.nl" target="_blank">
+                			http://www.opv-schoonoord.nl                	</a><br>
+                	Van borsselenweg  43<br />
+                	6862BH Oosterbeek<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.820329189300537,51.981298698207034,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Sint Jorisgroep]]></name>
+                <description><![CDATA[
+                <p>
+                	Westervoort<br/>
+                	<a href="http://www.sint-jorisgroep.nl" target="_blank">
+                			http://www.sint-jorisgroep.nl                	</a><br>
+                	Paepestraat  27<br />
+                	6931 CP Westervoort<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.963478684425354,51.958659857995606,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Scouting Grave & Boxmeer]]></name>
+                <description><![CDATA[
+                <p>
+                	Heumen<br/>
+                	<a href="http://scoutinggrave.nl/" target="_blank">
+                			http://scoutinggrave.nl/                	</a><br>
+                	Overasseltseweg 4b<br />
+                	6582 BL Heumen<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.829393714666367,51.76526201473722,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Hertog van Gelre]]></name>
+                <description><![CDATA[
+                <p>
+                	Apeldoorn<br/>
+                	<a href="http://scoutinghvg.nl" target="_blank">
+                			http://scoutinghvg.nl                	</a><br>
+                	Polderweg 4<br />
+                	7327 GX Apeldoorn<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>6.0053640604019165,52.184242431412,0.0</coordinates>
+				</Point>
+			</Placemark>
+                    <Placemark>
+                <styleUrl>#groep</styleUrl>
+				<name><![CDATA[Lincolngroep]]></name>
+                <description><![CDATA[
+                <p>
+                	Arnhem<br/>
+                	<a href="http://www.lincolngroep.nl" target="_blank">
+                			http://www.lincolngroep.nl                	</a><br>
+                	Het Nieuwe Land 29<br />
+                	6828DZ Arnhem<br>
+                </p>
+                ]]></description>
+				<Point>
+					<coordinates>5.917226,51.982971,0.0</coordinates>
+				</Point>
+			</Placemark>
+                </Folder>
+        <Folder>
+			<name>Deelgebieden</name>
+                            <Placemark>
+                    <styleUrl>#deelgebied-delta</styleUrl>
+    				<name>Delta</name>
+    				<Polygon>
+    					<outerBoundaryIs>
+    						<LinearRing>
+    							<coordinates>
+                                                                    5.8309936523438,51.891749018068,0.0
+                                                                    5.8531379699707,51.966057850188,0.0
+                                                                    5.8706903457642,51.97297173071,0.0
+                                                                    5.9215450286865,51.978404261188,0.0
+                                                                    5.9305572509766,51.987417371802,0.0
+                                                                    6.0126113891602,52.013627018628,0.0
+                                                                    6.0416221618652,51.942148492442,0.0
+                                                                    6.0562133789062,51.885921902906,0.0
+                                                                    6.0631656646728,51.86557405104,0.0
+                                                                    6.0598263144493,51.857586725558,0.0
+                                                                    6.0506504774094,51.857020171221,0.0
+                                                                    6.0553014278412,51.852494106777,0.0
+                                                                    6.0323309898377,51.842380054367,0.0
+                                                                    6.0294637084007,51.84555171054,0.0
+                                                                    6.0176700353622,51.841511704101,0.0
+                                                                    6.0046747326851,51.83344054831,0.0
+                                                                    5.9865295886993,51.830672488244,0.0
+                                                                    5.962700843811,51.836785198676,0.0
+                                                                    5.9450840950012,51.8237631985,0.0
+                                                                    5.9577333927154,51.817038553528,0.0
+                                                                    5.9470769762993,51.816365370588,0.0
+                                                                    5.947750210762,51.811022660694,0.0
+                                                                    5.96405133605,51.806971263847,0.0
+                                                                    5.9789791703224,51.797824016692,0.0
+                                                                    5.9717248007655,51.789697332897,0.0
+                                                                    5.9747701138258,51.785179847797,0.0
+                                                                    5.9897871315479,51.783153033607,0.0
+                                                                    5.9818890318274,51.773669436454,0.0
+                                                                    5.992187038064,51.770132958045,0.0
+                                                                    5.9908129088581,51.76613370239,0.0
+                                                                    5.9743325784802,51.759584117168,0.0
+                                                                    5.955792311579,51.752289703966,0.0
+                                                                    5.9520149230957,51.744356390187,0.0
+                                                                    5.943421125412,51.740974983081,0.0
+                                                                    5.9331107139587,51.741845271177,0.0
+                                                                    5.9324133396149,51.748773760806,0.0
+                                                                    5.9142065048218,51.752088165767,0.0
+                                                                    5.9024906158447,51.76895531521,0.0
+                                                                    5.8924269676208,51.779032753222,0.0
+                                                                    5.8682870864868,51.77572696427,0.0
+                                                                    5.8661198616028,51.757441179942,0.0
+                                                                    5.8451235294342,51.7592408722,0.0
+                                                                    5.8200073242188,51.757640411398,0.0
+                                                                    5.8308219909668,51.823789723712,0.0
+                                                                5.8309936523438,51.891749018068,0.0
+                                </coordinates>
+    						</LinearRing>
+    					</outerBoundaryIs>
+    				</Polygon>
+    			</Placemark>
+                            <Placemark>
+                    <styleUrl>#deelgebied-foxtrot</styleUrl>
+    				<name>Foxtrot</name>
+    				<Polygon>
+    					<outerBoundaryIs>
+    						<LinearRing>
+    							<coordinates>
+                                                                    5.8515930175781,52.021233396705,0.0
+                                                                    5.9305572509766,51.987417371802,0.0
+                                                                    5.9215450286865,51.978404261188,0.0
+                                                                    5.8706903457642,51.97297173071,0.0
+                                                                    5.8531379699707,51.966057850188,0.0
+                                                                    5.8309936523438,51.891749018068,0.0
+                                                                    5.7424807548523,51.900832513213,0.0
+                                                                    5.5138921737671,51.926219480333,0.0
+                                                                    5.4799675941467,51.928627717053,0.0
+                                                                    5.469388961792,51.896516095811,0.0
+                                                                    5.4094791412354,51.886703309937,0.0
+                                                                    5.1233196258545,51.903586329698,0.0
+                                                                    5.132063627243,51.91482822539,0.0
+                                                                    5.1360011100769,51.914315335871,0.0
+                                                                    5.13547539711,51.918196605809,0.0
+                                                                    5.1459360122681,51.927582399403,0.0
+                                                                    5.1480670273304,51.929346772299,0.0
+                                                                    5.1487999409437,51.930460478887,0.0
+                                                                    5.1483097672462,51.930952303758,0.0
+                                                                    5.1476620137691,51.93202855241,0.0
+                                                                    5.1484324783087,51.933122346865,0.0
+                                                                    5.1494389772415,51.933726599501,0.0
+                                                                    5.1506754755974,51.933471090313,0.0
+                                                                    5.1511609554291,51.933652179499,0.0
+                                                                    5.1536124944687,51.937077025482,0.0
+                                                                    5.1556134223938,51.939152311944,0.0
+                                                                    5.1752471923828,51.962144359065,0.0
+                                                                    5.180139541626,51.967432779465,0.0
+                                                                    5.1829826831818,51.96940255656,0.0
+                                                                    5.1930356025696,51.967564981981,0.0
+                                                                    5.1993978023529,51.965991746756,0.0
+                                                                    5.2073049545288,51.968040907807,0.0
+                                                                    5.2127766609192,51.97026182817,0.0
+                                                                    5.2215850353241,51.974465411801,0.0
+                                                                    5.2263110876083,51.979488044897,0.0
+                                                                    5.2371311187744,51.983241434598,0.0
+                                                                    5.2437521517277,51.984296192831,0.0
+                                                                    5.2571967244148,51.98101620146,0.0
+                                                                    5.2676063776016,51.974640552561,0.0
+                                                                    5.2779972553253,51.967069220537,0.0
+                                                                    5.2964615821838,51.962104693555,0.0
+                                                                    5.3055220842361,51.959661891562,0.0
+                                                                    5.3163702785969,51.954819692711,0.0
+                                                                    5.3309950232506,51.956113145711,0.0
+                                                                    5.3399884700775,51.960815545357,0.0
+                                                                    5.3497356176376,51.968949779891,0.0
+                                                                    5.3610277175903,51.970949233595,0.0
+                                                                    5.3766167163849,51.968867155918,0.0
+                                                                    5.3941959142685,51.971633323718,0.0
+                                                                    5.4189848899841,51.977148625326,0.0
+                                                                    5.4330289363861,51.98479424153,0.0
+                                                                    5.48415184021,51.98250135448,0.0
+                                                                    5.4917907714844,52.000524113477,0.0
+                                                                    5.6658554077148,52.015317436634,0.0
+                                                                5.8515930175781,52.021233396705,0.0
+                                </coordinates>
+    						</LinearRing>
+    					</outerBoundaryIs>
+    				</Polygon>
+    			</Placemark>
+                            <Placemark>
+                    <styleUrl>#deelgebied-echo</styleUrl>
+    				<name>Echo</name>
+    				<Polygon>
+    					<outerBoundaryIs>
+    						<LinearRing>
+    							<coordinates>
+                                                                    5.8309936523438,51.891749018068,0.0
+                                                                    5.8308219909668,51.823789723712,0.0
+                                                                    5.8200073242188,51.757640411398,0.0
+                                                                    5.7766628265381,51.752008463491,0.0
+                                                                    5.753960609436,51.755090182378,0.0
+                                                                    5.7437038421631,51.760137371097,0.0
+                                                                    5.7320308685303,51.772487321682,0.0
+                                                                    5.7179546356201,51.775687134011,0.0
+                                                                    5.7076549530029,51.775587558209,0.0
+                                                                    5.7013034820557,51.77835568364,0.0
+                                                                    5.6973230838776,51.784515314987,0.0
+                                                                    5.6893944740295,51.79046174733,0.0
+                                                                    5.6708228588104,51.792585283192,0.0
+                                                                    5.6632375717163,51.794602549651,0.0
+                                                                    5.6563550233841,51.7985306517,0.0
+                                                                    5.6513607501984,51.803732206156,0.0
+                                                                    5.6459373235703,51.814027391129,0.0
+                                                                    5.6401705741882,51.818696596697,0.0
+                                                                    5.6314118206501,51.819843926852,0.0
+                                                                    5.6178465485573,51.819930141232,0.0
+                                                                    5.6030756235123,51.826468689637,0.0
+                                                                    5.5939735472202,51.829207170815,0.0
+                                                                    5.5838415026665,51.82961162971,0.0
+                                                                    5.5730228126049,51.827576037428,0.0
+                                                                    5.5618607997894,51.82851096257,0.0
+                                                                    5.5524368584156,51.825613294564,0.0
+                                                                    5.5478194355965,51.819320005145,0.0
+                                                                    5.5383954942226,51.816103390272,0.0
+                                                                    5.5303448438644,51.818192558028,0.0
+                                                                    5.5180884897709,51.818371625043,0.0
+                                                                    5.5099520087242,51.823431632037,0.0
+                                                                    5.4971122741699,51.830791833265,0.0
+                                                                    5.4853749275208,51.829359672136,0.0
+                                                                    5.4736697673798,51.813894736176,0.0
+                                                                    5.4633378982544,51.810525169439,0.0
+                                                                    5.4494762420654,51.809994506046,0.0
+                                                                    5.4358050227165,51.809553387346,0.0
+                                                                    5.4259103536606,51.81208395702,0.0
+                                                                    5.4191055893898,51.817161250813,0.0
+                                                                    5.4143607616425,51.821813552684,0.0
+                                                                    5.4060244560242,51.82280828048,0.0
+                                                                    5.3997105360031,51.81991024562,0.0
+                                                                    5.3944265842438,51.813616159503,0.0
+                                                                    5.384202003479,51.806120473996,0.0
+                                                                    5.3621864318848,51.778249475725,0.0
+                                                                    5.3596758842468,51.759579551653,0.0
+                                                                    5.346919298172,51.753854863421,0.0
+                                                                    5.3269529342651,51.74770433176,0.0
+                                                                    5.2962899208069,51.736995360582,0.0
+                                                                    5.2826750278473,51.740569728705,0.0
+                                                                    5.2711200714111,51.73989208212,0.0
+                                                                    5.2485251426697,51.733540312269,0.0
+                                                                    5.2416238188744,51.735536963752,0.0
+                                                                    5.2360957860947,51.739659553989,0.0
+                                                                    5.2209198474884,51.743864806447,0.0
+                                                                    5.2101373672485,51.742496315433,0.0
+                                                                    5.1965492963791,51.740323916903,0.0
+                                                                    5.1685416698456,51.743041059541,0.0
+                                                                    5.1266026496887,51.737633186771,0.0
+                                                                    5.1253232359886,51.744067419312,0.0
+                                                                    5.1369573175907,51.749622311491,0.0
+                                                                    5.1430982351303,51.754645205787,0.0
+                                                                    5.137737840414,51.757143991387,0.0
+                                                                    5.135124027729,51.761448883713,0.0
+                                                                    5.1397669315338,51.769632525838,0.0
+                                                                    5.1381093263626,51.772454127419,0.0
+                                                                    5.11908441782,51.777847874787,0.0
+                                                                    5.1061387360096,51.784580026477,0.0
+                                                                    5.0988075882196,51.787574075847,0.0
+                                                                    5.0923347473145,51.78738244273,0.0
+                                                                    5.0835907459259,51.781143552,0.0
+                                                                    5.0750184059143,51.779046028994,0.0
+                                                                    5.0691443681717,51.779271716531,0.0
+                                                                    5.0644719600677,51.781515254766,0.0
+                                                                    5.0587320327759,51.787594815313,0.0
+                                                                    5.0451493263245,51.799141069271,0.0
+                                                                    5.0190353393555,51.806545041699,0.0
+                                                                    5.0138318538666,51.808069140469,0.0
+                                                                    5.011031627655,51.811503563689,0.0
+                                                                    5.0085210800171,51.818159397392,0.0
+                                                                    5.00075340271,51.821070808274,0.0
+                                                                    5.0264167785645,51.818829237515,0.0
+                                                                    5.0312232971191,51.840855458818,0.0
+                                                                    5.0069546699524,51.843071076867,0.0
+                                                                    4.9988222122192,51.844809357548,0.0
+                                                                    5.0007694959641,51.848047534143,0.0
+                                                                    4.9985110759735,51.851391513706,0.0
+                                                                    4.9972558021545,51.856276350748,0.0
+                                                                    4.993662647903,51.860950520892,0.0
+                                                                    4.994355160743,51.861723782184,0.0
+                                                                    4.9959059804678,51.861807962339,0.0
+                                                                    5.0017659366131,51.858858237198,0.0
+                                                                    5.0072202086449,51.857888429397,0.0
+                                                                    5.0172704458237,51.859182399103,0.0
+                                                                    5.0268486142159,51.858462013135,0.0
+                                                                    5.038400888443,51.859172874098,0.0
+                                                                    5.0420781970024,51.860374044159,0.0
+                                                                    5.0471817702055,51.85881904979,0.0
+                                                                    5.0541736185551,51.857635076996,0.0
+                                                                    5.0587622076273,51.858279947681,0.0
+                                                                    5.0628358125687,51.859825953472,0.0
+                                                                    5.0631560012698,51.861476857136,0.0
+                                                                    5.0599571317434,51.862809674676,0.0
+                                                                    5.0534735620022,51.865316187102,0.0
+                                                                    5.0515390187502,51.867239572169,0.0
+                                                                    5.0517502427101,51.869692841456,0.0
+                                                                    5.0526712462306,51.871701093736,0.0
+                                                                    5.0554805248976,51.873444297552,0.0
+                                                                    5.0641889870167,51.874704959573,0.0
+                                                                    5.0711345672607,51.874152800064,0.0
+                                                                    5.0741010904312,51.874368489796,0.0
+                                                                    5.0792133808136,51.875432019625,0.0
+                                                                    5.0823944807053,51.87697241663,0.0
+                                                                    5.0842881202698,51.879095602431,0.0
+                                                                    5.0868737697601,51.8820436384,0.0
+                                                                    5.0872278213501,51.88536232766,0.0
+                                                                    5.0869810581207,51.887740474346,0.0
+                                                                    5.0925707817078,51.889323904253,0.0
+                                                                    5.0952664017677,51.888713259835,0.0
+                                                                    5.0974470376968,51.888076119794,0.0
+                                                                    5.1051208376884,51.889160638903,0.0
+                                                                    5.1125371456146,51.887914298442,0.0
+                                                                    5.1174563169479,51.892109463234,0.0
+                                                                    5.118511095643,51.896457389759,0.0
+                                                                    5.1166476309299,51.896991637868,0.0
+                                                                    5.1170157641172,51.898479213061,0.0
+                                                                    5.1189288496971,51.898483816239,0.0
+                                                                    5.1233196258545,51.903586329698,0.0
+                                                                    5.1233196258545,51.903586329698,0.0
+                                                                    5.1233196258545,51.903586329698,0.0
+                                                                    5.1233196258545,51.903586329698,0.0
+                                                                    5.1233196258545,51.903586329698,0.0
+                                                                    5.1233196258545,51.903586329698,0.0
+                                                                    5.4094791412354,51.886703309937,0.0
+                                                                    5.469388961792,51.896516095811,0.0
+                                                                    5.4799675941467,51.928627717053,0.0
+                                                                    5.5138921737671,51.926219480333,0.0
+                                                                    5.7424807548523,51.900832513213,0.0
+                                                                5.8309936523438,51.891749018068,0.0
+                                </coordinates>
+    						</LinearRing>
+    					</outerBoundaryIs>
+    				</Polygon>
+    			</Placemark>
+                            <Placemark>
+                    <styleUrl>#deelgebied-alpha</styleUrl>
+    				<name>Alpha</name>
+    				<Polygon>
+    					<outerBoundaryIs>
+    						<LinearRing>
+    							<coordinates>
+                                                                    5.3173828125,52.298821667009,0.0
+                                                                    5.4036855697632,52.246748056732,0.0
+                                                                    5.393208861351,52.220353097699,0.0
+                                                                    5.406896173954,52.213500459012,0.0
+                                                                    5.4095542430878,52.218558695934,0.0
+                                                                    5.420667976141,52.213436364595,0.0
+                                                                    5.4287776350975,52.208602721745,0.0
+                                                                    5.4362656921148,52.205278362599,0.0
+                                                                    5.4368014633656,52.205583277099,0.0
+                                                                    5.4395896196365,52.204615104697,0.0
+                                                                    5.4389016330242,52.184048376728,0.0
+                                                                    5.440032184124,52.17330004306,0.0
+                                                                    5.438441298902,52.173016702574,0.0
+                                                                    5.4402407258749,52.169574937976,0.0
+                                                                    5.4462109878659,52.167769848291,0.0
+                                                                    5.4550565779209,52.167017603152,0.0
+                                                                    5.4728865623474,52.163903197643,0.0
+                                                                    5.4731065034866,52.162948925179,0.0
+                                                                    5.4723823070526,52.162889693799,0.0
+                                                                    5.4726934432983,52.161876166873,0.0
+                                                                    5.4754088446498,52.162172329726,0.0
+                                                                    5.4790254682303,52.161652398078,0.0
+                                                                    5.480346120894,52.161013992683,0.0
+                                                                    5.4807655513287,52.160270271758,0.0
+                                                                    5.4800204001367,52.160066239951,0.0
+                                                                    5.4792323336005,52.158466861451,0.0
+                                                                    5.4802311211824,52.157295263776,0.0
+                                                                    5.4827319458127,52.158374714436,0.0
+                                                                    5.4842457175255,52.158216747682,0.0
+                                                                    5.4826404154301,52.151568471867,0.0
+                                                                    5.4812067747116,52.15058101949,0.0
+                                                                    5.4837746545672,52.149451182531,0.0
+                                                                    5.4872866719961,52.148637320081,0.0
+                                                                    5.4928800836206,52.147783941758,0.0
+                                                                    5.4965565539896,52.14729141076,0.0
+                                                                    5.4989455640316,52.147404565815,0.0
+                                                                    5.4973724484444,52.14146250783,0.0
+                                                                    5.4998705908656,52.141139046187,0.0
+                                                                    5.5021541565657,52.139735705744,0.0
+                                                                    5.5097682774067,52.13824589419,0.0
+                                                                    5.5125115066767,52.137098458396,0.0
+                                                                    5.5139672756195,52.135977334043,0.0
+                                                                    5.5124035477638,52.134298064167,0.0
+                                                                    5.5123847723007,52.132131383234,0.0
+                                                                    5.5017015337944,52.129740667712,0.0
+                                                                    5.4979705810547,52.130221455518,0.0
+                                                                    5.4969352483749,52.124899569881,0.0
+                                                                    5.4963277280331,52.124557050521,0.0
+                                                                    5.4947331547737,52.124741484349,0.0
+                                                                    5.4951341450214,52.12221203958,0.0
+                                                                    5.4966864734888,52.120525663309,0.0
+                                                                    5.4963934421539,52.119708801863,0.0
+                                                                    5.5037480592728,52.116678378624,0.0
+                                                                    5.5074897408485,52.115716505566,0.0
+                                                                    5.5077981948853,52.113884936469,0.0
+                                                                    5.506320297718,52.114313187782,0.0
+                                                                    5.5038553476334,52.113687280629,0.0
+                                                                    5.5024203658104,52.114972027924,0.0
+                                                                    5.4987967014313,52.116230385535,0.0
+                                                                    5.4924935102463,52.115769211477,0.0
+                                                                    5.4892989993095,52.116250150031,0.0
+                                                                    5.4862761497498,52.115413445372,0.0
+                                                                    5.4914286732674,52.114458133449,0.0
+                                                                    5.4941779375076,52.11271216566,0.0
+                                                                    5.4936850816011,52.110964482256,0.0
+                                                                    5.4893298447132,52.108584162343,0.0
+                                                                    5.4841384291649,52.106406346587,0.0
+                                                                    5.4848277568817,52.093244936547,0.0
+                                                                    5.476590692997,52.090364330404,0.0
+                                                                    5.4719585180283,52.089382113252,0.0
+                                                                    5.4638502001762,52.083310344797,0.0
+                                                                    5.4596672952175,52.082014795408,0.0
+                                                                    5.4602795094252,52.080997779274,0.0
+                                                                    5.4593467712402,52.080349975716,0.0
+                                                                    5.4917907714844,52.000524113477,0.0
+                                                                    5.6658554077148,52.015317436634,0.0
+                                                                    5.8515930175781,52.021233396705,0.0
+                                                                    5.9291839599609,52.467305322033,0.0
+                                                                    5.9118461608887,52.496368550507,0.0
+                                                                    5.8780288696289,52.521234766556,0.0
+                                                                    5.8606910705566,52.516638711004,0.0
+                                                                    5.8561849594116,52.545878132539,0.0
+                                                                    5.8420658111572,52.560907969366,0.0
+                                                                    5.8073472976685,52.581774203121,0.0
+                                                                    5.7588958740234,52.581774203121,0.0
+                                                                5.3173828125,52.298821667009,0.0
+                                </coordinates>
+    						</LinearRing>
+    					</outerBoundaryIs>
+    				</Polygon>
+    			</Placemark>
+                            <Placemark>
+                    <styleUrl>#deelgebied-bravo</styleUrl>
+    				<name>Bravo</name>
+    				<Polygon>
+    					<outerBoundaryIs>
+    						<LinearRing>
+    							<coordinates>
+                                                                    5.9291839599609,52.467305322033,0.0
+                                                                    5.9355998039246,52.477722724204,0.0
+                                                                    5.9571218490601,52.483956301052,0.0
+                                                                    5.9658336639404,52.476768660721,0.0
+                                                                    6.0217094421387,52.509639248363,0.0
+                                                                    6.0445189476013,52.504062386025,0.0
+                                                                    6.0588043928146,52.49775654482,0.0
+                                                                    6.0669100284576,52.483923632616,0.0
+                                                                    6.0879278182983,52.477997176991,0.0
+                                                                    6.101907491684,52.467468725669,0.0
+                                                                    6.1021542549133,52.444802117901,0.0
+                                                                    6.1133015155792,52.43850413057,0.0
+                                                                    6.1186122894287,52.432833209816,0.0
+                                                                    6.1160038411617,52.430502001192,0.0
+                                                                    6.1183735728264,52.427856653713,0.0
+                                                                    6.1173268407583,52.424702063523,0.0
+                                                                    6.1133618652821,52.419139376142,0.0
+                                                                    6.114529967308,52.414399312963,0.0
+                                                                    6.1109626293182,52.407792639093,0.0
+                                                                    6.1302638053894,52.399813573205,0.0
+                                                                    6.1256048083305,52.393707205903,0.0
+                                                                    6.1255069077015,52.38405329771,0.0
+                                                                    6.1219757795334,52.380475208925,0.0
+                                                                    6.1178317666054,52.378662723873,0.0
+                                                                    6.1027195304632,52.375380168285,0.0
+                                                                    6.080397516489,52.371678148381,0.0
+                                                                    6.0776388645172,52.368885155263,0.0
+                                                                    6.0775288939476,52.36392758747,0.0
+                                                                    6.0803338140249,52.361849485389,0.0
+                                                                    6.0910351574421,52.360819611388,0.0
+                                                                    6.0945850610733,52.35687269902,0.0
+                                                                    6.0896377265453,52.354183617004,0.0
+                                                                    6.0785105824471,52.35296229545,0.0
+                                                                    6.0759081691503,52.350647753474,0.0
+                                                                    6.0758832748979,52.345344707931,0.0
+                                                                    6.0750859044492,52.344550663283,0.0
+                                                                    6.0757905710489,52.344464483464,0.0
+                                                                    6.0753794386983,52.341756467211,0.0
+                                                                    6.0758909862488,52.34176204902,0.0
+                                                                    6.0766600258648,52.339879812924,0.0
+                                                                    6.0754978749901,52.334824597248,0.0
+                                                                    6.0738636553287,52.334463052951,0.0
+                                                                    6.0754454880953,52.333419428696,0.0
+                                                                    6.0744461975992,52.33272581674,0.0
+                                                                    6.0731035843492,52.328832639678,0.0
+                                                                    6.0710160713643,52.322990899595,0.0
+                                                                    6.0704872990027,52.322745323171,0.0
+                                                                    6.0709884949029,52.322080054477,0.0
+                                                                    6.0690726432949,52.321956123992,0.0
+                                                                    6.0675353603437,52.321658079743,0.0
+                                                                    6.0665130615234,52.320730479419,0.0
+                                                                    6.0661911754869,52.319453886063,0.0
+                                                                    6.0663842735812,52.317862457324,0.0
+                                                                    6.0718344803899,52.317093000096,0.0
+                                                                    6.073379390873,52.317818854678,0.0
+                                                                    6.0795591585338,52.317600302815,0.0
+                                                                    6.0799400112592,52.317228690437,0.0
+                                                                    6.0798729455564,52.316177159473,0.0
+                                                                    6.0808358481154,52.311977300134,0.0
+                                                                    6.0848591197282,52.311758719424,0.0
+                                                                    6.0830459045246,52.308470295897,0.0
+                                                                    6.0832148732152,52.303134751769,0.0
+                                                                    6.0840704874136,52.303257229382,0.0
+                                                                    6.0841938480735,52.301612732392,0.0
+                                                                    6.0864334716462,52.30200531116,0.0
+                                                                    6.0880722803995,52.300455900911,0.0
+                                                                    6.0909207444638,52.300086361474,0.0
+                                                                    6.0989351011813,52.300292057362,0.0
+                                                                    6.0988384578377,52.301285053249,0.0
+                                                                    6.1014025658369,52.301490743568,0.0
+                                                                    6.1019496945664,52.299828714879,0.0
+                                                                    6.1042134370655,52.297904173232,0.0
+                                                                    6.1051038885489,52.29513965915,0.0
+                                                                    6.10556518659,52.292873689526,0.0
+                                                                    6.1105003673583,52.289404547233,0.0
+                                                                    6.1117448285222,52.287195222276,0.0
+                                                                    6.1115729995072,52.279756917492,0.0
+                                                                    6.1131822410971,52.277376439314,0.0
+                                                                    6.1166797578335,52.275521004345,0.0
+                                                                    6.240961253643,52.263687554905,0.0
+                                                                    6.270141005516,52.249470765781,0.0
+                                                                    6.2709979712963,52.225854984811,0.0
+                                                                    6.2938275933266,52.231885163789,0.0
+                                                                    6.2981177866459,52.225087702652,0.0
+                                                                    6.3381135463715,52.227543123183,0.0
+                                                                    6.3499554991722,52.241704527605,0.0
+                                                                    6.3817101716995,52.246613394891,0.0
+                                                                    6.416554749012,52.242693242442,0.0
+                                                                    6.427366733551,52.225315259879,0.0
+                                                                    6.4399811625481,52.216608105553,0.0
+                                                                    6.4546555280685,52.202218417418,0.0
+                                                                    6.4707541465759,52.200124086908,0.0
+                                                                    6.4259719848633,52.147816036321,0.0
+                                                                    6.1082267761231,52.044467094923,0.0
+                                                                    6.0126113891602,52.013627018628,0.0
+                                                                    5.9305572509766,51.987417371802,0.0
+                                                                    5.8515930175781,52.021233396705,0.0
+                                                                5.9291839599609,52.467305322033,0.0
+                                </coordinates>
+    						</LinearRing>
+    					</outerBoundaryIs>
+    				</Polygon>
+    			</Placemark>
+                            <Placemark>
+                    <styleUrl>#deelgebied-charlie</styleUrl>
+    				<name>Charlie</name>
+    				<Polygon>
+    					<outerBoundaryIs>
+    						<LinearRing>
+    							<coordinates>
+                                                                    6.4259719848633,52.147816036321,0.0
+                                                                    6.4707541465759,52.200124086908,0.0
+                                                                    6.4728516340256,52.186677910138,0.0
+                                                                    6.494175195694,52.177438500146,0.0
+                                                                    6.5142971277237,52.181356191757,0.0
+                                                                    6.5266942977905,52.179905600587,0.0
+                                                                    6.5549218654633,52.177004276306,0.0
+                                                                    6.5891575813294,52.18262912054,0.0
+                                                                    6.606211066246,52.172770371715,0.0
+                                                                    6.6027530282736,52.169938908227,0.0
+                                                                    6.6029184870422,52.169059925265,0.0
+                                                                    6.604199744761,52.167391259585,0.0
+                                                                    6.607191413641,52.164580225095,0.0
+                                                                    6.6092875599861,52.165234209025,0.0
+                                                                    6.6120207309723,52.16301473773,0.0
+                                                                    6.6145734395832,52.164231789638,0.0
+                                                                    6.6186281852424,52.166001599611,0.0
+                                                                    6.6215671319515,52.168245136042,0.0
+                                                                    6.6232511820272,52.168129746205,0.0
+                                                                    6.6251927241683,52.168804010363,0.0
+                                                                    6.6264357604086,52.17152728479,0.0
+                                                                    6.6252755373716,52.172197513542,0.0
+                                                                    6.6255269944668,52.172457007282,0.0
+                                                                    6.6292914748192,52.172081131547,0.0
+                                                                    6.630184315145,52.173470910072,0.0
+                                                                    6.635239943862,52.171991891437,0.0
+                                                                    6.6402013599873,52.167875548201,0.0
+                                                                    6.6448885202408,52.174145530214,0.0
+                                                                    6.6655710339546,52.167484827436,0.0
+                                                                    6.6653122007847,52.166852263806,0.0
+                                                                    6.6713190078735,52.16574587277,0.0
+                                                                    6.6733065247536,52.163602110437,0.0
+                                                                    6.6725045442581,52.161431918899,0.0
+                                                                    6.6736337542534,52.161446727237,0.0
+                                                                    6.6739046573639,52.158670900589,0.0
+                                                                    6.6705840826035,52.15638363414,0.0
+                                                                    6.6736015677452,52.154976660063,0.0
+                                                                    6.6728787124157,52.152851304371,0.0
+                                                                    6.6736330837011,52.152051904108,0.0
+                                                                    6.6728086397052,52.150519920155,0.0
+                                                                    6.6713833808899,52.1503045289,0.0
+                                                                    6.6736096143722,52.148352588148,0.0
+                                                                    6.6743338108063,52.143319280367,0.0
+                                                                    6.6720780730247,52.138866517877,0.0
+                                                                    6.6665607690811,52.134834778872,0.0
+                                                                    6.6627359390259,52.129826287838,0.0
+                                                                    6.6767022013664,52.12607037339,0.0
+                                                                    6.697878241539,52.123368092698,0.0
+                                                                    6.7161977291107,52.118173852363,0.0
+                                                                    6.7600464820862,52.119379418013,0.0
+                                                                    6.7550012469292,52.095457999028,0.0
+                                                                    6.7498775571585,52.095592707216,0.0
+                                                                    6.7437238991261,52.093618182257,0.0
+                                                                    6.7452819272876,52.089994147493,0.0
+                                                                    6.750959828496,52.087846531621,0.0
+                                                                    6.7496126890183,52.084605856579,0.0
+                                                                    6.7347827553749,52.074384136644,0.0
+                                                                    6.7132915556431,52.073282042378,0.0
+                                                                    6.6948902606964,52.06985853493,0.0
+                                                                    6.6962823271751,52.06815533906,0.0
+                                                                    6.6899402439594,52.056749837412,0.0
+                                                                    6.6871125251055,52.056535023584,0.0
+                                                                    6.6865569725633,52.05262758181,0.0
+                                                                    6.6887480020523,52.052520165114,0.0
+                                                                    6.6884422302246,52.039821321105,0.0
+                                                                    6.7136549949646,52.040098497293,0.0
+                                                                    6.7536413669586,52.028198172691,0.0
+                                                                    6.7641073465347,52.022669351597,0.0
+                                                                    6.7663335800171,52.019041413452,0.0
+                                                                    6.7728513479233,52.018371252554,0.0
+                                                                    6.8116414546967,51.998258454124,0.0
+                                                                    6.8078541755676,51.99490929573,0.0
+                                                                    6.8265545368195,51.993303988981,0.0
+                                                                    6.8301567435265,51.986348646465,0.0
+                                                                    6.8298979103565,51.976209353651,0.0
+                                                                    6.8330723047256,51.972413239813,0.0
+                                                                    6.8286037445068,51.963995377183,0.0
+                                                                    6.8138301372528,51.963922660057,0.0
+                                                                    6.8121939897537,51.962035278827,0.0
+                                                                    6.7992281913757,51.958666882639,0.0
+                                                                    6.7972433567047,51.943094265039,0.0
+                                                                    6.7943438887596,51.934940454991,0.0
+                                                                    6.7856079339981,51.93144267611,0.0
+                                                                    6.7880487442017,51.929315760953,0.0
+                                                                    6.7701423168182,51.91590361988,0.0
+                                                                    6.764163672924,51.91546188403,0.0
+                                                                    6.754065155983,51.913114158779,0.0
+                                                                    6.7537808418274,51.910324524386,0.0
+                                                                    6.751007437706,51.907375861222,0.0
+                                                                    6.7369043827057,51.904638825542,0.0
+                                                                    6.7323875427246,51.898740559021,0.0
+                                                                    6.7223024368286,51.89643664866,0.0
+                                                                    6.702926158905,51.906300262499,0.0
+                                                                    6.7040526866913,51.909536909404,0.0
+                                                                    6.6998094320297,51.909248996278,0.0
+                                                                    6.6955661773682,51.91573817625,0.0
+                                                                    6.6839361190796,51.917882278445,0.0
+                                                                    6.6372656822205,51.904340951862,0.0
+                                                                    6.6338431835175,51.900852373071,0.0
+                                                                    6.6264671087265,51.901544152639,0.0
+                                                                    6.6221809387207,51.900964912099,0.0
+                                                                    6.5843081474304,51.893669151874,0.0
+                                                                    6.5684616565704,51.888537576458,0.0
+                                                                    6.5605115890503,51.882345799094,0.0
+                                                                    6.5549111366272,51.882253081508,0.0
+                                                                    6.5517139434814,51.886398695253,0.0
+                                                                    6.5286898612976,51.876451229355,0.0
+                                                                    6.5248167514801,51.873861348188,0.0
+                                                                    6.515793800354,51.873179078453,0.0
+                                                                    6.5020394325256,51.86778679619,0.0
+                                                                    6.500655412674,51.862652265693,0.0
+                                                                    6.4822822809219,51.857116254037,0.0
+                                                                    6.4746406674385,51.856150446735,0.0
+                                                                    6.4735221862793,51.853912278431,0.0
+                                                                    6.4615702629089,51.855940053714,0.0
+                                                                    6.4513349533081,51.865388546502,0.0
+                                                                    6.4325165748596,51.859889314505,0.0
+                                                                    6.4122927188873,51.871344185193,0.0
+                                                                    6.4021807909012,51.869227672008,0.0
+                                                                    6.3913822174072,51.873470534752,0.0
+                                                                    6.3875412940979,51.861744552245,0.0
+                                                                    6.4005553722382,51.856092464504,0.0
+                                                                    6.4091062545776,51.854044815555,0.0
+                                                                    6.4014887809753,51.843798544729,0.0
+                                                                    6.4081513881683,51.836128884499,0.0
+                                                                    6.4027279615402,51.836642666612,0.0
+                                                                    6.4079475402832,51.827821374272,0.0
+                                                                    6.4011253416538,51.826898867649,0.0
+                                                                    6.392243206501,51.832023389112,0.0
+                                                                    6.380678191781,51.835619654346,0.0
+                                                                    6.3684265315533,51.833699941627,0.0
+                                                                    6.3617759943008,51.835376431728,0.0
+                                                                    6.3596329092979,51.846471349613,0.0
+                                                                    6.346846818924,51.850777661681,0.0
+                                                                    6.3253945112228,51.85196725125,0.0
+                                                                    6.3063454627991,51.849127426872,0.0
+                                                                    6.2986314296722,51.868257156129,0.0
+                                                                    6.2837076187134,51.872119221443,0.0
+                                                                    6.2782479822636,51.874668632136,0.0
+                                                                    6.2700417637825,51.874674427969,0.0
+                                                                    6.2615257501602,51.868114723709,0.0
+                                                                    6.2458670139313,51.870045803938,0.0
+                                                                    6.2412133812904,51.868838474469,0.0
+                                                                    6.2324398756027,51.870174981303,0.0
+                                                                    6.2145495414734,51.867760296892,0.0
+                                                                    6.1983825266361,51.873264362736,0.0
+                                                                    6.1835888028145,51.882370634129,0.0
+                                                                    6.1818104982376,51.885746415561,0.0
+                                                                    6.1913618445396,51.887426761539,0.0
+                                                                    6.1887560784817,51.888902599809,0.0
+                                                                    6.1913001537323,51.8918615799,0.0
+                                                                    6.1796513199806,51.895448512973,0.0
+                                                                    6.1693757772446,51.901577251873,0.0
+                                                                    6.1654517054558,51.898278793351,0.0
+                                                                    6.1584377288818,51.905783965962,0.0
+                                                                    6.1249852180481,51.898568431871,0.0
+                                                                    6.1179953813553,51.901795706204,0.0
+                                                                    6.1147820949554,51.898244036603,0.0
+                                                                    6.1124271154404,51.899141083107,0.0
+                                                                    6.1098763346672,51.895140647163,0.0
+                                                                    6.1028623580933,51.893046772662,0.0
+                                                                    6.1055780947208,51.891602521733,0.0
+                                                                    6.1161902546883,51.892700818787,0.0
+                                                                    6.1223083734512,51.890447915255,0.0
+                                                                    6.1376345157623,51.885729860116,0.0
+                                                                    6.1435809731484,51.876005793663,0.0
+                                                                    6.1447209119797,51.86945953277,0.0
+                                                                    6.1672568321228,51.861665043625,0.0
+                                                                    6.1639335751533,51.859755138094,0.0
+                                                                    6.1637002229691,51.852755875469,0.0
+                                                                    6.1680400371551,51.84129958546,0.0
+                                                                    6.1011403799057,51.850628546564,0.0
+                                                                    6.0631656646728,51.86557405104,0.0
+                                                                    6.0562133789062,51.885921902906,0.0
+                                                                    6.0416221618652,51.942148492442,0.0
+                                                                    6.0126113891602,52.013627018628,0.0
+                                                                    6.1082267761231,52.044467094923,0.0
+                                                                6.4259719848633,52.147816036321,0.0
+                                </coordinates>
+    						</LinearRing>
+    					</outerBoundaryIs>
+    				</Polygon>
+    			</Placemark>
+                    </Folder>
+                <Style id='deelgebied-delta'>
+            <LineStyle>
+                <color>ff3644DB</color>
+                <width>2</width>
+            </LineStyle>
+            <PolyStyle>
+                <color>883644DB</color>
+                <fill>1</fill>
+                <outline>1</outline>
+            </PolyStyle>
+        </Style>
+                <Style id='deelgebied-foxtrot'>
+            <LineStyle>
+                <color>ff3700F4</color>
+                <width>2</width>
+            </LineStyle>
+            <PolyStyle>
+                <color>883700F4</color>
+                <fill>1</fill>
+                <outline>1</outline>
+            </PolyStyle>
+        </Style>
+                <Style id='deelgebied-echo'>
+            <LineStyle>
+                <color>ffA95B3F</color>
+                <width>2</width>
+            </LineStyle>
+            <PolyStyle>
+                <color>88A95B3F</color>
+                <fill>1</fill>
+                <outline>1</outline>
+            </PolyStyle>
+        </Style>
+                <Style id='deelgebied-alpha'>
+            <LineStyle>
+                <color>ff579D00</color>
+                <width>2</width>
+            </LineStyle>
+            <PolyStyle>
+                <color>88579D00</color>
+                <fill>1</fill>
+                <outline>1</outline>
+            </PolyStyle>
+        </Style>
+                <Style id='deelgebied-bravo'>
+            <LineStyle>
+                <color>ffCCA90B</color>
+                <width>2</width>
+            </LineStyle>
+            <PolyStyle>
+                <color>88CCA90B</color>
+                <fill>1</fill>
+                <outline>1</outline>
+            </PolyStyle>
+        </Style>
+                <Style id='deelgebied-charlie'>
+            <LineStyle>
+                <color>ff92357C</color>
+                <width>2</width>
+            </LineStyle>
+            <PolyStyle>
+                <color>8892357C</color>
+                <fill>1</fill>
+                <outline>1</outline>
+            </PolyStyle>
+        </Style>
+                <Style id='groep'>
+			<IconStyle>
+				<color>ff3644DB</color>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+				</Icon>
+                <BalloonStyle>
+                    <!-- a background color for the balloon -->
+                    <bgColor>ffffffbb</bgColor>
+                    <!-- styling of the balloon text -->
+                    <text><![CDATA[
+                    <b><font color="#CC0000" size="+3">$[name]</font></b>
+                    <br/><br/>
+                    <font face="Courier">$[description]</font>
+                    ]]></text>
+                </BalloonStyle>
+			</IconStyle>
+		</Style>
+        <Style id='hq'>
+            <IconStyle>
+                <color>50F00014</color>
+                <scale>1.1</scale>
+                <Icon>
+                    <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+    </Document>
+</kml>

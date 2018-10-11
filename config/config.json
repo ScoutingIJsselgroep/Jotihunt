@@ -1,0 +1,20 @@
+{
+  "development": {
+    "username": "root",
+    "password": "i202bourbon",
+    "database": "jotihunt_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": ":memory:"
+  },
+  "production": {
+    "username": "root",
+    "password": "secret-password",
+    "database": "jotihunt",
+    "host": "db",
+    "dialect": "mysql"
+  }
+}

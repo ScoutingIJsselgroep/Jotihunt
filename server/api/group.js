@@ -100,7 +100,7 @@ function fillDatabaseWithGroups(res) {
                   });
                 });
               });
-            });
+            }), 20 * 1000);
           }
         }
       });

@@ -29,10 +29,7 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(loadHints());
-<<<<<<< HEAD
     dispatch(loadDefaultValues());
-=======
->>>>>>> 7424aa82b9e90b330862d82424793dd121ec71a5
   }
 
   onSubmitValues(values) {
@@ -46,10 +43,6 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
   }
 
   render() {
-<<<<<<< HEAD
-    console.log(this.props.makeSelectDefaultValues);
-=======
->>>>>>> 7424aa82b9e90b330862d82424793dd121ec71a5
     return (
       <div className="container">
         <Helmet
@@ -81,21 +74,13 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
           </div>
         </div>
 
-<<<<<<< HEAD
         {this.props.result  &&
         <ClairvoyanceResult result={this.props.result} onSubmitValuesAsHint={this.onSubmitValuesAsHint} hints={this.props.hints} />}
         {(this.props.loading || !this.props.defaultValues) ?
           <LoadingIndicator />
           :
           <ClairvoyanceForm onSubmitValues={this.onSubmitValues} defaultValues={this.props.defaultValues} />
-=======
-        {this.props.result &&
-        <ClairvoyanceResult result={this.props.result} onSubmitValuesAsHint={this.onSubmitValuesAsHint} hints={this.props.hints} />}
-        {this.props.loading ?
-          <LoadingIndicator />
-          :
-          <ClairvoyanceForm onSubmitValues={this.onSubmitValues} />
->>>>>>> 7424aa82b9e90b330862d82424793dd121ec71a5
+
         }
       </div>
     );
@@ -122,13 +107,10 @@ Clairvoyance.propTypes = {
     PropTypes.bool,
     PropTypes.array,
   ]),
-<<<<<<< HEAD
   defaultValues: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.array,
   ]),
-=======
->>>>>>> 7424aa82b9e90b330862d82424793dd121ec71a5
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -139,10 +121,7 @@ const mapStateToProps = createStructuredSelector({
   error: makeSelectError(),
   sendValues: makeSelectHintValues(),
   hints: hintsSelector(),
-<<<<<<< HEAD
   defaultValues: makeSelectDefaultValues(),
-=======
->>>>>>> 7424aa82b9e90b330862d82424793dd121ec71a5
 });
 
 function mapDispatchToProps(dispatch) {

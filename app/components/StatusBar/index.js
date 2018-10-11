@@ -32,14 +32,11 @@ class StatusBar extends React.Component { // eslint-disable-line react/prefer-st
               <br />
               Aantal hunts
             </button>
-<<<<<<< HEAD
             <button className={'btn btn-default disabled'}>
               <span className="fa fa-refresh"></span>
               <br />
-              Auto
+              Automatisch
             </button>
-=======
->>>>>>> 2c1e422e87cc2d806b43ce10bd04e0705ee2228d
             {this.props.children}
           </div>
         </div>

@@ -22,7 +22,10 @@ const initialState = fromJS({
   error: false,
   sendValues: false,
   success: false,
+<<<<<<< HEAD
   defaultValues: false,
+=======
+>>>>>>> 7424aa82b9e90b330862d82424793dd121ec71a5
 });
 
 function clairvoyanceReducer(state = initialState, action) {

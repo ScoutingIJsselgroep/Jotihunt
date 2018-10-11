@@ -13,7 +13,8 @@ const config = require('../../../config');
 class ClairvoyanceForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const defaultValues = {};
-    ['ABCDB EBFCG', 'AGHHD EEBAD', 'IIAFH EDJIB', 'AJFEH EDHFG', 'AJIIH EIFFJ', 'ABHJA EEAII'].map((e, i) => {
+    // ['ABCDB EBFCG', 'AGHHD EEBAD', 'IIAFH EDJIB', 'AJFEH EDHFG', 'AJIIH EIFFJ', 'ABHJA EEAII']
+    this.props.defaultValues.map((e, i) => {
       const subareas = config.dbMappings.nArea;
       defaultValues[subareas[i]] = e;
       return [subareas[i], e];

@@ -28,6 +28,11 @@ const makeSelectSuccess = () => createSelector(
   (state) => state.get('success')
 );
 
+const makeSelectDefaultValues = () => createSelector(
+  selectClairvoyanceDomain(),
+  (state) => state.get('defaultValues')
+);
+
 const makeSelectError = () => createSelector(
   selectClairvoyanceDomain(),
   (state) => state.get('error')
@@ -53,6 +58,7 @@ export {
   makeSelectResult,
   makeSelectLoading,
   makeSelectSuccess,
+  makeSelectDefaultValues,
   makeSelectError,
   hintsSelector,
 };

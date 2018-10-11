@@ -10,10 +10,10 @@ import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectClairvoyance, {
   makeSelectLoading, makeSelectResult, makeSelectSuccess, makeSelectError,
-  makeSelectHintValues, hintsSelector,
+  makeSelectHintValues, hintsSelector, makeSelectDefaultValues,
 } from './selectors';
 import ClairvoyanceForm from '../../components/ClairvoyanceForm/index';
-import { submitValues, submitValuesAsHint, loadHints } from './actions';
+import { submitValues, submitValuesAsHint, loadHints, loadDefaultValues } from './actions';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
 import ClairvoyanceResult from '../../components/ClairvoyanceResult/index';
 import SuccessComponent from '../../components/SuccessComponent/index';
@@ -29,6 +29,7 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(loadHints());
+    dispatch(loadDefaultValues());
   }
 
   onSubmitValues(values) {
@@ -42,6 +43,7 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
   }
 
   render() {
+    console.log(this.props.makeSelectDefaultValues);
     return (
       <div className="container">
         <Helmet
@@ -73,12 +75,12 @@ export class Clairvoyance extends React.Component { // eslint-disable-line react
           </div>
         </div>
 
-        {this.props.result &&
+        {this.props.result  &&
         <ClairvoyanceResult result={this.props.result} onSubmitValuesAsHint={this.onSubmitValuesAsHint} hints={this.props.hints} />}
-        {this.props.loading ?
+        {(this.props.loading || !this.props.defaultValues) ?
           <LoadingIndicator />
           :
-          <ClairvoyanceForm onSubmitValues={this.onSubmitValues} />
+          <ClairvoyanceForm onSubmitValues={this.onSubmitValues} defaultValues={this.props.defaultValues} />
         }
       </div>
     );
@@ -105,6 +107,10 @@ Clairvoyance.propTypes = {
     PropTypes.bool,
     PropTypes.array,
   ]),
+  defaultValues: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
+  ]),
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -115,6 +121,7 @@ const mapStateToProps = createStructuredSelector({
   error: makeSelectError(),
   sendValues: makeSelectHintValues(),
   hints: hintsSelector(),
+  defaultValues: makeSelectDefaultValues(),
 });
 
 function mapDispatchToProps(dispatch) {

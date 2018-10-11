@@ -3,10 +3,12 @@ const config = require('../../config');
 const models = require('../models');
 const router = express.Router();
 const net = require('net');
+const cache = require('apicache').middleware;
 const checkJwt = require('./../checkJwt');
 const _ = require('lodash');
 const rdToWgs = require('rdtowgs');
-
+const request = require('request');
+const md5 = require('md5');
 
 function stringToInt(solution) {
   return solution.map((x) => [parseInt(x.split(' ')[0], 10), parseInt(x.split(' ')[1], 10)]);
@@ -102,5 +104,87 @@ router.post('/', checkJwt, (req, res) => {
     });
   });
 });
+
+/**
+  Returns the MD5 sum of an url
+  Cached for 10 minutes.
+  @param query.url The url to get the MD5 sum from.
+*/
+router.get('/md5', cache('10 minutes'), (req, res) => {
+  req.apicacheGroup = req.query.url;
+
+  request(req.query.url, (error, response, body) => {
+    res.send(md5(body));
+  });
+});
+
+/**
+ * Initializes Clairvoyance with latest known hint
+ */
+router.get('/init', cache('20 seconds'), (req, res) => {
+  // Make a request to the cached api.
+  request('http://localhost:3000/api/hint/api', async (error, response, body) => {
+    // Parse response to JSON
+    const data = JSON.parse(body).data;
+
+    // Get latest hint
+    const hint = data[0];
+
+    // Loop subareas check the hint. A subarea may not be present in the object, so we check for existence.
+    // The loop eventually turns back the MD5 sum of every image retrieved
+    const result = await Promise.all(_.map(config.dbMappings.nArea, async (subarea) => {
+      // Check if hint has key `subarea`
+      if (subarea in hint) {
+        const pictures = hint[subarea];
+
+        // Loop every image in the picture list.
+        const md5s = await Promise.all(_.map(pictures, async (picture) => {
+          return new Promise(resolve =>
+            // Make a request to retrieve MD5 sum
+              request('http://localhost:3000/api/clairvoyance/md5?url=http:'+picture, async (error, response, body) => {
+                if (!error)
+                  resolve(body);
+              }));
+        }));
+        return md5s;
+      } else {
+        // Return null if subarea isn't set.
+        return null;
+      }
+
+    }));
+    // List that determines whether the letter already has been used.
+    const contains = []
+
+    // List of letters that may be used.
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
+
+    // Loop over subareas
+    const initState = _.map(result, (subarea) => {
+
+      // Loop over md5 sums of each subarea
+      let subareaState = _.map(subarea, (md5) => {
+        // Define new letter for this md5sum if it doesn't exist.
+        if (!contains.includes(md5)) {
+          contains.push(md5);
+        }
+        // Get the letter that correcponds to this md5sum
+        return letters[contains.indexOf(md5)];
+      }).join("");
+
+      // If no letters are set, then set X as letters
+      if (subareaState == "") {
+        subareaState = "XXXXXXXXXX";
+      }
+
+      // Add a space in the middle of the joined letterkey
+      return subareaState.substr(0, 5) + " " + subareaState.substr(5);
+    });
+
+    // Send result to the client
+    res.send(initState);
+  });
+});
+
 
 module.exports = router;

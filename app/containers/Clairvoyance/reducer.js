@@ -12,6 +12,7 @@ import {
   SUBMIT_VALUES_AS_HINT_SUCCESS,
   SUBMIT_VALUES_AS_HINT_ERROR,
   SUBMIT_VALUES_AS_HINT, LOAD_HINTS, LOAD_HINTS_ERROR, LOAD_HINTS_SUCCESS,
+  LOAD_DEFAULT_VALUES_ERROR, LOAD_DEFAULT_VALUES_SUCCESS, LOAD_DEFAULT_VALUES,
 } from './constants';
 
 const initialState = fromJS({
@@ -21,6 +22,7 @@ const initialState = fromJS({
   error: false,
   sendValues: false,
   success: false,
+  defaultValues: false,
 });
 
 function clairvoyanceReducer(state = initialState, action) {
@@ -32,6 +34,21 @@ function clairvoyanceReducer(state = initialState, action) {
         .set('hints', false)
         .set('loading', true)
         .set('error', false);
+    case LOAD_DEFAULT_VALUES:
+      return state
+        .set('defaultValues', false)
+        .set('loading', true)
+        .set('error', false);
+    case LOAD_DEFAULT_VALUES_SUCCESS:
+      return state
+        .set('defaultValues', action.defaultValues)
+        .set('loading', false)
+        .set('error', false);
+    case LOAD_DEFAULT_VALUES_SUCCESS:
+      return state
+        .set('defaultValues', false)
+        .set('loading', false)
+        .set('error', action.error);
     case LOAD_HINTS_SUCCESS:
       return state
         .set('hints', action.hints)

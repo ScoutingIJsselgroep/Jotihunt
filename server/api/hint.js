@@ -1,14 +1,15 @@
 
 const _ = require('lodash');
-const apicache = require('apicache')
 
 const { inSubarea, getPolygons } = require('../../helpers/geometry');
 const { sendHint, sendHunt, sendSimpleLocation } = require('../telegram/index');
 
+const cache = require('apicache').middleware;
 const express = require('express');
 const models = require('../models');
 const config = require('./../../config');
 const router = express.Router();
+const request = require('request');
 const rdToWgs = require('rdtowgs');
 const wgstoord = require('./../wgstord');
 
@@ -16,6 +17,15 @@ const checkJwt = require('./../checkJwt');
 const geocoder = require('google-geocoder')({ key: config.google.googleAppId });
 
 
+router.get('/api', cache('1 minute'), (req, res) => {
+  request('https://jotihunt.net/api/1.0/hint', (error, response, body) => {
+    if (error) {
+      res.status(500).send(error);
+    } else {
+      res.send(JSON.parse(body));
+    }
+  });
+});
 
 router.get('/', checkJwt, (req, res) => {
   models.Hint.findAll({
@@ -24,11 +34,6 @@ router.get('/', checkJwt, (req, res) => {
     res.send(hints);
   });
 });
-
-/**
- * Caches the Jotihunt.net API.
- */
-// router.get('/api', )
 
 /**
  * Given an WGS-coordinate, calculate RD, subarea and retrieve the street address.

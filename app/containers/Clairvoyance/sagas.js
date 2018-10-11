@@ -4,12 +4,12 @@
 
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import {LOAD_HINTS, SUBMIT_VALUES, SUBMIT_VALUES_AS_HINT} from './constants';
+import {LOAD_HINTS, SUBMIT_VALUES, SUBMIT_VALUES_AS_HINT, LOAD_DEFAULT_VALUES } from './constants';
 
 import request from 'utils/request';
 import {
   loadHintsError, loadHintsSuccess, retrieveResult, submitValuesAsHintError,
-  submitValuesAsHintSuccess
+  submitValuesAsHintSuccess, loadDefaultValuesSuccess, loadDefaultValuesError
 } from "./actions";
 
 const config = require('../../../config');
@@ -38,6 +38,35 @@ export function* hints() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   const watcher = yield takeLatest(LOAD_HINTS, getHints);
+
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
+/**
+ * DefaultValues request/response handler
+ */
+export function* getDefaultValue() {
+  const requestURL = '/api/clairvoyance/init';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const loadedDefaultValues = yield call(request, requestURL);
+    yield put(loadDefaultValuesSuccess(loadedDefaultValues));
+  } catch (error) {
+    yield put(loadDefaultValuesError(error));
+  }
+}
+
+/**
+ * Root saga manages watcher lifecycle
+ */
+export function* defaultValues() {
+  // Watches for LOAD_DEFAULT_VALUES actions and calls getDefaultValue when one comes in.
+  // By using `takeLatest` only the result of the latest API call is applied.
+  // It returns task descriptor (just like fork) so we can continue execution
+  const watcher = yield takeLatest(LOAD_DEFAULT_VALUES, getDefaultValue);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);
@@ -133,5 +162,6 @@ export function* submitClairvoyanceValues() {
 export default [
   cfData,
   hints,
+  defaultValues,
   submitClairvoyanceValues,
 ];

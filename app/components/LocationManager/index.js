@@ -17,10 +17,14 @@ class LocationManager extends React.Component { // eslint-disable-line react/pre
 
   componentDidMount() {
     this.updateFunction = this.updateFunction.bind(this);
-    this.interval = setInterval(this.updateFunction, 60000);
+    this.interval = setInterval(this.updateFunction, 10000);
   }
 
   updateFunction() {
+    // Quick fire once, then set interval to 90 seconds
+    clearInterval(this.interval);
+    this.interval = setInterval(this.updateFunction, 90000);
+
     if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled) {
       // Send coordinates to server
       console.log("Sending coordinates");

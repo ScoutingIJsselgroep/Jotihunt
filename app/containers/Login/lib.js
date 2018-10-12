@@ -16,6 +16,7 @@ function createLock(nextPathname, closable) {
   storeSecret(secret);
   return new Auth0Lock(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN, {
     closable: closable,
+    // configurationBaseUrl: 'https://jotihunt-js.eu.auth0.com',
     theme: {
       logo: 'https://s3.eu-central-1.amazonaws.com/tristandb/headonly.svg',
     },

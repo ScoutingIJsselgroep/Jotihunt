@@ -202,7 +202,7 @@
     "@google/maps": "^0.5.5",
     "@mapbox/togeojson": "^0.16.0",
     "apicache": "^1.2.3",
-    "auth0-lock": "^10.24.3",
+    "auth0-lock": "",
     "babel-polyfill": "6.20.0",
     "better-react-spinkit": "^2.0.4",
     "body-parser": "^1.18.3",

@@ -1,4 +1,4 @@
-FROM node:6-slim
+FROM node:8.12.0-alpine
 
 ENV KARMA_BROWSER PhantomJS
 RUN apt-get update && apt-get install libpng12-0

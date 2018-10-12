@@ -23,6 +23,8 @@ class LocationManager extends React.Component { // eslint-disable-line react/pre
   updateFunction() {
     if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled) {
       // Send coordinates to server
+      console.log("Sending coordinates");
+      console.log(this.props.coords);
       this.props.sendCoordinates(this.props.coords);
     }
   }

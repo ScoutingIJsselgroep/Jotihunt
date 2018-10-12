@@ -27,6 +27,8 @@ const config = require('../../../config');
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
+import openSocket from 'socket.io-client';
+
 /**
  * Load the repositories, this action starts the request saga
  *
@@ -80,11 +82,13 @@ function submitCar(coordinates) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: "Tristan",
         latitude: coordinates.latitude,
         longitude: coordinates.longitude,
       }),
     })
+    // Make update to Socket to do a live website update
+    const socket = openSocket();
+    socket.emit('car');
   } catch (err) {
 
   }

@@ -96,7 +96,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     dispatch(loadHints());
     dispatch(loadStatus());
     dispatch(loadCars());
-    dispatch(loadPredictions());
+    // dispatch(loadPredictions());
   }
 
   onHistoryToggle(history) {

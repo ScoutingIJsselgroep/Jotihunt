@@ -1,7 +1,7 @@
-FROM node:8.12.0-alpine
+FROM node:8.12.0-slim
 
 ENV KARMA_BROWSER PhantomJS
-RUN apk update && apk add libpng-dev
+RUN apt-get update && apt-get install libpng12-0
 
 WORKDIR /reactapp
 

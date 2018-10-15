@@ -34,7 +34,7 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
 
   onSubmit() {
     const { dispatch } = this.props;
-    dispatch(submitHunt([this.props.params.lat, this.props.params.lng], this.props.route.type));
+    dispatch(submitHunt([this.props.params.lat, this.props.params.lng], this.props.route.type, this.refs.time.value));
   }
 
   render() {
@@ -45,6 +45,12 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
       return <ErrorComponent error={'Er is iets fout gegaan.'} />;
     }
     if (this.props.locationResult) {
+      const defaultDate = new Date();
+      if (this.props.route.type === "hunt") {
+        defaultDate.setMinutes(defaultDate.getMinutes() - 10);
+      }
+      const defaultTimestring = (""+defaultDate.getHours()).padStart(2, 0) + ':' + (""+defaultDate.getMinutes()).padStart(2, 0);
+
       return (
         <div className="container">
           <div className="row">
@@ -74,6 +80,11 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
                   <div className="form-group">
                     <span>Deelgebied</span>
                     <input type="email" className="form-control" disabled value={this.props.locationResult.subarea} />
+                  </div>
+
+                  <div className="form-group">
+                    <span>Tijdstip</span>
+                    <input ref="time" type="time" className="form-control" defaultValue={defaultTimestring} disabled={this.props.huntResult ? true : false} />
                   </div>
 
                   <MapDetailView lat={parseFloat(this.props.params.lat)} lng={parseFloat(this.props.params.lng)} />

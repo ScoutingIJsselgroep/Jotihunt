@@ -24,7 +24,11 @@ router.post('/', (req, res) => {
       longitude: req.body.longitude,
     });
     // TODO: Make update to Socket to do a live website update
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> Initial commit
     if (result) { // update
       return result.update({
         latitude: req.body.latitude,

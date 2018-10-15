@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
@@ -6,6 +5,8 @@ const request = require("request");
 const checkJwt = require('./../checkJwt');
 const config = require('./../../config');
 const models = require('../models');
+const net = require('net');
+const cache = require('apicache').middleware;
 
 function getLastHints(callback) {
   models.Hint.findAll({
@@ -31,6 +32,7 @@ function getLastHints(callback) {
   });
 }
 
+/*
 function getNextLocation(callback) {
   models.Group.findAll({
     include: [models.Subarea],
@@ -82,10 +84,47 @@ function getNextLocation(callback) {
 
     // console.log(groupedGroups);
   });
-}
+}*/
 
-router.get('/', (req, res) => {
-  res.send({});
+// TODO: Add caching function
+/**
+  Perform a call to Projection, a location prediction API.
+*/
+router.get('/', cache('1 minute'), (req, res) => {
+  getLastHints((lastHints) => {
+    // Prepare object array for Projection API.
+    const requestBody = {
+      lastLocations: _.map(lastHints, (hint) => {
+        return {
+          subarea: hint.Subarea.name.toLowerCase(),
+          location: [hint.latitude, hint.longitude],
+          timestamp: hint.createdAt
+        };
+      })
+    }
+
+    // Perform request to Projection API over a socket.
+    const client = new net.Socket();
+    client.connect(31337, '142.93.137.62', () => {
+      console.log("Requesting Server");
+      client.write(JSON.stringify(requestBody));
+    });
+
+    // Receive data
+    let data = '';
+    client.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    // Send data to client on response end.
+    client.on('end', () => {
+      const parsedData = JSON.parse(data);
+      // TODO: Remove log file
+      console.log(parsedData);
+      // Send data to client
+      res.send(JSON.stringify(parsedData));
+    })
+  });
 });
 
 

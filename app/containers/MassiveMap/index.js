@@ -10,6 +10,7 @@ import createRef from 'create-react-ref/lib/createRef';
 import { connect } from 'react-redux';
 import openSocket from 'socket.io-client';
 import { GoogleMap, withGoogleMap, TrafficLayer, DirectionsRenderer } from 'react-google-maps';
+import ProjectionMapper from 'components/ProjectionMapper/index';
 import Toggle from 'react-bootstrap-toggle';
 import StatusBar from 'components/StatusBar';
 import _ from 'lodash';
@@ -82,6 +83,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     const socket = openSocket();
     socket.on('please_refresh_hints', function(msg){
       dispatch(loadHints());
+      dispatch(loadPredictions());
     });
     socket.on('status', function(msg){
       dispatch(loadStatus());
@@ -91,12 +93,17 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
       dispatch(loadCars());
     });
 
+    // Update predictions every 30 seconds
+    setInterval(() => dispatch(loadPredictions()),
+      30 * 1000
+    );
+
     // Go load hints
     const { dispatch } = this.props;
     dispatch(loadHints());
     dispatch(loadStatus());
     dispatch(loadCars());
-    // dispatch(loadPredictions());
+    dispatch(loadPredictions());
   }
 
   onHistoryToggle(history) {
@@ -161,7 +168,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           }
           {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
           {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
-          //{this.props.predictions && <DirectionsRenderer directions={this.props.predictions} />}
+          {this.props.predictions && ProjectionMapper(this.props.predictions).map((object) => object)}
         </MyMapComponent>
         {(this.props.loadRightClick || this.props.rightClickLatLng) &&
         <div className="panel panel-default">

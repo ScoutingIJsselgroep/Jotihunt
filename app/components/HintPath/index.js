@@ -51,7 +51,7 @@ function HintPath(hints, history, onClick) {
   result.push(_.map(sortedHints, (sortedHint) => <TailHintMarker hint={_.last(sortedHint)} />));
 
   // Generate Marker Circumference
-  result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint), onClick)));
+  // result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint), onClick)));
 
   // Generate paths
   result.push(_.map(sortedHints, (sortedHint) => generatePath(sortedHint.map((hint) => {

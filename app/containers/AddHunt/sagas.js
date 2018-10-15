@@ -9,15 +9,27 @@ import { locationResultSelector } from './selectors';
 
 const config = require('../../../config');
 
-export function* doSubmitHunt({ latlng, huntType }) {
+export function* doSubmitHunt({ latlng, huntType, time }) {
   const requestURL = '/api/hint';
 
-  const result = yield select(locationResultSelector());
-  const address = result.address[0] ? result.address[0].formatted_address : 'Onbekende weg';
-
-  const subarea = result.subarea;
-
   try {
+    const result = yield select(locationResultSelector());
+    const address = result.address[0] ? result.address[0].formatted_address : 'Onbekende weg';
+
+    const subarea = result.subarea;
+
+    // Convert time to ISO
+    const isoTime = new Date();
+    const hour = parseInt(time.substring(0, 2));
+    const minute = parseInt(time.substring(3, 5));
+
+    // Pass back one day.
+    if (isoTime.getHours() == 0 && hour == "23") {
+      isoTime.setDate(isoTime.getDate() - 1);
+    }
+    isoTime.setHours(hour);
+    isoTime.setMinutes(minute);
+
     // Call our request helper (see 'utils/request')
     const response = yield call(request, requestURL, {
       method: 'POST',
@@ -32,10 +44,13 @@ export function* doSubmitHunt({ latlng, huntType }) {
         rdy: 0,
         address,
         subarea,
+        createdAt: isoTime,
+        updatedAt: isoTime
       }),
     });
     yield put(submitHuntSuccess(response));
   } catch (error) {
+    console.log(error);
     yield put(submitHuntError(error));
   }
 }

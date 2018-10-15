@@ -145,6 +145,8 @@ router.post('/', checkJwt, (req, res) => {
 
 
       if (req.body.hintTypeId) {
+        // Create a hunt/information point on map
+        console.log(req.body.createdAt);
         models.Hint.create({
           latitude: req.body.latitude,
           longitude: req.body.longitude,
@@ -152,15 +154,18 @@ router.post('/', checkJwt, (req, res) => {
           rdy: req.body.rdy || rd[0],
           address: req.body.address,
           SubareaId: subarea.id,
+          createdAt: req.body.createdAt ? req.body.createdAt : new Date(),
+          updatedAt: req.body.updatedAt ? req.body.updatedAt : new Date(),
           HintTypeId: req.body.hintTypeId ? req.body.hintTypeId : 1,
           UserId: 1,
         });
         if (req.body.hintTypeId === 2) {
-          sendHunt(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
+          sendHunt(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address, req.body.createdAt);
         } else {
           sendSimpleLocation(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
         }
       } else {
+        // Create a hint
         var date = new Date();
         date.setMinutes(0);
         date.setSeconds(0);

@@ -27,7 +27,7 @@ class HintMarker extends React.Component { // eslint-disable-line react/prefer-s
   }
 
   render() {
-    const duration = moment.duration(moment(new Date()).diff(moment(this.props.hint.updatedAt)));
+    const duration = moment.duration(moment(new Date()).diff(moment(this.props.hint.createdAt)));
 
     let icon;
     switch (this.props.hint.HintType.name) {

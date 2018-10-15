@@ -6,6 +6,8 @@ module.exports = function (sequelize, DataTypes) {
     rdx: DataTypes.INTEGER,
     rdy: DataTypes.INTEGER,
     address: DataTypes.STRING
+  }, {
+    timestamps: true
   });
 
   Hint.associate = function (models) {

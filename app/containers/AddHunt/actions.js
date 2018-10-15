@@ -41,7 +41,7 @@ export function loadLocationError(error) {
   };
 }
 
-export function submitHunt(latlng, type) {
+export function submitHunt(latlng, type, time) {
   const socket = openSocket();
   socket.emit('please_refresh_hints');
 
@@ -49,6 +49,7 @@ export function submitHunt(latlng, type) {
     type: SUBMIT_HUNT,
     latlng,
     huntType: type,
+    time,
   };
 }
 

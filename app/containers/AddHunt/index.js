@@ -83,7 +83,7 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
                   </div>
 
                   <div className="form-group">
-                    <span>Tijdstip</span>
+                    <span>Tijdstip (AM = Voor de middag, PM = Na de middag)</span>
                     <input ref="time" type="time" className="form-control" defaultValue={defaultTimestring} disabled={this.props.huntResult ? true : false} />
                   </div>
 

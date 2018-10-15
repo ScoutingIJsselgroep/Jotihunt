@@ -17,8 +17,13 @@ module.exports = {
     bot.sendMessage(config.telegram.chats[subarea], `Puzzel opgelost! Deze wijst naar ${address}.`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
-  sendHunt(subarea, lat, lng, address) {
-    bot.sendMessage(config.telegram.chats[subarea], `Hatsikidee! Een hunt op ${address}. De vossen mogen pas over een uur weer gehunt worden.`);
+  sendHunt(subarea, lat, lng, address, createdAt) {
+    // Get next hunt time
+    createdAtDate = new Date(createdAt);
+    createdAtDate.setHours(createdAtDate.getHours() + 1)
+    const time = createdAtDate.getHours() + ':' + createdAtDate.getMinutes();
+
+    bot.sendMessage(config.telegram.chats[subarea], `Hatsikidee! Een hunt op ${address}. De vossen mogen pas om ${time} uur weer gehunt worden.`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
   sendSimpleLocation(subarea, lat, lng, address) {

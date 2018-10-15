@@ -103,30 +103,32 @@ router.get('/', cache('1 minute'), (req, res) => {
       })
     }
 
-    // Perform request to Projection API over a socket.
-    const client = new net.Socket();
-    client.connect(31337, '142.93.137.62', () => {
-      console.log("Requesting Server");
-      client.write(JSON.stringify(requestBody));
-    });
+    try {
+      // Perform request to Projection API over a socket.
+      const client = new net.Socket();
+      client.connect(31337, '142.93.137.62', () => {
+        console.log("Requesting Server");
+        client.write(JSON.stringify(requestBody));
+      });
 
-    // Receive data
-    let data = '';
-    client.on('data', (chunk) => {
-      data += chunk;
-    });
+      // Receive data
+      let data = '';
+      client.on('data', (chunk) => {
+        data += chunk;
+      });
 
-    // Send data to client on response end.
-    client.on('end', () => {
-      const parsedData = JSON.parse(data);
-      // TODO: Remove log file
-      console.log(parsedData);
-      // Send data to client
-      res.send(JSON.stringify(parsedData));
-    })
+      // Send data to client on response end.
+      client.on('end', () => {
+        const parsedData = JSON.parse(data);
+        // TODO: Remove log file
+        console.log(parsedData);
+        // Send data to client
+        res.send(JSON.stringify(parsedData));
+      });
+    } catch (error) {
+      res.status(500).send(error);
+    }
   });
 });
-
-
 
 module.exports = router;

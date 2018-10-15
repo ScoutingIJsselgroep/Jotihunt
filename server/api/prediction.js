@@ -119,13 +119,19 @@ router.get('/', cache('1 minute'), (req, res) => {
 
       // Send data to client on response end.
       client.on('end', () => {
+        try {
         const parsedData = JSON.parse(data);
-        // TODO: Remove log file
-        console.log(parsedData);
-        // Send data to client
-        res.send(JSON.stringify(parsedData));
+          // TODO: Remove log file
+          console.log(parsedData);
+          // Send data to client
+          res.send(JSON.stringify(parsedData));
+        } catch (error) {
+          console.log(error);
+          res.status(500).send(error);
+        }
       });
     } catch (error) {
+      console.log(error);
       res.status(500).send(error);
     }
   });

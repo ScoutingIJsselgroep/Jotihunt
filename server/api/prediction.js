@@ -64,7 +64,6 @@ router.get('/', cache('1 minute'), (req, res) => {
 
       // Send data to client on response end.
       client.on('end', () => {
-        console.log(data);
         try {
           const parsedData = JSON.parse(data);
           // Send data to client

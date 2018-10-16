@@ -8,8 +8,7 @@ var fs = require('fs'),
 module.exports = function (app, server) {
   const io = require('socket.io')(server);
 
-  io.on('connection', function(socket){
-    console.log("Listening connection");
+  io.on('connection', function(socket) {
     socket.on('please_refresh_hints', function(){
       io.emit('please_refresh_hints');
     });

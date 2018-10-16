@@ -40,7 +40,7 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
         {_.map(this.props.result.wgs, (result, i) => <Marker
           key={i}
           icon={{
-            url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+            url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
           }}
           position={new google.maps.LatLng(result[0], result[1])}
         />)}
@@ -84,7 +84,7 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
         >
         </GettingStartedGoogleMap>
         <div className="panel-body">
-          <img src={'http://maps.google.com/mapfiles/ms/icons/green-dot.png'} /> Huidige oplossing
+          <img src={'https://maps.google.com/mapfiles/ms/icons/green-dot.png'} /> Huidige oplossing
           <div className="btn-group pull-right">
             <button className="btn btn-default" role="button" data-toggle="collapse" href={`#${this.id}`} aria-expanded="false" aria-controls="Toon details">
               <span className="fa fa-chevron-down" />&nbsp;Details

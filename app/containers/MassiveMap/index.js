@@ -95,7 +95,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 
     // Update predictions every 30 seconds
     setInterval(() => dispatch(loadPredictions()),
-      30 * 1000
+      15 * 1000
     );
 
     // Go load hints

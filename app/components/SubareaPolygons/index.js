@@ -27,7 +27,7 @@ function SubareaPolygons(onRightClick) {
       const properties = geoJson.features[i].properties;
       const options = {
         fillColor: properties.fill,
-        fillOpacity: properties['fill-opacity'] * 0.2,
+        fillOpacity: properties['fill-opacity'] * 0.05,
         strokeColor: properties.stroke,
         strokeOpacity: properties['stroke-opacity'],
         strokeWeight: 2,

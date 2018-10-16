@@ -48,6 +48,7 @@ class HintMarker extends React.Component { // eslint-disable-line react/prefer-s
     if (this.props.history || duration.asHours() < historyTime) {
       return (<Marker
         onClick={this.onToggleOpen} icon={icon}
+        opacity={this.props.tail ? 1.0 : 0.5}
         position={{ lat: this.props.hint.latitude, lng: this.props.hint.longitude }}
       >
         {this.props.hint.isOpen &&

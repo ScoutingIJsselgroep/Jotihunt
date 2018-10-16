@@ -34,7 +34,7 @@ function generateMarkerCircumference(hint, onClick) {
 }
 
 function generatePath(path, color) {
-  return <Polyline path={_.compact(path)} options={{ strokeColor: `#${color}` }} />;
+  return <Polyline path={_.compact(path)} options={{ strokeColor: color, strokeOpacity: 0.5 }} />;
 }
 
 function HintPath(hints, history, onClick) {
@@ -48,7 +48,7 @@ function HintPath(hints, history, onClick) {
   // Generate Markers for the init of every subarea
   result.push(_.map(sortedHints, (sortedHint) => _.map(_.initial(sortedHint), (hint, i) => <HintMarker hint={hint} key={i} history={history} />)));
   // Generate Marker for last entry of every subarea
-  result.push(_.map(sortedHints, (sortedHint) => <TailHintMarker hint={_.last(sortedHint)} />));
+  result.push(_.map(sortedHints, (sortedHint, i) => <HintMarker tail={true} key={i} hint={_.last(sortedHint)} />));
 
   // Generate Marker Circumference
   // result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint), onClick)));

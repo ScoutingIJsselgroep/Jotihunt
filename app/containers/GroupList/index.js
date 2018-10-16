@@ -13,13 +13,14 @@ import Helmet from 'react-helmet';
 import { Form, Text } from 'react-form';
 
 import { createStructuredSelector } from 'reselect';
-import { loadGroups, performSearch } from './actions';
+import { loadGroups, performSearch, incrementGroup } from './actions';
 import makeSelectGroupList, { searchSelector, errorLoadingGroupsSelector, groupsSelector, loadingGroupsSelector } from './selectors';
 
 export class GroupList extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.onSearchChange = this.onSearchChange.bind(this);
+    this.onIncrementGroup = this.onIncrementGroup.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +30,11 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
   onSearchChange({search}) {
     const { dispatch } = this.props;
     dispatch(performSearch(search));
+  }
+
+  onIncrementGroup(value, groupId) {
+    const {dispatch} = this.props;
+    dispatch(incrementGroup(value, groupId));
   }
 
   render() {
@@ -55,7 +61,7 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
               {this.props.groups && this.props.groups.map((group, index) => {
                 if (!this.props.search || this.props.search == "" ||
                   JSON.stringify(group).toUpperCase().includes(this.props.search.toUpperCase())) {
-                  return <GroupListItem key={index} group={group} />;
+                  return <GroupListItem key={index} group={group} increment={this.onIncrementGroup}/>;
                 }
                 return null;
               })}

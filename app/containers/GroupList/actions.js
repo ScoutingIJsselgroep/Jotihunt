@@ -9,6 +9,7 @@ import {
   LOAD_GROUPS_ERROR,
   LOAD_GROUPS_SUCCESS,
   SEARCH,
+  INCREMENT_GROUP,
 } from './constants';
 
 export function loadGroups() {
@@ -35,5 +36,14 @@ export function loadGroupsError(error) {
   return {
     type: LOAD_GROUPS_ERROR,
     error,
+  }
+}
+
+export function incrementGroup(value, groupId) {
+  console.log("Incrementing " + groupId + " with " + value);
+  return {
+    type: INCREMENT_GROUP,
+    value,
+    groupId,
   }
 }

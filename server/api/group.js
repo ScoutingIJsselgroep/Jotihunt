@@ -111,6 +111,23 @@ function fillDatabaseWithGroups(res) {
   });
 }
 
+router.post('/increment', (req, res) => {
+  models.Group.increment({
+    visits: req.body.value,
+  }, {
+    where: {
+      id: req.body.groupId,
+    }
+  }).then(() => {
+    models.Group.findAll({
+      include: [models.Subarea],
+    }).then((groups) => {
+      const sortedGroups =  _.orderBy(groups, ['town'], ['asc']);
+      res.send(sortedGroups);
+    });
+  });
+});
+
 router.get('/fill', (req, res) => {
   // Check if database is empty.
   models.Group.findAll({

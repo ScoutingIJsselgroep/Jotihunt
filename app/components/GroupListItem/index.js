@@ -11,12 +11,13 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
 import messages from './messages';
 import Gpsbutton from 'components/Gpsbutton';
+import GroupVisits from 'components/GroupVisits';
 
 const Label = styled.span`
   background-color: ${(props) => props.color} !important;
 `;
 
-function GroupListItem({ group }) {
+function GroupListItem({ group, increment }) {
   return (
     <tr>
       <td>
@@ -30,6 +31,9 @@ function GroupListItem({ group }) {
       </td>
       <td>
         {group.location}
+      </td>
+      <td>
+        <GroupVisits visits={group.visits} increment={increment} groupId={group.id} />
       </td>
       <td>
         <div className="btn-group" role="group">

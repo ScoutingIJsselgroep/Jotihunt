@@ -40,7 +40,6 @@ export function loadGroupsError(error) {
 }
 
 export function incrementGroup(value, groupId) {
-  console.log("Incrementing " + groupId + " with " + value);
   return {
     type: INCREMENT_GROUP,
     value,

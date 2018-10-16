@@ -60,8 +60,8 @@ const MyMapComponent = withGoogleMap((props) =>
   >
   {SubareaPolygons(props.onRightClick).map((subarea) => subarea)}
   {MapGroups().map((group) => group)}
-  <MapCircle />
   {props.children}
+  <MapCircle />
   </GoogleMap>
 );
 

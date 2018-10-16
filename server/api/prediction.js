@@ -74,6 +74,10 @@ router.get('/', cache('2 minute'), (req, res) => {
           res.status(500).send(error);
         }
       });
+
+      client.on('error', (error) => {
+        res.status(500).send(error);
+      });
     } catch (error) {
       console.log(error);
       res.status(500).send(error);

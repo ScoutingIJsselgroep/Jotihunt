@@ -11,7 +11,7 @@ const request = require('request');
 const md5 = require('md5');
 
 function stringToInt(solution) {
-  return solution.map((x) => [parseInt(x.split(' ')[0], 10), parseInt(x.split(' ')[1], 10)]);
+  return solution.map((x) => [parseInt(x.split(" ")[0], 10), parseInt(x.split(" ")[1], 10)]);
 }
 
 function rdSolutionToWgs(solution) {
@@ -41,7 +41,12 @@ function getClairvoyanceResult(rd, latestSolution) {
   const wgsLatest = rdSolutionToWgs(latestSolution);
 
   // Calculate euclidean distances
-  const cost = wgs.map((x, i) => calcCrow(x[0], x[1], wgsLatest[i][0], wgsLatest[i][1]));
+  const cost = wgs.map((x, i) => {
+    if (wgsLatest[i] == undefined) {
+      return 1337;
+    }
+    return calcCrow(x[0], x[1], wgsLatest[i][0], wgsLatest[i][1]);
+  });
   const totalCost = _.sum(cost);
 
   return {
@@ -84,13 +89,19 @@ router.post('/', checkJwt, (req, res) => {
       }
     });
 
+    let allData = '';
 
     client.on('data', (data) => {
+      allData += data;
+    });
+
+    client.on('end', () => {
       const result = {
       };
+      console.log(allData);
       try {
-        if (JSON.parse(data)) {
-          const parsedData = JSON.parse(data);
+        if (JSON.parse(allData)) {
+          const parsedData = JSON.parse(allData);
 
           result.best = getClairvoyanceResult(stringToInt(parsedData[0]), stringToInt(lastHints));
 
@@ -98,10 +109,15 @@ router.post('/', checkJwt, (req, res) => {
 
           res.send(JSON.stringify(result).toString('utf8'));
         }
-      } catch (err) {
-        //
+      } catch (error) {
+        console.error(error);
       }
     });
+
+    client.on('error', (error) => {
+      console.log(error);
+      res.status(500).send(JSON.stringify(error).toString('utf8'))
+    })
   });
 });
 

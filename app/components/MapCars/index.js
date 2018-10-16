@@ -9,8 +9,8 @@ import CarMarker from '../CarMarker';
 import _ from 'lodash';
 
 function MapCars(cars, history) {
-  return _.map(cars, (car) =>
-    <CarMarker car={car} history={history} />);
+  return _.map(cars, (car, index) =>
+    <CarMarker car={car} key={index} history={history} />);
 }
 
 MapCars.propTypes = {

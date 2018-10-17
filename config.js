@@ -6,14 +6,14 @@ module.exports = {
   telegram: {
     authToken: process.env.TELEGRAM_TOKEN,
     chats: {
-      Alpha: -153752986,
-      Bravo: -157632620,
-      Charlie: -172605996,
-      Delta: -169765091,
-      Echo: -155957029,
-      Foxtrot: -154182675,
-      Opdracht: -172862895,
-      Nieuws: -171983874,
+      Alpha: -1001495546887,
+      Bravo: -1001209949799,
+      Charlie: -1001414107593,
+      Delta: -1001319902278,
+      Echo: -1001268600801,
+      Foxtrot: -1001190669090,
+      Opdracht: -1001421241699,
+      Nieuws: -1001440802553,
       Debug: -271734194,
     },
     status: {

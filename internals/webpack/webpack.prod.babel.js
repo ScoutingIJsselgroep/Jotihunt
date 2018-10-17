@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
@@ -40,6 +41,20 @@ module.exports = require('./webpack.base.babel')({
         minifyURLs: true,
       },
       inject: true,
+    }),
+
+    new WebpackPwaManifest({
+      name: 'Jotihunt 2018',
+      short_name: 'JH18',
+      description: 'Dashboard voor Jotihunt van Scouting Gorssel!',
+      background_color: '#fafafa',
+      theme_color: '#ef5800',
+      icons: [
+        {
+          src: path.resolve('app/images/headnonblink.png'),
+          sizes: [72, 96, 120, 128, 144, 152, 167, 180, 192, 384, 512],
+        },
+      ],
     }),
 
     // Put it in the end to capture all the HtmlWebpackPlugin's

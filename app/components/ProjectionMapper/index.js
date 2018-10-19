@@ -8,27 +8,42 @@ import React, { PropTypes } from 'react';
 // import styled from 'styled-components';
 
 import { Marker, Polyline} from 'react-google-maps';
-const icon = require('./Person.png');
+const icon = [require('./Person1.png'), require('./Person2.png'), require('./Person3.png')];
 
 function ProjectionMapper(predictions) {
-  console.log(predictions);
-  const markers = _.map(predictions, (prediction, i) =>
-  <Marker key={i}
-    icon={icon}
-  position={{
-    lat: (prediction[2].start_location.lat * (1-prediction[3]))
-    + prediction[2].end_location.lat * (prediction[3]),
-    lng: (prediction[2].start_location.lng * (1-prediction[3]))
-    + prediction[2].end_location.lng * (prediction[3]) }}></Marker>);
+  let result = [];
+  _.map(predictions, (target, t_i) => {
+    _.map(target[0], (subarea, s_i) => {
+      // Push current location
+      result.push(<Marker icon={icon[t_i]}
+                    position={google.maps.geometry.spherical.interpolate(
+                      new google.maps.LatLng(subarea[2].start_location),
+                      new google.maps.LatLng(subarea[2].end_location),
+                      subarea[3]
+                    )}
+                  />);
 
-  const currentPolyline = _.map(predictions, (prediction, j) =>
-    <Polyline
-      key={j + predictions.length}
-      options={{ strokeColor: prediction[1].Subarea.color,  strokeWeight: 3}}
-      path={google.maps.geometry.encoding.decodePath(prediction[2].polyline.points)}
-    />);
+      // Push current polyline
+      result.push(<Polyline
+                    // key={j + subarea.length}
+                    options={{ strokeColor: "#0000FF",  strokeWeight: 4}}
+                    path={google.maps.geometry.encoding.decodePath(subarea[2].polyline.points)}
+                  />);
 
-  return markers.concat(currentPolyline);
+      // Push all remaining polylines
+      _.map(subarea[4], (path, p_i) => {
+        if (subarea[2].polyline.points != path) {
+          result.push(<Polyline
+                      // key={j + subarea.length}
+                      options={{ strokeColor: "#8888FF",  strokeWeight: 2}}
+                      path={google.maps.geometry.encoding.decodePath(path)}
+                    />);
+        }
+      })
+    });
+  });
+  
+  return result;
 }
 
 ProjectionMapper.propTypes = {

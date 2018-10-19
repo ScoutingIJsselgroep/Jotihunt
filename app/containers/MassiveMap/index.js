@@ -144,6 +144,8 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
       huntCount = _.filter(this.props.hints, (hint) => hint.HintType.name === 'Hunt').length;
     }
 
+    console.log(this.props.predictions);
+
     return (
       <div>
         <Helmet
@@ -245,8 +247,8 @@ MassiveMap.propTypes = {
     PropTypes.bool,
   ]),
   predictions: PropTypes.oneOfType([
-    PropTypes.object,
     PropTypes.bool,
+    PropTypes.array,
   ]),
 };
 

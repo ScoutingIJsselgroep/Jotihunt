@@ -35,7 +35,7 @@ function getLastHints(callback) {
 /**
   Perform a call to Projection, a location prediction API.
 */
-router.get('/', cache('3 minute'), (req, res) => {
+router.get('/', cache('5 minute'), (req, res) => {
   getLastHints((lastHints) => {
     // Prepare object array for Projection API.
     const requestBody = {
@@ -49,7 +49,6 @@ router.get('/', cache('3 minute'), (req, res) => {
     }
 
     try {
-      console.log(JSON.stringify(requestBody));
       // Perform request to Projection API over a socket.
       const client = new net.Socket();
       client.connect(31337, '142.93.137.62', () => {

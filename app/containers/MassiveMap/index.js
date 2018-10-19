@@ -143,9 +143,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     if (this.props.hints) {
       huntCount = _.filter(this.props.hints, (hint) => hint.HintType.name === 'Hunt').length;
     }
-
-    console.log(this.props.predictions);
-
+    
     return (
       <div>
         <Helmet

@@ -49,7 +49,6 @@ router.get('/', cache('3 minute'), (req, res) => {
     }
 
     try {
-      console.log(JSON.stringify(requestBody));
       // Perform request to Projection API over a socket.
       const client = new net.Socket();
       client.connect(31337, '142.93.137.62', () => {
@@ -60,16 +59,12 @@ router.get('/', cache('3 minute'), (req, res) => {
       // Receive data
       let data = '';
       client.on('data', (chunk) => {
-        console.log(chunk);
         data += chunk;
       });
 
       // Send data to client on response end.
       client.on('end', () => {
         try {
-          const parsedData = JSON.parse(data);
-          console.log("ParsedData")
-          console.log(parsedData);
           // Send data to client
           res.send(JSON.stringify(parsedData));
         } catch (error) {

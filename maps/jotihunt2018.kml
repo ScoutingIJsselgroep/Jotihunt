@@ -239,13 +239,6 @@
             </Placemark>
                         <Placemark>
                 <styleUrl>#groep</styleUrl>
-                <name><![CDATA[Triton scouting Culemborg]]></name>
-                <Point>
-                    <coordinates>5.21754,51.9607,0.0</coordinates>
-                </Point>
-            </Placemark>
-                        <Placemark>
-                <styleUrl>#groep</styleUrl>
                 <name><![CDATA[Scouting Gendringen]]></name>
                 <Point>
                     <coordinates>6.37115,51.8702,0.0</coordinates>
@@ -425,7 +418,7 @@
                 <Point>
                     <coordinates>6.22442,52.1873,0.0</coordinates>
                 </Point>
-            </Placemark>                    
+            </Placemark>
                         <Placemark>
                 <styleUrl>#groep</styleUrl>
                 <name><![CDATA[Gustaaf Adolf Groep]]></name>

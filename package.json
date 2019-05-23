@@ -257,7 +257,7 @@
     "react-redux": "4.4.6",
     "react-router": "3.0.0",
     "react-router-redux": "4.0.6",
-    "react-router-scroll": "0.4.1",
+    "react-router-scroll": "0.4.4",
     "recompose": "^0.26.0",
     "redux": "3.6.0",
     "redux-immutable": "3.0.8",

@@ -42,7 +42,7 @@ module.exports = {
     timeout: process.env.POLLER_INTERVAL_SECONDS * 1000,
   },
   clairvoyance: {
-    ip: '142.93.137.62',
+    ip: 'clairvoyance',
     port: 1337,
   },
   dbMappings: {

@@ -12,9 +12,9 @@
   },
   "production": {
     "username": "root",
-    "password": "secret-password",
+    "password": "",
     "database": "jotihunt",
-    "host": "db",
+    "host": "mysql",
     "dialect": "mysql"
   }
 }

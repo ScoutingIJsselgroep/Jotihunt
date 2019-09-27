@@ -51,7 +51,7 @@ router.get('/', cache('5 minute'), (req, res) => {
     try {
       // Perform request to Projection API over a socket.
       const client = new net.Socket();
-      client.connect(31337, '142.93.137.62', () => {
+      client.connect(31337, 'localhost', () => {
         console.log("[+] Requesting Projection API");
         client.write(JSON.stringify(requestBody));
       });

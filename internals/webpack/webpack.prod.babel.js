@@ -25,27 +25,9 @@ module.exports = require('./webpack.base.babel')({
       async: true,
     }),
 
-    // Minify and optimize the index.html
-    new HtmlWebpackPlugin({
-      template: 'app/index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-      inject: true,
-    }),
-
     new WebpackPwaManifest({
-      name: 'Jotihunt 2018',
-      short_name: 'JH18',
+      name: 'Jotihunt 2019',
+      short_name: 'JH19',
       description: 'Dashboard voor Jotihunt van Scouting Gorssel!',
       background_color: '#fafafa',
       theme_color: '#ef5800',

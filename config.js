@@ -45,6 +45,10 @@ module.exports = {
     ip: 'clairvoyance',
     port: 1337,
   },
+  divinity: {
+    ip: 'divinity',
+    port: 31337,
+  },
   dbMappings: {
     nArea: ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot'],
     area: {

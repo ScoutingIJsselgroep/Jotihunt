@@ -11,8 +11,8 @@
     "storage": ":memory:"
   },
   "production": {
-    "username": "root",
-    "password": "",
+    "username": "jotihunt",
+    "password": "jotihunt2019",
     "database": "jotihunt",
     "host": "mysql",
     "dialect": "mysql"

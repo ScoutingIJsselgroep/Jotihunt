@@ -38,7 +38,6 @@ module.exports = {
         };
         models.SubareaStatus.getLatest(callback);
       } catch (e) {
-        console.log(e);
       }
     });
   },

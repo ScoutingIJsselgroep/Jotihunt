@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const logger = require('../../server/logger');
 const cheerio = require('cheerio');
-const pkg = require(path.resolve(process.cwd(), 'package.json'));
+const pkg = require(path.resolve(__dirname, 'package.json'));
 const dllPlugin = pkg.dllPlugin;
 
 const plugins = [
@@ -30,7 +30,7 @@ module.exports = require('./webpack.base.babel')({
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
     'webpack-hot-middleware/client?reload=true',
-    path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
+    path.join(__dirname, 'app/app.js'), // Start with js/app.js
   ],
 
   // Don't use hashes in dev mode for better performance
@@ -84,7 +84,7 @@ function dependencyHandlers() {
     ];
   }
 
-  const dllPath = path.resolve(process.cwd(), dllPlugin.path || 'node_modules/react-boilerplate-dlls');
+  const dllPath = path.resolve(__dirname, dllPlugin.path || 'node_modules/react-boilerplate-dlls');
 
   /**
    * If DLLs aren't explicitly defined, we assume all production dependencies listed in package.json
@@ -100,7 +100,7 @@ function dependencyHandlers() {
 
     return [
       new webpack.DllReferencePlugin({
-        context: process.cwd(),
+        context: __dirname,
         manifest: require(manifestPath), // eslint-disable-line global-require
       }),
     ];
@@ -133,7 +133,7 @@ function dependencyHandlers() {
  */
 function templateContent() {
   const html = fs.readFileSync(
-    path.resolve(process.cwd(), 'app/index.html')
+    path.resolve(__dirname, 'app/index.html')
   ).toString();
 
   if (!dllPlugin) { return html; }

@@ -25,6 +25,23 @@ module.exports = require('./webpack.base.babel')({
       async: true,
     }),
 
+    new HtmlWebpackPlugin({
+      template: 'app/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+      inject: true,
+    }),
+
     new WebpackPwaManifest({
       name: 'Jotihunt 2019',
       short_name: 'JH19',

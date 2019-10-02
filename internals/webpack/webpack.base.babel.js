@@ -15,6 +15,7 @@ module.exports = (options) => ({
     loaders: [{
       test: /\.js$/, // Transform all .js files required somewhere with Babel
       loader: 'babel-loader',
+      exclude: /node_modules/,
       query: options.babelQuery,
     }, {
       // Do not transform vendor's CSS with CSS-modules

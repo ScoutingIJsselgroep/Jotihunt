@@ -12,8 +12,9 @@ module.exports = {
         telegram.sendMessage('Debug', error);
       }
       try {
+        const data = JSON.parse(body).data;
+
         const callback = (result) => {
-          const data = JSON.parse(body).data;
           // Loop body.data
           data.map((subareaStatus) => {
             result.map((oldSubareaStatus) => {

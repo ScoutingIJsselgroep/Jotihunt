@@ -74,7 +74,7 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
         </div>
 
         <GettingStartedGoogleMap
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleClientAuthToken}v=3.exp&libraries=geometry,drawing,places`}
           containerElement={
             <div style={{ height: '400px' }} />
           }

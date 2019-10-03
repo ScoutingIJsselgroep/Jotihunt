@@ -143,7 +143,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     if (this.props.hints) {
       huntCount = _.filter(this.props.hints, (hint) => hint.HintType.name === 'Hunt').length;
     }
-    
+
     return (
       <div>
         <Helmet
@@ -155,7 +155,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         />
         <MyMapComponent
           isMarkerShown
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places,traffic`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleClientAuthToken}v=3.exp&libraries=geometry,drawing,places,traffic`}
           containerElement={<div style={{ height: '80vh', marginLeft: '-10px', marginRight: '-10px' }} />}
           mapElement={<div style={{ height: '100%' }} />}
           onRightClick={this.onRightClick}

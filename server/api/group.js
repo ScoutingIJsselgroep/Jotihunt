@@ -10,7 +10,7 @@ const kmlMapName = require('../../config').map.filename;
 const DOMParser = require('xmldom').DOMParser;
 const { inSubarea } = require('../../helpers/geometry');
 const config = require('./../../config');
-const geocoder = require('google-geocoder')({ key: config.google.googleAppId });
+const geocoder = require('google-geocoder')({ key: config.google.googleServerAuthToken });
 // const kml = require(`../../maps/${kmlMapName}`);
 
 router.get('/', (req, res) => {

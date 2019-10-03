@@ -14,7 +14,7 @@ const rdToWgs = require('rdtowgs');
 const wgstoord = require('./../wgstord');
 
 const checkJwt = require('./../checkJwt');
-const geocoder = require('google-geocoder')({ key: config.google.googleAppId });
+const geocoder = require('google-geocoder')({ key: config.google.googleServerAuthToken });
 
 
 router.get('/api', cache('1 minute'), (req, res) => {
@@ -47,7 +47,7 @@ router.post('/location', checkJwt, (req, res) => {
         rd,
         subarea,
         address: data,
-        key: config.google.googleAppId,
+        key: config.google.googleServerAuthToken,
       });
     });
   } else {

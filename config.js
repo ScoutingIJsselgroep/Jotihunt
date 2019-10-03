@@ -36,7 +36,8 @@ module.exports = {
     walkingSpeed: 3.6,
   },
   google: {
-    googleAppId: process.env.GOOGLE_AUTH_TOKEN,
+    googleClientAuthToken: process.env.GOOGLE_CLIENT_AUTH_TOKEN,
+    googleServerAuthToken: process.env.GOOGLE_SERVER_AUTH_TOKEN,
   },
   poller: {
     timeout: process.env.POLLER_INTERVAL_SECONDS * 1000,

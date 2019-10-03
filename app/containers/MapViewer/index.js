@@ -40,7 +40,7 @@ export class MapViewer extends React.Component { // eslint-disable-line react/pr
           </div>
           <div className="panel-body">
             <GettingStartedGoogleMap
-              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places`}
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleClientAuthToken}v=3.exp&libraries=geometry,drawing,places`}
               containerElement={
                 <div style={{ height: '400px' }} />
               }

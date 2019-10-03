@@ -17,7 +17,7 @@ export class MapContainer extends React.Component { // eslint-disable-line react
     const GettingStartedGoogleMap = withGoogleMap(() => (
       <GoogleMap
         defaultZoom={9}
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleAppId}v=3.exp&libraries=geometry,drawing,places`}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleClientAuthToken}v=3.exp&libraries=geometry,drawing,places`}
         defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
       />));
     return (

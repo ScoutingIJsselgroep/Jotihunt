@@ -13,4 +13,4 @@ VOLUME /reactapp
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start:production"]
+CMD ["npm", "run", "start"]

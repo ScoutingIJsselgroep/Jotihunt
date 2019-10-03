@@ -1,0 +1,107 @@
+version: "3.7"
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=random-password
+    networks:
+      - jotihunt
+    labels:
+      - traefik.enable = false
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    networks:
+      - jotihunt
+    labels:
+      - traefik.backend=phpmyadmin
+      - traefik.frontend.rule=Host:phpmyadmin.scouting-ijsselgroep.nl
+      - traefik.docker.network=proxy
+      - traefik.port=80
+  jotihunt:
+    image:  tristandb/jotihunt:production
+    container_name: jotihunt
+    restart: always
+    environment:
+      - DATABASE_URL=mysql://root:random-password@mysql/jotihunt
+      - RUN_COUNTER=9
+      - PORT=3000
+      - AUTH0_CLIENT_ID=
+      - AUTH0_DOMAIN=
+      - TELEGRAM_TOKEN=
+      - GOOGLE_SERVER_AUTH_TOKEN=
+      - GOOGLE_CLIENT_AUTH_TOKEN=
+      - KML_FILENAME=jotihunt2018.kml
+      - POLLER_INTERVAL_SECONDS=61
+      - POLLER_API_KEY=
+    networks:
+      - jotihunt
+    labels:
+      - traefik.backend=jotihunt
+      - traefik.frontend.rule=Host:jotihunt.scouting-ijsselgroep.nl
+      - traefik.docker.network=proxy
+      - traefik.port=3000
+  clairvoyance:
+    image: tristandb/clairvoyance:latest
+    container_name: clairvoyance
+    restart: always
+    environment:
+      - AUTH0_CLIENT_ID=
+      - AUTH0_DOMAIN=
+      - TELEGRAM_TOKEN=
+      - GOOGLE_SERVER_AUTH_TOKEN=
+      - GOOGLE_CLIENT_AUTH_TOKEN=
+      - KML_FILENAME=jotihunt2018.kml
+      - POLLER_INTERVAL_SECONDS=61
+      - POLLER_API_KEY=
+    networks:
+      - jotihunt
+    labels:
+      - traefik.enable = false
+  divinity:
+    image: tristandb/divinity:latest
+    container_name: divinity
+    restart: always
+    environment:
+      - AUTH0_CLIENT_ID=
+      - AUTH0_DOMAIN=
+      - TELEGRAM_TOKEN=
+      - GOOGLE_SERVER_AUTH_TOKEN=
+      - GOOGLE_CLIENT_AUTH_TOKEN=
+      - KML_FILENAME=jotihunt2018.kml
+      - POLLER_INTERVAL_SECONDS=61
+      - POLLER_API_KEY=
+    networks:
+      - jotihunt
+    labels:
+      - traefik.enable = false
+  traefik:
+    image: traefik:1.7.18-alpine
+    command: --api --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/traefik/traefik.toml:/traefik.toml
+      - /var/traefik/acme.json:/acme.json
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    labels:
+      - traefik.frontend.rule=Host:backend.scouting-ijsselgroep.nl
+      - traefik.port=8080
+    environment:
+      # Cloudflare Global API Key for Let's Encrypt
+      - CF_API_EMAIL=
+      - CF_API_KEY=
+      - C_COUNTER=1
+    networks:
+      - jotihunt
+networks:
+  jotihunt:
+    name: jotihunt

@@ -7,11 +7,10 @@ WORKDIR /reactapp
 
 ADD package.json package.json
 RUN npm install
-RUN npm run build:dll
 ADD . .
 
 VOLUME /reactapp
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start:production"]

@@ -7,10 +7,10 @@ WORKDIR /reactapp
 
 ADD package.json package.json
 RUN npm install
+RUN npm run build:dll
 ADD . .
 
 VOLUME /reactapp
-RUN npm run build:dll
 
 EXPOSE 3000
 

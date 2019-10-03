@@ -25,7 +25,7 @@ require('./poller')();
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
-  outputPath: resolve(process.cwd(), 'build'),
+  outputPath: resolve(process.cwd(), 'app'),
   publicPath: '/',
 });
 

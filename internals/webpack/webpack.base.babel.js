@@ -8,7 +8,7 @@ const webpack = require('webpack');
 module.exports = (options) => ({
   entry: options.entry,
   output: Object.assign({ // Compile into js/build.js
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(process.cwd(), 'app'),
     publicPath: '/',
   }, options.output), // Merge with env dependent settings
   module: {

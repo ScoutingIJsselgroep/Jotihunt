@@ -58,7 +58,6 @@ const MyMapComponent = withGoogleMap((props) =>
     onZoomChanged={props.onChangeMapCenter}
     ref={props.ref}
   >
-  // {SubareaPolygons(props.onRightClick).map((subarea) => subarea)}
   {MapGroups().map((group) => group)}
   {props.children}
   <MapCircle />

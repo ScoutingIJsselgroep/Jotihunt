@@ -17,7 +17,6 @@ function AddHintMap({ wgs, address }) {
       defaultZoom={9}
       defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
     >
-      // {SubareaPolygons().map((subarea) => subarea)}
       { wgs ?
         <Marker position={{ lat: wgs[0], lng: wgs[1] }} >
           <InfoWindow>

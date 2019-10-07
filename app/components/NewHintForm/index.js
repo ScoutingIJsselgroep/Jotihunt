@@ -20,14 +20,14 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
           this.props.onSubmitCoordinates();
         }}
         onChange={(values) => {
-          if (values.values.rdx && values.values.rdx.length === 5 && values.values.rdy && values.values.rdy.length === 5) {
+          if (values.values.rdx && (values.values.rdx.length === 5 || values.values.rdx.length === 4) && values.values.rdy && (values.values.rdy.length === 5 || values.values.rdy.length === 4)) {
             this.props.onCoordinateChange(values.values);
           }
         }}
         validate={({ rdx, rdy }) =>
           ({
-            rdx: (!rdx || rdx.length !== 5 || isNaN(parseInt(rdx))) ? 'Dit getal moet 5 tekens lang zijn' : null,
-            rdy: (!rdy || rdy.length !== 5 || isNaN(parseInt(rdy))) ? 'Dit getal moet 5 tekens lang zijn' : null,
+            rdx: (!rdx || !(rdx.length === 5 || rdx.length === 4) || isNaN(parseInt(rdx))) ? 'Dit getal moet 4 of 5 tekens lang zijn' : null,
+            rdy: (!rdy || !(rdy.length === 5 || rdx.length === 4) || isNaN(parseInt(rdy))) ? 'Dit getal moet 4 of 5 tekens lang zijn' : null,
           })
         }
       >

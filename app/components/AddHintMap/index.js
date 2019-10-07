@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 // import styled from 'styled-components';
 import { GoogleMap, Marker, withGoogleMap, InfoWindow } from 'react-google-maps';
-import SubareaPolygons from '../SubareaPolygons/index';
+// import SubareaPolygons from '../SubareaPolygons/index';
 
 const config = require('./../../../config');
 
@@ -17,7 +17,7 @@ function AddHintMap({ wgs, address }) {
       defaultZoom={9}
       defaultCenter={{ lat: 52.1523337615325, lng: 5.859883117643787 }}
     >
-      {SubareaPolygons().map((subarea) => subarea)}
+      // {SubareaPolygons().map((subarea) => subarea)}
       { wgs ?
         <Marker position={{ lat: wgs[0], lng: wgs[1] }} >
           <InfoWindow>

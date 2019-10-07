@@ -33,7 +33,7 @@ import makeSelectMassiveMap, {
   predictionsSelector,
 } from './selectors';
 import { clearLocation, historyToggle, setLatLng, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions } from './actions';
-import SubareaPolygons from '../../components/SubareaPolygons/index';
+// import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
 import ClickMarker from '../../components/ClickMarker/index';
@@ -58,7 +58,7 @@ const MyMapComponent = withGoogleMap((props) =>
     onZoomChanged={props.onChangeMapCenter}
     ref={props.ref}
   >
-  {SubareaPolygons(props.onRightClick).map((subarea) => subarea)}
+  // {SubareaPolygons(props.onRightClick).map((subarea) => subarea)}
   {MapGroups().map((group) => group)}
   {props.children}
   <MapCircle />

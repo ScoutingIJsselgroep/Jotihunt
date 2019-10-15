@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import Gpsbutton from 'components/Gpsbutton';
-// import SubareaPolygons from '../../components/SubareaPolygons/index';
+import MapGroups from '../../components/MapGroups';
 
 const config = require('./../../../config');
 
@@ -20,10 +20,11 @@ export class MapViewer extends React.Component { // eslint-disable-line react/pr
         defaultZoom={9}
         defaultCenter={new google.maps.LatLng(this.props.params.latitude, this.props.params.longitude)}
       >
-        // {SubareaPolygons(onRightClick).map((subarea) => subarea)}
+
         <Marker
           position={new google.maps.LatLng(this.props.params.latitude, this.props.params.longitude)}
         />
+        <MapGroups showGroups={this.props.params.groups ? true : false}/>
       </GoogleMap>));
     const onRightClick = () => {};
 

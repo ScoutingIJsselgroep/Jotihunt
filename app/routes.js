@@ -139,13 +139,25 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/map/:latitude/:longitude',
+      path: '/map/:latitude/:longitude(/:groups)',
       name: 'mapViewer',
       onEnter: requireAuth,
-      getComponent(location, cb) {
-        import('containers/MapViewer')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('components/MapGroups/reducer'),
+          import('components/MapGroups/sagas'),
+          import('containers/MapViewer'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducerGroups, sagasGroups, component]) => {
+          injectReducer('mapGroups', reducerGroups.default);
+          injectSagas(sagasGroups.default)
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
     }, {
       path: '/map',

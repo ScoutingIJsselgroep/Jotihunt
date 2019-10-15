@@ -34,7 +34,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
 
   render() {
     console.log(this.props.groups);
-    if (this.props.groups) {
+    if (this.props.groups && this.props.showGroups !== false) {
       return <div> {_.map(this.props.groups, (group, index) =>
         <GroupMarker group={group} key={index} />)} </div>
     }
@@ -53,6 +53,7 @@ MapGroups.propTypes = {
     PropTypes.object,
   ]),
   loading: PropTypes.bool,
+  mapGroups: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({

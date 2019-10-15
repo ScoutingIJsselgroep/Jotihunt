@@ -27,12 +27,12 @@ function addHintContainerReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('submittingSuccess', false)
+        .set('subarea', action.subarea)
         .set('rdx', action.rdx)
         .set('rdy', action.rdy);
     case GET_COORDINATES_SUCCESS:
       return state
         .set('loading', false)
-        .set('subarea', action.response.subarea)
         .set('address', action.response.address)
         .set('wgs', action.response.wgs);
     case SUBMIT_COORDINATES:

@@ -58,7 +58,10 @@ export function* doSubmitCoordinate() {
   const rdx = yield select(makeSelectRdx());
   const rdy = yield select(makeSelectRdy());
   const address = yield select(makeSelectAddress());
-  const faAddress = address[0].formatted_address;
+  let faAddress = "";
+  if (address) {
+    faAddress = address ? address[0].formatted_address : "";
+  }
   const subarea = yield select(makeSelectSubarea());
 
   const requestURL = '/api/hint';
@@ -81,6 +84,7 @@ export function* doSubmitCoordinate() {
     });
     yield put(submitCoordinateSuccess());
   } catch (err) {
+    console.log(err);
     yield put(submitCoordinateError(err));
   }
 }

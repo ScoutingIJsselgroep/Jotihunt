@@ -21,7 +21,7 @@ function AddHintMap({ wgs, address }) {
         <Marker position={{ lat: wgs[0], lng: wgs[1] }} >
           <InfoWindow>
             <div>
-              {address[0] && address[0].formatted_address}
+              {address && address[0] && address[0].formatted_address}
             </div>
           </InfoWindow>
         </Marker>

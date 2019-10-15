@@ -61,11 +61,13 @@ router.post('/location', checkJwt, (req, res) => {
 router.post('/information', checkJwt, (req, res) => {
   // Convert RD-coordinate to WSG-84
   const wgs = rdToWgs(req.body.longitude, req.body.latitude);
-  const subarea = inSubarea(wgs);
   geocoder.reverseFind(wgs[0], wgs[1], (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
     res.send({
       wgs,
-      subarea,
       address: data,
     });
   });

@@ -6,7 +6,7 @@
 
 
 import React, { PropTypes } from 'react';
-import { Form, Text } from 'react-form';
+import { Form, Text, Select } from 'react-form';
 // import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
@@ -41,6 +41,38 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
               <div className="form-group">
                 <span htmlFor="rdx">Rijksdriehoek Y</span>
                 <Text className="form-control" field="rdx" placeholder="46828" />
+              </div>
+              <div className="form-group">
+                <span htmlFor="subarea">Deelgebied</span>
+                <Select
+                  className="form-control"
+                  field='subarea'
+                  options={[{
+                    label: 'Alpha',
+                    value: 'Alpha',
+                    key: 1
+                  }, {
+                    label: 'Bravo',
+                    value: 'Bravo',
+                    key: 2
+                  }, {
+                    label: 'Charlie',
+                    value: 'Charlie',
+                    key: 3
+                  }, {
+                    label: 'Delta',
+                    value: 'Delta',
+                    key: 4
+                  }, {
+                    label: 'Echo',
+                    value: 'Echo',
+                    key: 5
+                  }, {
+                    label: 'Foxtrot',
+                    value: 'Foxtrot',
+                    key: 6
+                  }]}
+                />
               </div>
               <button type="submit" className="btn btn-default">Versturen</button>
             </form>

@@ -25,9 +25,9 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
     this.onCoordinateSubmit = this.onCoordinateSubmit.bind(this);
   }
 
-  onCoordinateChange({ rdx, rdy }) {
+  onCoordinateChange({ rdx, rdy, subarea }) {
     const { dispatch } = this.props;
-    dispatch(getCoordinates(rdx, rdy));
+    dispatch(getCoordinates(rdx, rdy, subarea));
   }
 
   onCoordinateSubmit() {
@@ -59,13 +59,6 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
                   <LoadingIndicator />
                   :
                   <div>
-                    <div className="form-group">
-                      <span htmlFor="rdx">Deelgebied</span>
-                      <input
-                        className="form-control" placeholder="Vul eerst coördinaten in" disabled
-                        value={this.props.subarea ? this.props.subarea : ''}
-                      />
-                    </div>
                     < div className="form-group">
                       <span htmlFor="rdx">Adres</span>
                       <input className="form-control" placeholder="Vul eerst coördinaten in" disabled value={this.props.address && this.props.address[0] ? this.props.address[0].formatted_address : ''} />

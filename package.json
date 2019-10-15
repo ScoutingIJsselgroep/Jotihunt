@@ -242,7 +242,7 @@
     "node-sass": "4.9.3",
     "node-telegram-bot-api": "0.27.1",
     "raw-loader": "0.5.1",
-    "rdtowgs": "1.0.1",
+    "rdtowgs": "^1.0.3",
     "react": "15.4.1",
     "react-bootstrap-toggle": "2.3.1",
     "react-display-name": "0.2.4",

@@ -23,11 +23,12 @@ export function defaultAction() {
   };
 }
 
-export function getCoordinates(rdx, rdy) {
+export function getCoordinates(rdx, rdy, subarea) {
   return {
     type: GET_COORDINATES,
     rdx,
     rdy,
+    subarea,
   };
 }
 

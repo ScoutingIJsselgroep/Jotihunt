@@ -1,34 +1,70 @@
 /**
- *
- * MapGroups
- *
- */
+*
+* MapGroups
+*
+*/
 
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import GroupMarker from 'components/GroupMarker';
+import { createStructuredSelector } from 'reselect';
 import _ from 'lodash';
-import { Marker } from 'react-google-maps';
-import GroupMarker from '../GroupMarker/index';
 
-const tj = require('@mapbox/togeojson');
+// import styled from 'styled-components';
+import {
+  loadingSelector,
+  groupsSelector,
+  errorSelector,
+} from './selectors';
+import { loadGroups } from './actions';
 
-// Import map
-const kmlMapName = require('../../../config').map.filename;
-const kml = require(`../../../maps/${kmlMapName}`);
+class MapGroups extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props){
+    super(props);
+    console.log("loading Groups");
+    // this.loadGroups = this.loadGroups.bind(this);
+  }
 
-function MapGroups() {
-  const parsedKml = $.parseXML(kml);
-  const geoJson = tj.kml(parsedKml, { styles: true });
-  const result = _.map(geoJson.features, (feature, i) => {
-    if (feature.geometry.type === 'Point') {
-      return <GroupMarker key={i} point={feature} />;
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    console.log("loading Groups");
+    dispatch(loadGroups());
+  }
+
+  render() {
+    console.log(this.props.groups);
+    if (this.props.groups) {
+      return <div> {_.map(this.props.groups, (group, index) =>
+        <GroupMarker group={group} key={index} />)} </div>
     }
-    return null;
-  });
-  return result;
+    return <div></div>
+  }
 }
 
 MapGroups.propTypes = {
-
+  dispatch: PropTypes.func.isRequired,
+  groups: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
+  ]),
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object,
+  ]),
+  loading: PropTypes.bool,
 };
 
-export default MapGroups;
+const mapStateToProps = createStructuredSelector({
+  loading: loadingSelector(),
+  groups: groupsSelector(),
+  error: errorSelector(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapGroups);

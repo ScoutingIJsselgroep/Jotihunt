@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const models = require('../models');
 const router = express.Router();
+const request = require('request');
 const checkJwt = require('./../checkJwt');
 const kmlMapName = require('../../config').map.filename;
 const DOMParser = require('xmldom').DOMParser;
@@ -66,47 +67,24 @@ router.get('/matrix', (req, res) => {
 
 function fillDatabaseWithGroups(res) {
   // If database is empty, then continue rest.
-  // Read KML file with groups.
-  fs.readFile(path.join(__dirname, `../../maps/${kmlMapName}`), {encoding: 'utf-8'}, function(err,data){
-    if (!err) {
-      // Parse KML to json.
-      const kml = new DOMParser().parseFromString(data);
-      const geoJson = tj.kml(kml, { styles: true });
-      const result = _.map(geoJson.features, (feature, i) => {
-        // All points that are not "Jotihunt Organisations" are groups.
-        if (feature.geometry.type === 'Point') {
-          if (feature.properties.name !== "Jotihunt Organisatie") {
-            // Get group subarea
-            const subareaName = inSubarea([feature.geometry.coordinates[1], feature.geometry.coordinates[0]]);
-
-            // Get group address
-            setTimeout(() =>
-            geocoder.reverseFind(feature.geometry.coordinates[1], feature.geometry.coordinates[0], (err, data) => {
-              models.Subarea.findAll({
-                where: {
-                  name: subareaName,
-                },
-              }).then((subareas) => {
-                subareas.map((subarea) => {
-                  // Insert groep into the database
-                  models.Group.create({
-                    name: feature.properties.name,
-                    town: data[0] ? data[0].locality.long_name : null,
-                    location: data[0] ? data[0].formatted_address : null,
-                    latitude: feature.geometry.coordinates[1],
-                    longitude: feature.geometry.coordinates[0],
-                    visits: 0,
-                    SubareaId: subarea.id,
-                  });
-                });
-              });
-            }), 20 * 1000);
-          }
-        }
-      });
-      res.send("Operatie geslaagd");
+  request('https://jotihunt.net/api/1.0/deelnemers', (error, response, body) => {
+    if (error) {
+      res.status(500).send(error);
     } else {
-        console.log(err);
+      const groups = JSON.parse(body);
+      groups.data.map((group) => {
+        models.Group.create({
+          name: group.teamnaam,
+          town: group.plaats,
+          location: `${group.straat} ${group.huisnummer} <br /> ${group.postcode} ${group.plaats}`,
+          latitude: group.lat,
+          longitude: group.long,
+          visits: 0,
+          SubareaId: null,
+        });
+      }).then((repsonse) => {
+        res.send("done");
+      });
     }
   });
 }

@@ -34,11 +34,12 @@ import makeSelectMassiveMap, {
 } from './selectors';
 import { clearLocation, historyToggle, setLatLng, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions } from './actions';
 // import SubareaPolygons from '../../components/SubareaPolygons/index';
-import MapGroups from '../../components/MapGroups';
 import MapCars from '../../components/MapCars/index';
 import ClickMarker from '../../components/ClickMarker/index';
 import HintPath from '../../components/HintPath/index';
 import MapCircle from '../../components/MapCircle';
+import MapGroups from '../../components/MapGroups';
+
 import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
 
@@ -58,7 +59,6 @@ const MyMapComponent = withGoogleMap((props) =>
     onZoomChanged={props.onChangeMapCenter}
     ref={props.ref}
   >
-  {MapGroups().map((group) => group)}
   {props.children}
   <MapCircle />
   </GoogleMap>
@@ -165,6 +165,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           {this.props.rightClickLatLng &&
           <ClickMarker latlng={this.props.rightClickLatLng} />
           }
+          <MapGroups />
           {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
           {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
           {this.props.predictions && ProjectionMapper(this.props.predictions).map((object) => object)}

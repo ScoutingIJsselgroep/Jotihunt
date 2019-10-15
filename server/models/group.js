@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
     Group.belongsTo(models.Subarea, {
       onDelete: "CASCADE",
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     })
   }

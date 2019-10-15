@@ -154,15 +154,19 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/MassiveMap/reducer'),
+          import('components/MapGroups/reducer'),
           import('containers/MassiveMap/sagas'),
+          import('components/MapGroups/sagas'),
           import('containers/MassiveMap'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
+        importModules.then(([reducer, reducerGroups, sagas, sagasGroups, component]) => {
           injectReducer('massiveMap', reducer.default);
+          injectReducer('mapGroups', reducerGroups.default);
           injectSagas(sagas.default);
+          injectSagas(sagasGroups.default)
           renderRoute(component);
         });
 

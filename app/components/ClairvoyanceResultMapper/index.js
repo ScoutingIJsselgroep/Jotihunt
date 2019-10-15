@@ -7,7 +7,6 @@
 import React, { PropTypes } from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import _ from 'lodash';
-import MapGroups from '../../components/MapGroups';
 import newId from '../../utils/newid';
 import HintPath from '../../components/HintPath/index';
 import deviation from '../../utils/deviation';
@@ -17,7 +16,6 @@ import SubareaPolygons from '../../components/SubareaPolygons/index';
 const config = require('../../../config');
 
 // import styled from 'styled-components';
-
 
 class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
@@ -35,7 +33,6 @@ class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line 
         onRightClick={this.onRightClick}
       >
         {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
-        {MapGroups().map((group) => group)}
         {SubareaPolygons(this.onRightClick).map((subarea) => subarea)}
         {_.map(this.props.result.wgs, (result, i) => <Marker
           key={i}

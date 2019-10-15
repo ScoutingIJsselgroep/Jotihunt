@@ -5,18 +5,16 @@ import request from 'utils/request';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { loadLocationError, loadLocationSuccess, submitHuntError, submitHuntSuccess } from './actions';
 import { LOAD_LOCATION, SUBMIT_HUNT } from './constants';
-import { locationResultSelector } from './selectors';
+import { locationResultSelector, locationSubarea } from './selectors';
 
 const config = require('../../../config');
 
-export function* doSubmitHunt({ latlng, huntType, time }) {
+export function* doSubmitHunt({ latlng, huntType, subarea, time }) {
   const requestURL = '/api/hint';
 
   try {
     const result = yield select(locationResultSelector());
     const address = result.address[0] ? result.address[0].formatted_address : 'Onbekende weg';
-
-    const subarea = result.subarea;
 
     // Convert time to ISO
     const isoTime = new Date();

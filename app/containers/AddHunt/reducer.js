@@ -16,6 +16,7 @@ const initialState = fromJS({
   huntLoading: false,
   huntResult: false,
   huntError: false,
+  subarea: false,
 });
 
 function addHuntReducer(state = initialState, action) {
@@ -40,6 +41,7 @@ function addHuntReducer(state = initialState, action) {
         .set('locationResult', false);
     case SUBMIT_HUNT:
       return state
+        .set('subarea', action.subarea)
         .set('huntError', false)
         .set('huntResult', false)
         .set('huntLoading', true);

@@ -34,6 +34,11 @@ const huntErrorSelector = () =>  createSelector(
   (state) => state.get('huntError')
 );
 
+const locationSubareaSelector = () =>  createSelector(
+  selectAddHuntDomain(),
+  (state) => state.get('subarea')
+);
+
 /**
  * Default selector used by AddHunt
  */
@@ -52,4 +57,5 @@ export {
   huntLoadingSelector,
   huntErrorSelector,
   huntResultSelector,
+  locationSubareaSelector,
 };

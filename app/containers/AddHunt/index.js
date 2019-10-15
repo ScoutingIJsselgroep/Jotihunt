@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectAddHunt, {
   huntErrorSelector,
   huntLoadingSelector, huntResultSelector, locationErrorSelector, locationLoadingSelector,
-  locationResultSelector,
+  locationResultSelector, locationSubareaSelector,
 } from './selectors';
 import { loadLocation, submitHunt } from './actions';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
@@ -34,7 +34,7 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
 
   onSubmit() {
     const { dispatch } = this.props;
-    dispatch(submitHunt([this.props.params.lat, this.props.params.lng], this.props.route.type, this.refs.time.value));
+    dispatch(submitHunt([this.props.params.lat, this.props.params.lng], this.props.route.type, this.refs.subarea.value, this.refs.time.value));
   }
 
   render() {
@@ -79,7 +79,23 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
 
                   <div className="form-group">
                     <span>Deelgebied</span>
-                    <input type="email" className="form-control" disabled value={this.props.locationResult.subarea} />
+                    {this.props.subarea ? <select className="form-control" ref="subarea" disabled={this.props.huntResult ? true : false} value={this.props.subarea}>
+                      <option value="Alpha">Alpha</option>
+                      <option value="Bravo">Bravo</option>
+                      <option value="Charlie">Charlie</option>
+                      <option value="Delta">Delta</option>
+                      <option value="Echo">Echo</option>
+                      <option value="Foxtrot">Foxtrot</option>
+                    </select> :
+                    <select className="form-control" ref="subarea" disabled={this.props.huntResult ? true : false}>
+                      <option value="Alpha">Alpha</option>
+                      <option value="Bravo">Bravo</option>
+                      <option value="Charlie">Charlie</option>
+                      <option value="Delta">Delta</option>
+                      <option value="Echo">Echo</option>
+                      <option value="Foxtrot">Foxtrot</option>
+                    </select>
+                    }
                   </div>
 
                   <div className="form-group">
@@ -121,6 +137,10 @@ AddHunt.propTypes = {
     PropTypes.object,
     PropTypes.bool,
   ]),
+  subarea: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
   params: PropTypes.object,
   huntLoading: PropTypes.bool,
   huntResult: PropTypes.bool,
@@ -134,6 +154,7 @@ const mapStateToProps = createStructuredSelector({
   AddHunt: makeSelectAddHunt(),
   locationLoading: locationLoadingSelector(),
   locationError: locationErrorSelector(),
+  subarea: locationSubareaSelector(),
   locationResult: locationResultSelector(),
   huntLoading: huntLoadingSelector(),
   huntResult: huntResultSelector(),

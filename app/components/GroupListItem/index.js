@@ -21,7 +21,7 @@ function GroupListItem({ group, increment }) {
   return (
     <tr>
       <td>
-        <Label className="label label-default" color={`#${group.Subarea.color}`}> {group.Subarea.name}</Label>
+        <Label className="label label-default" color={`#${group.Subarea?group.Subarea.color:'ff0000'}`}> {group.Subarea ? group.Subarea.name : 'n.n.b.'}</Label>
       </td>
       <td>
         {group.name}

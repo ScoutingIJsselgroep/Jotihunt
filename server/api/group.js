@@ -82,9 +82,8 @@ function fillDatabaseWithGroups(res) {
           visits: 0,
           SubareaId: null,
         });
-      }).then((repsonse) => {
-        res.send("done");
       });
+      res.send("Done importing groups.");
     }
   });
 }

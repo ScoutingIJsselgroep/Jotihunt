@@ -71,8 +71,8 @@ function fillDatabaseWithGroups(res) {
     if (error) {
       res.status(500).send(error);
     } else {
-      const groups = JSON.parse(body);
-      groups.data.map((group) => {
+      const groups = JSON.parse(body).data;
+      _.map(groups, (group) => {
         models.Group.create({
           name: group.teamnaam,
           town: group.plaats,

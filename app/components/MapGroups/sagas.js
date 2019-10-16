@@ -6,6 +6,7 @@ import {
   LOAD_GROUPS,
   LOAD_GROUPS_SUCCESS,
   LOAD_GROUPS_ERROR,
+  SET_SUBAREA,
 } from './constants';
 
 import {
@@ -22,6 +23,27 @@ export function* getGroups() {
   }
 }
 
+export function* setSubarea({subareaId, groupId}) {
+  const requestURL = '/api/group/subarea';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const groups = yield call(request, requestURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        subareaId,
+        groupId,
+      }),
+    });
+    yield put(loadGroups());
+  } catch (error) {
+    // yield put(loadGroupsError(error));
+  }
+}
+
 export function* groups() {
   const watcher = yield takeLatest(LOAD_GROUPS, getGroups);
 
@@ -29,6 +51,14 @@ export function* groups() {
   yield cancel(watcher);
 }
 
+export function* subarea() {
+  const watcher = yield takeLatest(SET_SUBAREA, setSubarea);
+
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
 export default [
   groups,
+  subarea
 ];

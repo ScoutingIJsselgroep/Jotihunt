@@ -14,7 +14,8 @@ const config = require('./../../config');
 const geocoder = require('google-geocoder')({ key: config.google.googleServerAuthToken });
 // const kml = require(`../../maps/${kmlMapName}`);
 
-router.get('/', (req, res) => {
+
+router.get('/', checkJwt, (req, res) => {
   models.Group.findAll({
     include: [models.Subarea],
   }).then((groups) => {
@@ -26,7 +27,7 @@ router.get('/', (req, res) => {
 /**
  * Increment visits
  */
-router.post('/visits', (req, res) => {
+router.post('/visits', checkJwt, (req, res) => {
   models.Group.increment('visits', {
     by: req.body.count,
     where: {
@@ -36,6 +37,23 @@ router.post('/visits', (req, res) => {
     res.send({});
   });
 });
+
+/**
+ * Set
+ */
+ router.post('/subarea', checkJwt, (req, res) => {
+   models.Group.update(
+     { SubareaId: req.body.subareaId === 6 ? null : req.body.subareaId },
+     {
+       where: {
+         id: req.body.groupId
+       }
+     }
+   ).then((err, response) => {
+      console.log(err);
+      res.send({});
+    });
+ });
 
 /**
  * Returns a distance matrix between different groups.
@@ -87,7 +105,7 @@ function fillDatabaseWithGroups(res) {
   });
 }
 
-router.post('/increment', (req, res) => {
+router.post('/increment', checkJwt, (req, res) => {
   models.Group.increment({
     visits: req.body.value,
   }, {

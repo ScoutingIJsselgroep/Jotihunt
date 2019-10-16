@@ -16,27 +16,29 @@ import {
   groupsSelector,
   errorSelector,
 } from './selectors';
-import { loadGroups } from './actions';
+import { loadGroups, setSubarea, } from './actions';
 
 class MapGroups extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props);
-    console.log("loading Groups");
-    // this.loadGroups = this.loadGroups.bind(this);
+    this.onChangeSubarea = this.onChangeSubarea.bind(this);
   }
 
   componentDidMount() {
     const { dispatch } = this.props;
 
-    console.log("loading Groups");
     dispatch(loadGroups());
   }
 
+  onChangeSubarea(event, groupId) {
+    const { dispatch } = this.props;
+    dispatch(setSubarea(event.target.value, groupId));
+  }
+
   render() {
-    console.log(this.props.groups);
     if (this.props.groups && this.props.showGroups !== false) {
       return <div> {_.map(this.props.groups, (group, index) =>
-        <GroupMarker group={group} key={index} />)} </div>
+        <GroupMarker group={group} key={index} changeSubarea={this.onChangeSubarea} />)} </div>
     }
     return <div></div>
   }

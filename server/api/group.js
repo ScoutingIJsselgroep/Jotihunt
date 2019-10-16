@@ -50,7 +50,6 @@ router.post('/visits', checkJwt, (req, res) => {
        }
      }
    ).then((err, response) => {
-      console.log(err);
       res.send({});
     });
  });

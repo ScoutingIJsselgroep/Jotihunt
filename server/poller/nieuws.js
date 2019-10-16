@@ -27,7 +27,7 @@ module.exports = {
             if (!result || !exists.includes(true)) {
               request(`https://jotihunt.net/api/1.0/nieuws/${entry.ID}`, (error, response, specbody) => {
                 const content = striptags(JSON.parse(specbody).data[0].inhoud);
-                const message = `${entry.titel} \n Tijdstip: ${entry.datum} \n ${content}`;
+                const message = `🧞 ${entry.titel} \n Tijdstip: ${entry.datum} \n ${content}`;
                 telegram.sendMessage('Nieuws', message);
                 models.Api.build({
                   messageId: entry.ID,
@@ -43,7 +43,7 @@ module.exports = {
           });
         });
       } catch (e) {
-        // 
+        //
       }
     });
   },

@@ -83,7 +83,6 @@ function fillDatabaseWithGroups(res) {
           SubareaId: null,
         });
       });
-      res.send("Done importing groups.");
     }
   });
 }

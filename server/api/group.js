@@ -97,7 +97,7 @@ function fillDatabaseWithGroups(res) {
           latitude: group.lat,
           longitude: group.long,
           visits: 0,
-          SubareaId: null,
+          SubareaId: 7,
         });
       });
     }

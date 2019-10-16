@@ -14,7 +14,7 @@ module.exports = {
     bot.sendMessage(config.telegram.chats[subarea], message);
   },
   sendHint(subarea, lat, lng, address) {
-    bot.sendMessage(config.telegram.chats[subarea], `Puzzel opgelost! Deze wijst naar ${address}.`);
+    bot.sendMessage(config.telegram.chats[subarea], `🧩 Puzzel opgelost! Deze wijst naar ${address}. Toon op Google Maps: https://www.google.com/maps/search/?api=1&query=${lat},${lng}`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
   sendHunt(subarea, lat, lng, address, createdAt) {
@@ -23,11 +23,16 @@ module.exports = {
     createdAtDate.setHours(createdAtDate.getHours() + 1)
     const time = createdAtDate.getHours() + ':' + createdAtDate.getMinutes();
 
-    bot.sendMessage(config.telegram.chats[subarea], `هوری! Een hunt op ${address}. De vossen mogen pas om ${time} uur weer gehunt worden.`);
-    bot.sendLocation(config.telegram.chats[subarea], lat, lng);
+    bot.sendMessage(config.telegram.chats[subarea], `🔫 Hunt op ${address}!
+      1. Geef correcte tijd en locatie door aan de thuisbasis.
+      2. Vul je hunt in via www.jotihunt.net met gebruikersnaam \`jotihunt@scouting-ijsselgroep.nl\` en wachtwoord
+\`scouting70lordbaden\`.
+      3. De vossen mogen pas om ${time} uur weer gehunt worden.
+      4. Bepaal de taktiek voor het komende uur.`);
+    // bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
   sendSimpleLocation(subarea, lat, lng, address) {
-    bot.sendMessage(config.telegram.chats[subarea], `Een tussenstop op ${address}.`);
+    bot.sendMessage(config.telegram.chats[subarea], `Een tussenstop op ${address}. Toon op Google Maps: https://www.google.com/maps/search/?api=1&query=${lat},${lng}`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
 };

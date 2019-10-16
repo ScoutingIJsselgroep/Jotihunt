@@ -22,6 +22,7 @@ import makeSelectMassiveMap, {
   carsSelector,
   errorSelector,
   errorStatusSelector,
+  loadRightClickSubareaSelector,
   latlngSelector,
   hintsSelector,
   historySelector,
@@ -74,7 +75,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     this.onClearLocation = this.onClearLocation.bind(this);
     this.onRightClick = this.onRightClick.bind(this);
     this.onChangeMapCenter = this.onChangeMapCenter.bind(this);
-
+    this.onRightClickSubarea = this.onRightClickSubarea.bind(this);
   }
 
   componentDidMount() {
@@ -112,7 +113,13 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 
   onRightClick(event) {
     const { dispatch } = this.props;
-    dispatch(rightClickEvent([event.latLng.lat(), event.latLng.lng()]));
+    dispatch(rightClickEvent([event.latLng.lat(), event.latLng.lng()], ""));
+  }
+
+  onRightClickSubarea(event, subarea) {
+    const { dispatch } = this.props;
+    console.log(subarea);
+    dispatch(rightClickEvent([event.latLng.lat(), event.latLng.lng()], subarea));
   }
 
   onChangeMapCenter(event) {
@@ -165,7 +172,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           {this.props.rightClickLatLng &&
           <ClickMarker latlng={this.props.rightClickLatLng} />
           }
-          <MapGroups />
+          <MapGroups onRightClick={this.onRightClickSubarea}/>
           {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
           {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
           {this.props.predictions && ProjectionMapper(this.props.predictions).map((object) => object)}
@@ -178,8 +185,8 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
             {this.props.clickLocationInfo && !this.props.loadRightClick && <div>
               <span className="label label-default">{this.props.clickLocationInfo.subarea}</span> {this.props.clickLocationInfo.address[0] ? this.props.clickLocationInfo.address[0].formatted_address : 'Onbekende weg'}
               <div className="btn-group pull-right" role="group" aria-label="...">
-                <Link to={`/hint/addhint/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-map-marker" aria-hidden="true"></i> Verstuur locatie</Link>
-                <Link to={`/hint/addhunt/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-star" aria-hidden="true"></i> Meld hunt</Link>
+                <Link to={`/hint/addhint/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}/${this.props.rightClickSubarea}`} className={'btn btn-primary'}><i className="fa fa-map-marker" aria-hidden="true"></i> Verstuur locatie</Link>
+                <Link to={`/hint/addhunt/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}/${this.props.rightClickSubarea}`} className={'btn btn-primary'}><i className="fa fa-star" aria-hidden="true"></i> Meld hunt</Link>
                 <button onClick={this.onClearLocation} className={'btn btn-default'}><i className="fa fa-times" aria-hidden="true"></i></button>
               </div>
             </div>}
@@ -267,6 +274,7 @@ const mapStateToProps = createStructuredSelector({
   rightClickLatLng: rightClickLatLngSelector(),
   loadRightClick: loadRightClickSelector(),
   clickLocationInfo: loadRightClickLocationSelector(),
+  rightClickSubarea: loadRightClickSubareaSelector(),
 });
 
 function mapDispatchToProps(dispatch) {

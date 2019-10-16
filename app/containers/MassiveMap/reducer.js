@@ -33,6 +33,7 @@ const initialState = fromJS({
   carsError: false,
   cars: false,
   history: false,
+  rightClickSubarea: false,
   predictions: false,
   predictionsError: false,
   loadRightClick: false,
@@ -76,11 +77,13 @@ function massiveMapReducer(state = initialState, action) {
     case RIGHT_CLICK_EVENT:
       return state
         .set('loadRightClick', true)
+        .set('rightClickSubarea', action.subarea)
         .set('rightClickLatLng', action.latlng);
     case CLEAR_LOCATION:
       return state
         .set('loadRightClick', false)
         .set('rightClickLocation', false)
+        .set('rightClickSubarea', false)
         .set('rightClickLatLng', false);
     case RIGHT_CLICK_EVENT_SUCCESS:
       return state

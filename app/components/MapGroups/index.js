@@ -7,6 +7,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Polygon } from 'react-google-maps';
+import openSocket from 'socket.io-client';
+
 import GroupMarker from 'components/GroupMarker';
 import { createStructuredSelector } from 'reselect';
 import _ from 'lodash';
@@ -30,6 +32,11 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
     const { dispatch } = this.props;
 
     dispatch(loadGroups());
+
+    const socket = openSocket();
+    socket.on('please_refresh_groups', function(msg){
+      dispatch(loadGroups());
+    });
   }
 
   onChangeSubarea(event, groupId) {
@@ -37,7 +44,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
     dispatch(setSubarea(event.target.value, groupId));
   }
 
-  getVoronoi(groups) {
+  getVoronoi(groups, rightClick) {
     const voronoi = new Voronoi();
 
     const bbox = {xl: 51.7, xr: 52.5, yt: 5.2, yb: 6.5}; // xl is x-left, xr is x-right, yt is y-top, and yb is y-bottom
@@ -61,7 +68,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
         path.push({lat: edge.getEndpoint().x, lng: edge.getEndpoint().y});
       });
 
-      return (<Polygon key={i} path={path} options={options} />);
+      return (<Polygon key={i} onRightClick={(evt) => {rightClick(evt, cell.site.subarea.name);}} path={path} options={options} />);
     });
 
     // Draw vertices
@@ -74,7 +81,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
   }
 
   render() {
-    const voronoi = this.getVoronoi(this.props.groups);
+    const voronoi = this.getVoronoi(this.props.groups, this.props.onRightClick);
     if (this.props.groups && this.props.showGroups !== false) {
       return <div> {voronoi} {_.map(this.props.groups, (group, index) =>
         <GroupMarker group={group} key={index} changeSubarea={this.onChangeSubarea} />)} </div>

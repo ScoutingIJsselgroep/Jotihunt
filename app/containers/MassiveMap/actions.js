@@ -122,10 +122,11 @@ export function historyToggle(history) {
   };
 }
 
-export function rightClickEvent(latlng) {
+export function rightClickEvent(latlng, subarea) {
   return {
     type: RIGHT_CLICK_EVENT,
     latlng,
+    subarea,
   };
 }
 

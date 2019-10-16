@@ -92,6 +92,11 @@ const loadRightClickLocationSelector = () => createSelector(
   (state) => state.get('rightClickLocation')
 );
 
+const loadRightClickSubareaSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('rightClickSubarea')
+);
+
 /**
  * Default selector used by MassiveMap
  */
@@ -114,6 +119,7 @@ export {
   statusSelector,
   carsErrorSelector,
   carsLoadingSelector,
+  loadRightClickSubareaSelector,
   predictionsSelector,
   carsSelector,
   loadRightClickSelector,

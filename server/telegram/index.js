@@ -23,7 +23,7 @@ module.exports = {
     createdAtDate.setHours(createdAtDate.getHours() + 1)
     const time = createdAtDate.getHours() + ':' + createdAtDate.getMinutes();
 
-    bot.sendMessage(config.telegram.chats[subarea], `Hatsikidee! Een hunt op ${address}. De vossen mogen pas om ${time} uur weer gehunt worden.`);
+    bot.sendMessage(config.telegram.chats[subarea], `هوری! Een hunt op ${address}. De vossen mogen pas om ${time} uur weer gehunt worden.`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
   sendSimpleLocation(subarea, lat, lng, address) {

@@ -7,6 +7,7 @@ import {
   SET_SUBAREA,
   LOAD_GROUPS_ERROR,
 } from './constants';
+import openSocket from 'socket.io-client';
 
 export function loadGroups() {
   return {
@@ -29,6 +30,9 @@ export function loadGroupsSuccess(groups) {
 }
 
 export function setSubarea(subareaId, groupId) {
+  const socket = openSocket();
+  socket.emit('please_refresh_groups');
+
   return {
     type: SET_SUBAREA,
     subareaId,

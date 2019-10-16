@@ -50,7 +50,7 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
         defaultDate.setMinutes(defaultDate.getMinutes() - 10);
       }
       const defaultTimestring = (""+defaultDate.getHours()).padStart(2, 0) + ':' + (""+defaultDate.getMinutes()).padStart(2, 0);
-
+      console.log(this.props.params.subarea);
       return (
         <div className="container">
           <div className="row">
@@ -87,7 +87,7 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
                       <option value="Echo">Echo</option>
                       <option value="Foxtrot">Foxtrot</option>
                     </select> :
-                    <select className="form-control" ref="subarea" disabled={this.props.huntResult ? true : false}>
+                    <select className="form-control" ref="subarea" disabled={this.props.huntResult ? true : false} value={this.props.params.subarea}>
                       <option value="Alpha">Alpha</option>
                       <option value="Bravo">Bravo</option>
                       <option value="Charlie">Charlie</option>

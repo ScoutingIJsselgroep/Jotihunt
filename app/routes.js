@@ -206,7 +206,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/hint/addhint/:lat/:lng',
+      path: '/hint/addhint/:lat/:lng(/:subarea)',
       name: 'addHunt',
       type: 'message',
       onEnter: requireAuth,
@@ -228,7 +228,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/hint/addhunt/:lat/:lng',
+      path: '/hint/addhunt/:lat/:lng(/:subarea)',
       name: 'addHunt',
       type: 'hunt',
       onEnter: requireAuth,

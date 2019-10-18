@@ -91,9 +91,9 @@ function fillDatabaseWithGroups(res) {
       const groups = JSON.parse(body).data;
       _.map(groups, (group) => {
         models.Group.create({
-          name: group.teamnaam,
+          name: group.naam,
           town: group.plaats,
-          location: `${group.straat} ${group.huisnummer} <br /> ${group.postcode} ${group.plaats}`,
+          location: `${group.teamnaam} <br /> ${group.straat} ${group.huisnummer} <br /> ${group.postcode} ${group.plaats}`,
           latitude: group.lat,
           longitude: group.long,
           visits: 0,

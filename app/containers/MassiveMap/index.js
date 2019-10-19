@@ -94,16 +94,16 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     });
 
     // Update predictions every 30 seconds
-    //setInterval(() => dispatch(loadPredictions()),
-    //  15 * 1000
-    //);
+    setInterval(() => dispatch(loadPredictions()),
+      15 * 1000
+    );
 
     // Go load hints
     const { dispatch } = this.props;
     dispatch(loadHints());
     dispatch(loadStatus());
     dispatch(loadCars());
-    // dispatch(loadPredictions());
+    dispatch(loadPredictions());
   }
 
   onHistoryToggle(history) {

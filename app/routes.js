@@ -74,15 +74,19 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/AddHintContainer/reducer'),
+          import('components/MapGroups/reducer'),
           import('containers/AddHintContainer/sagas'),
+          import('components/MapGroups/sagas'),
           import('containers/AddHintContainer'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
+        importModules.then(([reducer, reducerGroups, sagas, mapGroupsSaga, component]) => {
           injectReducer('addHintContainer', reducer.default);
+          injectReducer('mapGroups', reducerGroups.default);
           injectSagas(sagas.default);
+          injectSagas(mapGroupsSaga.default);
           renderRoute(component);
         });
 

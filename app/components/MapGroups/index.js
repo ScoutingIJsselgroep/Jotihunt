@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Polygon } from 'react-google-maps';
 import openSocket from 'socket.io-client';
+import { Circle } from 'react-google-maps';
 
 import GroupMarker from 'components/GroupMarker';
 import { createStructuredSelector } from 'reselect';
@@ -21,6 +22,20 @@ import {
   errorSelector,
 } from './selectors';
 import { loadGroups, setSubarea, } from './actions';
+function circle(lat, lng) {
+  return (<Circle
+    options={{
+      fillColor: '#d43f3a',
+      fillOpacity: 0.1,
+      strokeColor: '#d43f3a',
+      strokeOpacity: 0.5,
+      strokeWeight: 2,
+    }}
+    defaultCenter={{ lat: lat, lng: lng }}
+    defaultRadius={500}
+  />);
+}
+
 
 class MapGroups extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
@@ -83,7 +98,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
   render() {
     const voronoi = this.getVoronoi(this.props.groups, this.props.onRightClick);
     if (this.props.groups && this.props.showGroups !== false) {
-      return <div> {voronoi} {_.map(this.props.groups, (group, index) =>
+      return <div> {voronoi} {_.map(this.props.groups, (group, index) => circle(group.latitude, group.longitude))} {_.map(this.props.groups, (group, index) =>
         <GroupMarker group={group} key={index} changeSubarea={this.onChangeSubarea} />)} </div>
     }
     return <div></div>

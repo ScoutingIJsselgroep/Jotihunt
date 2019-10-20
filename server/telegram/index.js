@@ -21,7 +21,7 @@ module.exports = {
     // Get next hunt time
     createdAtDate = new Date(createdAt);
     createdAtDate.setHours(createdAtDate.getHours() + 1)
-    const time = createdAtDate.getHours() + ':' + createdAtDate.getMinutes();
+    const time = (createdAtDate.getHours()+2) + ':' + createdAtDate.getMinutes();
 
     bot.sendMessage(config.telegram.chats[subarea], `🔫 Hunt op ${address}!
       1. Geef correcte tijd en locatie door aan de thuisbasis.

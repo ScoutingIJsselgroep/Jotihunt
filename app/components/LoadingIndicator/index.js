@@ -1,14 +1,10 @@
 import React from 'react';
 import Wrapper from './Wrapper';
+import PuffLoader from "react-spinners/ClipLoader";
 
-import {
-  ThreeBounce,
-} from 'better-react-spinkit';
-
+      
 const LoadingIndicator = () => (
-  <Wrapper>
-    <ThreeBounce color='#3b3f51' size={15} />
-  </Wrapper>
+  <PuffLoader color='#3b3f51' loading={true} size={150} />
 );
 
 export default LoadingIndicator;

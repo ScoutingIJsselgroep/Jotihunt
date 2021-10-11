@@ -1,10 +1,10 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.4.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "Jotihunt",
+  "version": "2.21.0",
+  "description": "Een dashboard voor de Jotihunt",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/ScoutingIJsselgroep/Jotihunt.git"
   },
   "engines": {
     "npm": ">=3",
@@ -330,7 +330,7 @@
     "sinon": "2.0.0-pre",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
-    "webpack": "2.2.0-rc.3",
+    "webpack": "2.2.1",
     "webpack-dev-middleware": "1.9.0",
     "webpack-hot-middleware": "2.15.0"
   }

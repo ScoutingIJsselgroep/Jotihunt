@@ -1,7 +1,7 @@
 FROM node:16-buster-slim
 
 ENV KARMA_BROWSER PhantomJS
-RUN apt-get update && apt-get install libpng-dev
+RUN apt-get update && apt-get install -y libpng-dev
 
 WORKDIR /reactapp
 

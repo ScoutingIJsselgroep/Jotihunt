@@ -84,7 +84,7 @@ router.get('/matrix', (req, res) => {
 
 function fillDatabaseWithGroups(res) {
   // If database is empty, then continue rest.
-  request('https://jotihunt.net/api/1.0/deelnemers', (error, response, body) => {
+  request('https://jotihunt.net/api/1.0/deelnemers', {rejectUnauthorized: false, insecure: true}, (error, response, body) => {
     if (error) {
       res.status(500).send(error);
     } else {

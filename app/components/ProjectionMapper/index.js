@@ -29,7 +29,7 @@ function ProjectionMapper(predictions) {
         // Push current polyline
         result.push(<Polyline
                       // key={j + subarea.length}
-                      options={{ strokeColor: "#0000FF",  strokeWeight: 4}}
+                      options={{ strokeColor: "#785d78",  strokeWeight: 2}}
                       path={google.maps.geometry.encoding.decodePath(subarea[2].polyline.points)}
                     />);
       }
@@ -40,7 +40,7 @@ function ProjectionMapper(predictions) {
           if (subarea[2].polyline.points != path) {
             result.push(<Polyline
                         // key={j + subarea.length}
-                        options={{ strokeColor: "#8888FF",  strokeWeight: 2}}
+                        options={{ strokeColor: "#785d78",  strokeWeight: 3}}
                         path={google.maps.geometry.encoding.decodePath(path)}
                       />);
           }

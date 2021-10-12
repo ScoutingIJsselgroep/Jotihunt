@@ -1,4 +1,4 @@
-FROM node:8.12.0-slim
+FROM node:12.12.6-slim
 
 ENV KARMA_BROWSER PhantomJS
 RUN apt-get update && apt-get install -y libpng-dev python build-essential

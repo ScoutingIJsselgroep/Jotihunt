@@ -31,8 +31,6 @@ class NavBarMenu extends React.Component { // eslint-disable-line react/prefer-s
             <Link href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Overig <span className="caret"></span></Link>
             <ul className="dropdown-menu">
               <li><Link to="https://goo.gl/forms/wwGXbeGQCaVsYhRx2" target={'_blank'}><i className="fa fa-bullhorn" aria-hidden="true"></i> Klaagmuur</Link></li>
-              <li><Link to="/wiki"><i className="fa fa-wikipedia-w" aria-hidden="true"></i> Wiki de Viking</Link></li>
-              <li><a href="https://github.com/ScoutingIJsselgroep/JotihuntApp/raw/master/app/release/app-release.apk"><i className="fa fa-android" aria-hidden="true"></i> Download App</a></li>
             </ul>
           </li>
         </ul>

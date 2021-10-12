@@ -1,7 +1,6 @@
 {
   "_args": [
-    [
-      {
+    [{
         "raw": "bootstrap-sass",
         "scope": null,
         "escapedName": "bootstrap-sass",
@@ -49,8 +48,7 @@
   "bugs": {
     "url": "https://github.com/twbs/bootstrap-sass/issues"
   },
-  "contributors": [
-    {
+  "contributors": [{
       "name": "Thomas McDonald"
     },
     {
@@ -68,7 +66,7 @@
   "devDependencies": {
     "ejs": "~2.4.2",
     "mincer": "~1.4.0",
-    "node-sass": "^3.8.0"
+    "sass": "^1.42.1"
   },
   "directories": {},
   "dist": {
@@ -96,8 +94,7 @@
   ],
   "license": "MIT",
   "main": "assets/javascripts/bootstrap.js",
-  "maintainers": [
-    {
+  "maintainers": [{
       "name": "glebm",
       "email": "glex.spb@gmail.com"
     },

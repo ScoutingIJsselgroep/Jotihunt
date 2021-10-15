@@ -183,10 +183,10 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           <div className="panel-body">
             {this.props.loadRightClick && <LoadingIndicator />}
             {this.props.clickLocationInfo && !this.props.loadRightClick && <div>
-              <span className="label label-default">{this.props.clickLocationInfo.subarea}</span> {this.props.clickLocationInfo.address[0] ? this.props.clickLocationInfo.address[0].formatted_address : 'Onbekende weg'}
+              {this.props.clickLocationInfo.address[0] ? this.props.clickLocationInfo.address[0].formatted_address : 'Onbekende weg'}
               <div className="btn-group pull-right" role="group" aria-label="...">
-                <Link to={`/hint/addhint/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}/${this.props.rightClickSubarea}`} className={'btn btn-primary'}><i className="fa fa-map-marker" aria-hidden="true"></i> Verstuur locatie</Link>
-                <Link to={`/hint/addhunt/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}/${this.props.rightClickSubarea}`} className={'btn btn-primary'}><i className="fa fa-star" aria-hidden="true"></i> Meld hunt</Link>
+                <Link to={`/hint/addhint/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-map-marker" aria-hidden="true"></i> Verstuur locatie</Link>
+                <Link to={`/hint/addhunt/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-star" aria-hidden="true"></i> Meld hunt</Link>
                 <button onClick={this.onClearLocation} className={'btn btn-default'}><i className="fa fa-times" aria-hidden="true"></i></button>
               </div>
             </div>}

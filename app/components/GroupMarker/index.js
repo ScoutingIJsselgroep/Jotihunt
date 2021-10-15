@@ -73,30 +73,6 @@ class GroupMarker extends React.Component { // eslint-disable-line react/prefer-
                   label: 'n.n.b.',
                   value: 'n.n.b.',
                   key: 6
-                }, {
-                  label: 'Alpha 2',
-                  value: 'Alpha 2',
-                  key: 7
-                }, {
-                  label: 'Bravo 2',
-                  value: 'Bravo 2',
-                  key: 8
-                }, {
-                  label: 'Charlie 2',
-                  value: 'Charlie 2',
-                  key: 9
-                }, {
-                  label: 'Delta 2',
-                  value: 'Delta 2',
-                  key: 10
-                }, {
-                  label: 'Echo 2',
-                  value: 'Echo 2',
-                  key: 11
-                }, {
-                  label: 'Foxtrot 2',
-                  value: 'Foxtrot 2',
-                  key: 12
                 }]}
               />
             </Form>

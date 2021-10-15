@@ -14,7 +14,7 @@ module.exports = {
     bot.sendMessage(config.telegram.chats[subarea], message);
   },
   sendHint(subarea, lat, lng, address) {
-    bot.sendMessage(config.telegram.chats[subarea], `🧩 Puzzel opgelost! Deze wijst naar ${address}. Toon op Google Maps: https://www.google.com/maps/search/?api=1&query=${lat},${lng}`);
+    bot.sendMessage(config.telegram.chats[subarea], `🧩 ${subarea} naar ${address}. Toon op Google Maps: https://www.google.com/maps/search/?api=1&query=${lat},${lng}`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
   sendHunt(subarea, lat, lng, address, createdAt) {
@@ -23,7 +23,7 @@ module.exports = {
     createdAtDate.setHours(createdAtDate.getHours() + 1)
     const time = (createdAtDate.getHours()+2) + ':' + createdAtDate.getMinutes();
 
-    bot.sendMessage(config.telegram.chats[subarea], `🔫 Hunt op ${address}!
+    bot.sendMessage(config.telegram.chats[subarea], `🔫 Hunt op ${address} voor ${subarea}!
       1. Geef correcte tijd en locatie door aan de thuisbasis.
       2. Vul je hunt in via www.jotihunt.net met gebruikersnaam \`jotihunt@scouting-ijsselgroep.nl\` en wachtwoord
 \`scouting70lordbaden\`.

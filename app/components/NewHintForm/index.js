@@ -73,10 +73,6 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
                       value: 'Foxtrot',
                       key: 5
                     }, {
-                      label: 'n.n.b.',
-                      value: 'n.n.b.',
-                      key: 6
-                    }, {
                       label: 'Alpha 2',
                       value: 'Alpha 2',
                       key: 7
@@ -100,6 +96,10 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
                       label: 'Foxtrot 2',
                       value: 'Foxtrot 2',
                       key: 12
+                    }, {
+                      label: 'n.n.b.',
+                      value: 'n.n.b.',
+                      key: 6
                     }]}
                 />
               </div>

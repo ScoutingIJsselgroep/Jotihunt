@@ -32,7 +32,7 @@ module.exports = {
     // bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
   sendSimpleLocation(subarea, lat, lng, address) {
-    bot.sendMessage(config.telegram.chats[subarea], `Een tussenstop op ${address}. Toon op Google Maps: https://www.google.com/maps/search/?api=1&query=${lat},${lng}`);
+    bot.sendMessage(config.telegram.chats[subarea], `${subarea} op ${address}. Toon op Google Maps: https://www.google.com/maps/search/?api=1&query=${lat},${lng}`);
     bot.sendLocation(config.telegram.chats[subarea], lat, lng);
   },
 };

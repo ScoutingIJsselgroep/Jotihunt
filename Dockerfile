@@ -1,4 +1,4 @@
-FROM node:10.24.1
+FROM node:17.8.0
 
 ENV KARMA_BROWSER PhantomJS
 RUN apt-get update && apt-get install -y libpng-dev python build-essential

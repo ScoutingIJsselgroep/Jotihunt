@@ -1,5 +1,3 @@
-![Build status](https://github.com/ScoutingIJsselgroep/Jotihunt/actions/workflows/master.yml/badge.svg) ![Docker](https://img.shields.io/docker/pulls/tristandb/jotihunt.svg)
-
 # Jotihunt.js
 Jotihunt.js is een systeem ontwikkeld in React en maakt gebruik van verschillende microservices, zoals Clairvoyance en Divinity. Jotihunt.js draait zowel via Docker als lokaal.
 

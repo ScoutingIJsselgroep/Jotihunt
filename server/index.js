@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('./logger');
 const telegram = require('./telegram');
+const cors = require('cors');
 
 const models = require('./models');
 
@@ -13,7 +14,10 @@ const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
 const app = express();
+
 app.use(bodyParser.json());
+app.use(cors());
+
 const server = require('http').Server(app);
 
 
@@ -21,7 +25,7 @@ const server = require('http').Server(app);
 require('./api')(app, server);
 
 // Import poller
-require('./poller')();
+// require('./poller')();
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
@@ -45,9 +49,7 @@ models.sequelize.sync().then(() => {
 
     // Telegram start web server
     telegram.sendMessage('Debug', '🖥️ De server is gestart!');
-    if (false) {
-      telegram.sendMessage('Nieuws', 'We zijn weer bezig met het verbeteren van de website. Je kunt daarom via verschillende Telegram-kanalen af en toe een bericht krijgen. Geen berichten meer krijgen? Mute dan de deelgebieden of verlaat de kanalen met deelgebieden. Je kunt later weer toegevoegd worden.');
-    }
+    // telegram.sendMessage('Nieuws', 'Dobby is wat dingen aan het testen, meester! Het kan zijn dat ik per ongeluk wat spam. Bad Dobby! Bad Dobby! Als het écht verkeerd gaat, spring ik uit de toren!');
 
     // Connect to ngrok in dev mode
     if (ngrok) {

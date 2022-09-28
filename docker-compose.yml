@@ -1,22 +1,31 @@
 version: "3.7"
 
 services:
-  mysql:
-    image: mysql:5.7
-    container_name: db
+  db:
+    image: mysql:8.0
     restart: always
     volumes:
-      - /var/lib/mysql:/var/lib/mysql
+      - dbdata:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=random-password
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_ROOT_PASSWORD
     networks:
       - jotihunt
     labels:
       - traefik.enable = false
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 5s
+      retries: 10
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-    container_name: phpmyadmin
     restart: always
+    ports:
+      - 8000:80
     networks:
       - jotihunt
     labels:
@@ -25,58 +34,68 @@ services:
       - traefik.docker.network=proxy
       - traefik.port=80
   jotihunt:
-    image:  tristandb/jotihunt:production
-    container_name: jotihunt
-    restart: always
+    image: ghcr.io/scoutingijsselgroep/jotihunt:latest
+    build:
+      context: '.'
+      target: 'development'
+    ports:
+      - 3000:3000
     environment:
-      - DATABASE_URL=mysql://root:random-password@mysql/jotihunt
-      - RUN_COUNTER=9
-      - PORT=3000
-      - AUTH0_CLIENT_ID=
-      - AUTH0_DOMAIN=
-      - TELEGRAM_TOKEN=
-      - GOOGLE_SERVER_AUTH_TOKEN=
-      - GOOGLE_CLIENT_AUTH_TOKEN=
-      - KML_FILENAME=jotihunt2018.kml
-      - POLLER_INTERVAL_SECONDS=61
-      - POLLER_API_KEY=
+      - DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOSTNAME}/${MYSQL_DATABASE}
+      - RUN_COUNTER
+      - API_URI
+      - PORT
+      - AUTH0_CLIENT_ID
+      - AUTH0_DOMAIN
+      - TELEGRAM_TOKEN
+      - GOOGLE_SERVER_AUTH_TOKEN
+      - GOOGLE_CLIENT_AUTH_TOKEN
+      - KML_FILENAME
+      - POLLER_INTERVAL_SECONDS
+      - POLLER_API_KEY
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    volumes:
+      - './seeders/:/reactapp/seeders'
+      - './server/:/reactapp/server'
     networks:
       - jotihunt
     labels:
       - traefik.backend=jotihunt
-      - traefik.frontend.rule=Host:jotihunt.scouting-ijsselgroep.nl
+      - traefik.frontend.rule=Host:${HOST_URI}
       - traefik.docker.network=proxy
       - traefik.port=3000
+    depends_on:
+      db:
+        condition: service_healthy
   clairvoyance:
-    image: tristandb/clairvoyance:latest
-    container_name: clairvoyance
+    image: ghcr.io/scoutingijsselgroep/jotihunt-clairvoyance:latest
     restart: always
     environment:
-      - AUTH0_CLIENT_ID=
-      - AUTH0_DOMAIN=
-      - TELEGRAM_TOKEN=
-      - GOOGLE_SERVER_AUTH_TOKEN=
-      - GOOGLE_CLIENT_AUTH_TOKEN=
-      - KML_FILENAME=jotihunt2018.kml
-      - POLLER_INTERVAL_SECONDS=61
-      - POLLER_API_KEY=
+      - AUTH0_CLIENT_ID
+      - AUTH0_DOMAIN
+      - TELEGRAM_TOKEN
+      - GOOGLE_SERVER_AUTH_TOKEN
+      - GOOGLE_CLIENT_AUTH_TOKEN
+      - KML_FILENAME
+      - POLLER_INTERVAL_SECONDS
+      - POLLER_API_KEY
     networks:
       - jotihunt
     labels:
       - traefik.enable = false
   divinity:
-    image: tristandb/divinity:latest
-    container_name: divinity
+    image: ghcr.io/scoutingijsselgroep/jotihunt-divinity:latest
     restart: always
     environment:
-      - AUTH0_CLIENT_ID=
-      - AUTH0_DOMAIN=
-      - TELEGRAM_TOKEN=
-      - GOOGLE_SERVER_AUTH_TOKEN=
-      - GOOGLE_CLIENT_AUTH_TOKEN=
-      - KML_FILENAME=jotihunt2018.kml
-      - POLLER_INTERVAL_SECONDS=61
-      - POLLER_API_KEY=
+      - AUTH0_CLIENT_ID
+      - AUTH0_DOMAIN
+      - TELEGRAM_TOKEN
+      - GOOGLE_SERVER_AUTH_TOKEN
+      - GOOGLE_CLIENT_AUTH_TOKEN
+      - KML_FILENAME
+      - POLLER_INTERVAL_SECONDS
+      - POLLER_API_KEY
     networks:
       - jotihunt
     labels:
@@ -96,12 +115,14 @@ services:
       - traefik.frontend.rule=Host:backend.scouting-ijsselgroep.nl
       - traefik.port=8080
     environment:
-      # Cloudflare Global API Key for Let's Encrypt
-      - CF_API_EMAIL=
-      - CF_API_KEY=
-      - C_COUNTER=1
+      - CF_API_EMAIL
+      - CF_API_KEY
+      - C_COUNTER
     networks:
       - jotihunt
 networks:
   jotihunt:
     name: jotihunt
+
+volumes:
+  dbdata:

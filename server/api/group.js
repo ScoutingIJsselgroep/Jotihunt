@@ -9,9 +9,13 @@ const request = require('request');
 const checkJwt = require('./../checkJwt');
 const kmlMapName = require('../../config').map.filename;
 const DOMParser = require('xmldom').DOMParser;
-const { inSubarea } = require('../../helpers/geometry');
+const {
+  inSubarea
+} = require('../../helpers/geometry');
 const config = require('./../../config');
-const geocoder = require('google-geocoder')({ key: config.google.googleServerAuthToken });
+const geocoder = require('google-geocoder')({
+  key: config.google.googleServerAuthToken
+});
 // const kml = require(`../../maps/${kmlMapName}`);
 
 
@@ -19,7 +23,7 @@ router.get('/', (req, res) => {
   models.Group.findAll({
     include: [models.Subarea],
   }).then((groups) => {
-    const sortedGroups =  _.orderBy(groups, ['town'], ['asc']);
+    const sortedGroups = _.orderBy(groups, ['town'], ['asc']);
     res.send(sortedGroups);
   });
 });
@@ -41,18 +45,17 @@ router.post('/visits', checkJwt, (req, res) => {
 /**
  * Set
  */
- router.post('/subarea', checkJwt, (req, res) => {
-   models.Group.update(
-     { SubareaId: req.body.subareaId === 6 ? null : req.body.subareaId },
-     {
-       where: {
-         id: req.body.groupId
-       }
-     }
-   ).then((err, response) => {
-      res.send({});
-    });
- });
+router.post('/subarea', checkJwt, (req, res) => {
+  models.Group.update({
+    SubareaId: req.body.subareaId === 6 ? null : req.body.subareaId
+  }, {
+    where: {
+      id: req.body.groupId
+    }
+  }).then((err, response) => {
+    res.send({});
+  });
+});
 
 /**
  * Returns a distance matrix between different groups.
@@ -65,9 +68,12 @@ router.get('/matrix', (req, res) => {
     // Group groups per subarea
     const groupedGroups = _.groupBy(groups, 'Subarea.name');
 
-    const distanceMatrix = _.mapValues(groupedGroups, function(groups) {
+    const distanceMatrix = _.mapValues(groupedGroups, function (groups) {
       const groupLocations = _.map(groups, (group) => {
-        return {lat: group.latitude, lng: group.longitude};
+        return {
+          lat: group.latitude,
+          lng: group.longitude
+        };
       });
       console.log(groupLocations);
       googleMapsClient.distanceMatrix({
@@ -84,7 +90,10 @@ router.get('/matrix', (req, res) => {
 
 function fillDatabaseWithGroups(res) {
   // If database is empty, then continue rest.
-  request('https://jotihunt.net/api/1.0/deelnemers', {rejectUnauthorized: false, insecure: true}, (error, response, body) => {
+  request('https://jotihunt.nl/api/2.0/subscriptions', {
+    rejectUnauthorized: false,
+    insecure: true
+  }, (error, response, body) => {
     if (error) {
       res.status(500).send(error);
     } else {
@@ -92,14 +101,15 @@ function fillDatabaseWithGroups(res) {
       _.map(groups, (group) => {
         models.Group.create({
           name: group.naam,
-          town: group.plaats,
-          location: `${group.teamnaam} <br /> ${group.straat} ${group.huisnummer} <br /> ${group.postcode} ${group.plaats}`,
-          latitude: group.lat,
-          longitude: group.long,
+          town: group.city,
+          location: `${group.name} (${group.accomodation}) <br /> ${group.street} ${group.housenumber} ${group.housenumber_addition} <br /> ${group.postcode} ${group.city}`,
+          latitude: parseFloat(group.lat),
+          longitude: parseFloat(group.long),
           visits: 0,
           SubareaId: 7,
         });
       });
+      res.status(200).send("Groepen ingeladen");
     }
   });
 }
@@ -115,7 +125,7 @@ router.post('/increment', checkJwt, (req, res) => {
     models.Group.findAll({
       include: [models.Subarea],
     }).then((groups) => {
-      const sortedGroups =  _.orderBy(groups, ['town'], ['asc']);
+      const sortedGroups = _.orderBy(groups, ['town'], ['asc']);
       res.send(sortedGroups);
     });
   });

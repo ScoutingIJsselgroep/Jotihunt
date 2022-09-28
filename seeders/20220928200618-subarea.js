@@ -1,0 +1,47 @@
+'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    /**
+     * Add seed commands here.
+     *
+     * Example:
+     * await queryInterface.bulkInsert('People', [{
+     *   name: 'John Doe',
+     *   isBetaMember: false
+     * }], {});
+     */
+    console.log(process.env.API_URI + "areas")
+
+    queryInterface.bulkInsert("Subareas", [{
+      name: "Alpha",
+      color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+    }, {
+      name: "Bravo",
+      color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+    }, {
+      name: "Charlie",
+      color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+    }, {
+      name: "Delta",
+      color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+    }, {
+      name: "Echo",
+      color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+    }, {
+      name: "Foxtrot",
+      color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+    }]);
+  },
+
+  async down(queryInterface, Sequelize) {
+    /**
+     * Add commands to revert seed here.
+     *
+     * Example:
+     * await queryInterface.bulkDelete('People', null, {});
+     */
+    await queryInterface.bulkDelete('Subareas', null, {});
+  }
+};

@@ -12,3 +12,17 @@ Jotihunt.js is een systeem ontwikkeld in React en maakt gebruik van verschillend
 ## Production
 Voor Production moet je ook stap 2 en 3 volgen, behalve dat je Clairvoyance en MySQL in een beschermde environment draait (poorten zijn dus alleen bereikbaar door Jotihunt.js).
 Daarna draai je Docker.
+
+## Local Development
+Use asdf to install NodeJS.
+```
+asdf install nodejs 10.24.1
+asdf local nodejs 10.24.1
+```
+
+```
+docker compose up jotihunt db
+
+# Seed
+docker compose exec -it jotihunt npx sequelize-cli db:seed:all --config server/config/config.js
+```

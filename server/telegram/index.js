@@ -7,7 +7,9 @@ const config = require('../../config');
 
 const token = config.telegram.authToken;
 
-const bot = new TelegramBot(token, { polling: false });
+const bot = new TelegramBot(token, {
+  polling: false
+});
 
 module.exports = {
   sendMessage(subarea, message) {
@@ -21,7 +23,7 @@ module.exports = {
     // Get next hunt time
     createdAtDate = new Date(createdAt);
     createdAtDate.setHours(createdAtDate.getHours() + 1)
-    const time = (createdAtDate.getHours()+2) + ':' + createdAtDate.getMinutes();
+    const time = (createdAtDate.getHours() + 2) + ':' + createdAtDate.getMinutes();
 
     bot.sendMessage(config.telegram.chats[subarea], `🔫 Hunt op ${address} voor ${subarea}!
       1. Geef correcte tijd en locatie door aan de thuisbasis.

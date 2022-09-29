@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('./logger');
 const telegram = require('./telegram');
+const cors = require('cors');
 
 const models = require('./models');
 
@@ -13,7 +14,10 @@ const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
 const app = express();
+
 app.use(bodyParser.json());
+app.use(cors());
+
 const server = require('http').Server(app);
 
 
@@ -44,10 +48,8 @@ models.sequelize.sync().then(() => {
     }
 
     // Telegram start web server
-    telegram.sendMessage('Debug', '🖥️ De server is gestart!');
-    if (false) {
-      telegram.sendMessage('Nieuws', 'We zijn weer bezig met het verbeteren van de website. Je kunt daarom via verschillende Telegram-kanalen af en toe een bericht krijgen. Geen berichten meer krijgen? Mute dan de deelgebieden of verlaat de kanalen met deelgebieden. Je kunt later weer toegevoegd worden.');
-    }
+    // telegram.sendMessage('Debug', '🖥️ De server is gestart!');
+    // telegram.sendMessage('Nieuws', 'Wat een gespam! Bad Dobby!');
 
     // Connect to ngrok in dev mode
     if (ngrok) {

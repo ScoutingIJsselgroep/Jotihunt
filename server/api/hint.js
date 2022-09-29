@@ -1,8 +1,14 @@
-
 const _ = require('lodash');
 
-const { inSubarea, getPolygons } = require('../../helpers/geometry');
-const { sendHint, sendHunt, sendSimpleLocation } = require('../telegram/index');
+const {
+  inSubarea,
+  getPolygons
+} = require('../../helpers/geometry');
+const {
+  sendHint,
+  sendHunt,
+  sendSimpleLocation
+} = require('../telegram/index');
 
 const cache = require('apicache').middleware;
 const express = require('express');
@@ -14,7 +20,9 @@ const rdToWgs = require('rdtowgs');
 const wgstoord = require('./../wgstord');
 
 const checkJwt = require('./../checkJwt');
-const geocoder = require('google-geocoder')({ key: config.google.googleServerAuthToken });
+const geocoder = require('google-geocoder')({
+  key: config.google.googleServerAuthToken
+});
 
 
 router.get('/api', cache('1 minute'), (req, res) => {
@@ -92,8 +100,6 @@ router.get('/centers', (req, res) => {
   res.send("Polygons updated");
 });
 
-// {"wgs":[52.19973591706119,6.213069797742666],"subarea":"Bravo","address":{"error_message":"You have exceeded your daily request quota for this API. We recommend registering for a key at the Google Developers Console: https://console.developers.google.com/apis/credentials?project=_","results":[],"status":"OVER_QUERY_LIMIT"}}
-
 /**
  * Save Clairvoyance Hints to database and send a Telegram-chat.
  */
@@ -148,7 +154,6 @@ router.post('/', checkJwt, (req, res) => {
 
       if (req.body.hintTypeId) {
         // Create a hunt/information point on map
-        console.log(req.body.createdAt);
         models.Hint.create({
           latitude: req.body.latitude,
           longitude: req.body.longitude,
@@ -186,7 +191,9 @@ router.post('/', checkJwt, (req, res) => {
         });
         sendHint(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
       }
-      res.send({ message: 'success' });
+      res.send({
+        message: 'success'
+      });
     });
   });
 });
@@ -210,7 +217,9 @@ router.get('/delete/:hintId', checkJwt, (req, res) => {
       id: req.params.hintId,
     },
   }).then(() => {
-    res.send({ message: 'success' });
+    res.send({
+      message: 'success'
+    });
   });
 });
 

@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  jotihunt:
+    image: ghcr.io/scoutingijsselgroep/jotihunt:latest
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOSTNAME}/${MYSQL_DATABASE}
+    networks:
+      - jotihunt
+    labels:
+      - traefik.backend=jotihunt
+      - traefik.frontend.rule=Host:${HOST_URI}
+      - traefik.docker.network=proxy
+      - traefik.port=3000
+    depends_on:
+      db:
+        condition: service_healthy
+
+  traefik:
+    image: traefik:1.7.18-alpine
+    command: --api --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/traefik/traefik.toml:/traefik.toml
+      - /var/traefik/acme.json:/acme.json
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    labels:
+      - traefik.frontend.rule=Host:backend.scouting-ijsselgroep.nl
+      - traefik.port=8080
+    environment:
+      - CF_API_EMAIL
+      - CF_API_KEY
+      - C_COUNTER
+    networks:
+      - jotihunt

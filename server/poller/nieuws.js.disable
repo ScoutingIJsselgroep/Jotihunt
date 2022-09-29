@@ -9,7 +9,7 @@ const striptags = require('striptags');
 
 module.exports = {
   poll() {
-    request('https://jotihunt.net/api/1.0/nieuws', (error, response, body) => {
+    request(process.env.API_URI + "nieuws", (error, response, body) => {
       if (error) {
         telegram.sendMessage('Debug', error);
       }

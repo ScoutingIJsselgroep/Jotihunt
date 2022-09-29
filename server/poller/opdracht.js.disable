@@ -9,7 +9,7 @@ const striptags = require('striptags');
 
 module.exports = {
   poll() {
-    request('https://jotihunt.net/api/1.0/opdracht', (error, response, body) => {
+    request(process.env.API_URI + "opdracht", (error, response, body) => {
       if (error) {
         telegram.sendMessage('Debug', error);
       }
@@ -26,7 +26,7 @@ module.exports = {
                 return false;
               });
               if (!result || !exists.includes(true)) {
-                request(`https://jotihunt.net/api/1.0/opdracht/${entry.ID}`, (error, response, specbody) => {
+                request(`${process.env.API_URI}opdracht/${entry.ID}`, (error, response, specbody) => {
                   const content = striptags(JSON.parse(specbody).data[0].inhoud);
                   const message = `*Nieuwe opdracht*\n Titel: ${entry.titel} \n Eindtijd: ${entry.eindtijd} \n Punten: ${entry.maxpunten} \n https://jotihunt.net/subscription/message/${entry.ID} \n ${content}`;
                   telegram.sendMessage('Opdracht', message);
@@ -45,8 +45,7 @@ module.exports = {
             });
           }
         });
-      } catch (e) {
-      }
+      } catch (e) {}
     });
   },
 };

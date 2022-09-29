@@ -4,7 +4,7 @@ const router = express.Router();
 const checkJwt = require('./../checkJwt');
 
 /**
- * Find all statusses.
+ * Find all statuses.
  */
 router.get('/', checkJwt, (req, res) => {
   models.SubareaStatus.findAll({

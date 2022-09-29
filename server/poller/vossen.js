@@ -7,28 +7,31 @@ const models = require('../models');
 
 module.exports = {
   poll() {
-    request('https://jotihunt.net/api/1.0/vossen', (error, response, body) => {
+    request(`${process.env.API_URI}areas`, (error, response, body) => {
       if (error) {
         telegram.sendMessage('Debug', error);
       }
       try {
         const data = JSON.parse(body).data;
 
+        // Create callback that is called after results from database are retrieved
         const callback = (result) => {
-          // Loop body.data
+          // Loop results
           data.map((subareaStatus) => {
+            // Loop current subareas, retrieved from database
             result.map((oldSubareaStatus) => {
-              if (config.dbMappings.area[subareaStatus.team] === oldSubareaStatus.SubareaId) {
+              // Match subarea with corresponsing subarea in database
+              if (config.dbMappings.area[subareaStatus.name] === oldSubareaStatus.SubareaId) {
                 // Determine if status is different
-                if (config.dbMappings.status[subareaStatus.status] !== oldSubareaStatus.StatusId) {
-                  // Send message
-                  const message = `${config.telegram.status[subareaStatus.status]} ${subareaStatus.team} is op ${subareaStatus.status} gesprongen!`;
-                  telegram.sendMessage(subareaStatus.team, message);
+                if (config.dbMappings.status[subareaStatus.status].id !== oldSubareaStatus.StatusId) {
+                  // Status is different, we send a message to notify subscribers
+                  const message = `${config.telegram.status[subareaStatus.status]} ${subareaStatus.name} is op ${config.dbMappings.status[subareaStatus.status].translation} gesprongen!`;
+                  telegram.sendMessage(subareaStatus.name, message);
 
                   // Save entry to database.
                   models.SubareaStatus.build({
-                    StatusId: config.dbMappings.status[subareaStatus.status],
-                    SubareaId: config.dbMappings.area[subareaStatus.team],
+                    StatusId: config.dbMappings.status[subareaStatus.status].id,
+                    SubareaId: config.dbMappings.area[subareaStatus.name],
                   }).save();
                 }
               }
@@ -39,6 +42,7 @@ module.exports = {
         };
         models.SubareaStatus.getLatest(callback);
       } catch (e) {
+        console.error(e.message);
       }
     });
   },

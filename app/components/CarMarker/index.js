@@ -35,7 +35,8 @@ class CarMarker extends React.Component { // eslint-disable-line react/prefer-st
         >
           {this.props.car.isOpen && <InfoWindow onCloseClick={this.onToggleOpen}>
             <div>
-              {this.props.car.name} {moment(this.props.car.updatedAt).calendar()}
+              <b>{this.props.car.name}</b> <br/> {moment(this.props.car.updatedAt).calendar()} <br />
+              <span className="fa fa-tachometer"></span> {this.props.car.speed} km/h
             </div>
           </InfoWindow>}
         </Marker>

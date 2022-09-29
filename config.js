@@ -23,9 +23,9 @@ module.exports = {
       Debug: -271734194,
     },
     status: {
-      rood: '\ud83c\ude34',
-      oranje: '\ud83c\ude36',
-      groen: '\ud83c\ude2f',
+      red: '\ud83c\ude34',
+      orange: '\ud83c\ude36',
+      green: '\ud83c\ude2f',
     },
   },
   map: {
@@ -78,9 +78,18 @@ module.exports = {
       message: 3,
     },
     status: {
-      groen: 1,
-      oranje: 2,
-      rood: 3,
+      green: {
+        translation: "groen",
+        id: 1
+      },
+      orange: {
+        translation: "oranje",
+        id: 2
+      },
+      red: {
+        translation: "rood",
+        id: 3
+      },
     },
     type: {
       Opdracht: 1,

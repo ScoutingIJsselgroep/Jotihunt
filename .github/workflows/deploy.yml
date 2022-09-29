@@ -21,6 +21,7 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
+      # TODO: Correctly copy all secrets
       - name: Create env file
         run: |
           touch .env
@@ -70,4 +71,6 @@ jobs:
           port: ${{ secrets.GL_SSH_PORT }}
           script: |
             cd jotihunt-prod
+            set -a
+            . .env
             sh init.sh

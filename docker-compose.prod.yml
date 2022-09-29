@@ -10,31 +10,40 @@ services:
     networks:
       - jotihunt
     labels:
-      - traefik.backend=jotihunt
-      - traefik.frontend.rule=Host:${HOST_URI}
-      - traefik.docker.network=proxy
-      - traefik.port=3000
+      - "traefik.enable=true"
+      - "traefik.http.routers.jotihunt.rule=Host(`jotihunt.scouting-ijsselgroep.nl`)"
+      - "traefik.http.routers.jotihunt.entrypoints=websecure"
+      - "traefik.http.services.jotihunt-service.loadbalancer.server.port=3000"
+      - "traefik.http.routers.jotihunt.tls.certresolver=myresolver"
     depends_on:
       - "db"
 
   traefik:
-    image: traefik:1.7.18-alpine
-    command: --api --docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/traefik/traefik.toml:/traefik.toml
-      - /var/traefik/acme.json:/acme.json
+    image: traefik:v2.5
+    restart: always
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
+      - "--certificatesresolvers.myresolver.acme.email=${CLOUDFLARE_API_EMAIL}"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - 80:80
       - 443:443
-      - 8080:8080
-    labels:
-      - traefik.frontend.rule=Host:backend.scouting-ijsselgroep.nl
-      - traefik.port=8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "./letsencrypt:/letsencrypt"
+    container_name: traefik
     environment:
-      - CF_API_EMAIL
-      - CF_API_KEY
-      - C_COUNTER
+      # Cloudflare Global API Key for Let's Encrypt
+      - CF_API_EMAIL=${CF_API_EMAIL}
+      - CF_API_KEY=${CF_API_EMAIL}
+      - C_COUNTER=1
     networks:
       - jotihunt
 

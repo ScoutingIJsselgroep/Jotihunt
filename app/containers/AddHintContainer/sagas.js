@@ -2,19 +2,45 @@
  * Gets the repositories of the user from Github
  */
 
-import { call, cancel, put, take, takeLatest, select } from 'redux-saga/effects';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import {
+  call,
+  cancel,
+  put,
+  take,
+  takeLatest,
+  select
+} from 'redux-saga/effects';
+import {
+  LOCATION_CHANGE
+} from 'react-router-redux';
 import request from 'utils/request';
 
-import { getCoordinatesError, getCoordinatesLoaded, submitCoordinateSuccess, submitCoordinateError } from './actions';
-import { GET_COORDINATES, SUBMIT_COORDINATES } from './constants';
+import {
+  getCoordinatesError,
+  getCoordinatesLoaded,
+  submitCoordinateSuccess,
+  submitCoordinateError
+} from './actions';
+import {
+  GET_COORDINATES,
+  SUBMIT_COORDINATES
+} from './constants';
 
-import { makeSelectAddress, makeSelectRdx, makeSelectRdy, makeSelectWgs, makeSelectSubarea } from './selectors';
+import {
+  makeSelectAddress,
+  makeSelectRdx,
+  makeSelectRdy,
+  makeSelectWgs,
+  makeSelectSubarea
+} from './selectors';
 
 /**
  * Coordinates request/response handler
  */
-export function* getCoordinates({ rdx, rdy }) {
+export function* getCoordinates({
+  rdx,
+  rdy
+}) {
   const requestURL = '/api/hint/information';
   try {
     // Call our request helper (see 'utils/request')
@@ -68,7 +94,7 @@ export function* doSubmitCoordinate() {
   try {
     // Call our request helper (see 'utils/request')
     // eslint-disable-next-line no-unused-vars
-    const response = yield call(request, requestURL, {
+    yield call(request, requestURL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

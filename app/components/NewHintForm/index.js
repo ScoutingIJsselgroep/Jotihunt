@@ -7,11 +7,6 @@
 
 import React, { PropTypes } from 'react';
 import { Form, Text, Select } from 'react-form';
-// import styled from 'styled-components';
-
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-
 class NewHintForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const myForm = (
@@ -72,30 +67,6 @@ class NewHintForm extends React.Component { // eslint-disable-line react/prefer-
                       label: 'Foxtrot',
                       value: 'Foxtrot',
                       key: 5
-                    }, {
-                      label: 'Alpha 2',
-                      value: 'Alpha 2',
-                      key: 7
-                    }, {
-                      label: 'Bravo 2',
-                      value: 'Bravo 2',
-                      key: 8
-                    }, {
-                      label: 'Charlie 2',
-                      value: 'Charlie 2',
-                      key: 9
-                    }, {
-                      label: 'Delta 2',
-                      value: 'Delta 2',
-                      key: 10
-                    }, {
-                      label: 'Echo 2',
-                      value: 'Echo 2',
-                      key: 11
-                    }, {
-                      label: 'Foxtrot 2',
-                      value: 'Foxtrot 2',
-                      key: 12
                     }, {
                       label: 'n.n.b.',
                       value: 'n.n.b.',

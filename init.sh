@@ -1,1 +1,1 @@
-docker stack deploy -c <(docker-compose -f docker-compose.yml config) jotihunt_production --with-registry-auth
+docker stack deploy --compose-file docker-compose.prod.yml jotihunt_production

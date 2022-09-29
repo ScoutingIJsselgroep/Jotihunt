@@ -14,6 +14,8 @@ services:
       - traefik.frontend.rule=Host:${HOST_URI}
       - traefik.docker.network=proxy
       - traefik.port=3000
+    depends_on:
+      - "db"
 
   traefik:
     image: traefik:1.7.18-alpine

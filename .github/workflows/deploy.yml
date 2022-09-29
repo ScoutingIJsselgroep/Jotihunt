@@ -45,6 +45,7 @@ jobs:
         with:
           host: ${{ secrets.GL_SSH_HOST }}
           username: ${{ secrets.GL_SSH_USERNAME }}
+          password: ${{ secrest.GL_SSH_PASSWORD }}
           key: ${{ secrets.GL_SSH_SECRET }}
           port: ${{ secrets.GL_SSH_PORT }}
           script: |

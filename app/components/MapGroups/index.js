@@ -22,8 +22,9 @@ import {
   errorSelector,
 } from './selectors';
 import { loadGroups, setSubarea, } from './actions';
-function circle(lat, lng) {
+function circle(lat, lng, index) {
   return (<Circle
+    key={index}
     options={{
       fillColor: '#d43f3a',
       fillOpacity: 0.1,
@@ -92,7 +93,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
   render() {
     const voronoi = this.getVoronoi(this.props.groups, this.props.onRightClick);
     if (this.props.groups && this.props.showGroups !== false) {
-      return <div> {voronoi} {_.map(this.props.groups, (group, index) => circle(group.latitude, group.longitude))} {_.map(this.props.groups, (group, index) =>
+      return <div> {voronoi} {_.map(this.props.groups, (group, index) => circle(group.latitude, group.longitude, index))} {_.map(this.props.groups, (group, index) =>
         <GroupMarker group={group} key={index} changeSubarea={this.onChangeSubarea} />)} </div>
     }
     return <div></div>

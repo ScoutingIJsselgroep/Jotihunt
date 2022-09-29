@@ -12,22 +12,24 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    queryInterface.bulkInsert("Statuses", [{
-      id: 1,
-      status: "Groen",
-      statuscolor: "green",
-      description: "Vos is beschikbaar"
-    }, {
-      id: 2,
-      status: "Oranje",
-      statuscolor: "warning",
-      description: "Vos gaat offline"
-    }, {
-      id: 3,
-      status: "Rood",
-      statuscolor: "danger",
-      description: "Vos is offline"
-    }, ]);
+
+    queryInterface.bulkInsert("HintTypes", [{
+        id: 1,
+        name: "Hint",
+        color: Math.floor(Math.random() * 16777215).toString(16)
+      },
+      {
+        id: 2,
+        name: "Hunt",
+        color: Math.floor(Math.random() * 16777215).toString(16)
+      },
+      {
+        id: 3,
+        name: "Message",
+        color: Math.floor(Math.random() * 16777215).toString(16)
+      },
+
+    ]);
   },
 
   async down(queryInterface, Sequelize) {
@@ -37,6 +39,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Statuses', null, {});
+    await queryInterface.bulkDelete('HintTypes', null, {});
   }
 };

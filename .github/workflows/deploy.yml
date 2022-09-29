@@ -16,6 +16,7 @@ on:
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
+    environment: SERVER_ENV_PROD
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
@@ -48,7 +49,7 @@ jobs:
           key: ${{ secrets.GL_SSH_SECRET }}
           passphrase: ${{ secrets.GL_SSH_PASSWORD }}
           port: ${{ secrets.GL_SSH_PORT }}
-          source: "docker-compose.prod.yml,init.sh"
+          source: "docker-compose.prod.yml,init.sh,.env"
           target: "jotihunt-prod"
 
       - name: Deploy Stack

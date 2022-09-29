@@ -49,4 +49,4 @@ jobs:
           key: ${{ secrets.GL_SSH_SECRET }}
           port: ${{ secrets.GL_SSH_PORT }}
           script: |
-            ./deploy/init.sh
+            ./init.sh

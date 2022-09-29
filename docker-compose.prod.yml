@@ -20,7 +20,6 @@ services:
 
   traefik:
     image: traefik:v2.5
-    restart: always
     command:
       - "--log.level=DEBUG"
       - "--api.insecure=true"
@@ -28,10 +27,9 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--providers.docker.swarmMode=true"
       - "--certificatesresolvers.myresolver.acme.dnschallenge=true"
       - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
-      - "--certificatesresolvers.myresolver.acme.email=${CLOUDFLARE_API_EMAIL}"
+      - "--certificatesresolvers.myresolver.acme.email=${CF_API_EMAIL}"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - 80:80
@@ -39,9 +37,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - "./letsencrypt:/letsencrypt"
-    container_name: traefik
     environment:
-      # Cloudflare Global API Key for Let's Encrypt
       - CF_API_EMAIL=${CF_API_EMAIL}
       - CF_API_KEY=${CF_API_EMAIL}
       - C_COUNTER=1

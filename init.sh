@@ -1,1 +1,1 @@
-docker stack deploy --compose-file docker-compose.prod.yml jotihunt_production
+docker-compose -f docker-compose.prod.yml up -d

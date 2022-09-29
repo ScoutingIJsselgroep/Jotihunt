@@ -38,3 +38,23 @@ services:
       - C_COUNTER
     networks:
       - jotihunt
+
+  db:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_ROOT_PASSWORD
+    networks:
+      - jotihunt
+    labels:
+      - traefik.enable = false
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 5s
+      retries: 20

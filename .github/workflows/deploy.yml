@@ -40,6 +40,17 @@ jobs:
       - name: Push image to DO Container Registry
         run: docker compose -f docker-compose.prod.yml push
 
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.GL_SSH_HOST }}
+          username: ${{ secrets.GL_SSH_USERNAME }}
+          key: ${{ secrets.GL_SSH_SECRET }}
+          passphrase: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "docker-compose.prod.yml,init.sh"
+          target: "jotihunt-prod"
+
       - name: Deploy Stack
         uses: appleboy/ssh-action@master
         with:
@@ -49,4 +60,5 @@ jobs:
           key: ${{ secrets.GL_SSH_SECRET }}
           port: ${{ secrets.GL_SSH_PORT }}
           script: |
-            ./init.sh
+            cd jotihunt-prod
+            sh init.sh

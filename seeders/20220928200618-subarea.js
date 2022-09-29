@@ -38,6 +38,10 @@ module.exports = {
       id: 6,
       name: "Foxtrot",
       color: Math.floor(Math.random() * 16777215).toString(16)
+    }, {
+      id: 7,
+      name: "Onbekend",
+      color: Math.floor(Math.random() * 16777215).toString(16)
     }]);
   },
 

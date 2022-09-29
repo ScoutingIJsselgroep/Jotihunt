@@ -62,3 +62,6 @@ services:
 networks:
   jotihunt:
     name: jotihunt
+
+volumes:
+  dbdata:

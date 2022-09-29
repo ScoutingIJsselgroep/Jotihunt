@@ -58,3 +58,7 @@ services:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       timeout: 5s
       retries: 20
+
+networks:
+  jotihunt:
+    name: jotihunt

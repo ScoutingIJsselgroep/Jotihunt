@@ -35,7 +35,7 @@ function getLastHints(callback) {
 /**
   Perform a call to Projection, a location prediction API.
 */
-router.get('/', cache('1 minute'), (req, res) => {
+router.get('/', checkJwt, cache('1 minute'), (req, res) => {
   getLastHints((lastHints) => {
     // Prepare object array for Projection API.
     const requestBody = {
@@ -52,7 +52,6 @@ router.get('/', cache('1 minute'), (req, res) => {
       // Perform request to Projection API over a socket.
       const client = new net.Socket();
       client.connect(config.divinity.port, config.divinity.ip, () => {
-        console.log("[+] Requesting Projection API");
         client.write(JSON.stringify(requestBody));
       });
 
@@ -69,8 +68,6 @@ router.get('/', cache('1 minute'), (req, res) => {
           // Send data to client
           res.send(JSON.stringify(parsedData));
         } catch (error) {
-          console.error("[-] Error on retrieving Projection API")
-          console.error(error);
           res.status(500).send(error);
         }
       });
@@ -79,7 +76,6 @@ router.get('/', cache('1 minute'), (req, res) => {
         res.status(500).send(error);
       });
     } catch (error) {
-      console.log(error);
       res.status(500).send(error);
     }
   });

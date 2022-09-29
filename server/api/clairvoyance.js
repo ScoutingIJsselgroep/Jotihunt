@@ -81,10 +81,8 @@ router.post('/', checkJwt, (req, res) => {
     const client = new net.Socket();
     client.connect(config.clairvoyance.port, config.clairvoyance.ip, () => {
       if (lastHints.length === 6) {
-        console.log([req.body.data[0], lastHints]);
         client.write(JSON.stringify([req.body.data[0], lastHints]));
       } else {
-        console.log([req.body.data[0]]);
         client.write(JSON.stringify([req.body.data[0]]));
       }
     });
@@ -96,9 +94,7 @@ router.post('/', checkJwt, (req, res) => {
     });
 
     client.on('end', () => {
-      const result = {
-      };
-      console.log(allData);
+      const result = {};
       try {
         if (JSON.parse(allData)) {
           const parsedData = JSON.parse(allData);
@@ -115,7 +111,6 @@ router.post('/', checkJwt, (req, res) => {
     });
 
     client.on('error', (error) => {
-      console.log(error);
       res.status(500).send(JSON.stringify(error).toString('utf8'))
     })
   });
@@ -157,10 +152,10 @@ router.get('/init', cache('20 seconds'), (req, res) => {
         const md5s = await Promise.all(_.map(pictures, async function (picture) {
           return new Promise(resolve =>
             // Make a request to retrieve MD5 sum
-              request('http://localhost:3000/api/clairvoyance/md5?url=http:'+picture, async function (error, response, body) {
-                if (!error)
-                  resolve(body);
-              }));
+            request('http://localhost:3000/api/clairvoyance/md5?url=http:' + picture, async function (error, response, body) {
+              if (!error)
+                resolve(body);
+            }));
         }));
         return md5s;
       } else {

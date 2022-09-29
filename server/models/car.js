@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     name: DataTypes.STRING,
     latitude: DataTypes.FLOAT,
     longitude: DataTypes.FLOAT
-  },{
+  }, {
     timestamps: true
   });
 

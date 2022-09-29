@@ -20,6 +20,7 @@ router.post('/', (req, res) => {
   }).then((result) => {
     models.CarHistory.create({
       name: req.body.name,
+      speed: req.body.speed,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
     });
@@ -27,12 +28,14 @@ router.post('/', (req, res) => {
 
     if (result) { // update
       return result.update({
+        speed: req.body.speed,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });
     }
     return models.Car.create({
       name: req.body.name,
+      speed: req.body.speed,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
     });
@@ -49,7 +52,9 @@ router.post('/weblocation', checkJwt, (req, res) => {
     scope: 'read:users read:user_idp_tokens'
   });
 
-  auth0.getUser({id: req.user.sub}, function(err, auth0user){
+  auth0.getUser({
+    id: req.user.sub
+  }, function (err, auth0user) {
     models.Car.findOne({
       where: {
         name: auth0user.name,
@@ -57,6 +62,7 @@ router.post('/weblocation', checkJwt, (req, res) => {
     }).then((result) => {
       models.CarHistory.create({
         name: auth0user.name,
+        speed: req.body.speed,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });
@@ -64,12 +70,14 @@ router.post('/weblocation', checkJwt, (req, res) => {
       res.send({});
       if (result) { // update
         return result.update({
+          speed: req.body.speed,
           latitude: req.body.latitude,
           longitude: req.body.longitude,
         });
       }
       return models.Car.create({
         name: auth0user.name,
+        speed: req.body.speed,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });

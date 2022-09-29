@@ -75,7 +75,6 @@ router.get('/matrix', (req, res) => {
           lng: group.longitude
         };
       });
-      console.log(groupLocations);
       googleMapsClient.distanceMatrix({
         origins: groupLocations,
         destinations: groupLocations

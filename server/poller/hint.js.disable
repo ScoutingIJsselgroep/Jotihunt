@@ -8,7 +8,7 @@ const openSocket = require('socket.io-client');
 
 module.exports = {
   poll() {
-    request('https://jotihunt.net/api/1.0/hint', (error, response, body) => {
+    request(process.env.API_URI + "nieuws", (error, response, body) => {
       if (error) {
         telegram.sendMessage('Debug', error);
       }

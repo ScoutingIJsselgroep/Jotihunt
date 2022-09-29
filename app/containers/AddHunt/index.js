@@ -86,12 +86,6 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
                       <option value="Delta">Delta</option>
                       <option value="Echo">Echo</option>
                       <option value="Foxtrot">Foxtrot</option>
-                      <option value="Alpha 2">Alpha 2</option>
-                      <option value="Bravo 2">Bravo 2</option>
-                      <option value="Charlie 2">Charlie 2</option>
-                      <option value="Delta 2">Delta 2</option>
-                      <option value="Echo 2">Echo 2</option>
-                      <option value="Foxtrot 2">Foxtrot 2</option>
                     </select> :
                     <select className="form-control" ref="subarea" disabled={this.props.huntResult ? true : false} value={this.props.params.subarea}>
                       <option value="Alpha">Alpha</option>
@@ -100,12 +94,6 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
                       <option value="Delta">Delta</option>
                       <option value="Echo">Echo</option>
                       <option value="Foxtrot">Foxtrot</option>
-                      <option value="Alpha 2">Alpha 2</option>
-                      <option value="Bravo 2">Bravo 2</option>
-                      <option value="Charlie 2">Charlie 2</option>
-                      <option value="Delta 2">Delta 2</option>
-                      <option value="Echo 2">Echo 2</option>
-                      <option value="Foxtrot 2">Foxtrot 2</option>
                     </select>
                     }
                   </div>

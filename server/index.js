@@ -25,7 +25,7 @@ const server = require('http').Server(app);
 require('./api')(app, server);
 
 // Import poller
-// require('./poller')();
+require('./poller')();
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
@@ -48,8 +48,8 @@ models.sequelize.sync().then(() => {
     }
 
     // Telegram start web server
-    telegram.sendMessage('Debug', '🖥️ De server is gestart!');
-    // telegram.sendMessage('Nieuws', 'Dobby is wat dingen aan het testen, meester! Het kan zijn dat ik per ongeluk wat spam. Bad Dobby! Bad Dobby! Als het écht verkeerd gaat, spring ik uit de toren!');
+    // telegram.sendMessage('Debug', '🖥️ De server is gestart!');
+    // telegram.sendMessage('Nieuws', 'Wat een gespam! Bad Dobby!');
 
     // Connect to ngrok in dev mode
     if (ngrok) {

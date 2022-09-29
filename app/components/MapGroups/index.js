@@ -71,10 +71,10 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
     const diagram = voronoi.compute(sites, bbox);
 
     const polygons = _.map(diagram.cells, (cell, i) => {
-      // console.log(diagram.cells);
+      let opacity = cell.site.subarea.id === 7 ? 0 : 0.14 // Make unknown subareas not visible
       const options = {
           fillColor: `#${cell.site.subarea.color}`,
-          fillOpacity: 0.14,
+          fillOpacity: opacity,
           strokeWeight: 0,
       };
       let path = [];
@@ -86,12 +86,6 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
       return (<Polygon key={i} onRightClick={(evt) => {rightClick(evt, cell.site.subarea.name);}} path={path} options={options} />);
     });
 
-    // Draw vertices
-
-    // var sites = [ {x: 200, y: 200, dd: 10}, {x: 50, y: 250, dd: 30}, {x: 400, y: 100, dd: 20} /* , ... */ ];
-
-
-    // console.log(diagram.cells);
     return polygons;
   }
 

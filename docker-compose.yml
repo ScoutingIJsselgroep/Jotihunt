@@ -58,6 +58,7 @@ services:
     volumes:
       - './seeders/:/reactapp/seeders'
       - './server/:/reactapp/server'
+      - './app/:/reactapp/app'
     networks:
       - jotihunt
     labels:

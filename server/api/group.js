@@ -109,7 +109,7 @@ function fillDatabaseWithGroups(res) {
           SubareaId: 7,
         });
       });
-      res.status(200).send("Groepen ingeladen");
+      res.redirect("/group/list");
     }
   });
 }

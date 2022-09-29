@@ -71,7 +71,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
     const diagram = voronoi.compute(sites, bbox);
 
     const polygons = _.map(diagram.cells, (cell, i) => {
-      let opacity = cell.site.subarea.id === 7 ? 0 : 0.14 // Make unknown subareas not visible
+      let opacity = cell.site.subarea.id === 7 ? 0 : 0.20 // Make unknown subareas not visible
       const options = {
           fillColor: `#${cell.site.subarea.color}`,
           fillOpacity: opacity,

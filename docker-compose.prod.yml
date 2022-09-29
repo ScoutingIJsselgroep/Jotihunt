@@ -40,7 +40,6 @@ services:
 
   db:
     image: mysql:8.0
-    restart: always
     volumes:
       - dbdata:/var/lib/mysql
     environment:

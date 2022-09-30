@@ -58,7 +58,7 @@ jobs:
           key: ${{ secrets.GL_SSH_SECRET }}
           passphrase: ${{ secrets.GL_SSH_PASSWORD }}
           port: ${{ secrets.GL_SSH_PORT }}
-          source: "docker-compose.prod.yml,init.sh,.env"
+          source: "docker-compose.prod.yml,init.sh"
           target: "jotihunt-prod"
 
       - name: Deploy Stack

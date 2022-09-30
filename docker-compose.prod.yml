@@ -1,10 +1,30 @@
 version: "3.7"
 
 services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_ROOT_PASSWORD
+    networks:
+      - jotihunt
+    labels:
+      - traefik.enable = false
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 5s
+      retries: 20
   jotihunt:
     image: tristandb/jotihunt:latest
     env_file:
       - .env
+    ports:
+      - 3000:3000
     environment:
       - DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOSTNAME}/${MYSQL_DATABASE}
     networks:
@@ -19,7 +39,7 @@ services:
       - "db"
 
   traefik:
-    image: traefik:v2.5
+    image: traefik:v2.9
     command:
       - "--log.level=DEBUG"
       - "--api.insecure=true"
@@ -39,29 +59,10 @@ services:
       - "./letsencrypt:/letsencrypt"
     environment:
       - CF_API_EMAIL=${CF_API_EMAIL}
-      - CF_API_KEY=${CF_API_EMAIL}
+      - CF_API_KEY=${CF_API_KEY}
       - C_COUNTER=1
     networks:
       - jotihunt
-
-  db:
-    image: mysql:8.0
-    volumes:
-      - dbdata:/var/lib/mysql
-    environment:
-      - MYSQL_USER
-      - MYSQL_PASSWORD
-      - MYSQL_DATABASE
-      - MYSQL_ROOT_PASSWORD
-    networks:
-      - jotihunt
-    labels:
-      - traefik.enable = false
-
-    healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-      timeout: 5s
-      retries: 20
 
 networks:
   jotihunt:

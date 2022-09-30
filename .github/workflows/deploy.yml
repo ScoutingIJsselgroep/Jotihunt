@@ -21,12 +21,27 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
-      # TODO: Correctly copy all secrets
       - name: Create env file
         run: |
           touch .env
-          echo "${{ secrets.SERVER_ENV_PROD }}" > .env
-          cat .env
+          echo "${{ secrets.MYSQL_ROOT_PASSWORD }}" >> .env
+          echo "${{ secrets.MYSQL_USER }}" >> .env
+          echo "${{ secrets.MYSQL_PASSWORD }}" >> .env
+          echo "${{ secrets.MYSQL_DATABASE }}" >> .env
+          echo "${{ secrets.MYSQL_HOSTNAME }}" >> .env
+          echo "${{ secrets.AUTH0_CLIENT_ID }}" >> .env
+          echo "${{ secrets.AUTH0_DOMAIN }}" >> .env
+          echo "${{ secrets.TELEGRAM_TOKEN }}" >> .env
+          echo "${{ secrets.POLLER_INTERVAL_SECONDS }}" >> .env
+          echo "${{ secrets.GOOGLE_SERVER_AUTH_TOKEN }}" >> .env
+          echo "${{ secrets.GOOGLE_CLIENT_AUTH_TOKEN }}" >> .env
+          echo "${{ secrets.API_URI }}" >> .env
+          echo "${{ secrets.JOTIHUNT_USERNAME }}" >> .env
+          echo "${{ secrets.JOTIHUNT_PASSWORD }}" >> .env
+          echo "${{ secrets.CF_API_EMAIL }}" >> .env
+          echo "${{ secrets.CF_API_KEY }}" >> .env
+          echo "${{ secrets.C_COUNTER }}" >> .env
+          echo "${{ secrets.HOST_URI }}" >> .env
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -58,7 +73,7 @@ jobs:
           key: ${{ secrets.GL_SSH_SECRET }}
           passphrase: ${{ secrets.GL_SSH_PASSWORD }}
           port: ${{ secrets.GL_SSH_PORT }}
-          source: "docker-compose.prod.yml,init.sh"
+          source: "docker-compose.prod.yml,init.sh,.env"
           target: "jotihunt-prod"
 
       - name: Deploy Stack

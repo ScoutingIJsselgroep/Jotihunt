@@ -1,23 +1,9 @@
 const express = require('express');
 const _ = require('lodash');
-const tj = require('@mapbox/togeojson');
-const fs = require('fs');
-const path = require('path');
 const models = require('../models');
 const router = express.Router();
 const request = require('request');
 const checkJwt = require('./../checkJwt');
-const kmlMapName = require('../../config').map.filename;
-const DOMParser = require('xmldom').DOMParser;
-const {
-  inSubarea
-} = require('../../helpers/geometry');
-const config = require('./../../config');
-const geocoder = require('google-geocoder')({
-  key: config.google.googleServerAuthToken
-});
-// const kml = require(`../../maps/${kmlMapName}`);
-
 
 router.get('/', (req, res) => {
   models.Group.findAll({

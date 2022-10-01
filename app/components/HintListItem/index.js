@@ -32,7 +32,6 @@ function HintListItem({ hint, deleteHint }) {
       <td><Label className="label label-default" color={`#${hint.Subarea.color}`}> {hint.Subarea.name}</Label></td>
       <td>{hint.address}</td>
       <td>{hint.rdy || hint.longitude} / {hint.rdx || hint.latitude}</td>
-      <td>{hint.User.name}</td>
       <td>{moment(hint.createdAt).calendar()}</td>
       <td>
         <div className="btn-group">

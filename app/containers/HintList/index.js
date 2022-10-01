@@ -47,7 +47,6 @@ export class HintList extends React.Component { // eslint-disable-line react/pre
                   <th>Deelgebied</th>
                   <th>Adres</th>
                   <th>Lat/Lng</th>
-                  <th>Gebruiker</th>
                   <th>Tijdstip</th>
                   <th>Acties</th>
                 </tr>

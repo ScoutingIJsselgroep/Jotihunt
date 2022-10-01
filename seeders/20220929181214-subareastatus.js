@@ -49,6 +49,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('HintTypes', null, {});
+    await queryInterface.bulkDelete('SubareaStatuses', null, {});
   }
 };

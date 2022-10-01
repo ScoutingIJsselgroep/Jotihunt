@@ -13,9 +13,6 @@ services:
       - MYSQL_ROOT_PASSWORD
     networks:
       - jotihunt
-    labels:
-      - traefik.enable = false
-
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       timeout: 5s
@@ -38,11 +35,6 @@ services:
       - './app/:/reactapp/app'
     networks:
       - jotihunt
-    labels:
-      - traefik.backend=jotihunt
-      - traefik.frontend.rule=Host:${HOST_URI}
-      - traefik.docker.network=proxy
-      - traefik.port=3000
     depends_on:
       db:
         condition: service_healthy

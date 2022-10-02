@@ -28,3 +28,5 @@ export const SET_LATLNG = 'app/MassiveMap/SET_LATLNG';
 export const LOAD_PREDICTIONS = 'app/MassiveMap/LOAD_PREDICTIONS';
 export const LOAD_PREDICTIONS_SUCCES = 'app/MassiveMap/LOAD_PREDICTIONS_SUCCES';
 export const LOAD_PREDICTIONS_ERROR  = 'app/MassiveMap/LOAD_PREDICTIONS_ERROR ';
+
+export const SET_SEARCH_RESULTS  = 'app/MassiveMap/SET_SEARCH_RESULTS ';

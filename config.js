@@ -57,7 +57,7 @@ module.exports = {
     port: 31337,
   },
   dbMappings: {
-    nArea: ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Alpha 2', 'Bravo 2', 'Charlie 2', 'Delta 2', 'Echo 2', 'Foxtrot 2'],
+    nArea: ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Nieuws', 'Alpha 2', 'Bravo 2', 'Charlie 2', 'Delta 2', 'Echo 2', 'Foxtrot 2'],
     area: {
       Alpha: 1,
       Bravo: 2,
@@ -65,6 +65,7 @@ module.exports = {
       Delta: 4,
       Echo: 5,
       Foxtrot: 6,
+      "Onbekend": 7,
       "Alpha 2": 8,
       "Bravo 2": 9,
       "Charlie 2": 10,

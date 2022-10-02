@@ -4,18 +4,39 @@ const _ = require('lodash');
 const telegram = require('../telegram');
 const models = require('../models');
 
+const config = require('../../config');
+
+
+function upsert(group) {
+    models.Group.findOne({
+        where: {
+            id: group.id
+        }
+    }).then((existingGroup) => {
+        if (existingGroup && existingGroup.counter_hunt_points > group.counter_hunt_points) {
+            telegram.sendMessage(config.dbMappings.nArea[existingGroup.SubareaId - 1], `${group.name} uit ${group.city} is zojuist getegenhunt.`);
+        }
+        if (existingGroup.counter_hunt_points < group.counter_hunt_point) {
+            // Tegenhunt vereideld
+            telegram.sendMessage(config.dbMappings.nArea[existingGroup.SubareaId - 1], `${group.name} uit ${group.city} heeft de tegenhunt vereideld.`);
+        }
+    });
+
+    models.Group.upsert(group);
+}
+
+
 module.exports = {
-    timeout: 1 * 60 * 1000, // Poll once every 1 minute.
+    timeout: 1 * 60 * 1000, // Poll once every minute.
     poll() {
         request(`${process.env.API_URI}subscriptions`, (error, response, body) => {
             if (error) {
                 telegram.sendMessage('Debug', error);
             }
             try {
-                console.log(body);
                 const result = JSON.parse(body).data;
                 _.each(result, (group, id) => {
-                    models.Group.upsert({
+                    upsert({
                         id: id + 1,
                         name: group.name,
                         city: group.city,
@@ -28,7 +49,7 @@ module.exports = {
                         hint_points: group.hint_points || 0,
                         photo_assignment_points: group.photo_assignment_points || 0,
                         penalty_points: group.penalty_points || 0,
-                    });
+                    })
                 });
 
             } catch (e) {

@@ -9,7 +9,8 @@ import { Link } from 'react-router';
 import createRef from 'create-react-ref/lib/createRef';
 import { connect } from 'react-redux';
 import openSocket from 'socket.io-client';
-import { GoogleMap, withGoogleMap, TrafficLayer, DirectionsRenderer } from 'react-google-maps';
+import { GoogleMap, withGoogleMap, Marker, TrafficLayer, DirectionsRenderer } from 'react-google-maps';
+import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
 import ProjectionMapper from 'components/ProjectionMapper/index';
 import Toggle from 'react-bootstrap-toggle';
 import StatusBar from 'components/StatusBar';
@@ -32,8 +33,9 @@ import makeSelectMassiveMap, {
   rightClickLatLngSelector,
   statusSelector,
   predictionsSelector,
+  searchResultSelector,
 } from './selectors';
-import { clearLocation, historyToggle, setLatLng, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions } from './actions';
+import { clearLocation, historyToggle, setLatLng, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions, setSearchResults } from './actions';
 // import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapCars from '../../components/MapCars/index';
 import ClickMarker from '../../components/ClickMarker/index';
@@ -59,7 +61,7 @@ const MyMapComponent = withGoogleMap((props) =>
     onZoomChanged={props.onChangeMapCenter}
     ref={props.ref}
   >
-  {props.children}
+    {props.children}
   </GoogleMap>
 );
 
@@ -67,13 +69,15 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
   constructor(props) {
     super(props);
     this.mapRef = createRef();
-
+    this.searchBoxRef = createRef();
     this.reloadAll = this.reloadAll.bind(this);
     this.onHistoryToggle = this.onHistoryToggle.bind(this);
     this.onClearLocation = this.onClearLocation.bind(this);
     this.onRightClick = this.onRightClick.bind(this);
     this.onChangeMapCenter = this.onChangeMapCenter.bind(this);
     this.onRightClickSubarea = this.onRightClickSubarea.bind(this);
+    this.onSearchBoxPlacesChanged = this.onSearchBoxPlacesChanged.bind(this);
+    this.onSearchboxMounted = this.onSearchboxMounted.bind(this);
   }
 
   componentDidMount() {
@@ -114,9 +118,38 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     dispatch(rightClickEvent([event.latLng.lat(), event.latLng.lng()], ""));
   }
 
+  onSearchboxMounted(ref) {
+    this.searchbox = ref;
+  }
+
+  onSearchBoxPlacesChanged() {
+    const { dispatch } = this.props;
+
+    const places = this.searchbox.getPlaces();
+    const bounds = new google.maps.LatLngBounds();
+
+    places.forEach(place => {
+      if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport)
+      } else {
+        bounds.extend(place.geometry.location)
+      }
+    });
+    const markers = places.map(place => ({
+      position: place.geometry.location,
+    }));
+    
+    if (markers.length === 1) {
+      dispatch(rightClickEvent([markers[0].position.lat(), markers[0].position.lng()], ""));
+      dispatch(setLatLng({lat: markers[0].position.lat(), lng: markers[0].position.lng()}));
+    } else {
+      dispatch(setSearchResults(markers));
+      dispatch(clearLocation());
+    }
+  }
+
   onRightClickSubarea(event, subarea) {
     const { dispatch } = this.props;
-    console.log(subarea);
     dispatch(rightClickEvent([event.latLng.lat(), event.latLng.lng()], subarea));
   }
 
@@ -159,7 +192,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         />
         <MyMapComponent
           isMarkerShown
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleClientAuthToken}v=3.exp&libraries=geometry,drawing,places,traffic`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleClientAuthToken}&v=3.exp&libraries=geometry,drawing,places,traffic`}
           containerElement={<div style={{ height: '80vh', marginLeft: '-10px', marginRight: '-10px' }} />}
           mapElement={<div style={{ height: '100%' }} />}
           onRightClick={this.onRightClick}
@@ -167,30 +200,47 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           latlng={this.props.latlng}
           ref={this.mapRef}
         >
+          <SearchBox
+            ref={this.onSearchboxMounted}
+            controlPosition={google.maps.ControlPosition.TOP_CENTER}
+            onPlacesChanged={this.onSearchBoxPlacesChanged}
+          >
+            <input
+              type="text"
+              placeholder="Zoeken..."
+              style={{
+                boxSizing: `border-box`,
+                width: `300px`,
+                height: `50px`,
+                marginTop: `10px`,
+                padding: `0 17px`,
+                backgroundColor: `#FFFFFF`,
+                //border: `2px solid rgb(26, 115, 232)`,
+                outline: `none`,
+                textOverflow: `ellipses`,
+                border: `1px solid transparent`,
+                borderRadius: `2px`,
+                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                fontSize: `18px`,
+                textOverflow: `ellipses`,
+              }}
+            />
+          </SearchBox>
+          {this.props.searchResults && this.props.searchResults.map((marker, index) =>
+            <Marker key={index} position={marker.position} zIndex={1000} />
+          )}
           {this.props.rightClickLatLng &&
-          <ClickMarker latlng={this.props.rightClickLatLng} />
+          <ClickMarker 
+            latlng={this.props.rightClickLatLng} 
+            loading={this.props.loadRightClick}
+            clickLocationInfo={this.props.clickLocationInfo}
+          />
           }
           <MapGroups onRightClick={this.onRightClickSubarea}/>
           {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
           {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
           {this.props.predictions && ProjectionMapper(this.props.predictions).map((object) => object)}
         </MyMapComponent>
-        {(this.props.loadRightClick || this.props.rightClickLatLng) &&
-        <div className="panel panel-default">
-          <div className="panel-heading"><i className="fa fa-map-marker" aria-hidden="true"></i> Geselecteerde locatie</div>
-          <div className="panel-body">
-            {this.props.loadRightClick && <LoadingIndicator />}
-            {this.props.clickLocationInfo && !this.props.loadRightClick && <div>
-              {this.props.clickLocationInfo.address[0] ? this.props.clickLocationInfo.address[0].formatted_address : 'Onbekende weg'}
-              <div className="btn-group pull-right" role="group" aria-label="...">
-                <Link to={`/hint/addhint/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-map-marker" aria-hidden="true"></i> Verstuur locatie</Link>
-                <Link to={`/hint/addhunt/${this.props.rightClickLatLng[0]}/${this.props.rightClickLatLng[1]}`} className={'btn btn-primary'}><i className="fa fa-star" aria-hidden="true"></i> Meld hunt</Link>
-                <button onClick={this.onClearLocation} className={'btn btn-default'}><i className="fa fa-times" aria-hidden="true"></i></button>
-              </div>
-            </div>}
-          </div>
-        </div>
-        }
         <StatusBar
           changeMapCenter={this.onChangeMapCenter}
           loading={this.props.loadingStatus} error={this.props.errorStatus} status={this.props.status}
@@ -211,6 +261,10 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
 }
 
 MassiveMap.propTypes = {
+  searchBoxMarkers: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object,
+  ]),
   dispatch: PropTypes.func.isRequired,
   history: PropTypes.bool,
   loading: PropTypes.bool,
@@ -273,6 +327,7 @@ const mapStateToProps = createStructuredSelector({
   loadRightClick: loadRightClickSelector(),
   clickLocationInfo: loadRightClickLocationSelector(),
   rightClickSubarea: loadRightClickSubareaSelector(),
+  searchResults: searchResultSelector(),
 });
 
 function mapDispatchToProps(dispatch) {

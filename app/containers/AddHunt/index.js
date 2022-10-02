@@ -50,7 +50,6 @@ export class AddHunt extends React.Component { // eslint-disable-line react/pref
         defaultDate.setMinutes(defaultDate.getMinutes() - 10);
       }
       const defaultTimestring = (""+defaultDate.getHours()).padStart(2, 0) + ':' + (""+defaultDate.getMinutes()).padStart(2, 0);
-      console.log(this.props.params.subarea);
       return (
         <div className="container">
           <div className="row">

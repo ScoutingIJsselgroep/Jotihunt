@@ -1,4 +1,6 @@
-import { createSelector } from 'reselect';
+import {
+  createSelector
+} from 'reselect';
 
 /**
  * Direct selector to the massiveMap state domain
@@ -16,6 +18,11 @@ const loadingSelector = () => createSelector(
 const latlngSelector = () => createSelector(
   selectMassiveMapDomain(),
   (state) => state.get('latlng')
+);
+
+const searchResultSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('searchResults')
 );
 
 const hintsSelector = () => createSelector(
@@ -125,4 +132,5 @@ export {
   loadRightClickSelector,
   rightClickLatLngSelector,
   loadRightClickLocationSelector,
+  searchResultSelector,
 };

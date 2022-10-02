@@ -20,8 +20,18 @@ import {
   LOAD_CARS_ERROR,
   RIGHT_CLICK_EVENT,
   SET_LATLNG,
-  RIGHT_CLICK_EVENT_SUCCESS, CLEAR_LOCATION,
+  SET_SEARCH_RESULTS,
+  RIGHT_CLICK_EVENT_SUCCESS,
+  CLEAR_LOCATION,
 } from './constants';
+
+
+export function setSearchResults(searchResults) {
+  return {
+    type: SET_SEARCH_RESULTS,
+    searchResults
+  }
+}
 
 export function loadPredictions() {
   return {

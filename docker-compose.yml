@@ -1,9 +1,18 @@
 version: "3.7"
 
 services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - 8000:80
+    networks:
+      - jotihunt
   db:
     image: mysql:8.0
     restart: always
+    ports:
+      - 3306:3306
     volumes:
       - dbdata:/var/lib/mysql
     environment:

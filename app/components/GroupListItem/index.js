@@ -27,11 +27,9 @@ function GroupListItem({ group, increment }) {
         {group.name}
       </td>
       <td>
-        {group.town}
+        {group.city}
       </td>
-      <td>
-        {group.location}
-      </td>
+      <td dangerouslySetInnerHTML={{ __html: group.location }} />
       <td>
         <GroupVisits visits={group.visits} increment={increment} groupId={group.id} />
       </td>

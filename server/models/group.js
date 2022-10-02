@@ -2,12 +2,23 @@
 module.exports = function (sequelize, DataTypes) {
   var Group = sequelize.define("Group", {
     name: DataTypes.STRING,
-    town: DataTypes.STRING,
+    city: DataTypes.STRING,
     location: DataTypes.STRING,
     latitude: DataTypes.FLOAT,
     longitude: DataTypes.FLOAT,
-    visits: DataTypes.INTEGER,
-  },{
+    visits: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+
+    // points
+    hunt_points: DataTypes.INTEGER,
+    counter_hunt_points: DataTypes.INTEGER,
+    assignment_points: DataTypes.INTEGER,
+    hint_points: DataTypes.INTEGER,
+    photo_assignment_points: DataTypes.INTEGER,
+    penalty_points: DataTypes.INTEGER
+  }, {
     timestamps: false
   });
 
@@ -15,7 +26,8 @@ module.exports = function (sequelize, DataTypes) {
     Group.belongsTo(models.Subarea, {
       onDelete: "CASCADE",
       foreignKey: {
-        allowNull: true
+        allowNull: true,
+        defaultValue: 7
       }
     })
   }

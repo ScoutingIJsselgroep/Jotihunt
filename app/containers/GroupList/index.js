@@ -56,6 +56,14 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
           </div>
           <table className="table">
             <thead>
+              <tr>
+                <th> Deelgebied </th>
+                <th> Naam </th>
+                <th> Plaatsnaam </th>
+                <th> Adres </th>
+                <th> Aantal tegenhunts </th>
+                <th> Acties </th>
+              </tr>
             </thead>
             <tbody>
               {this.props.groups && this.props.groups.map((group, index) => {

@@ -15,8 +15,10 @@ module.exports = function () {
     })
     .forEach(function (file) {
       file = file.split('.')[0];
+      const endpoint = require(path.join(__dirname, file));
+      endpoint.poll();
       setInterval(() => {
-        require(path.join(__dirname, file)).poll();
-      }, timeout);
+        endpoint.poll();
+      }, require(path.join(__dirname, file)).timeout || timeout); // If module specific timeout is specified, otherwise system default.
     });
 };

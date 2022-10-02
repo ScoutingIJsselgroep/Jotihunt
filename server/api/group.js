@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   models.Group.findAll({
     include: [models.Subarea],
   }).then((groups) => {
-    const sortedGroups = _.orderBy(groups, ['town'], ['asc']);
+    const sortedGroups = _.orderBy(groups, ['city'], ['asc']);
     res.send(sortedGroups);
   });
 });
@@ -73,32 +73,6 @@ router.get('/matrix', (req, res) => {
   });
 });
 
-function fillDatabaseWithGroups(res) {
-  // If database is empty, then continue rest.
-  request('https://jotihunt.nl/api/2.0/subscriptions', {
-    rejectUnauthorized: false,
-    insecure: true
-  }, (error, response, body) => {
-    if (error) {
-      res.status(500).send(error);
-    } else {
-      const groups = JSON.parse(body).data;
-      _.map(groups, (group) => {
-        models.Group.create({
-          name: group.naam,
-          town: group.city,
-          location: `${group.name} (${group.accomodation}) <br /> ${group.street} ${group.housenumber} ${group.housenumber_addition} <br /> ${group.postcode} ${group.city}`,
-          latitude: parseFloat(group.lat),
-          longitude: parseFloat(group.long),
-          visits: 0,
-          SubareaId: 7,
-        });
-      });
-      res.redirect("/group/list");
-    }
-  });
-}
-
 router.post('/increment', checkJwt, (req, res) => {
   models.Group.increment({
     visits: req.body.value,
@@ -110,26 +84,10 @@ router.post('/increment', checkJwt, (req, res) => {
     models.Group.findAll({
       include: [models.Subarea],
     }).then((groups) => {
-      const sortedGroups = _.orderBy(groups, ['town'], ['asc']);
+      const sortedGroups = _.orderBy(groups, ['city'], ['asc']);
       res.send(sortedGroups);
     });
   });
-});
-
-router.get('/fill', (req, res) => {
-  // Check if database is empty.
-  models.Group.findAll({
-    include: [models.Subarea],
-  }).then((groups) => {
-    if (groups && groups.length > 0) {
-      // Database is filled, send a message the database has to be filled first.
-      res.send("Database moet eerst leeg zijn om gevuld te kunnen worden.");
-    } else {
-      // Database is empty, fill with data.
-      fillDatabaseWithGroups(res);
-    }
-  });
-
 });
 
 module.exports = router;

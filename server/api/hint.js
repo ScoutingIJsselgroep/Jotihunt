@@ -38,6 +38,9 @@ router.get('/api', cache('1 minute'), (req, res) => {
 router.get('/', checkJwt, (req, res) => {
   models.Hint.findAll({
     include: [models.HintType, models.User, models.Subarea],
+    order: [
+      ['updatedAt', 'DESC'],
+    ],
   }).then((hints) => {
     res.send(hints);
   });

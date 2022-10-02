@@ -48,9 +48,6 @@ export class GroupList extends React.Component { // eslint-disable-line react/pr
               { name: 'description', content: 'Een lijst van alle groepen.' },
             ]}
           />
-          <div className="panel-heading">
-            Groepen {this.props.groups.length == 0 && <a href='/api/group/fill' className='btn btn-default pull-right'>Importeer groepen</a>}
-          </div>
           <div className="panel-body">
             <SearchGroupList onSearchChange={this.onSearchChange} />
           </div>

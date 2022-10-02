@@ -38,7 +38,6 @@ import { clearLocation, historyToggle, setLatLng, loadCars, loadHints, loadStatu
 import MapCars from '../../components/MapCars/index';
 import ClickMarker from '../../components/ClickMarker/index';
 import HintPath from '../../components/HintPath/index';
-import MapCircle from '../../components/MapCircle';
 import MapGroups from '../../components/MapGroups';
 
 import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
@@ -61,7 +60,6 @@ const MyMapComponent = withGoogleMap((props) =>
     ref={props.ref}
   >
   {props.children}
-  <MapCircle />
   </GoogleMap>
 );
 

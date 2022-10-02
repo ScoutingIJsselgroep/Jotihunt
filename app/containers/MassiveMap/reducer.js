@@ -4,7 +4,9 @@
  *
  */
 
-import { fromJS } from 'immutable';
+import {
+  fromJS
+} from 'immutable';
 import {
   LOAD_HINTS,
   LOAD_HINTS_ERROR,
@@ -19,7 +21,11 @@ import {
   LOAD_CARS_SUCCESS,
   LOAD_CARS_ERROR,
   TOGGLE_HISTORY,
-  LOAD_CARS, RIGHT_CLICK_EVENT, RIGHT_CLICK_EVENT_SUCCESS, CLEAR_LOCATION,
+  LOAD_CARS,
+  RIGHT_CLICK_EVENT,
+  RIGHT_CLICK_EVENT_SUCCESS,
+  CLEAR_LOCATION,
+  SET_SEARCH_RESULTS,
 } from './constants';
 
 const initialState = fromJS({
@@ -38,8 +44,12 @@ const initialState = fromJS({
   predictionsError: false,
   loadRightClick: false,
   rightClickLatLng: false,
-  latlng: {lat: 52.1023337615325, lng: 6.009883117643787},
+  latlng: {
+    lat: 52.1023337615325,
+    lng: 6.009883117643787
+  },
   rightClickLocation: false,
+  searchResults: false,
 });
 
 function massiveMapReducer(state = initialState, action) {
@@ -109,6 +119,9 @@ function massiveMapReducer(state = initialState, action) {
         .set('carsLoading', false)
         .set('carsError', false)
         .set('cars', action.cars);
+    case SET_SEARCH_RESULTS:
+      return state
+        .set('searchResults', action.searchResults);
     case TOGGLE_HISTORY:
       return state
         .set('history', action.history);

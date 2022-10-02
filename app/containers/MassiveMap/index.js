@@ -141,8 +141,10 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     
     if (markers.length === 1) {
       dispatch(rightClickEvent([markers[0].position.lat(), markers[0].position.lng()], ""));
+      dispatch(setLatLng({lat: markers[0].position.lat(), lng: markers[0].position.lng()}));
     } else {
       dispatch(setSearchResults(markers));
+      dispatch(clearLocation());
     }
   }
 

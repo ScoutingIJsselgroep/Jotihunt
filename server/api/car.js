@@ -62,7 +62,7 @@ router.post('/weblocation', checkJwt, (req, res) => {
     }).then((result) => {
       models.CarHistory.create({
         name: auth0user.name,
-        speed: req.body.speed,
+        speed: req.body.speed * 3.6, // m/s to km/h conversion
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });
@@ -70,14 +70,14 @@ router.post('/weblocation', checkJwt, (req, res) => {
       res.send({});
       if (result) { // update
         return result.update({
-          speed: req.body.speed,
+          speed: req.body.speed * 3.6, // m/s to km/h conversion
           latitude: req.body.latitude,
           longitude: req.body.longitude,
         });
       }
       return models.Car.create({
         name: auth0user.name,
-        speed: req.body.speed,
+        speed: req.body.speed * 3.6, // m/s to km/h conversion
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });

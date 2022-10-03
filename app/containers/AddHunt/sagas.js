@@ -48,7 +48,6 @@ export function* doSubmitHunt({ latlng, huntType, subarea, time }) {
     });
     yield put(submitHuntSuccess(response));
   } catch (error) {
-    console.log(error);
     yield put(submitHuntError(error));
   }
 }

@@ -37,7 +37,7 @@ function generatePath(path, color) {
   return <Polyline path={_.compact(path)} options={{ strokeColor: color, strokeOpacity: 0.5 }} />;
 }
 
-function HintPath(hints, history, onClick) {
+function HintPath(hints, history, onClick, onInfoWindow) {
   const result = [];
   // Group Hints by Subarea
   const groupedHints = _.groupBy(hints, 'Subarea.name');
@@ -46,9 +46,9 @@ function HintPath(hints, history, onClick) {
   const sortedHints = _.map(groupedHints, (groupedHint) => _.sortBy(groupedHint, ['createdAt']));
 
   // Generate Markers for the init of every subarea
-  result.push(_.map(sortedHints, (sortedHint) => _.map(_.initial(sortedHint), (hint, i) => <HintMarker hint={hint} key={i} history={history} />)));
+  result.push(_.map(sortedHints, (sortedHint) => _.map(_.initial(sortedHint), (hint, i) => <HintMarker hint={hint} key={i} history={history} onInfoWindow={onInfoWindow} />)));
   // Generate Marker for last entry of every subarea
-  result.push(_.map(sortedHints, (sortedHint, i) => <HintMarker tail={true} key={i} hint={_.last(sortedHint)} />));
+  result.push(_.map(sortedHints, (sortedHint, i) => <HintMarker tail={true} key={i} hint={_.last(sortedHint)} onInfoWindow={onInfoWindow} />));
 
   // Generate Marker Circumference
   // result.push(_.map(sortedHints, (sortedHint) => generateMarkerCircumference(_.last(sortedHint), onClick)));
@@ -67,6 +67,7 @@ function HintPath(hints, history, onClick) {
 HintPath.propTypes = {
   hints: PropTypes.array,
   onClick: PropTypes.func,
+  onInfoWindow: PropTypes.func,
 };
 
 export default HintPath;

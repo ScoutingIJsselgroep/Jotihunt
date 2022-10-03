@@ -113,7 +113,6 @@ export function* doSubmitCoordinate() {
     });
     yield put(submitCoordinateSuccess());
   } catch (err) {
-    console.log(err);
     yield put(submitCoordinateError(err));
   }
 }

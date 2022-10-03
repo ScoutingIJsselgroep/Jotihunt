@@ -3,8 +3,6 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    console.log(process.env.API_URI + "areas")
-
     queryInterface.bulkInsert("Subareas", [{
       id: 1,
       name: "Alpha",

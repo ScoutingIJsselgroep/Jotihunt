@@ -24,8 +24,17 @@ import {
 
 import request from 'utils/request';
 const config = require('../../../config');
-import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import {
+  take,
+  call,
+  put,
+  select,
+  cancel,
+  takeLatest
+} from 'redux-saga/effects';
+import {
+  LOCATION_CHANGE
+} from 'react-router-redux';
 
 import openSocket from 'socket.io-client';
 
@@ -86,9 +95,6 @@ function submitCar(coordinates) {
         longitude: coordinates.longitude,
       }),
     })
-    // Make update to Socket to do a live website update
-    const socket = openSocket();
-    socket.emit('car');
   } catch (err) {
 
   }

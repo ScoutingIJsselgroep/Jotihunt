@@ -25,7 +25,6 @@ function addGoogleLens(html) {
   let matches = html.matchAll(/<img\s+[^>]*src="([^"]*)"[^>]*>/gm);
 
   for (const match of matches) {
-    console.log(match);
     html = html.replace(match[0], match[0] + `<br/><a target="_blank" href="https://lens.google.com/uploadbyurl?url=${match[1]}&st=1664807042074&ep=gisbubu"><span title="Search Google Lens" class="fa fa-google"></span></a>`)
   }
 

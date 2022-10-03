@@ -14,6 +14,7 @@ import GroupMarker from 'components/GroupMarker';
 import { createStructuredSelector } from 'reselect';
 import _ from 'lodash';
 import Voronoi from '../../utils/voronoi';
+import { REFRESH_GROUPS } from '../../../server/socket_actions'; 
 
 // import styled from 'styled-components';
 import {
@@ -50,7 +51,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
     dispatch(loadGroups());
 
     const socket = openSocket();
-    socket.on('please_refresh_groups', function(msg){
+    socket.on(REFRESH_GROUPS, () => {
       dispatch(loadGroups());
     });
   }
@@ -94,7 +95,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
     const voronoi = this.getVoronoi(this.props.groups, this.props.onRightClick);
     if (this.props.groups && this.props.showGroups !== false) {
       return <div> {voronoi} {_.map(this.props.groups, (group, index) => circle(group.latitude, group.longitude, index))} {_.map(this.props.groups, (group, index) =>
-        <GroupMarker group={group} key={index} changeSubarea={this.onChangeSubarea} />)} </div>
+        <GroupMarker group={group} key={index} changeSubarea={this.onChangeSubarea} onInfoWindow={this.props.onInfoWindow} />)} </div>
     }
     return <div></div>
   }
@@ -112,6 +113,7 @@ MapGroups.propTypes = {
   ]),
   loading: PropTypes.bool,
   mapGroups: PropTypes.bool,
+  onInfoWindow: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({

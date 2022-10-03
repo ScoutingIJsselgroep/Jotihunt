@@ -26,6 +26,7 @@ class GroupMarker extends React.Component { // eslint-disable-line react/prefer-
 
   onToggleOpen() {
     this.props.group.isOpen = !this.props.group.isOpen;
+    this.props.onInfoWindow("groups", this.props.group.id, this.props.group.isOpen)
     this.forceUpdate();
   }
 
@@ -89,6 +90,7 @@ class GroupMarker extends React.Component { // eslint-disable-line react/prefer-
 
 GroupMarker.propTypes = {
   group: PropTypes.object.isRequired,
+  onInfoWindow: PropTypes.func.isRequired,
 };
 
 export default GroupMarker;

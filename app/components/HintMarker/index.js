@@ -23,6 +23,7 @@ class HintMarker extends React.Component { // eslint-disable-line react/prefer-s
 
   onToggleOpen() {
     this.props.hint.isOpen = !this.props.hint.isOpen;
+    this.props.onInfoWindow("hints", this.props.hint.id, this.props.hint.isOpen)
     this.forceUpdate();
   }
 
@@ -62,6 +63,7 @@ class HintMarker extends React.Component { // eslint-disable-line react/prefer-s
 HintMarker.propTypes = {
   hint: PropTypes.object,
   history: PropTypes.bool,
+  onInfoWindow: PropTypes.func,
 };
 
 export default HintMarker;

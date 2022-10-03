@@ -23,8 +23,17 @@ import {
   SET_SEARCH_RESULTS,
   RIGHT_CLICK_EVENT_SUCCESS,
   CLEAR_LOCATION,
+  SET_INFO_WINDOW_STATE,
 } from './constants';
 
+export function setInfoWindowState(key, id, popupState) {
+  return {
+    type: SET_INFO_WINDOW_STATE,
+    key,
+    id,
+    popupState
+  }
+}
 
 export function setSearchResults(searchResults) {
   return {

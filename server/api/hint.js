@@ -18,7 +18,9 @@ const router = express.Router();
 const request = require('request');
 const rdToWgs = require('rdtowgs');
 const wgstoord = require('./../wgstord');
-
+const {
+  REFRESH_HINTS
+} = require('../socket_actions');
 const checkJwt = require('./../checkJwt');
 const geocoder = require('google-geocoder')({
   key: config.google.googleServerAuthToken
@@ -47,7 +49,7 @@ router.get('/', checkJwt, (req, res) => {
 });
 
 /**
- * Given an WGS-coordinate, calculate RD, subarea and retrieve the street address.
+ * Given an WGS-coordinate, subarea and retrieve the street address.
  */
 router.post('/location', checkJwt, (req, res) => {
   if (req.body.latlng) {
@@ -133,6 +135,8 @@ router.post('/clairvoyance', checkJwt, (req, res) => {
               sendHint(hintSubarea, wgs[0], wgs[1], data.results[0] ? data.results[0].formatted_address : null);
               return null;
             });
+          }).then(() => {
+            req.io.sockets.emit(REFRESH_HINTS);
           });
         });
       }
@@ -194,6 +198,7 @@ router.post('/', checkJwt, (req, res) => {
         });
         sendHint(req.body.subarea, req.body.latitude, req.body.longitude, req.body.address);
       }
+      req.io.sockets.emit(REFRESH_HINTS);
       res.send({
         message: 'success'
       });
@@ -244,9 +249,5 @@ router.get('/delete/:hintId', checkJwt, (req, res) => {
     });
   });
 });
-
-router.post('/', (req, res) =>
-  res.send(200)
-);
 
 module.exports = router;

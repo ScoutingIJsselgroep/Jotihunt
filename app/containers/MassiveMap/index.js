@@ -36,12 +36,13 @@ import makeSelectMassiveMap, {
   predictionsSelector,
   searchResultSelector,
 } from './selectors';
-import { clearLocation, historyToggle, setLatLng, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions, setSearchResults } from './actions';
+import { clearLocation, historyToggle, setLatLng, loadCars, loadHints, loadStatus, rightClickEvent, loadPredictions, setSearchResults, setInfoWindowState } from './actions';
 // import SubareaPolygons from '../../components/SubareaPolygons/index';
 import MapCars from '../../components/MapCars/index';
 import ClickMarker from '../../components/ClickMarker/index';
 import HintPath from '../../components/HintPath/index';
 import MapGroups from '../../components/MapGroups';
+import { REFRESH_HINTS, REFRESH_STATUS, REFRESH_CARS } from '../../../server/socket_actions';
 
 import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
 
@@ -78,27 +79,26 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     this.onRightClickSubarea = this.onRightClickSubarea.bind(this);
     this.onSearchBoxPlacesChanged = this.onSearchBoxPlacesChanged.bind(this);
     this.onSearchboxMounted = this.onSearchboxMounted.bind(this);
+    this.onInfoWindow = this.onInfoWindow.bind(this);
   }
 
   componentDidMount() {
-
     const socket = openSocket();
-    socket.on('please_refresh_hints', function (msg) {
+    socket.on(REFRESH_HINTS, function (msg) {
       dispatch(loadHints());
       // dispatch(loadPredictions());
     });
-    socket.on('status', function (msg) {
+    socket.on(REFRESH_STATUS, function (msg) {
       dispatch(loadStatus());
     });
-
-    socket.on('car', function (msg) {
+    socket.on(REFRESH_CARS, function (msg) {
       dispatch(loadCars());
     });
 
     // Update predictions every 30 seconds
-    setInterval(() => dispatch(loadPredictions()),
-      15 * 1000
-    );
+    // setInterval(() => dispatch(loadPredictions()),
+    //   15 * 1000
+    // );
 
     // Go load hints
     const { dispatch } = this.props;
@@ -106,6 +106,11 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     dispatch(loadStatus());
     dispatch(loadCars());
     dispatch(loadPredictions());
+  }
+
+  onInfoWindow(type, id, value) {
+    const { dispatch } = this.props;
+    dispatch((setInfoWindowState(type, id, value)));
   }
 
   onHistoryToggle(history) {
@@ -235,9 +240,9 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
               clickLocationInfo={this.props.clickLocationInfo}
             />
           }
-          <MapGroups onRightClick={this.onRightClickSubarea} />
-          {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
-          {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
+          <MapGroups onRightClick={this.onRightClickSubarea} onInfoWindow={this.onInfoWindow} />
+          {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick, this.onInfoWindow)}
+          {this.props.cars && MapCars(this.props.cars, this.props.history, this.onInfoWindow).map((car) => car)}
           {this.props.predictions && ProjectionMapper(this.props.predictions).map((object) => object)}
         </MyMapComponent>
         <StatusBar

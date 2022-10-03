@@ -24,7 +24,7 @@ export class MapViewer extends React.Component { // eslint-disable-line react/pr
         <Marker
           position={new google.maps.LatLng(this.props.params.latitude, this.props.params.longitude)}
         />
-        <MapGroups showGroups={this.props.params.groups ? true : false}/>
+        <MapGroups showGroups={this.props.params.groups ? true : false} onInfoWindow={() => {}} />
       </GoogleMap>));
     const onRightClick = () => {};
 

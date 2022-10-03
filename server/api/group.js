@@ -4,6 +4,9 @@ const models = require('../models');
 const router = express.Router();
 const request = require('request');
 const checkJwt = require('./../checkJwt');
+const {
+  REFRESH_GROUPS
+} = require('../socket_actions')
 
 router.get('/', (req, res) => {
   models.Group.findAll({
@@ -24,6 +27,7 @@ router.post('/visits', checkJwt, (req, res) => {
       name: req.body.name
     }
   }).then(() => {
+    req.io.sockets.emit(REFRESH_GROUPS);
     res.send({});
   });
 });
@@ -39,6 +43,7 @@ router.post('/subarea', checkJwt, (req, res) => {
       id: req.body.groupId
     }
   }).then((err, response) => {
+    req.io.sockets.emit(REFRESH_GROUPS);
     res.send({});
   });
 });
@@ -84,6 +89,7 @@ router.post('/increment', checkJwt, (req, res) => {
     models.Group.findAll({
       include: [models.Subarea],
     }).then((groups) => {
+      req.io.sockets.emit(REFRESH_GROUPS);
       const sortedGroups = _.orderBy(groups, ['city'], ['asc']);
       res.send(sortedGroups);
     });

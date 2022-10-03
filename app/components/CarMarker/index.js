@@ -20,6 +20,7 @@ class CarMarker extends React.Component { // eslint-disable-line react/prefer-st
 
   onToggleOpen() {
     this.props.car.isOpen = !this.props.car.isOpen;
+    this.props.onInfoWindow("cars", this.props.car.id, this.props.car.isOpen)
     this.forceUpdate();
   }
 
@@ -51,6 +52,7 @@ class CarMarker extends React.Component { // eslint-disable-line react/prefer-st
 CarMarker.propTypes = {
   car: PropTypes.object,
   history: PropTypes.bool,
+  onInfoWindow: PropTypes.func
 };
 
 export default CarMarker;

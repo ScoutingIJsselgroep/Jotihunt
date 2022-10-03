@@ -3,12 +3,24 @@ const models = require('../models');
 const router = express.Router();
 const checkJwt = require('./../checkJwt');
 const ManagementClient = require('auth0').ManagementClient;
-const openSocket = require('socket.io-client');
+const {
+  REFRESH_CARS,
+  REFRESH_HINTS,
+  REFRESH_STATUS
+} = require('../socket_actions')
 
 router.get('/', checkJwt, (req, res) => {
   models.Car.findAll({}).then((cars) => {
     res.send(cars);
   });
+});
+
+router.get('/refresh', (req, res) => {
+  req.io.sockets.emit(REFRESH_HINTS);
+  req.io.sockets.emit(REFRESH_STATUS);
+  req.io.sockets.emit(REFRESH_CARS);
+
+  res.send(200)
 });
 
 
@@ -39,6 +51,8 @@ router.post('/', (req, res) => {
       latitude: req.body.latitude,
       longitude: req.body.longitude,
     });
+  }).then(() => {
+    req.io.sockets.emit(REFRESH_CARS);
   });
   res.send(200);
 });
@@ -67,7 +81,6 @@ router.post('/weblocation', checkJwt, (req, res) => {
         longitude: req.body.longitude,
       });
 
-      res.send({});
       if (result) { // update
         return result.update({
           speed: req.body.speed * 3.6, // m/s to km/h conversion
@@ -81,6 +94,8 @@ router.post('/weblocation', checkJwt, (req, res) => {
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });
+    }).then(() => {
+      req.io.sockets.emit(REFRESH_CARS);
     });
   });
 });

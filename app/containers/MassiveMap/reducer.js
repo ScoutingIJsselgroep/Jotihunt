@@ -16,6 +16,7 @@ import {
   SET_LATLNG,
   LOAD_STATUS_ERROR,
   LOAD_PREDICTIONS,
+  SET_INFO_WINDOW_STATE,
   LOAD_PREDICTIONS_ERROR,
   LOAD_PREDICTIONS_SUCCES,
   LOAD_CARS_SUCCESS,
@@ -28,7 +29,16 @@ import {
   SET_SEARCH_RESULTS,
 } from './constants';
 
+function checkIfOpened(object, state, type) {
+  for (var key in object) {
+    object[key].isOpen = state.getIn(['popupState', type, object[key].id], false);
+  }
+
+  return object
+}
+
 const initialState = fromJS({
+  popupState: {},
   loading: false,
   error: false,
   hints: false,
@@ -55,6 +65,9 @@ const initialState = fromJS({
 
 function massiveMapReducer(state = initialState, action) {
   switch (action.type) {
+    case SET_INFO_WINDOW_STATE:
+      return state
+        .setIn(['popupState', action.key, action.id], action.popupState);
     case SET_LATLNG:
       return state
         .set('latlng', fromJS(action.latlng))
@@ -73,6 +86,7 @@ function massiveMapReducer(state = initialState, action) {
       return state
         .set('hints', false);
     case LOAD_HINTS_SUCCESS:
+      checkIfOpened(action.hints, state, "hints")
       return state
         .set('hints', action.hints)
         .set('loading', false)
@@ -117,6 +131,7 @@ function massiveMapReducer(state = initialState, action) {
       return state
         .set('carsError', false);
     case LOAD_CARS_SUCCESS:
+      checkIfOpened(action.cars, state, "cars")
       return state
         .set('carsLoading', false)
         .set('carsError', false)

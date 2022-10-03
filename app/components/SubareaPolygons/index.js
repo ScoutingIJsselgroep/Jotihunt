@@ -11,7 +11,6 @@ const tj = require('@mapbox/togeojson');
 
 // import styled from 'styled-components';
 const kmlMapName = require('../../../config').map.filename;
-console.log(kmlMapName);
 const kml = require(`../../../maps/${kmlMapName}`);
 
 function getCoordinates(coordinates) {

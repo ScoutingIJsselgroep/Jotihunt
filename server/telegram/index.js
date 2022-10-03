@@ -14,7 +14,6 @@ const bot = new TelegramBot(token, {
 module.exports = {
   sendMessage(subarea, message) {
     if (process.env.SEND_MESSAGE) {
-      console.log(subarea)
       bot.sendMessage(config.telegram.chats[subarea], message, {
         parse_mode: "HTML"
       });

@@ -29,12 +29,6 @@ module.exports = {
     },
   },
   map: {
-    // Circle around homebase
-    homebaseCircle: {
-      latitude: 52.199165,
-      longitude: 6.214124,
-      radius: 501,
-    },
     filename: process.env.KML_FILENAME,
     // The amount of hours to keep in history on the MassiveMap
     historyTime: 10,

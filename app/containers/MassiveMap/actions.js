@@ -39,10 +39,11 @@ export function loadPredictions() {
   }
 }
 
-export function setLatLng(latlng) {
+export function setLatLng(latlng, zoom) {
   return {
     type: SET_LATLNG,
     latlng,
+    zoom
   }
 }
 
@@ -133,6 +134,7 @@ export function historyToggle(history) {
 }
 
 export function rightClickEvent(latlng, subarea) {
+  latlng.isOpen = true;
   return {
     type: RIGHT_CLICK_EVENT,
     latlng,

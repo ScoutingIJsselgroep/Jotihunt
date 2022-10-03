@@ -20,6 +20,11 @@ const latlngSelector = () => createSelector(
   (state) => state.get('latlng')
 );
 
+const zoomSelector = () => createSelector(
+  selectMassiveMapDomain(),
+  (state) => state.get('zoom')
+);
+
 const searchResultSelector = () => createSelector(
   selectMassiveMapDomain(),
   (state) => state.get('searchResults')
@@ -133,4 +138,5 @@ export {
   rightClickLatLngSelector,
   loadRightClickLocationSelector,
   searchResultSelector,
+  zoomSelector,
 };

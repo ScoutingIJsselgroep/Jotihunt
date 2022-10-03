@@ -26,6 +26,7 @@ import makeSelectMassiveMap, {
   loadRightClickSubareaSelector,
   latlngSelector,
   hintsSelector,
+  zoomSelector,
   historySelector,
   loadingSelector,
   loadingStatusSelector, loadRightClickLocationSelector,
@@ -43,7 +44,6 @@ import HintPath from '../../components/HintPath/index';
 import MapGroups from '../../components/MapGroups';
 
 import '../../../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
-import LoadingIndicator from '../../components/LoadingIndicator/index';
 
 const config = require('./../../../config');
 
@@ -52,7 +52,7 @@ const historyTime = require('../../../config').map.historyTime;
 
 const MyMapComponent = withGoogleMap((props) =>
   <GoogleMap
-    options={{scaleControl: true}}
+    options={{ scaleControl: true }}
     defaultZoom={10}
     defaultCenter={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
     center={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
@@ -83,15 +83,15 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
   componentDidMount() {
 
     const socket = openSocket();
-    socket.on('please_refresh_hints', function(msg){
+    socket.on('please_refresh_hints', function (msg) {
       dispatch(loadHints());
       // dispatch(loadPredictions());
     });
-    socket.on('status', function(msg){
+    socket.on('status', function (msg) {
       dispatch(loadStatus());
     });
 
-    socket.on('car', function(msg){
+    socket.on('car', function (msg) {
       dispatch(loadCars());
     });
 
@@ -138,10 +138,10 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     const markers = places.map(place => ({
       position: place.geometry.location,
     }));
-    
+
     if (markers.length === 1) {
       dispatch(rightClickEvent([markers[0].position.lat(), markers[0].position.lng()], ""));
-      dispatch(setLatLng({lat: markers[0].position.lat(), lng: markers[0].position.lng()}));
+      dispatch(setLatLng({ lat: markers[0].position.lat(), lng: markers[0].position.lng() }, this.mapRef.current.state.zoom));
     } else {
       dispatch(setSearchResults(markers));
       dispatch(clearLocation());
@@ -153,13 +153,10 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
     dispatch(rightClickEvent([event.latLng.lat(), event.latLng.lng()], subarea));
   }
 
-  onChangeMapCenter(event) {
+  onChangeMapCenter() {
     const { dispatch } = this.props;
-    if (event) {
-      dispatch(setLatLng({lat: event[0], lng: event[1]}));
-    } else {
-      dispatch(setLatLng({lat: this.mapRef.current.state.map.center.lat(), lng: this.mapRef.current.state.map.center.lng()}));
-    }
+
+    dispatch(setLatLng({ lat: this.mapRef.current.state.map.center.lat(), lng: this.mapRef.current.state.map.center.lng() }, this.mapRef.current.state.map.zoom));
   }
 
   onClearLocation() {
@@ -197,7 +194,9 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           mapElement={<div style={{ height: '100%' }} />}
           onRightClick={this.onRightClick}
           onChangeMapCenter={this.onChangeMapCenter}
+          onZoomChanged={this.onChangeMapCenter}
           latlng={this.props.latlng}
+          zoom={this.props.zoom}
           ref={this.mapRef}
         >
           <SearchBox
@@ -230,13 +229,13 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
             <Marker key={index} position={marker.position} zIndex={1000} />
           )}
           {this.props.rightClickLatLng &&
-          <ClickMarker 
-            latlng={this.props.rightClickLatLng} 
-            loading={this.props.loadRightClick}
-            clickLocationInfo={this.props.clickLocationInfo}
-          />
+            <ClickMarker
+              latlng={this.props.rightClickLatLng}
+              loading={this.props.loadRightClick}
+              clickLocationInfo={this.props.clickLocationInfo}
+            />
           }
-          <MapGroups onRightClick={this.onRightClickSubarea}/>
+          <MapGroups onRightClick={this.onRightClickSubarea} />
           {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick)}
           {this.props.cars && MapCars(this.props.cars, this.props.history).map((car) => car)}
           {this.props.predictions && ProjectionMapper(this.props.predictions).map((object) => object)}
@@ -307,6 +306,10 @@ MassiveMap.propTypes = {
     PropTypes.bool,
     PropTypes.array,
   ]),
+  zoom: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.int
+  ])
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -314,6 +317,7 @@ const mapStateToProps = createStructuredSelector({
   loading: loadingSelector(),
   hints: hintsSelector(),
   latlng: latlngSelector(),
+  zoom: zoomSelector(),
   history: historySelector(),
   error: errorSelector(),
   errorStatus: errorStatusSelector(),

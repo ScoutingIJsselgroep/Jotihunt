@@ -48,6 +48,7 @@ const initialState = fromJS({
     lat: 52.1023337615325,
     lng: 6.009883117643787
   },
+  zoom: 10,
   rightClickLocation: false,
   searchResults: false,
 });
@@ -56,7 +57,8 @@ function massiveMapReducer(state = initialState, action) {
   switch (action.type) {
     case SET_LATLNG:
       return state
-        .set('latlng', fromJS(action.latlng));
+        .set('latlng', fromJS(action.latlng))
+        .set('zoom', fromJS(action.zoom));
     case LOAD_PREDICTIONS:
       return state
         .set('predictionsError', false);

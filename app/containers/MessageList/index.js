@@ -15,6 +15,9 @@ import { Form, Text } from 'react-form';
 import { createStructuredSelector } from 'reselect';
 import { loadMessage, performSearch } from './actions';
 import makeSelectMessageList, { searchSelector, errorLoadingMessageSelector, messageSelector, loadingMessageSelector } from './selectors';
+import openSocket from 'socket.io-client';
+
+import { REFRESH_ARTICLES } from '../../../server/socket_actions';
 
 
 function find(item, text) {
@@ -32,6 +35,12 @@ export class MessageList extends React.Component { // eslint-disable-line react/
 
   componentDidMount() {
     this.props.loadMessage();
+    const { dispatch } = this.props;
+
+    const socket = openSocket();
+    socket.on(REFRESH_ARTICLES, function (msg) {
+      dispatch(loadLastHint());
+    });
   }
 
   onSearchChange({ search }) {

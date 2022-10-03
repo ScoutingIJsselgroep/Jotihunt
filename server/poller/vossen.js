@@ -4,9 +4,13 @@ const config = require('../../config');
 const telegram = require('../telegram');
 const models = require('../models');
 
+const {
+  REFRESH_STATUS
+} = require('../socket_actions');
+
 
 module.exports = {
-  poll() {
+  poll(io) {
     request(`${process.env.API_URI}areas`, (error, response, body) => {
       if (error) {
         telegram.sendMessage('Debug', error);
@@ -33,6 +37,8 @@ module.exports = {
                     StatusId: config.dbMappings.status[subareaStatus.status].id,
                     SubareaId: config.dbMappings.area[subareaStatus.name],
                   }).save();
+
+                  io.emit(REFRESH_STATUS);
                 }
               }
               return 0;

@@ -8,6 +8,10 @@ const models = require('../models');
 
 const striptags = require('striptags');
 
+const {
+    REFRESH_ARTICLES
+} = require('../socket_actions');
+
 // Set moment locale
 moment.locale('nl')
 
@@ -16,7 +20,7 @@ function prepareContent(message) {
 }
 
 module.exports = {
-    poll() {
+    poll(io) {
         request(`${process.env.API_URI}articles`, (error, response, body) => {
             if (error) {
                 telegram.sendMessage('Debug', error);
@@ -77,6 +81,8 @@ module.exports = {
                                     telegram.sendMessage('Opdracht', assignmentMessage);
                                     break;
                             }
+
+                            io.emit(REFRESH_ARTICLES);
                         }
                     });
                 });

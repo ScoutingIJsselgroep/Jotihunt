@@ -157,8 +157,6 @@ router.post('/', checkJwt, (req, res) => {
   }).then((subareas) => {
     subareas.map((subarea) => {
       const rd = wgstoord(req.body.latitude, req.body.longitude);
-
-
       if (req.body.hintTypeId) {
         // Create a hunt/information point on map
         models.Hint.create({
@@ -244,6 +242,7 @@ router.get('/delete/:hintId', checkJwt, (req, res) => {
       id: req.params.hintId,
     },
   }).then(() => {
+    req.io.sockets.emit(REFRESH_HINTS);
     res.send({
       message: 'success'
     });

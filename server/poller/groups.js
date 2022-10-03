@@ -46,7 +46,7 @@ function upsert(group) {
 
 module.exports = {
     timeout: 1 * 60 * 1000, // Poll once every minute.
-    poll() {
+    poll(io) {
         request(`${process.env.API_URI}subscriptions`, (error, response, body) => {
             if (error) {
                 telegram.sendMessage('Debug', error);

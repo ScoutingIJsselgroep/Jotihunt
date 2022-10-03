@@ -6,6 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
+import openSocket from 'socket.io-client';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import NewHintForm from 'components/NewHintForm';
@@ -19,6 +20,7 @@ import AddHintMap from '../../components/AddHintMap/index';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
 import SuccessComponent from '../../components/SuccessComponent/index';
 import moment from 'moment';
+import { REFRESH_ARTICLES } from '../../../server/socket_actions';
 
 function addGoogleLens(html) {
 
@@ -41,6 +43,11 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(loadLastHint());
+
+    const socket = openSocket();
+    socket.on(REFRESH_ARTICLES, function (msg) {
+      dispatch(loadLastHint());
+    });
   }
 
   onCoordinateChange({ rdx, rdy, subarea }) {

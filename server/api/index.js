@@ -1,7 +1,11 @@
 /* eslint-disable */
 
 const {
-  REFRESH_GROUPS
+  REFRESH_GROUPS,
+  REFRESH_HINTS,
+  REFRESH_STATUS,
+  REFRESH_CARS,
+  REFRESH_ARTICLES
 } = require('../socket_actions');
 
 var fs = require('fs'),
@@ -13,17 +17,20 @@ module.exports = function (app, server) {
   const io = require('socket.io')(server);
 
   io.on('connection', function (socket) {
-    socket.on('please_refresh_hints', function () {
-      io.emit('please_refresh_hints');
+    socket.on(REFRESH_HINTS, function () {
+      io.emit(REFRESH_HINTS);
     });
-    socket.on('status', function () {
-      io.emit('status');
+    socket.on(REFRESH_STATUS, function () {
+      io.emit(REFRESH_STATUS);
     });
-    socket.on('car', function () {
-      io.emit('car');
+    socket.on(REFRESH_CARS, function () {
+      io.emit(REFRESH_CARS);
     });
     socket.on(REFRESH_GROUPS, function () {
       io.emit(REFRESH_GROUPS);
+    });
+    socket.on(REFRESH_ARTICLES, function () {
+      io.emit(REFRESH_ARTICLES);
     });
   });
 

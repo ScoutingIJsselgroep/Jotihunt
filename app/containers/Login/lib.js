@@ -1,12 +1,16 @@
 import Auth0Lock from 'auth0-lock';
-import { storeSecret } from 'containers/Viewer/lib';
-import { ORIGIN } from 'components/Window/constants';
+import {
+  storeSecret
+} from 'containers/Viewer/lib';
+import {
+  ORIGIN
+} from 'components/Window/constants';
 
 export const LOCK_CONTAINER_ID = 'lock-container';
 
 let lock;
 
-export function createAndShow(nextPathname, closable=true) {
+export function createAndShow(nextPathname, closable = true) {
   lock = createLock(nextPathname, closable);
   lock.show();
 }
@@ -16,10 +20,6 @@ function createLock(nextPathname, closable) {
   storeSecret(secret);
   return new Auth0Lock(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN, {
     closable: closable,
-    // configurationBaseUrl: 'https://jotihunt-js.eu.auth0.com',
-    theme: {
-      logo: 'https://s3.eu-central-1.amazonaws.com/tristandb/headonly.svg',
-    },
     languageDictionary: {
       title: "Jotihunt inloggen"
     },
@@ -33,7 +33,6 @@ function createLock(nextPathname, closable) {
         }),
       },
     },
-    // other options see https://auth0.com/docs/libraries/lock/v10/customization
   });
 }
 

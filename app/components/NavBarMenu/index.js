@@ -22,17 +22,8 @@ class NavBarMenu extends React.Component { // eslint-disable-line react/prefer-s
           <li><Link to="/hint/add">Hint toevoegen</Link></li>
           <li><Link to="/hint/list">Hints <i className="fa fa-list" aria-hidden="true"></i> </Link></li>
           <li><Link to="/group/list">Groepen <i className="fa fa-list" aria-hidden="true"></i> </Link></li>
-          {/*
-          <li><Link to="/group/list">Groepen <i className="fa fa-list" aria-hidden="true"></i> </Link></li>
-          */}
           <li><Link to="/map">Kaart <i className="fa fa-map" aria-hidden="true"></i> </Link></li>
           {/* <li><Link to="/clairvoyance">Clairvoyance <i className="fa fa-eye" aria-hidden="true"></i> </Link></li> */}
-          <li className="dropdown">
-            <Link href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Overig <span className="caret"></span></Link>
-            <ul className="dropdown-menu">
-              <li><Link to="https://goo.gl/forms/wwGXbeGQCaVsYhRx2" target={'_blank'}><i className="fa fa-bullhorn" aria-hidden="true"></i> Klaagmuur</Link></li>
-            </ul>
-          </li>
         </ul>
       );
     }

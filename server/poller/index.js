@@ -7,7 +7,7 @@ const basename = path.basename(__filename);
 const timeout = require('./../../config').poller.timeout;
 
 //load all routes in dir
-module.exports = function () {
+module.exports = function (server) {
   const io = require('socket.io')(server);
 
   fs

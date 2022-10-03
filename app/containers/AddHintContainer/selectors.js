@@ -1,4 +1,6 @@
-import { createSelector } from 'reselect';
+import {
+  createSelector
+} from 'reselect';
 
 /**
  * Direct selector to the addHintContainer state domain
@@ -9,13 +11,13 @@ const selectAddHintContainerDomain = () => (state) => state.get('addHintContaine
  * Other specific selectors
  */
 const makeSelectRdx = () => createSelector(
-   selectAddHintContainerDomain(),
-   (state) => state.get('rdx')
+  selectAddHintContainerDomain(),
+  (state) => state.get('rdx')
 );
 
 const makeSelectRdy = () => createSelector(
-   selectAddHintContainerDomain(),
-   (state) => state.get('rdy')
+  selectAddHintContainerDomain(),
+  (state) => state.get('rdy')
 );
 
 const makeSelectLoading = () => createSelector(
@@ -43,6 +45,21 @@ const makeSelectHintSubmitted = () => createSelector(
   (state) => state.get('submittingSuccess')
 );
 
+const makeSelectLoadingLastHint = () => createSelector(
+  selectAddHintContainerDomain(),
+  (state) => state.get('loadingLastHint')
+);
+
+const makeSelectLastHintError = () => createSelector(
+  selectAddHintContainerDomain(),
+  (state) => state.get('lastHintError')
+);
+
+const makeSelectLastHint = () => createSelector(
+  selectAddHintContainerDomain(),
+  (state) => state.get('lastHint')
+);
+
 /**
  * Default selector used by AddHintContainer
  */
@@ -62,4 +79,7 @@ export {
   makeSelectHintSubmitted,
   makeSelectRdy,
   makeSelectWgs,
+  makeSelectLoadingLastHint,
+  makeSelectLastHintError,
+  makeSelectLastHint,
 };

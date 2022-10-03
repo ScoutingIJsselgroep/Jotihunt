@@ -12,16 +12,39 @@ import {
   SUBMIT_COORDINATES_SUCCESS,
   SUBMIT_COORDINATES,
   SUBMIT_COORDINATES_ERROR,
+  LOAD_LAST_HINT_ERROR,
+  LOAD_LAST_HINT_SUCCESS,
+  LOAD_LAST_HINT
 } from './constants';
 
 import openSocket from 'socket.io-client';
-
 
 export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
   };
 }
+
+export function lastHintError(error) {
+  return {
+    type: LOAD_LAST_HINT_ERROR,
+    error
+  }
+}
+
+export function lastHintSuccess(hint) {
+  return {
+    type: LOAD_LAST_HINT_SUCCESS,
+    hint
+  }
+}
+
+export function loadLastHint() {
+  return {
+    type: LOAD_LAST_HINT
+  }
+}
+
 
 export function getCoordinates(rdx, rdy, subarea) {
   return {

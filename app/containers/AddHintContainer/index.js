@@ -9,20 +9,31 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import NewHintForm from 'components/NewHintForm';
-import { getCoordinates, submitCoordinates } from './actions';
+import { getCoordinates, submitCoordinates, loadLastHint } from './actions';
 import makeSelectAddHintContainer, {
   makeSelectWgs, makeSelectSubarea, makeSelectAddress, makeSelectLoading,
-  makeSelectHintSubmitted,
+  makeSelectHintSubmitted, makeSelectLoadingLastHint, makeSelectLastHintError,
+  makeSelectLastHint,
 } from './selectors';
 import AddHintMap from '../../components/AddHintMap/index';
 import LoadingIndicator from '../../components/LoadingIndicator/index';
 import SuccessComponent from '../../components/SuccessComponent/index';
+import moment from 'moment';
+
+function addGoogleLens(html) {
+
+}
 
 export class AddHintContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.onCoordinateChange = this.onCoordinateChange.bind(this);
     this.onCoordinateSubmit = this.onCoordinateSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(loadLastHint());
   }
 
   onCoordinateChange({ rdx, rdy, subarea }) {
@@ -36,8 +47,10 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
   }
 
   render() {
+    moment.locale('nl');
+
     return (
-      <div className="container">
+      <div className="">
         <div className="row">
           <Helmet
             title="Hint toevoegen"
@@ -46,13 +59,15 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
               { name: 'description', content: 'Hint toevoegen aan het systeem' },
             ]}
           />
-          <div className="col-md-8 col-md-offset-2 col-sm-12">
+          <div className="col-md-4 col-sm-12">
             {this.props.hintSubmitted && <SuccessComponent message={'De hint is ingestuurd.'} />}
             <div className="panel panel-default">
               <div className="panel-heading">
-                Hint toevoegen
+                <h3 className="panel-title">Hint toevoegen</h3>
               </div>
               <div className="panel-body">
+                Voeg een hint toe aan het systeem. Door op 'versturen' te klikken, wordt de hint toegevoegd aan het systeem en verstuurd via Telegram.<br /><br />
+
                 <NewHintForm onCoordinateChange={this.onCoordinateChange} onSubmitCoordinates={this.onCoordinateSubmit} />
                 <hr />
                 {this.props.loading ?
@@ -66,6 +81,21 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
                     <AddHintMap wgs={this.props.wgs} address={this.props.address} />
                   </div>
                 }
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8 col-sm-12">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h3 className="panel-title">
+                  {this.props.lastHint ? this.props.lastHint.title : "Laatst bekende hint"}
+                </h3>
+                {this.props.lastHint && this.props.lastHint.start && moment(this.props.lastHint.start).calendar()}
+              </div>
+              <div className="panel-body">
+                {this.props.loadingLastHint && <LoadingIndicator />}
+                {this.props.lastHintError && "Error!"}
+                {this.props.lastHint && <div dangerouslySetInnerHTML={{ __html: this.props.lastHint.content }} />}
               </div>
             </div>
           </div>
@@ -100,6 +130,9 @@ const mapStateToProps = createStructuredSelector({
   wgs: makeSelectWgs(),
   loading: makeSelectLoading(),
   hintSubmitted: makeSelectHintSubmitted(),
+  loadingLastHint: makeSelectLoadingLastHint(),
+  lastHint: makeSelectLastHint(),
+  lastHintError: makeSelectLastHintError(),
 });
 
 function mapDispatchToProps(dispatch) {

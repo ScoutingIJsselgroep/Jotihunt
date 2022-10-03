@@ -19,10 +19,13 @@ import {
   getCoordinatesError,
   getCoordinatesLoaded,
   submitCoordinateSuccess,
-  submitCoordinateError
+  submitCoordinateError,
+  lastHintError,
+  lastHintSuccess,
 } from './actions';
 import {
   GET_COORDINATES,
+  LOAD_LAST_HINT,
   SUBMIT_COORDINATES
 } from './constants';
 
@@ -129,8 +132,38 @@ export function* submitCoordinate() {
   yield cancel(watcher);
 }
 
+/**
+ * LatestHint request/response handler
+ */
+export function* getLatestHint() {
+  const requestURL = '/api/hint/latest';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const loadedhints = yield call(request, requestURL);
+    yield put(lastHintSuccess(loadedhints));
+  } catch (error) {
+    yield put(lastHintError(error));
+  }
+}
+
+/**
+ * Root saga manages watcher lifecycle
+ */
+export function* latestHintSaga() {
+  // Watches for LOAD_HINTS actions and calls getHints when one comes in.
+  // By using `takeLatest` only the result of the latest API call is applied.
+  // It returns task descriptor (just like fork) so we can continue execution
+  const watcher = yield takeLatest(LOAD_LAST_HINT, getLatestHint);
+
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
 // Bootstrap sagas
 export default [
   coordinates,
   submitCoordinate,
+  latestHintSaga,
 ];

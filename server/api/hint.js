@@ -201,6 +201,25 @@ router.post('/', checkJwt, (req, res) => {
   });
 });
 
+/**
+ * Get last hint
+ */
+router.get('/latest', (req, res) => {
+  models.Api.findOne({
+    include: [{
+      model: models.ApiType,
+      where: {
+        name: "Hint"
+      }
+    }],
+    order: [
+      ['createdAt', 'DESC']
+    ],
+  }).then((hints) => {
+    res.send(hints);
+  });
+});
+
 router.get('/:type', checkJwt, (req, res) => {
   models.Hint.findAll({
     include: [{

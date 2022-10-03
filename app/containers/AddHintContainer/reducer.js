@@ -4,10 +4,18 @@
  *
  */
 
-import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION, GET_COORDINATES, GET_COORDINATES_SUCCESS, SUBMIT_COORDINATES,
+  fromJS
+} from 'immutable';
+import {
+  DEFAULT_ACTION,
+  GET_COORDINATES,
+  GET_COORDINATES_SUCCESS,
+  SUBMIT_COORDINATES,
   SUBMIT_COORDINATES_SUCCESS,
+  LOAD_LAST_HINT,
+  LOAD_LAST_HINT_SUCCESS,
+  LOAD_LAST_HINT_ERROR
 } from './constants';
 
 const initialState = fromJS({
@@ -19,6 +27,9 @@ const initialState = fromJS({
   address: false,
   submittingSuccess: false,
   submitting: false,
+  loadingLastHint: false,
+  lastHint: false,
+  lastHintError: false,
 });
 
 function addHintContainerReducer(state = initialState, action) {
@@ -38,6 +49,21 @@ function addHintContainerReducer(state = initialState, action) {
     case SUBMIT_COORDINATES:
       return state
         .set('submitting', true);
+    case LOAD_LAST_HINT:
+      return state
+        .set('loadingLastHint', true)
+        .set('lastHintError', false)
+        .set('lastHint', false);
+    case LOAD_LAST_HINT_SUCCESS:
+      return state
+        .set('loadingLastHint', false)
+        .set('lastHint', action.hint)
+        .set('lastHintError', false);
+    case LOAD_LAST_HINT_ERROR:
+      return state
+        .set('loadingLastHint', false)
+        .set('lastHintError', action.error)
+        .set('lastHint', false)
     case SUBMIT_COORDINATES_SUCCESS:
       return state
         .set('submitting', false)

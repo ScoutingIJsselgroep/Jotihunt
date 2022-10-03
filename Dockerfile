@@ -34,6 +34,4 @@ CMD ["npm", "run", "start"]
 
 FROM base AS production
 
-RUN npm run build
-
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start:production"]

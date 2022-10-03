@@ -22,6 +22,14 @@ import moment from 'moment';
 
 function addGoogleLens(html) {
 
+  let matches = html.matchAll(/<img\s+[^>]*src="([^"]*)"[^>]*>/gm);
+
+  for (const match of matches) {
+    console.log(match);
+    html = html.replace(match[0], match[0] + `<br/><a target="_blank" href="https://lens.google.com/uploadbyurl?url=${match[1]}&st=1664807042074&ep=gisbubu"><span title="Search Google Lens" class="fa fa-google"></span></a>`)
+  }
+
+  return html
 }
 
 export class AddHintContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -59,7 +67,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
               { name: 'description', content: 'Hint toevoegen aan het systeem' },
             ]}
           />
-          <div className="col-md-4 col-sm-12">
+          <div className="col-md-4 col-sm-12 sidebar">
             {this.props.hintSubmitted && <SuccessComponent message={'De hint is ingestuurd.'} />}
             <div className="panel panel-default">
               <div className="panel-heading">
@@ -95,7 +103,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
               <div className="panel-body">
                 {this.props.loadingLastHint && <LoadingIndicator />}
                 {this.props.lastHintError && "Error!"}
-                {this.props.lastHint && <div dangerouslySetInnerHTML={{ __html: this.props.lastHint.content }} />}
+                {this.props.lastHint && <div dangerouslySetInnerHTML={{ __html: addGoogleLens(this.props.lastHint.content) }} />}
               </div>
             </div>
           </div>

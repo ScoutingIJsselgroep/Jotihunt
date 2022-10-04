@@ -83,9 +83,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
   }
 
   componentDidMount() {
-    const socket = io('http://localhost:3000',{  
-        withCredentials: true
-    });
+    const socket = io();
 
     socket.on(REFRESH_HINTS, function () {
       dispatch(loadHints());

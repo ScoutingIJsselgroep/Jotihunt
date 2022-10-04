@@ -69,8 +69,8 @@ export function getCoordinatesError() {
 }
 
 export function submitCoordinates() {
-  const socket = openSocket();
-  socket.emit('please_refresh_hints');
+  // const socket = openSocket();
+  // socket.emit('please_refresh_hints');
 
   return {
     type: SUBMIT_COORDINATES,

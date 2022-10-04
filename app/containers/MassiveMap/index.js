@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import createRef from 'create-react-ref/lib/createRef';
 import { connect } from 'react-redux';
-import openSocket from 'socket.io-client';
+import { io } from "socket.io-client";
 import { GoogleMap, withGoogleMap, Marker, TrafficLayer, DirectionsRenderer } from 'react-google-maps';
 import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
 import ProjectionMapper from 'components/ProjectionMapper/index';
@@ -83,15 +83,18 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
   }
 
   componentDidMount() {
-    const socket = openSocket();
-    socket.on(REFRESH_HINTS, function (msg) {
+    const socket = io('http://localhost:3000',{  
+        withCredentials: true
+    });
+
+    socket.on(REFRESH_HINTS, function () {
       dispatch(loadHints());
       // dispatch(loadPredictions());
     });
-    socket.on(REFRESH_STATUS, function (msg) {
+    socket.on(REFRESH_STATUS, function () {
       dispatch(loadStatus());
     });
-    socket.on(REFRESH_CARS, function (msg) {
+    socket.on(REFRESH_CARS, function () {
       dispatch(loadCars());
     });
 
@@ -206,7 +209,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
         >
           <SearchBox
             ref={this.onSearchboxMounted}
-            controlPosition={google.maps.ControlPosition.TOP_CENTER}
+            controlPosition={2} // google.maps.ControlPosition.TOP_CENTER
             onPlacesChanged={this.onSearchBoxPlacesChanged}
           >
             <input

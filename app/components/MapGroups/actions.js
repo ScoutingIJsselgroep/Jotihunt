@@ -30,8 +30,8 @@ export function loadGroupsSuccess(groups) {
 }
 
 export function setSubarea(subareaId, groupId) {
-  const socket = openSocket();
-  socket.emit('please_refresh_groups');
+  // const socket = openSocket();
+  // socket.emit('please_refresh_groups');
 
   return {
     type: SET_SUBAREA,

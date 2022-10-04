@@ -26,16 +26,16 @@ export function loadHintsError(error) {
   }
 }
 
-export function loadHintsSuccess (hintList) {
+export function loadHintsSuccess(hintList) {
   return {
     type: LOAD_HINTS_SUCCESS,
     hintList
   }
 }
 
-export function deleteHint (hintId) {
-  const socket = openSocket();
-  socket.emit('please_refresh_hints');
+export function deleteHint(hintId) {
+  // const socket = openSocket();
+  // socket.emit('please_refresh_hints');
 
   return {
     type: DELETE_HINT,

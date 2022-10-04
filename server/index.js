@@ -15,10 +15,54 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
+const {
+  REFRESH_GROUPS,
+  REFRESH_HINTS,
+  REFRESH_STATUS,
+  REFRESH_CARS,
+  REFRESH_ARTICLES
+} = require('./socket_actions');
+
+
 app.use(bodyParser.json());
 app.use(cors());
 
-const server = require('http').Server(app);
+const http = require('http');
+const server = http.createServer(app);
+const {
+  Server
+} = require("socket.io");
+const io = new Server(server, {
+  port: 3000,
+  cors: {
+    origin: ['http://localhost:3000'],
+  }
+});
+
+// Setup Socket.io
+io.on('connection', function (socket) {
+  socket.on(REFRESH_HINTS, function () {
+    io.emit(REFRESH_HINTS);
+  });
+  socket.on(REFRESH_STATUS, function () {
+    io.emit(REFRESH_STATUS);
+  });
+  socket.on(REFRESH_CARS, function () {
+    io.emit(REFRESH_CARS);
+  });
+  socket.on(REFRESH_GROUPS, function () {
+    io.emit(REFRESH_GROUPS);
+  });
+  socket.on(REFRESH_ARTICLES, function () {
+    io.emit(REFRESH_ARTICLES);
+  });
+});
+
+// Make io accessible to our router
+app.use(function (req, res, next) {
+  req.io = io;
+  next();
+});
 
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here

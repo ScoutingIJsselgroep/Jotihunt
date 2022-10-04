@@ -35,6 +35,7 @@ services:
       - "traefik.http.routers.jotihunt.entrypoints=websecure"
       - "traefik.http.services.jotihunt-service.loadbalancer.server.port=3000"
       - "traefik.http.routers.jotihunt.tls.certresolver=myresolver"
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
     depends_on:
       - "db"
 

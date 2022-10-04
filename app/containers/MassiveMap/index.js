@@ -57,7 +57,7 @@ const MyMapComponent = withGoogleMap((props) =>
     defaultZoom={10}
     defaultCenter={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
     center={{ lat: props.latlng.get('lat'), lng: props.latlng.get('lng') }}
-    onRightClick={props.onRightClick}
+    onClick={props.onClick}
     onDragEnd={props.onChangeMapCenter}
     onZoomChanged={props.onChangeMapCenter}
     ref={props.ref}
@@ -197,7 +197,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.google.googleClientAuthToken}&v=3.exp&libraries=geometry,drawing,places,traffic`}
           containerElement={<div style={{ height: '80vh', marginLeft: '-10px', marginRight: '-10px' }} />}
           mapElement={<div style={{ height: '100%' }} />}
-          onRightClick={this.onRightClick}
+          onClick={this.onRightClick}
           onChangeMapCenter={this.onChangeMapCenter}
           onZoomChanged={this.onChangeMapCenter}
           latlng={this.props.latlng}
@@ -240,7 +240,7 @@ export class MassiveMap extends React.Component { // eslint-disable-line react/p
               clickLocationInfo={this.props.clickLocationInfo}
             />
           }
-          <MapGroups onRightClick={this.onRightClickSubarea} onInfoWindow={this.onInfoWindow} />
+          <MapGroups onClick={this.onRightClickSubarea} onInfoWindow={this.onInfoWindow} />
           {this.props.hints && HintPath(this.props.hints, this.props.history, this.onRightClick, this.onInfoWindow)}
           {this.props.cars && MapCars(this.props.cars, this.props.history, this.onInfoWindow).map((car) => car)}
           {this.props.predictions && ProjectionMapper(this.props.predictions).map((object) => object)}

@@ -61,7 +61,7 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
     dispatch(setSubarea(event.target.value, groupId));
   }
 
-  getVoronoi(groups, rightClick) {
+  getVoronoi(groups, onClick) {
     const voronoi = new Voronoi();
 
     const bbox = {xl: 51.7, xr: 52.5, yt: 5.2, yb: 6.5}; // xl is x-left, xr is x-right, yt is y-top, and yb is y-bottom
@@ -85,14 +85,14 @@ class MapGroups extends React.Component { // eslint-disable-line react/prefer-st
         path.push({lat: edge.getEndpoint().x, lng: edge.getEndpoint().y});
       });
 
-      return (<Polygon key={i} onRightClick={(evt) => {rightClick(evt, cell.site.subarea.name);}} path={path} options={options} />);
+      return (<Polygon key={i} onClick={(evt) => {onClick(evt, cell.site.subarea.name);}} path={path} options={options} />);
     });
 
     return polygons;
   }
 
   render() {
-    const voronoi = this.getVoronoi(this.props.groups, this.props.onRightClick);
+    const voronoi = this.getVoronoi(this.props.groups, this.props.onClick);
     if (this.props.groups && this.props.showGroups !== false) {
       return <div> {voronoi} {_.map(this.props.groups, (group, index) => circle(group.latitude, group.longitude, index))} {_.map(this.props.groups, (group, index) =>
         <GroupMarker group={group} key={index} changeSubarea={this.onChangeSubarea} onInfoWindow={this.props.onInfoWindow} />)} </div>

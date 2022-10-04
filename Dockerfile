@@ -1,7 +1,7 @@
 # ###########
 # Base stage
 # ###########
-FROM node:10.24.1 AS base
+FROM node:18.10.0 AS base
 
 ENV KARMA_BROWSER PhantomJS
 RUN apt-get update && apt-get install -y --no-install-recommends libpng-dev python build-essential autoconf automake g++ libpng-dev make

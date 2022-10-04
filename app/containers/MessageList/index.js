@@ -38,7 +38,7 @@ export class MessageList extends React.Component { // eslint-disable-line react/
     const { dispatch } = this.props;
 
     const socket = openSocket();
-    socket.on(REFRESH_ARTICLES, function (msg) {
+    socket.on(REFRESH_ARTICLES, function () {
       dispatch(loadLastHint());
     });
   }

@@ -6,7 +6,9 @@ const ManagementClient = require('auth0').ManagementClient;
 const {
   REFRESH_CARS,
   REFRESH_HINTS,
-  REFRESH_STATUS
+  REFRESH_STATUS,
+  REFRESH_ARTICLES,
+  REFRESH_GROUPS
 } = require('../socket_actions')
 
 router.get('/', checkJwt, (req, res) => {
@@ -19,8 +21,10 @@ router.get('/refresh', (req, res) => {
   req.io.sockets.emit(REFRESH_HINTS);
   req.io.sockets.emit(REFRESH_STATUS);
   req.io.sockets.emit(REFRESH_CARS);
+  req.io.sockets.emit(REFRESH_GROUPS);
+  req.io.sockets.emit(REFRESH_ARTICLES);
 
-  res.send(200)
+  res.sendStatus(200)
 });
 
 
@@ -30,9 +34,10 @@ router.post('/', (req, res) => {
       name: req.body.name,
     },
   }).then((result) => {
+    const speed = req.body.speed ? req.body.speed * 3.6 : 0;
     models.CarHistory.create({
       name: req.body.name,
-      speed: req.body.speed * 3.6, // m/s to km/h conversion
+      speed: speed,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
     });
@@ -40,21 +45,21 @@ router.post('/', (req, res) => {
 
     if (result) { // update
       return result.update({
-        speed: req.body.speed * 3.6, // m/s to km/h conversion
+        speed: speed,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });
     }
     return models.Car.create({
       name: req.body.name,
-      speed: req.body.speed * 3.6, // m/s to km/h conversion
+      speed: speed,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
     });
   }).then(() => {
     req.io.sockets.emit(REFRESH_CARS);
   });
-  res.send(200);
+  res.sendStatus(200);
 });
 
 
@@ -74,23 +79,24 @@ router.post('/weblocation', checkJwt, (req, res) => {
         name: auth0user.name,
       },
     }).then((result) => {
+      const speed = req.body.speed ? req.body.speed * 3.6 : 0;
       models.CarHistory.create({
         name: auth0user.name,
-        speed: req.body.speed * 3.6, // m/s to km/h conversion
+        speed: speed,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });
 
       if (result) { // update
         return result.update({
-          speed: req.body.speed * 3.6, // m/s to km/h conversion
+          speed: speed,
           latitude: req.body.latitude,
           longitude: req.body.longitude,
         });
       }
       return models.Car.create({
         name: auth0user.name,
-        speed: req.body.speed * 3.6, // m/s to km/h conversion
+        speed: speed,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
       });

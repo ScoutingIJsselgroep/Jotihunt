@@ -66,10 +66,10 @@ app.use(function (req, res, next) {
 
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
-require('./api')(app, server);
+require('./api')(app, io);
 
 // Import poller
-require('./poller')(server);
+require('./poller')(io);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {

@@ -58,7 +58,7 @@ module.exports = {
                         id: id + 1,
                         name: group.name,
                         city: group.city,
-                        location: `${group.name} (${group.accomodation}) ${group.street} ${group.housenumber} ${group.housenumber_addition} ${group.postcode} ${group.city}`,
+                        location: `${group.name} (${group.accomodation}) ${group.street} ${group.housenumber} ${group.housenumber_addition ? group.housenumber_addition : ""} ${group.postcode} ${group.city}`,
                         latitude: parseFloat(group.lat),
                         longitude: parseFloat(group.long),
                         hunt_points: group.hunt_points || 0,

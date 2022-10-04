@@ -35,7 +35,7 @@ const {
 const io = new Server(server, {
   port: 3000,
   cors: {
-    origin: ['http://localhost:3000'],
+    origin: ['https://jotihunt.scouting-ijsselgroep.nl'],
   }
 });
 

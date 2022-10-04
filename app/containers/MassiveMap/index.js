@@ -313,7 +313,7 @@ MassiveMap.propTypes = {
   ]),
   zoom: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.int
+    PropTypes.number
   ])
 };
 

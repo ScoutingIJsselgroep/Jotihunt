@@ -1,10 +1,12 @@
 import React from 'react';
 import Wrapper from './Wrapper';
-import PuffLoader from "react-spinners/ClipLoader";
+import BarLoader from "react-spinners/BarLoader";
 
       
 const LoadingIndicator = () => (
-  <PuffLoader color='#3b3f51' loading={true} size={150} />
+  <div style={{contentAlign: 'center', width: '100%'}}>
+    {/* <BarLoader color='#3b3f51' loading={true} size={150} /> */}
+  </div>
 );
 
 export default LoadingIndicator;

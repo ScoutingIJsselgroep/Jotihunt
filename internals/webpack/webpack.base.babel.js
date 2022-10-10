@@ -42,12 +42,18 @@ module.exports = (options) => ({
           {
             loader: 'image-webpack-loader',
             query: {
-              progressive: true,
-              optimizationLevel: 7,
-              interlaced: false,
+              mozjpeg: {
+                progressive: true,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 4,
+              },
               pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4,
+                quality: [0.75, 0.90],
+                speed: 3,
               },
             },
           },

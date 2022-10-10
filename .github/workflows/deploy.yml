@@ -14,19 +14,12 @@ on:
       - Dockerfile
 
 jobs:
-  build_and_push:
+  build:
     runs-on: ubuntu-latest
     environment: SERVER_ENV_PROD
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
-
-      # TODO: Correctly copy all secrets
-      - name: Create env file
-        run: |
-          touch .env
-          echo "${{ secrets.SERVER_ENV_PROD }}" > .env
-          cat .env
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -51,6 +44,11 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment: SERVER_ENV_PROD
+    steps:
       - name: Copy Docker Compose and Init configuration
         uses: appleboy/scp-action@master
         with:

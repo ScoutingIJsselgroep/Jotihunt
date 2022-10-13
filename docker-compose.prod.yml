@@ -38,6 +38,20 @@ services:
       - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
     depends_on:
       - "db"
+  divinity:
+    image: tristandb/divinity:latest
+    container_name: divinity
+    restart: always
+    environment:
+      - GOOGLE_SERVER_AUTH_TOKEN
+      - GOOGLE_CLIENT_AUTH_TOKEN
+      - JOTIHUNT_HOST=jotihunt
+    networks:
+      - jotihunt
+    depends_on:
+      - jotihunt
+    labels:
+      - traefik.enable = false
 
   traefik:
     image: traefik:v2.9

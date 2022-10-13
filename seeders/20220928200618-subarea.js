@@ -6,27 +6,27 @@ module.exports = {
     queryInterface.bulkInsert("Subareas", [{
       id: 1,
       name: "Alpha",
-      color: Math.floor(Math.random() * 16777215).toString(16)
+      color: "DFFF00"
     }, {
       id: 2,
       name: "Bravo",
-      color: Math.floor(Math.random() * 16777215).toString(16)
+      color: "FFBF00"
     }, {
       id: 3,
       name: "Charlie",
-      color: Math.floor(Math.random() * 16777215).toString(16)
+      color: "9FE2BF"
     }, {
       id: 4,
       name: "Delta",
-      color: Math.floor(Math.random() * 16777215).toString(16)
+      color: "FF7F50"
     }, {
       id: 5,
       name: "Echo",
-      color: Math.floor(Math.random() * 16777215).toString(16)
+      color: "40E0D0"
     }, {
       id: 6,
       name: "Foxtrot",
-      color: Math.floor(Math.random() * 16777215).toString(16)
+      color: "DE3163"
     }, {
       id: 7,
       name: "Onbekend",

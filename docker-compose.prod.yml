@@ -45,7 +45,7 @@ services:
     environment:
       - GOOGLE_SERVER_AUTH_TOKEN
       - GOOGLE_CLIENT_AUTH_TOKEN
-      - JOTIHUNT_HOST=jotihunt
+      - JOTIHUNT_HOST=http://jotihunt:3000
     networks:
       - jotihunt
     depends_on:

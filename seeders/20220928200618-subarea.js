@@ -6,27 +6,27 @@ module.exports = {
     queryInterface.bulkInsert("Subareas", [{
       id: 1,
       name: "Alpha",
-      color: "DFFF00"
+      color: "f7000a"
     }, {
       id: 2,
       name: "Bravo",
-      color: "FFBF00"
+      color: "ffee00"
     }, {
       id: 3,
       name: "Charlie",
-      color: "9FE2BF"
+      color: "009b3a"
     }, {
       id: 4,
       name: "Delta",
-      color: "FF7F50"
+      color: "ff7800"
     }, {
       id: 5,
       name: "Echo",
-      color: "40E0D0"
+      color: "009b3a"
     }, {
       id: 6,
       name: "Foxtrot",
-      color: "DE3163"
+      color: "bc4086"
     }, {
       id: 7,
       name: "Onbekend",

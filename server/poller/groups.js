@@ -67,6 +67,7 @@ module.exports = {
                         hint_points: group.hint_points || 0,
                         photo_assignment_points: group.photo_assignment_points || 0,
                         penalty_points: group.penalty_points || 0,
+                        SubareaId: config.dbMappings.area[group.area],
                     })
                 });
 

@@ -54,21 +54,23 @@ module.exports = {
             try {
                 const result = JSON.parse(body).data;
                 _.each(result, (group, id) => {
-                    upsert({
-                        id: id + 1,
-                        name: group.name,
-                        city: group.city,
-                        location: `${group.name} (${group.accomodation}) ${group.street} ${group.housenumber} ${group.housenumber_addition ? group.housenumber_addition : ""} ${group.postcode} ${group.city}`,
-                        latitude: parseFloat(group.lat),
-                        longitude: parseFloat(group.long),
-                        hunt_points: group.hunt_points || 0,
-                        counter_hunt_points: group.counter_hunt_points || 0,
-                        assignment_points: group.assignment_points || 0,
-                        hint_points: group.hint_points || 0,
-                        photo_assignment_points: group.photo_assignment_points || 0,
-                        penalty_points: group.penalty_points || 0,
-                        SubareaId: config.dbMappings.area[group.area],
-                    })
+                    if (group.name != "TEST") {
+                        upsert({
+                            id: id + 1,
+                            name: group.name,
+                            city: group.city,
+                            location: `${group.name} (${group.accomodation}) ${group.street} ${group.housenumber} ${group.housenumber_addition ? group.housenumber_addition : ""} ${group.postcode} ${group.city}`,
+                            latitude: parseFloat(group.lat),
+                            longitude: parseFloat(group.long),
+                            hunt_points: group.hunt_points || 0,
+                            counter_hunt_points: group.counter_hunt_points || 0,
+                            assignment_points: group.assignment_points || 0,
+                            hint_points: group.hint_points || 0,
+                            photo_assignment_points: group.photo_assignment_points || 0,
+                            penalty_points: group.penalty_points || 0,
+                            SubareaId: config.dbMappings.area[group.area],
+                        })
+                    }
                 });
 
             } catch (e) {

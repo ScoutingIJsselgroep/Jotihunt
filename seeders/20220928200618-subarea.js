@@ -22,7 +22,7 @@ module.exports = {
     }, {
       id: 5,
       name: "Echo",
-      color: "009b3a"
+      color: "0000FF"
     }, {
       id: 6,
       name: "Foxtrot",

@@ -64,11 +64,11 @@ module.exports = {
 
                             switch (article.type) {
                                 case "news":
-                                    const newsMessage = `<b>${message.title}</b> \n<i>Tijdstip: ${moment(message.start).calendar()}</i> \n${prepareContent(message)}`;
+                                    const newsMessage = `<b>${message.title}</b> \n<i>Tijdstip: ${moment(message.start).add(2, 'hours').calendar()}</i> \n${prepareContent(message)}`;
                                     telegram.sendMessage("Nieuws", newsMessage);
                                     break;
                                 case "hint":
-                                    const hintMessage = `<b>Nieuwe hint</b> \n<i>Tijdstip: ${moment(message.start).calendar()}</i> \nEr is een nieuwe hint binnen, we zijn ermee bezig!`;
+                                    const hintMessage = `<b>Nieuwe hint</b> \n<i>Tijdstip: ${moment(message.start).add(2, 'hours').calendar()}</i> \nEr is een nieuwe hint binnen, we zijn ermee bezig!`;
                                     telegram.sendMessage('Alpha', hintMessage);
                                     telegram.sendMessage('Bravo', hintMessage);
                                     telegram.sendMessage('Charlie', hintMessage);
@@ -77,7 +77,7 @@ module.exports = {
                                     telegram.sendMessage('Foxtrot', hintMessage);
                                     break;
                                 case "assignment":
-                                    const assignmentMessage = `<b>${message.title}</b> \n<i>Deadline: ${moment(message.end).calendar()}</i> \nPunten: ${message.points} \n ${prepareContent(message)}`;
+                                    const assignmentMessage = `<b>${message.title}</b> \n<i>Deadline: ${moment(message.end).add(2, 'hours').calendar()}</i> \nPunten: ${message.points} \n ${prepareContent(message)}`;
                                     telegram.sendMessage('Opdracht', assignmentMessage);
                                     break;
                             }

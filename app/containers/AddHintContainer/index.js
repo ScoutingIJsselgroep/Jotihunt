@@ -104,7 +104,7 @@ export class AddHintContainer extends React.Component { // eslint-disable-line r
                 <h3 className="panel-title">
                   {this.props.lastHint ? this.props.lastHint.title : "Laatst bekende hint"}
                 </h3>
-                {this.props.lastHint && this.props.lastHint.start && moment(this.props.lastHint.start).calendar()}
+                {this.props.lastHint && this.props.lastHint.start && moment(this.props.lastHint.start).add(2, 'hours').calendar()}
               </div>
               <div className="panel-body">
                 {this.props.loadingLastHint && <LoadingIndicator />}

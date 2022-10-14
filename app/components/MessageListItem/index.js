@@ -26,7 +26,7 @@ function MessageListItem({ message }) {
       <div className="panel-body">
         <div dangerouslySetInnerHTML={{ __html: message.content }} />
       </div>
-      <div className="panel-footer">{moment(message.start).calendar()} {message.points && `• ${message.points} punten`} {message.end && `• Inleveren ${moment(message.end).calendar()}`}</div>
+      <div className="panel-footer">{moment(message.start).add(2, 'hours').calendar()} {message.points && `• ${message.points} punten`} {message.end && `• Inleveren ${moment(message.end).add(2, 'hours').calendar()}`}</div>
     </div>
   );
 }

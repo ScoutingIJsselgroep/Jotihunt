@@ -84,6 +84,8 @@ module.exports = {
 
                             io.emit(REFRESH_ARTICLES);
                         }
+                    }).catch((err) => {
+                        console.log(err);
                     });
                 });
             } catch (e) {

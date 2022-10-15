@@ -25,6 +25,7 @@ function ProjectionMapper(predictions) {
                     />);
       }
 
+
       if (subarea && subarea[2]) {
         // Push current polyline
         result.push(<Polyline
@@ -33,6 +34,17 @@ function ProjectionMapper(predictions) {
                       path={google.maps.geometry.encoding.decodePath(subarea[2].polyline.points)}
                     />);
       }
+
+      // Push all remaining polylines
+      _.map(subarea[4], (path, p_i) => {
+        if (subarea[2].polyline.points != path) {
+          result.push(<Polyline
+                      key={p_i + subarea.length}
+                      options={{ strokeColor: "#8888FF",  strokeWeight: 2, lineDashPattern: [10]}}
+                      path={google.maps.geometry.encoding.decodePath(path)}
+                    />);
+        }
+      });
     });
   });
 

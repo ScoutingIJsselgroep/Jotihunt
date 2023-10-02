@@ -4,6 +4,10 @@
 FROM node:10 AS base
 
 ENV KARMA_BROWSER PhantomJS
+RUN sed -i -e 's/deb.debian.org/archive.debian.org/g' \
+           -e 's|security.debian.org|archive.debian.org/|g' \
+           -e '/stretch-updates/d' /etc/apt/sources.list
+           
 RUN apt-get update && apt-get install -y --no-install-recommends libpng-dev python build-essential autoconf automake g++ libpng-dev make
 
 WORKDIR /reactapp

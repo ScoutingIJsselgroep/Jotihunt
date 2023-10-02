@@ -54,13 +54,10 @@ router.get('/', checkJwt, (req, res) => {
 router.post('/location', checkJwt, (req, res) => {
   if (req.body.latlng) {
     const rd = null;
-    const subarea = inSubarea(req.body.latlng);
     geocoder.reverseFind(req.body.latlng[0], req.body.latlng[1], (err, data) => {
       res.send({
         rd,
-        subarea,
         address: data,
-        key: config.google.googleServerAuthToken,
       });
     });
   } else {

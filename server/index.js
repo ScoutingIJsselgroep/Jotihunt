@@ -25,6 +25,16 @@ const {
 
 
 app.use(bodyParser.json());
+app.use((req, res, next)=>{
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'authtoken,content-type,application/json, text/plain, */*');
+  if(req.method==='OPTIONS')
+  {
+      res.header('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH');
+      return res.status(200).json({});
+  }
+next()
+})
 app.use(cors());
 
 const http = require('http');

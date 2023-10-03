@@ -241,7 +241,7 @@
     "mysql2": "^2.3.3",
     "net": "1.0.2",
     "node-sass": "4.9.3",
-    "node-telegram-bot-api": "0.63.0",
+    "node-telegram-bot-api": "^0.63.0",
     "raw-loader": "0.5.1",
     "rdtowgs": "^1.0.3",
     "react": "15.7.0",

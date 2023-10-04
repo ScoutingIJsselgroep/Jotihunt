@@ -52,32 +52,6 @@ export default function createRoutes(store) {
       importModules.catch(errorLoading);
     },
   }, {
-    path: '/login',
-    name: 'login',
-    getComponent(nextState, cb) {
-      System.import('containers/Login')
-        .then(loadModule(cb))
-        .catch(errorLoading);
-    },
-  }, {
-    path: '/login/callback',
-    name: 'loginCallback',
-    getComponent(nextState, cb) {
-      const importModules = Promise.all([
-        System.import('containers/LoginCallback/sagas'),
-        System.import('containers/LoginCallback'),
-      ]);
-
-      const renderRoute = loadModule(cb);
-
-      importModules.then(([sagas, component]) => {
-        injectSagas(sagas.default);
-        renderRoute(component);
-      });
-
-      importModules.catch(errorLoading);
-    },
-  }, {
     path: '/hint/add',
     name: 'addHintContainer',
     onEnter: requireAuth,

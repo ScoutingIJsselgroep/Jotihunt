@@ -1,2 +1,0 @@
-export const LOGIN_CALLBACK_REQUEST = 'LoginCallback/LOGIN_CALLBACK_REQUEST';
-export const LOGIN_CALLBACK_ERROR = 'LoginCallback/LOGIN_CALLBACK_ERROR';

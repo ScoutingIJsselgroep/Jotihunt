@@ -28,7 +28,7 @@ services:
       retries: 20
 
   jotihunt:
-    image: ghcr.io/scoutingijsselgroep/jotihunt:latest
+    # image: ghcr.io/scoutingijsselgroep/jotihunt:latest
     build:
       context: '.'
       target: 'development'

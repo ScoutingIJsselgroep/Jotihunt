@@ -5,7 +5,9 @@
 */
 
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Form, Text, Select } from 'react-form';
 class NewHintForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

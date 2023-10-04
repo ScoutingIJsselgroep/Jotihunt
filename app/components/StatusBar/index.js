@@ -4,7 +4,9 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import moment from 'moment';
 import LoadingIndicator from '../LoadingIndicator/index';
 

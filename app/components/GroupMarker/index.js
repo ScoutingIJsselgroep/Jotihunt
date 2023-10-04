@@ -4,7 +4,9 @@
 *
 */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { InfoWindow, Marker } from 'react-google-maps';
 import { Form, Select } from 'react-form';
 import Gpsbutton from '../Gpsbutton/index';

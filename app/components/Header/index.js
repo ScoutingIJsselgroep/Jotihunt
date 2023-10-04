@@ -4,7 +4,9 @@
 *
 */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import NavbarLogin from 'components/NavbarLogin';
 import LocationManager from 'components/LocationManager';
 import NavBarMenu from 'components/NavBarMenu';

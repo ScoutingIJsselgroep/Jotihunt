@@ -4,7 +4,9 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import _ from 'lodash';
 import newId from '../../utils/newid';
@@ -18,7 +20,7 @@ const config = require('../../../config');
 // import styled from 'styled-components';
 
 class ClairvoyanceResultMapper extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  componentWillMount() {
+  componentDidMount() {
     this.id = newId();
   }
 

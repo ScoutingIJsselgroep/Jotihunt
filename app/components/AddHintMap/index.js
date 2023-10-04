@@ -4,7 +4,9 @@
 *
 */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 // import styled from 'styled-components';
 import { GoogleMap, Marker, withGoogleMap, InfoWindow } from 'react-google-maps';
 // import SubareaPolygons from '../SubareaPolygons/index';

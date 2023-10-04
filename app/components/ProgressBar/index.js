@@ -12,7 +12,7 @@ function withProgressBar(WrappedComponent) {
       this.updateProgress = this.updateProgress.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
       // Store a reference to the listener.
       /* istanbul ignore next */
       this.unsubscribeHistory = this.props.router && this.props.router.listenBefore((location) => {
@@ -23,7 +23,7 @@ function withProgressBar(WrappedComponent) {
       });
     }
 
-    componentWillUpdate(newProps, newState) {
+    componentDidUpdate(newProps, newState) {
       const { loadedRoutes, progress } = this.state;
       const { pathname } = newProps.location;
 

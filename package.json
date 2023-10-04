@@ -154,23 +154,6 @@
       }
     }
   },
-  "dllPlugin": {
-    "path": "node_modules/react-boilerplate-dlls",
-    "exclude": [
-      "chalk",
-      "compression",
-      "cross-env",
-      "express",
-      "ip",
-      "minimist",
-      "sanitize.css"
-    ],
-    "include": [
-      "core-js",
-      "lodash",
-      "eventsource-polyfill"
-    ]
-  },
   "jest": {
     "collectCoverageFrom": [
       "app/**/*.{js,jsx}",
@@ -217,11 +200,11 @@
     "create-react-ref": "0.1.0",
     "cross-env": "3.1.3",
     "d3-geo": "1.11.1",
-    "dotenv": "^16.0.2",
+    "dotenv": "^16.3.1",
     "express": "4.17.1",
     "express-jwt": "5.3.1",
     "express-jwt-authz": "1.0.0",
-    "font-awesome": "4.7.0",
+    "font-awesome": "^4.7.0",
     "fontfaceobserver": "2.0.7",
     "geocoder": "0.2.3",
     "geojson-polygon-center": "0.0.0",
@@ -243,12 +226,14 @@
     "net": "1.0.2",
     "node-sass": "4.9.3",
     "node-telegram-bot-api": "^0.63.0",
+    "prop-types": "^15.8.1",
     "raw-loader": "0.5.1",
     "rdtowgs": "^1.0.3",
-    "react": "15.7.0",
+    "react": "^16.11.0",
+    "react-addons-test-utils": "^15.6.2",
     "react-bootstrap-toggle": "2.3.1",
     "react-display-name": "0.2.4",
-    "react-dom": "15.7.0",
+    "react-dom": "^16.11.0",
     "react-form": "1.3.0",
     "react-geolocated": "2.4.0",
     "react-google-maps": "9.4.5",
@@ -325,7 +310,6 @@
     "null-loader": "0.1.1",
     "plop": "1.7.3",
     "pre-commit": "1.1.3",
-    "react-addons-test-utils": "15.4.1",
     "rimraf": "2.5.4",
     "sass-loader": "6.0.7",
     "shelljs": "0.8.4",

@@ -4,7 +4,9 @@
 *
 */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { InfoWindow } from 'react-google-maps';
 import moment from 'moment';
 import Gpsbutton from '../Gpsbutton/index';

@@ -4,7 +4,9 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import MessageListItem from 'components/MessageListItem';
 import SearchMessageList from 'components/SearchMessageList';

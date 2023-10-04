@@ -4,7 +4,9 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Polygon } from 'react-google-maps';
 
 const tj = require('@mapbox/togeojson');

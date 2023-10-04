@@ -2,9 +2,6 @@
 // They are all wrapped in the App component, which should contain the navbar etc
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
-import {
-  requireAuth
-} from 'containers/Viewer/lib';
 
 import {
   getAsyncInjectors

@@ -28,7 +28,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
 
   render() {
     const { user, loginWithRedirect, isAuthenticated } = useAuth0();
-    
+
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
@@ -46,7 +46,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <NavBarMenu />
-            {isAuthenticated && <LocationManager sendCoordinates={this.props.sendCoordinates} />}
+              {isAuthenticated && <LocationManager sendCoordinates={this.props.sendCoordinates} />}
             <NavbarLogin />
           </div>
         </div>

@@ -16,24 +16,21 @@ class ViewerWidget extends React.Component { // eslint-disable-line react/prefer
   };
 
   render() {
-    const {
-      givenName,
-      picture,
-    } = this.props;
-
+    const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+  
     return (
       <div>
-        {picture && <UserBadge picture={picture} />}
-        {givenName && <span className={styles.UserName}>{givenName}</span>}
-        {loggedOut() && <Link to="/login" className={`${styles.loginButton}`}>
-          Log In
-        </Link>}
-        {loggedIn() && <div className={styles.dropDown}>
+        {!isAuthenticated && <button className={`${styles.loginButton}`} onClick={() => loginWithRedirect()}>Log In</button>}
+        {isAuthenticated && <div className={styles.dropDown}>
           <button className={styles.dropDownButton}>&#9660;</button>
           <div className={styles.dropDownContent}>
-            <Link to="/" onClick={this.props.logout}>
+            <img src={user.picture} alt={user.name} />
+            <h2>{user.name}</h2>
+            <p>{user.email}</p>
+
+            <button className="btn btn-default" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
               Log Out
-            </Link>
+            </button>
           </div>
         </div>}
       </div>

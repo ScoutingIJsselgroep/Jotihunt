@@ -6,16 +6,15 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import { connect } from 'react-redux';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
+import { Auth0Provider } from '@auth0/auth0-react';
 import { createStructuredSelector } from 'reselect';
 import withProgressBar from 'components/ProgressBar';
 import '../../stylesheets/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import 'font-awesome/css/font-awesome.min.css';
-import logo from './headonly.svg';
 
 import { doSendCoordinates } from './actions';
 
@@ -32,12 +31,21 @@ export class App extends React.Component  {
 
   render() {
     return (
-      <div>
-        <Header location={this.props.location.pathname} sendCoordinates={this.sendCoordinates}/>
+      <Auth0Provider
+        domain={process.env.AUTH0_DOMAIN}
+        clientId={process.env.AUTH0_CLIENT_ID}
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+          audience: process.env.AUTH0_AUDIENCE,
+        }}
+      >
         <div>
-          {React.Children.toArray(this.props.children)}
+          <Header location={this.props.location.pathname} sendCoordinates={this.sendCoordinates}/>
+          <div>
+            {React.Children.toArray(this.props.children)}
+          </div>
         </div>
-      </div>
+      </Auth0Provider>
     );
   }
 }

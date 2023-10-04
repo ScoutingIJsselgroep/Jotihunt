@@ -199,6 +199,7 @@
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.1",
     "@google/maps": "0.5.5",
     "@mapbox/togeojson": "0.16.0",
     "apicache": "1.2.3",

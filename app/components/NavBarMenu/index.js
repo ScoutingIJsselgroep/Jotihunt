@@ -5,8 +5,7 @@
 */
 
 import React from 'react';
-import { removeToken, loggedIn, loggedOut } from 'containers/Viewer/lib';
-import { createAndShow } from 'containers/Login/lib';
+import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router';
 
 // import styled from 'styled-components';
@@ -14,7 +13,9 @@ import { Link } from 'react-router';
 
 class NavBarMenu extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    if (loggedIn()) {
+    const { isAuthenticated } = useAuth0();
+    
+    if (isAuthenticated) {
       // When logged in
       return (
         <ul className="nav navbar-nav">

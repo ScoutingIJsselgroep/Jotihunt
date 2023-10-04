@@ -1,4 +1,4 @@
-const { expressjwt: jwt } = require("express-jwt");
+const jwt = require("express-jwt");
 const jwks = require("jwks-rsa");
 
 const jwtCheck = jwt({

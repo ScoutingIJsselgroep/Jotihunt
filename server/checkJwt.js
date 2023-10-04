@@ -13,4 +13,4 @@ const jwtCheck = jwt({
 	algorithms: ["RS256"],
 });
 
-module.exports = { jwtCheck };
+module.exports = jwtCheck;
